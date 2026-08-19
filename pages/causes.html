@@ -1,0 +1,1262 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Causes | KindLink</title>
+
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet"
+          href="../css/style.css">
+
+    <link rel="stylesheet"
+          href="../css/causes.css">
+
+</head>
+
+
+<body>
+
+<!-- =========================================
+     NAVBAR
+========================================= -->
+
+<header class="navbar">
+
+    <div class="container nav-container">
+
+        <a href="../index.html"
+           class="logo">
+
+            <span class="logo-icon">K</span>
+
+            <span>
+                Kind<span>Link</span>
+            </span>
+
+        </a>
+
+
+        <nav class="nav-menu"
+             id="navMenu">
+
+            <a href="../index.html">
+                Home
+            </a>
+
+            <a href="causes.html"
+               class="active">
+                Causes
+            </a>
+
+            <a href="emergency.html">
+                Emergency
+            </a>
+
+            <a href="adoption.html">
+                Adoption
+            </a>
+
+            <a href="volunteer.html">
+                Volunteer
+            </a>
+
+            <a href="stories.html">
+                Stories
+            </a>
+
+            <a href="about.html">
+                About
+            </a>
+
+        </nav>
+
+
+        <div class="nav-actions">
+
+            <a href="#campaigns"
+               class="donate-btn">
+                Donate
+            </a>
+
+            <a href="login.html"
+               class="login-btn">
+                Login
+            </a>
+
+        </div>
+
+
+        <button class="menu-toggle"
+                id="menuToggle">
+
+            ☰
+
+        </button>
+
+    </div>
+
+</header>
+
+
+<!-- =========================================
+     PAGE HERO
+========================================= -->
+
+<section class="causes-hero">
+
+    <div class="container">
+
+        <div class="causes-hero-content">
+
+            <span class="section-label">
+                EXPLORE & SUPPORT
+            </span>
+
+            <h1>
+                Find a cause
+                <span>worth caring about.</span>
+            </h1>
+
+            <p>
+                Discover campaigns, organizations and opportunities
+                where your support can create meaningful change.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================
+     SEARCH + FILTER
+========================================= -->
+
+<section class="causes-browser">
+
+    <div class="container">
+
+
+        <div class="causes-toolbar">
+
+            <!-- Search -->
+
+            <div class="search-box">
+
+                <span>🔎</span>
+
+                <input
+                    type="text"
+                    id="causeSearch"
+                    placeholder="Search causes, campaigns...">
+
+            </div>
+
+
+            <!-- Sort -->
+
+            <select id="sortCauses">
+
+                <option value="default">
+                    Sort: Recommended
+                </option>
+
+                <option value="progress">
+                    Most funded
+                </option>
+
+                <option value="urgent">
+                    Urgent
+                </option>
+
+            </select>
+
+        </div>
+
+
+        <!-- Category buttons -->
+
+        <div class="category-filters">
+
+            <button class="category-btn active"
+                    data-category="all">
+
+                All Causes
+
+            </button>
+
+            <button class="category-btn"
+                    data-category="education">
+
+                📚 Education
+
+            </button>
+
+            <button class="category-btn"
+                    data-category="health">
+
+                🏥 Healthcare
+
+            </button>
+
+            <button class="category-btn"
+                    data-category="animals">
+
+                🐾 Animal Welfare
+
+            </button>
+
+            <button class="category-btn"
+                    data-category="environment">
+
+                🌱 Environment
+
+            </button>
+
+            <button class="category-btn"
+                    data-category="blood">
+
+                🩸 Blood Donation
+
+            </button>
+
+            <button class="category-btn"
+                    data-category="women">
+
+                👩 Women Safety
+
+            </button>
+
+            <button class="category-btn"
+                    data-category="food">
+
+                🍚 Food Support
+
+            </button>
+
+        </div>
+
+
+        <!-- Result count -->
+
+        <div class="results-header">
+
+            <h2>
+                Active Campaigns
+            </h2>
+
+            <span id="resultCount">
+                8 campaigns
+            </span>
+
+        </div>
+
+
+        <!-- =====================================
+             CAMPAIGNS
+        ====================================== -->
+
+        <div class="campaign-grid"
+             id="campaignGrid">
+
+
+            <!-- CAMPAIGN 1 -->
+
+            <article class="campaign-card"
+                     data-category="education"
+                     data-title="Education for every child"
+                     data-progress="82"
+                     data-urgent="false">
+
+                <div class="campaign-image education-image">
+
+                    <span class="campaign-category">
+                        📚 Education
+                    </span>
+
+                    <span class="campaign-status">
+                        Active
+                    </span>
+
+                    <div class="campaign-emoji">
+                        📖
+                    </div>
+
+                </div>
+
+
+                <div class="campaign-content">
+
+                    <h3>
+                        Education for Every Child
+                    </h3>
+
+                    <p>
+                        Help provide learning resources and
+                        educational opportunities for children.
+                    </p>
+
+
+                    <div class="campaign-meta">
+
+                        <span>
+                            📍 Community
+                        </span>
+
+                        <span>
+                            👥 120 supporters
+                        </span>
+
+                    </div>
+
+
+                    <div class="progress-info">
+
+                        <span>
+                            ₹82,000 raised
+                        </span>
+
+                        <strong>
+                            82%
+                        </strong>
+
+                    </div>
+
+
+                    <div class="progress-bar">
+
+                        <div style="width:82%">
+                        </div>
+
+                    </div>
+
+
+                    <div class="campaign-bottom">
+
+                        <span>
+                            Goal: ₹1,00,000
+                        </span>
+
+                        <button class="support-btn"
+                                onclick="openDonation('Education for Every Child')">
+
+                            Support →
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- CAMPAIGN 2 -->
+
+            <article class="campaign-card"
+                     data-category="animals"
+                     data-title="Give rescued animals a home"
+                     data-progress="64"
+                     data-urgent="true">
+
+                <div class="campaign-image animal-image">
+
+                    <span class="campaign-category">
+                        🐾 Animal Welfare
+                    </span>
+
+                    <span class="urgent-status">
+                        Urgent
+                    </span>
+
+                    <div class="campaign-emoji">
+                        🐶
+                    </div>
+
+                </div>
+
+
+                <div class="campaign-content">
+
+                    <h3>
+                        Give Rescued Animals a Home
+                    </h3>
+
+                    <p>
+                        Support rescue, medical care and adoption
+                        opportunities for animals in need.
+                    </p>
+
+                    <div class="campaign-meta">
+
+                        <span>
+                            📍 Local Shelter
+                        </span>
+
+                        <span>
+                            👥 87 supporters
+                        </span>
+
+                    </div>
+
+
+                    <div class="progress-info">
+
+                        <span>
+                            ₹64,000 raised
+                        </span>
+
+                        <strong>
+                            64%
+                        </strong>
+
+                    </div>
+
+
+                    <div class="progress-bar">
+
+                        <div style="width:64%">
+                        </div>
+
+                    </div>
+
+
+                    <div class="campaign-bottom">
+
+                        <span>
+                            Goal: ₹1,00,000
+                        </span>
+
+                        <button class="support-btn"
+                                onclick="openDonation('Give Rescued Animals a Home')">
+
+                            Support →
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- CAMPAIGN 3 -->
+
+            <article class="campaign-card"
+                     data-category="health"
+                     data-title="Healthcare support"
+                     data-progress="48"
+                     data-urgent="false">
+
+                <div class="campaign-image health-image">
+
+                    <span class="campaign-category">
+                        🏥 Healthcare
+                    </span>
+
+                    <span class="campaign-status">
+                        Active
+                    </span>
+
+                    <div class="campaign-emoji">
+                        ❤️
+                    </div>
+
+                </div>
+
+
+                <div class="campaign-content">
+
+                    <h3>
+                        Healthcare Support
+                    </h3>
+
+                    <p>
+                        Help communities access essential healthcare
+                        support and resources.
+                    </p>
+
+                    <div class="campaign-meta">
+
+                        <span>
+                            📍 Community
+                        </span>
+
+                        <span>
+                            👥 65 supporters
+                        </span>
+
+                    </div>
+
+
+                    <div class="progress-info">
+
+                        <span>
+                            ₹48,000 raised
+                        </span>
+
+                        <strong>
+                            48%
+                        </strong>
+
+                    </div>
+
+
+                    <div class="progress-bar">
+
+                        <div style="width:48%">
+                        </div>
+
+                    </div>
+
+
+                    <div class="campaign-bottom">
+
+                        <span>
+                            Goal: ₹1,00,000
+                        </span>
+
+                        <button class="support-btn"
+                                onclick="openDonation('Healthcare Support')">
+
+                            Support →
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- CAMPAIGN 4 -->
+
+            <article class="campaign-card"
+                     data-category="environment"
+                     data-title="Restore our green spaces"
+                     data-progress="71"
+                     data-urgent="false">
+
+                <div class="campaign-image environment-image">
+
+                    <span class="campaign-category">
+                        🌱 Environment
+                    </span>
+
+                    <span class="campaign-status">
+                        Active
+                    </span>
+
+                    <div class="campaign-emoji">
+                        🌳
+                    </div>
+
+                </div>
+
+
+                <div class="campaign-content">
+
+                    <h3>
+                        Restore Our Green Spaces
+                    </h3>
+
+                    <p>
+                        Support tree planting and local environmental
+                        restoration projects.
+                    </p>
+
+                    <div class="campaign-meta">
+
+                        <span>
+                            📍 Local Area
+                        </span>
+
+                        <span>
+                            👥 145 supporters
+                        </span>
+
+                    </div>
+
+
+                    <div class="progress-info">
+
+                        <span>
+                            ₹71,000 raised
+                        </span>
+
+                        <strong>
+                            71%
+                        </strong>
+
+                    </div>
+
+
+                    <div class="progress-bar">
+
+                        <div style="width:71%">
+                        </div>
+
+                    </div>
+
+
+                    <div class="campaign-bottom">
+
+                        <span>
+                            Goal: ₹1,00,000
+                        </span>
+
+                        <button class="support-btn"
+                                onclick="openDonation('Restore Our Green Spaces')">
+
+                            Support →
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- CAMPAIGN 5 -->
+
+            <article class="campaign-card"
+                     data-category="blood"
+                     data-title="Blood donation awareness"
+                     data-progress="55"
+                     data-urgent="true">
+
+                <div class="campaign-image blood-image">
+
+                    <span class="campaign-category">
+                        🩸 Blood Donation
+                    </span>
+
+                    <span class="urgent-status">
+                        Urgent
+                    </span>
+
+                    <div class="campaign-emoji">
+                        🩸
+                    </div>
+
+                </div>
+
+
+                <div class="campaign-content">
+
+                    <h3>
+                        Blood Donation Awareness
+                    </h3>
+
+                    <p>
+                        Help raise awareness and connect communities
+                        with blood donation opportunities.
+                    </p>
+
+                    <div class="campaign-meta">
+
+                        <span>
+                            📍 Community
+                        </span>
+
+                        <span>
+                            👥 98 supporters
+                        </span>
+
+                    </div>
+
+
+                    <div class="progress-info">
+
+                        <span>
+                            ₹55,000 raised
+                        </span>
+
+                        <strong>
+                            55%
+                        </strong>
+
+                    </div>
+
+
+                    <div class="progress-bar">
+
+                        <div style="width:55%">
+                        </div>
+
+                    </div>
+
+
+                    <div class="campaign-bottom">
+
+                        <span>
+                            Goal: ₹1,00,000
+                        </span>
+
+                        <button class="support-btn"
+                                onclick="openDonation('Blood Donation Awareness')">
+
+                            Support →
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- CAMPAIGN 6 -->
+
+            <article class="campaign-card"
+                     data-category="women"
+                     data-title="Women empowerment initiative"
+                     data-progress="76"
+                     data-urgent="false">
+
+                <div class="campaign-image women-image">
+
+                    <span class="campaign-category">
+                        👩 Women Safety
+                    </span>
+
+                    <span class="campaign-status">
+                        Active
+                    </span>
+
+                    <div class="campaign-emoji">
+                        🌸
+                    </div>
+
+                </div>
+
+
+                <div class="campaign-content">
+
+                    <h3>
+                        Women Empowerment Initiative
+                    </h3>
+
+                    <p>
+                        Support initiatives focused on safety,
+                        skills and empowerment.
+                    </p>
+
+                    <div class="campaign-meta">
+
+                        <span>
+                            📍 Community
+                        </span>
+
+                        <span>
+                            👥 132 supporters
+                        </span>
+
+                    </div>
+
+
+                    <div class="progress-info">
+
+                        <span>
+                            ₹76,000 raised
+                        </span>
+
+                        <strong>
+                            76%
+                        </strong>
+
+                    </div>
+
+
+                    <div class="progress-bar">
+
+                        <div style="width:76%">
+                        </div>
+
+                    </div>
+
+
+                    <div class="campaign-bottom">
+
+                        <span>
+                            Goal: ₹1,00,000
+                        </span>
+
+                        <button class="support-btn"
+                                onclick="openDonation('Women Empowerment Initiative')">
+
+                            Support →
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- CAMPAIGN 7 -->
+
+            <article class="campaign-card"
+                     data-category="food"
+                     data-title="Meals for communities"
+                     data-progress="39"
+                     data-urgent="true">
+
+                <div class="campaign-image food-image">
+
+                    <span class="campaign-category">
+                        🍚 Food Support
+                    </span>
+
+                    <span class="urgent-status">
+                        Urgent
+                    </span>
+
+                    <div class="campaign-emoji">
+                        🍲
+                    </div>
+
+                </div>
+
+
+                <div class="campaign-content">
+
+                    <h3>
+                        Meals for Communities
+                    </h3>
+
+                    <p>
+                        Help provide nutritious meals and essential
+                        food support to communities.
+                    </p>
+
+                    <div class="campaign-meta">
+
+                        <span>
+                            📍 Local Community
+                        </span>
+
+                        <span>
+                            👥 74 supporters
+                        </span>
+
+                    </div>
+
+
+                    <div class="progress-info">
+
+                        <span>
+                            ₹39,000 raised
+                        </span>
+
+                        <strong>
+                            39%
+                        </strong>
+
+                    </div>
+
+
+                    <div class="progress-bar">
+
+                        <div style="width:39%">
+                        </div>
+
+                    </div>
+
+
+                    <div class="campaign-bottom">
+
+                        <span>
+                            Goal: ₹1,00,000
+                        </span>
+
+                        <button class="support-btn"
+                                onclick="openDonation('Meals for Communities')">
+
+                            Support →
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- CAMPAIGN 8 -->
+
+            <article class="campaign-card"
+                     data-category="animals"
+                     data-title="Animal medical care"
+                     data-progress="91"
+                     data-urgent="false">
+
+                <div class="campaign-image animal-image">
+
+                    <span class="campaign-category">
+                        🐾 Animal Welfare
+                    </span>
+
+                    <span class="campaign-status">
+                        Active
+                    </span>
+
+                    <div class="campaign-emoji">
+                        🐱
+                    </div>
+
+                </div>
+
+
+                <div class="campaign-content">
+
+                    <h3>
+                        Animal Medical Care
+                    </h3>
+
+                    <p>
+                        Help provide medical treatment and recovery
+                        support for rescued animals.
+                    </p>
+
+                    <div class="campaign-meta">
+
+                        <span>
+                            📍 Animal Shelter
+                        </span>
+
+                        <span>
+                            👥 210 supporters
+                        </span>
+
+                    </div>
+
+
+                    <div class="progress-info">
+
+                        <span>
+                            ₹91,000 raised
+                        </span>
+
+                        <strong>
+                            91%
+                        </strong>
+
+                    </div>
+
+
+                    <div class="progress-bar">
+
+                        <div style="width:91%">
+                        </div>
+
+                    </div>
+
+
+                    <div class="campaign-bottom">
+
+                        <span>
+                            Goal: ₹1,00,000
+                        </span>
+
+                        <button class="support-btn"
+                                onclick="openDonation('Animal Medical Care')">
+
+                            Support →
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+        </div>
+
+
+        <!-- No results -->
+
+        <div class="no-results"
+             id="noResults">
+
+            <div>
+                🔎
+            </div>
+
+            <h3>
+                No causes found
+            </h3>
+
+            <p>
+                Try searching for another cause or category.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================
+     CTA
+========================================= -->
+
+<section class="causes-cta">
+
+    <div class="container">
+
+        <div class="causes-cta-content">
+
+            <span class="cta-heart">
+                ♥
+            </span>
+
+            <h2>
+                Don't just care.
+                <br>
+                Take action.
+            </h2>
+
+            <p>
+                Your contribution can become someone's hope.
+            </p>
+
+            <div class="cta-buttons">
+
+                <a href="volunteer.html"
+                   class="btn btn-light">
+
+                    Become a Volunteer
+
+                </a>
+
+                <a href="../index.html"
+                   class="btn btn-outline-light">
+
+                    Back to Home
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================
+     DONATION MODAL
+========================================= -->
+
+<div class="modal"
+     id="donationModal">
+
+    <div class="modal-content">
+
+        <button class="modal-close"
+                onclick="closeDonation()">
+
+            ×
+
+        </button>
+
+        <div class="modal-icon">
+            💚
+        </div>
+
+        <h2>
+            Support this cause
+        </h2>
+
+        <p id="donationCause">
+            Cause name
+        </p>
+
+
+        <div class="donation-options">
+
+            <button onclick="selectAmount(100)">
+                ₹100
+            </button>
+
+            <button onclick="selectAmount(500)">
+                ₹500
+            </button>
+
+            <button onclick="selectAmount(1000)">
+                ₹1,000
+            </button>
+
+            <button onclick="selectAmount(2000)">
+                ₹2,000
+            </button>
+
+        </div>
+
+
+        <input
+            type="number"
+            id="customAmount"
+            placeholder="Enter custom amount">
+
+
+        <button class="modal-donate"
+                onclick="processDonation()">
+
+            Continue Donation →
+
+        </button>
+
+        <small>
+            This is a demonstration donation flow
+            for the project prototype.
+        </small>
+
+    </div>
+
+</div>
+
+
+<!-- =========================================
+     FOOTER
+========================================= -->
+
+<footer class="footer">
+
+    <div class="container footer-grid">
+
+        <div class="footer-brand">
+
+            <a href="../index.html"
+               class="logo footer-logo">
+
+                <span class="logo-icon">K</span>
+
+                <span>
+                    Kind<span>Link</span>
+                </span>
+
+            </a>
+
+            <p>
+                A unified platform connecting people,
+                communities and organizations to create
+                meaningful social impact.
+            </p>
+
+        </div>
+
+
+        <div class="footer-column">
+
+            <h4>Explore</h4>
+
+            <a href="../index.html">
+                Home
+            </a>
+
+            <a href="causes.html">
+                Causes
+            </a>
+
+            <a href="emergency.html">
+                Emergency
+            </a>
+
+            <a href="adoption.html">
+                Adoption
+            </a>
+
+        </div>
+
+
+        <div class="footer-column">
+
+            <h4>Get Involved</h4>
+
+            <a href="volunteer.html">
+                Volunteer
+            </a>
+
+            <a href="adoption.html">
+                Adopt
+            </a>
+
+            <a href="login.html">
+                Login
+            </a>
+
+        </div>
+
+
+        <div class="footer-column">
+
+            <h4>KindLink</h4>
+
+            <a href="about.html">
+                About Us
+            </a>
+
+            <a href="stories.html">
+                Stories
+            </a>
+
+            <a href="organisation-register.html">
+                Organisations
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <div class="container footer-bottom">
+
+        <p>
+            © 2026 KindLink. Mini Project.
+        </p>
+
+        <p>
+            HTML5 • CSS3 • JavaScript
+        </p>
+
+    </div>
+
+</footer>
+
+
+<script src="../js/main.js"></script>
+<script src="../js/causes.js"></script>
+
+</body>
+
+</html>

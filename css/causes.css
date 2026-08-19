@@ -1,0 +1,597 @@
+/* =========================================
+   CAUSES PAGE
+========================================= */
+
+.causes-hero {
+    background: #edf4ee;
+    padding: 90px 0;
+    text-align: center;
+}
+
+.causes-hero-content {
+    max-width: 800px;
+    margin: auto;
+}
+
+.causes-hero h1 {
+    font-family: "Playfair Display", serif;
+    color: #163b2a;
+    font-size: clamp(45px, 6vw, 72px);
+    line-height: 1.05;
+    letter-spacing: -2px;
+}
+
+.causes-hero h1 span {
+    color: #e88935;
+}
+
+.causes-hero p {
+    max-width: 650px;
+    margin: 20px auto 0;
+    color: #69736c;
+    font-size: 17px;
+}
+
+
+/* =========================================
+   BROWSER
+========================================= */
+
+.causes-browser {
+    background: #fbfaf6;
+}
+
+.causes-toolbar {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    margin-bottom: 25px;
+}
+
+.search-box {
+    flex: 1;
+    max-width: 600px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: white;
+    border: 1px solid #dfe5df;
+    border-radius: 14px;
+    padding: 0 18px;
+}
+
+.search-box span {
+    font-size: 18px;
+}
+
+.search-box input {
+    width: 100%;
+    border: none;
+    outline: none;
+    padding: 15px 0;
+    font-family: inherit;
+    font-size: 14px;
+    background: transparent;
+}
+
+#sortCauses {
+    min-width: 180px;
+    border: 1px solid #dfe5df;
+    background: white;
+    border-radius: 14px;
+    padding: 0 15px;
+    color: #526057;
+    font-family: inherit;
+    outline: none;
+}
+
+
+/* =========================================
+   FILTERS
+========================================= */
+
+.category-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 50px;
+}
+
+.category-btn {
+    border: 1px solid #dfe5df;
+    background: white;
+    padding: 10px 15px;
+    border-radius: 30px;
+    color: #637068;
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.25s ease;
+}
+
+.category-btn:hover {
+    border-color: #286044;
+    color: #286044;
+}
+
+.category-btn.active {
+    background: #163b2a;
+    color: white;
+    border-color: #163b2a;
+}
+
+
+/* =========================================
+   RESULTS
+========================================= */
+
+.results-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.results-header h2 {
+    font-family: "Playfair Display", serif;
+    font-size: 32px;
+    color: #163b2a;
+}
+
+.results-header span {
+    color: #7b837d;
+    font-size: 13px;
+}
+
+
+/* =========================================
+   CAMPAIGNS
+========================================= */
+
+.campaign-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+}
+
+.campaign-card {
+    background: white;
+    border: 1px solid #e2e7e2;
+    border-radius: 20px;
+    overflow: hidden;
+    transition: 0.3s ease;
+}
+
+.campaign-card:hover {
+    transform: translateY(-7px);
+    box-shadow: 0 20px 45px rgba(22, 59, 42, 0.09);
+}
+
+.campaign-card.hidden {
+    display: none;
+}
+
+
+/* =========================================
+   CAMPAIGN IMAGE
+========================================= */
+
+.campaign-image {
+    height: 210px;
+    position: relative;
+    display: grid;
+    place-items: center;
+}
+
+.education-image {
+    background: #dfeaf8;
+}
+
+.animal-image {
+    background: #f7dfc3;
+}
+
+.health-image {
+    background: #f7dedd;
+}
+
+.environment-image {
+    background: #dcebdc;
+}
+
+.blood-image {
+    background: #f4d9d9;
+}
+
+.women-image {
+    background: #eeddea;
+}
+
+.food-image {
+    background: #f5e3bf;
+}
+
+.campaign-emoji {
+    font-size: 70px;
+    filter: drop-shadow(0 10px 10px rgba(0,0,0,0.08));
+}
+
+.campaign-category,
+.campaign-status,
+.urgent-status {
+    position: absolute;
+    top: 15px;
+    padding: 7px 10px;
+    border-radius: 20px;
+    font-size: 10px;
+    font-weight: 800;
+}
+
+.campaign-category {
+    left: 15px;
+    background: rgba(255,255,255,0.88);
+    color: #345040;
+}
+
+.campaign-status {
+    right: 15px;
+    background: #e7f3e8;
+    color: #28703e;
+}
+
+.urgent-status {
+    right: 15px;
+    background: #fff0ed;
+    color: #c34e42;
+}
+
+
+/* =========================================
+   CAMPAIGN CONTENT
+========================================= */
+
+.campaign-content {
+    padding: 23px;
+}
+
+.campaign-content h3 {
+    color: #163b2a;
+    font-family: "Playfair Display", serif;
+    font-size: 22px;
+    line-height: 1.2;
+}
+
+.campaign-content > p {
+    color: #788078;
+    font-size: 13px;
+    line-height: 1.6;
+    margin: 10px 0 18px;
+}
+
+.campaign-meta {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    color: #8a928c;
+    font-size: 10px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #edf0ed;
+}
+
+.progress-info {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 18px;
+    color: #657068;
+    font-size: 11px;
+}
+
+.progress-info strong {
+    color: #286044;
+}
+
+.progress-bar {
+    height: 7px;
+    background: #e8ece8;
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 8px 0 17px;
+}
+
+.progress-bar div {
+    height: 100%;
+    background: #e88935;
+    border-radius: inherit;
+}
+
+.campaign-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.campaign-bottom > span {
+    color: #89908a;
+    font-size: 10px;
+}
+
+.support-btn {
+    border: none;
+    background: #163b2a;
+    color: white;
+    padding: 10px 14px;
+    border-radius: 10px;
+    font-family: inherit;
+    font-size: 11px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.25s ease;
+}
+
+.support-btn:hover {
+    background: #e88935;
+}
+
+
+/* =========================================
+   NO RESULTS
+========================================= */
+
+.no-results {
+    display: none;
+    text-align: center;
+    padding: 70px 20px;
+}
+
+.no-results.show {
+    display: block;
+}
+
+.no-results > div {
+    font-size: 45px;
+}
+
+.no-results h3 {
+    color: #163b2a;
+    font-family: "Playfair Display", serif;
+    font-size: 27px;
+    margin-top: 10px;
+}
+
+.no-results p {
+    color: #788078;
+    font-size: 13px;
+}
+
+
+/* =========================================
+   CTA
+========================================= */
+
+.causes-cta {
+    background: #e88935;
+    color: white;
+    text-align: center;
+}
+
+.causes-cta-content {
+    max-width: 700px;
+    margin: auto;
+}
+
+.causes-cta h2 {
+    font-family: "Playfair Display", serif;
+    font-size: clamp(40px, 5vw, 60px);
+    line-height: 1.1;
+}
+
+.causes-cta p {
+    color: #fff0df;
+    margin: 15px 0 25px;
+}
+
+
+/* =========================================
+   DONATION MODAL
+========================================= */
+
+.modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(10, 25, 17, 0.7);
+    display: none;
+    place-items: center;
+    padding: 20px;
+    z-index: 2000;
+}
+
+.modal.show {
+    display: grid;
+}
+
+.modal-content {
+    width: min(440px, 100%);
+    background: white;
+    border-radius: 25px;
+    padding: 35px;
+    position: relative;
+    text-align: center;
+    animation: modalIn 0.25s ease;
+}
+
+@keyframes modalIn {
+
+    from {
+        opacity: 0;
+        transform: translateY(20px) scale(0.97);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+
+}
+
+.modal-close {
+    position: absolute;
+    top: 15px;
+    right: 18px;
+    border: none;
+    background: transparent;
+    font-size: 28px;
+    color: #69736c;
+    cursor: pointer;
+}
+
+.modal-icon {
+    width: 65px;
+    height: 65px;
+    display: grid;
+    place-items: center;
+    margin: auto;
+    border-radius: 50%;
+    background: #eaf3eb;
+    font-size: 28px;
+}
+
+.modal-content h2 {
+    font-family: "Playfair Display", serif;
+    color: #163b2a;
+    font-size: 30px;
+    margin-top: 15px;
+}
+
+#donationCause {
+    color: #788078;
+    font-size: 13px;
+    margin: 5px 0 22px;
+}
+
+.donation-options {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+}
+
+.donation-options button {
+    border: 1px solid #dfe5df;
+    background: #f8faf8;
+    border-radius: 10px;
+    padding: 11px 5px;
+    color: #286044;
+    font-family: inherit;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.donation-options button:hover {
+    background: #163b2a;
+    color: white;
+}
+
+#customAmount {
+    width: 100%;
+    border: 1px solid #dfe5df;
+    padding: 13px;
+    border-radius: 10px;
+    margin-top: 10px;
+    outline: none;
+    font-family: inherit;
+}
+
+.modal-donate {
+    width: 100%;
+    border: none;
+    background: #e88935;
+    color: white;
+    padding: 13px;
+    border-radius: 10px;
+    margin-top: 10px;
+    font-family: inherit;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.modal-donate:hover {
+    background: #d57523;
+}
+
+.modal-content small {
+    display: block;
+    margin-top: 15px;
+    color: #999f9a;
+    font-size: 10px;
+}
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 1000px) {
+
+    .campaign-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
+
+@media (max-width: 700px) {
+
+    .causes-hero {
+        padding: 65px 0;
+    }
+
+    .causes-hero h1 {
+        font-size: 46px;
+        letter-spacing: -1px;
+    }
+
+    .causes-hero p {
+        font-size: 15px;
+    }
+
+    .causes-toolbar {
+        flex-direction: column;
+    }
+
+    .search-box {
+        max-width: none;
+    }
+
+    #sortCauses {
+        min-height: 48px;
+    }
+
+    .category-filters {
+        gap: 7px;
+    }
+
+    .category-btn {
+        font-size: 11px;
+        padding: 9px 12px;
+    }
+
+    .results-header h2 {
+        font-size: 27px;
+    }
+
+    .campaign-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .campaign-image {
+        height: 230px;
+    }
+
+    .donation-options {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .modal-content {
+        padding: 30px 20px;
+    }
+
+}
