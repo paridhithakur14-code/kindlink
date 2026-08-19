@@ -1,0 +1,291 @@
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 1000px) {
+
+    .nav-menu {
+        gap: 15px;
+    }
+
+    .nav-menu a {
+        font-size: 12px;
+    }
+
+    .nav-actions {
+        display: none;
+    }
+
+    .hero-container {
+        grid-template-columns: 1fr;
+    }
+
+    .hero-content {
+        text-align: center;
+    }
+
+    .hero-content > p {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .hero-buttons,
+    .hero-trust {
+        justify-content: center;
+    }
+
+    .hero-visual {
+        min-height: 500px;
+    }
+
+    .steps-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .causes-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .emergency-container {
+        grid-template-columns: 1fr;
+    }
+
+    .emergency-content {
+        text-align: center;
+    }
+
+    .emergency-content > p {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .emergency-buttons {
+        justify-content: center;
+    }
+
+    .emergency-card {
+        max-width: 500px;
+        margin: auto;
+    }
+
+    .impact-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .impact-item:nth-child(2) {
+        border-right: none;
+    }
+
+    .impact-item:nth-child(1),
+    .impact-item:nth-child(2) {
+        border-bottom: 1px solid #ddd8c9;
+    }
+
+    .stories-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .story-card:last-child {
+        grid-column: 1 / -1;
+        max-width: 550px;
+        margin: auto;
+    }
+
+    .adoption-container,
+    .volunteer-container {
+        grid-template-columns: 1fr;
+    }
+
+    .adoption-container > div:first-child,
+    .volunteer-content {
+        text-align: center;
+    }
+
+    .adoption-container p,
+    .volunteer-content > p {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .footer-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 700px) {
+
+    section {
+        padding: 65px 0;
+    }
+
+    .nav-container {
+        min-height: 68px;
+    }
+
+    .nav-menu {
+        display: none;
+        position: absolute;
+        top: 68px;
+        left: 0;
+        width: 100%;
+        background: #fbfaf6;
+        border-bottom: 1px solid #e5e7e2;
+        padding: 20px 5%;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 18px;
+    }
+
+    .nav-menu.show {
+        display: flex;
+    }
+
+    .nav-menu a {
+        font-size: 14px;
+    }
+
+    .nav-actions {
+        display: none;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
+    .hero {
+        padding: 65px 0;
+    }
+
+    .hero h1 {
+        font-size: 46px;
+        letter-spacing: -1px;
+    }
+
+    .hero-content > p {
+        font-size: 15px;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+    }
+
+    .hero-buttons .btn {
+        width: 100%;
+    }
+
+    .hero-visual {
+        min-height: 430px;
+    }
+
+    .hero-image-card {
+        width: 290px;
+        height: 390px;
+    }
+
+    .floating-card {
+        padding: 10px;
+    }
+
+    .donation-floating {
+        right: -5px;
+        top: 50px;
+    }
+
+    .volunteer-floating {
+        left: -5px;
+        bottom: 40px;
+    }
+
+    .section-heading {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .section-heading.center {
+        align-items: center;
+    }
+
+    .section-heading h2 {
+        font-size: 34px;
+    }
+
+    .steps-grid,
+    .causes-grid,
+    .stories-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .story-card:last-child {
+        grid-column: auto;
+        max-width: none;
+    }
+
+    .emergency-content h2 {
+        font-size: 37px;
+    }
+
+    .emergency-buttons {
+        flex-direction: column;
+    }
+
+    .emergency-buttons .btn {
+        width: 100%;
+    }
+
+    .emergency-text-btn {
+        text-align: center;
+    }
+
+    .emergency-details {
+        grid-template-columns: 1fr;
+    }
+
+    .impact-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .impact-item {
+        padding: 22px 10px;
+    }
+
+    .impact-item strong {
+        font-size: 32px;
+    }
+
+    .adoption-container h2,
+    .volunteer-content h2 {
+        font-size: 38px;
+    }
+
+    .adoption-visual {
+        min-height: 220px;
+        font-size: 60px;
+    }
+
+    .volunteer-box {
+        padding: 30px;
+    }
+
+    .cta-section h2 {
+        font-size: 40px;
+    }
+
+    .footer-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 35px 20px;
+    }
+
+    .footer-brand {
+        grid-column: 1 / -1;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+        text-align: center;
+    }
+}
