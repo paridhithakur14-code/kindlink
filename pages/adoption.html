@@ -2,24 +2,42 @@
 <html lang="en">
 
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Animal Adoption | KindLink</title>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/responsive.css">
-    <link rel="stylesheet" href="../css/adoption.css">
+    <title>Adoption | KindLink</title>
+
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet"
+          href="../css/style.css">
+
+    <link rel="stylesheet"
+          href="../css/adoption.css">
+
 </head>
+
 
 <body>
 
-    <!-- =========================================
-         HEADER
-         USE THE EXACT SAME HEADER FROM causes.html
-    ========================================== -->
 
-   <header class="navbar">
+<!-- =========================================
+     NAVBAR
+========================================= -->
+
+<header class="navbar">
 
     <div class="container nav-container">
 
@@ -50,7 +68,8 @@
                 Emergency
             </a>
 
-            <a href="adoption.html" class="active">
+            <a href="adoption.html"
+               class="active">
                 Adoption
             </a>
 
@@ -71,7 +90,7 @@
 
         <div class="nav-actions">
 
-            <a href="#campaigns"
+            <a href="causes.html"
                class="donate-btn">
                 Donate
             </a>
@@ -96,378 +115,645 @@
 </header>
 
 
-    <!-- =========================================
-         ADOPTION HERO
-    ========================================== -->
 
-    <section class="adoption-hero">
+<!-- =========================================
+     HERO
+========================================= -->
+
+<section class="adoption-hero">
+
+    <div class="container">
 
         <div class="adoption-hero-content">
 
-            <span class="adoption-label">
+            <span class="section-label">
                 FIND A FRIEND
             </span>
 
             <h1>
-                Every animal
-                <span>deserves a home.</span>
+                Give a loving
+                <span>home.</span>
             </h1>
 
             <p>
-                Give an animal a second chance at a happy life.
-                Explore animals waiting for loving and responsible
-                families.
+                Every animal deserves a safe place to call home.
+                Discover animals waiting for their forever family.
             </p>
 
-            <div class="adoption-buttons">
+        </div>
 
-                <a href="#animals" class="adoption-primary-btn">
-                    Find a Pet
-                </a>
+    </div>
 
-                <a href="#adoption-info" class="adoption-secondary-btn">
-                    How Adoption Works
-                </a>
+</section>
+
+
+
+<!-- =========================================
+     ADOPTION STATISTICS
+========================================= -->
+
+<section class="adoption-stats">
+
+    <div class="container">
+
+        <div class="adoption-stat-grid">
+
+            <div class="adoption-stat">
+
+                <strong>
+                    126+
+                </strong>
+
+                <span>
+                    Animals rescued
+                </span>
+
+            </div>
+
+
+            <div class="adoption-stat">
+
+                <strong>
+                    84
+                </strong>
+
+                <span>
+                    Waiting for homes
+                </span>
+
+            </div>
+
+
+            <div class="adoption-stat">
+
+                <strong>
+                    312+
+                </strong>
+
+                <span>
+                    Successful adoptions
+                </span>
+
+            </div>
+
+
+            <div class="adoption-stat">
+
+                <strong>
+                    27
+                </strong>
+
+                <span>
+                    Partner shelters
+                </span>
 
             </div>
 
         </div>
 
-    </section>
+    </div>
+
+</section>
 
 
-    <!-- =========================================
-         ADOPTION STATS
-    ========================================== -->
 
-    <section class="adoption-stats">
+<!-- =========================================
+     ADOPTION BROWSER
+========================================= -->
 
-        <div class="adoption-stat">
-            <h2>124</h2>
-            <p>Animals Waiting</p>
+<section class="adoption-browser">
+
+    <div class="container">
+
+
+        <!-- SEARCH -->
+
+        <div class="adoption-toolbar">
+
+            <div class="animal-search">
+
+                <span>
+                    🔎
+                </span>
+
+                <input
+                    type="text"
+                    id="animalSearch"
+                    placeholder="Search by animal name...">
+
+            </div>
+
+
+            <select id="locationFilter">
+
+                <option value="all">
+                    All locations
+                </option>
+
+                <option value="delhi">
+                    Delhi
+                </option>
+
+                <option value="mumbai">
+                    Mumbai
+                </option>
+
+                <option value="pune">
+                    Pune
+                </option>
+
+                <option value="bangalore">
+                    Bangalore
+                </option>
+
+            </select>
+
         </div>
 
-        <div class="adoption-stat">
-            <h2>86</h2>
-            <p>Adopted This Year</p>
-        </div>
-
-        <div class="adoption-stat">
-            <h2>32</h2>
-            <p>Partner Shelters</p>
-        </div>
-
-        <div class="adoption-stat">
-            <h2>17</h2>
-            <p>Cities Connected</p>
-        </div>
-
-    </section>
 
 
-    <!-- =========================================
-         ANIMALS
-    ========================================== -->
+        <!-- ANIMAL TYPE -->
 
-    <section class="animals-section" id="animals">
+        <div class="animal-filters">
 
-        <div class="adoption-heading">
+            <button class="animal-filter active"
+                    data-type="all">
 
-            <span>MEET THEM</span>
+                All Animals
 
-            <h2>
-                Looking for a new family member?
-            </h2>
+            </button>
 
-            <p>
-                These animals are currently looking for safe,
-                loving and responsible homes.
-            </p>
+            <button class="animal-filter"
+                    data-type="dog">
+
+                🐶 Dogs
+
+            </button>
+
+            <button class="animal-filter"
+                    data-type="cat">
+
+                🐱 Cats
+
+            </button>
+
+            <button class="animal-filter"
+                    data-type="other">
+
+                🐰 Others
+
+            </button>
 
         </div>
 
 
-        <div class="animal-grid">
+
+        <!-- RESULTS -->
+
+        <div class="adoption-results-header">
+
+            <div>
+
+                <span class="section-label">
+                    ADOPTION LISTING
+                </span>
+
+                <h2>
+                    Meet your new friend
+                </h2>
+
+            </div>
+
+
+            <span id="animalCount">
+                6 animals
+            </span>
+
+        </div>
+
+
+
+        <!-- =====================================
+             ANIMAL GRID
+        ====================================== -->
+
+        <div class="animal-grid"
+             id="animalGrid">
 
 
             <!-- ANIMAL 1 -->
 
-            <article class="animal-card">
+            <article class="animal-card"
+                     data-type="dog"
+                     data-name="Bruno"
+                     data-location="pune">
 
-                <div class="animal-image animal-1">
+                <div class="animal-image dog-bg">
 
-                    <span class="animal-status">
-                        AVAILABLE
+                    <span class="animal-type">
+                        🐶 Dog
+                    </span>
+
+                    <div class="animal-picture">
+                        🐕
+                    </div>
+
+                    <span class="ready-badge">
+                        Ready for adoption
                     </span>
 
                 </div>
 
+
                 <div class="animal-content">
 
-                    <div class="animal-title">
+                    <h3>
+                        Bruno
+                    </h3>
 
-                        <h3>Bruno</h3>
-
-                        <span>2 yrs</span>
-
-                    </div>
-
-                    <p class="animal-type">
-                        Indie Dog • Male
-                    </p>
-
-                    <p>
+                    <p class="animal-description">
                         Friendly, playful and loves being around
-                        people. Bruno would be happiest with an
-                        active family.
+                        people.
                     </p>
 
-                    <div class="animal-tags">
 
-                        <span>Friendly</span>
-                        <span>Playful</span>
+                    <div class="animal-details">
+
+                        <span>
+                            🐾 Labrador Mix
+                        </span>
+
+                        <span>
+                            ♂ Male
+                        </span>
+
+                        <span>
+                            🎂 2 years
+                        </span>
+
+                        <span>
+                            📍 Pune
+                        </span>
 
                     </div>
 
-                    <a href="adoption-details.html" class="animal-link">
+
+                    <button class="adopt-button"
+                            onclick="openAnimal('Bruno')">
+
                         Meet Bruno →
-                    </a>
+
+                    </button>
 
                 </div>
 
             </article>
+
 
 
             <!-- ANIMAL 2 -->
 
-            <article class="animal-card">
+            <article class="animal-card"
+                     data-type="cat"
+                     data-name="Luna"
+                     data-location="mumbai">
 
-                <div class="animal-image animal-2">
+                <div class="animal-image cat-bg">
 
-                    <span class="animal-status">
-                        AVAILABLE
+                    <span class="animal-type">
+                        🐱 Cat
+                    </span>
+
+                    <div class="animal-picture">
+                        🐈
+                    </div>
+
+                    <span class="ready-badge">
+                        Ready for adoption
                     </span>
 
                 </div>
 
+
                 <div class="animal-content">
 
-                    <div class="animal-title">
+                    <h3>
+                        Luna
+                    </h3>
 
-                        <h3>Luna</h3>
+                    <p class="animal-description">
+                        A calm and affectionate cat looking for
+                        a peaceful home.
+                    </p>
 
-                        <span>1 yr</span>
+
+                    <div class="animal-details">
+
+                        <span>
+                            🐾 Indie Cat
+                        </span>
+
+                        <span>
+                            ♀ Female
+                        </span>
+
+                        <span>
+                            🎂 1.5 years
+                        </span>
+
+                        <span>
+                            📍 Mumbai
+                        </span>
 
                     </div>
 
-                    <p class="animal-type">
-                        Indie Cat • Female
-                    </p>
 
-                    <p>
-                        Calm and affectionate. Luna enjoys quiet
-                        spaces and loves curling up beside people.
-                    </p>
+                    <button class="adopt-button"
+                            onclick="openAnimal('Luna')">
 
-                    <div class="animal-tags">
-
-                        <span>Calm</span>
-                        <span>Affectionate</span>
-
-                    </div>
-
-                    <a href="adoption-details.html" class="animal-link">
                         Meet Luna →
-                    </a>
+
+                    </button>
 
                 </div>
 
             </article>
+
 
 
             <!-- ANIMAL 3 -->
 
-            <article class="animal-card">
+            <article class="animal-card"
+                     data-type="dog"
+                     data-name="Max"
+                     data-location="delhi">
 
-                <div class="animal-image animal-3">
+                <div class="animal-image dog-bg">
 
-                    <span class="animal-status">
-                        AVAILABLE
+                    <span class="animal-type">
+                        🐶 Dog
+                    </span>
+
+                    <div class="animal-picture">
+                        🐕‍🦺
+                    </div>
+
+                    <span class="ready-badge">
+                        Ready for adoption
                     </span>
 
                 </div>
 
+
                 <div class="animal-content">
 
-                    <div class="animal-title">
+                    <h3>
+                        Max
+                    </h3>
 
-                        <h3>Max</h3>
+                    <p class="animal-description">
+                        Energetic and loyal. Max loves outdoor
+                        activities and walks.
+                    </p>
 
-                        <span>3 yrs</span>
+
+                    <div class="animal-details">
+
+                        <span>
+                            🐾 Indie Dog
+                        </span>
+
+                        <span>
+                            ♂ Male
+                        </span>
+
+                        <span>
+                            🎂 3 years
+                        </span>
+
+                        <span>
+                            📍 Delhi
+                        </span>
 
                     </div>
 
-                    <p class="animal-type">
-                        Mixed Breed • Male
-                    </p>
 
-                    <p>
-                        Energetic and curious. Max loves outdoor
-                        activities and would suit an active home.
-                    </p>
+                    <button class="adopt-button"
+                            onclick="openAnimal('Max')">
 
-                    <div class="animal-tags">
-
-                        <span>Energetic</span>
-                        <span>Curious</span>
-
-                    </div>
-
-                    <a href="adoption-details.html" class="animal-link">
                         Meet Max →
-                    </a>
+
+                    </button>
 
                 </div>
 
             </article>
+
 
 
             <!-- ANIMAL 4 -->
 
-            <article class="animal-card">
+            <article class="animal-card"
+                     data-type="cat"
+                     data-name="Milo"
+                     data-location="bangalore">
 
-                <div class="animal-image animal-4">
+                <div class="animal-image cat-bg">
 
-                    <span class="animal-status">
-                        AVAILABLE
+                    <span class="animal-type">
+                        🐱 Cat
+                    </span>
+
+                    <div class="animal-picture">
+                        🐈‍⬛
+                    </div>
+
+                    <span class="ready-badge">
+                        Ready for adoption
                     </span>
 
                 </div>
 
+
                 <div class="animal-content">
 
-                    <div class="animal-title">
+                    <h3>
+                        Milo
+                    </h3>
 
-                        <h3>Meera</h3>
+                    <p class="animal-description">
+                        Gentle and curious. Milo enjoys quiet
+                        spaces and cuddles.
+                    </p>
 
-                        <span>8 mo</span>
+
+                    <div class="animal-details">
+
+                        <span>
+                            🐾 Persian Mix
+                        </span>
+
+                        <span>
+                            ♂ Male
+                        </span>
+
+                        <span>
+                            🎂 2 years
+                        </span>
+
+                        <span>
+                            📍 Bangalore
+                        </span>
 
                     </div>
 
-                    <p class="animal-type">
-                        Indie Dog • Female
-                    </p>
 
-                    <p>
-                        A gentle puppy who enjoys attention and
-                        would love a family that can give her time
-                        and care.
-                    </p>
+                    <button class="adopt-button"
+                            onclick="openAnimal('Milo')">
 
-                    <div class="animal-tags">
+                        Meet Milo →
 
-                        <span>Gentle</span>
-                        <span>Loving</span>
-
-                    </div>
-
-                    <a href="adoption-details.html" class="animal-link">
-                        Meet Meera →
-                    </a>
+                    </button>
 
                 </div>
 
             </article>
+
 
 
             <!-- ANIMAL 5 -->
 
-            <article class="animal-card">
+            <article class="animal-card"
+                     data-type="other"
+                     data-name="Coco"
+                     data-location="pune">
 
-                <div class="animal-image animal-5">
+                <div class="animal-image other-bg">
 
-                    <span class="animal-status">
-                        AVAILABLE
+                    <span class="animal-type">
+                        🐰 Other
+                    </span>
+
+                    <div class="animal-picture">
+                        🐰
+                    </div>
+
+                    <span class="ready-badge">
+                        Ready for adoption
                     </span>
 
                 </div>
 
+
                 <div class="animal-content">
 
-                    <div class="animal-title">
+                    <h3>
+                        Coco
+                    </h3>
 
-                        <h3>Coco</h3>
+                    <p class="animal-description">
+                        A sweet and gentle rabbit who enjoys
+                        peaceful surroundings.
+                    </p>
 
-                        <span>2 yrs</span>
+
+                    <div class="animal-details">
+
+                        <span>
+                            🐾 Rabbit
+                        </span>
+
+                        <span>
+                            ♀ Female
+                        </span>
+
+                        <span>
+                            🎂 1 year
+                        </span>
+
+                        <span>
+                            📍 Pune
+                        </span>
 
                     </div>
 
-                    <p class="animal-type">
-                        Indie Cat • Female
-                    </p>
 
-                    <p>
-                        Sweet and curious. Coco loves exploring
-                        her surroundings and meeting new people.
-                    </p>
+                    <button class="adopt-button"
+                            onclick="openAnimal('Coco')">
 
-                    <div class="animal-tags">
-
-                        <span>Curious</span>
-                        <span>Sweet</span>
-
-                    </div>
-
-                    <a href="adoption-details.html" class="animal-link">
                         Meet Coco →
-                    </a>
+
+                    </button>
 
                 </div>
 
             </article>
 
 
+
             <!-- ANIMAL 6 -->
 
-            <article class="animal-card">
+            <article class="animal-card"
+                     data-type="dog"
+                     data-name="Rocky"
+                     data-location="mumbai">
 
-                <div class="animal-image animal-6">
+                <div class="animal-image dog-bg">
 
-                    <span class="animal-status">
-                        AVAILABLE
+                    <span class="animal-type">
+                        🐶 Dog
+                    </span>
+
+                    <div class="animal-picture">
+                        🦮
+                    </div>
+
+                    <span class="ready-badge">
+                        Ready for adoption
                     </span>
 
                 </div>
 
+
                 <div class="animal-content">
 
-                    <div class="animal-title">
+                    <h3>
+                        Rocky
+                    </h3>
 
-                        <h3>Rocky</h3>
+                    <p class="animal-description">
+                        Smart, affectionate and looking for an
+                        active family.
+                    </p>
 
-                        <span>4 yrs</span>
+
+                    <div class="animal-details">
+
+                        <span>
+                            🐾 Golden Mix
+                        </span>
+
+                        <span>
+                            ♂ Male
+                        </span>
+
+                        <span>
+                            🎂 4 years
+                        </span>
+
+                        <span>
+                            📍 Mumbai
+                        </span>
 
                     </div>
 
-                    <p class="animal-type">
-                        Mixed Breed • Male
-                    </p>
 
-                    <p>
-                        Loyal and gentle. Rocky is looking for
-                        someone who can give him a permanent home.
-                    </p>
+                    <button class="adopt-button"
+                            onclick="openAnimal('Rocky')">
 
-                    <div class="animal-tags">
-
-                        <span>Loyal</span>
-                        <span>Gentle</span>
-
-                    </div>
-
-                    <a href="adoption-details.html" class="animal-link">
                         Meet Rocky →
-                    </a>
+
+                    </button>
 
                 </div>
 
@@ -475,56 +761,114 @@
 
         </div>
 
-    </section>
 
 
-    <!-- =========================================
-         HOW ADOPTION WORKS
-    ========================================== -->
+        <!-- NO RESULTS -->
 
-    <section class="adoption-info" id="adoption-info">
+        <div class="animal-no-results"
+             id="animalNoResults">
 
-        <div class="adoption-heading">
+            <div>
+                🐾
+            </div>
 
-            <span>THE PROCESS</span>
+            <h3>
+                No animals found
+            </h3>
+
+            <p>
+                Try another name, animal type or location.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================
+     ADOPTION PROCESS
+========================================= -->
+
+<section class="adoption-process">
+
+    <div class="container">
+
+        <div class="process-heading">
+
+            <span class="section-label">
+                HOW IT WORKS
+            </span>
 
             <h2>
                 Adoption made simple.
             </h2>
 
             <p>
-                We want every adoption to be safe and responsible
-                for both the animal and the adopter.
+                Finding your new companion should be a
+                joyful experience.
             </p>
 
         </div>
 
 
-        <div class="adoption-process">
+        <div class="process-grid">
 
 
-            <div class="adoption-step">
+            <div class="process-card">
 
-                <div class="step-number">
+                <div class="process-number">
                     01
                 </div>
 
+                <div class="process-icon">
+                    🔎
+                </div>
+
                 <h3>
-                    Find Your Match
+                    Find an animal
                 </h3>
 
                 <p>
-                    Explore animals and find one whose personality
-                    and needs fit your lifestyle.
+                    Browse animals and find one whose personality
+                    matches your home.
                 </p>
 
             </div>
 
 
-            <div class="adoption-step">
+            <div class="process-card">
 
-                <div class="step-number">
+                <div class="process-number">
                     02
+                </div>
+
+                <div class="process-icon">
+                    ❤️
+                </div>
+
+                <h3>
+                    Learn about them
+                </h3>
+
+                <p>
+                    Read about their personality, health,
+                    requirements and story.
+                </p>
+
+            </div>
+
+
+            <div class="process-card">
+
+                <div class="process-number">
+                    03
+                </div>
+
+                <div class="process-icon">
+                    📝
                 </div>
 
                 <h3>
@@ -532,116 +876,339 @@
                 </h3>
 
                 <p>
-                    Submit an adoption application so the shelter
-                    can understand your home and lifestyle.
+                    Submit an adoption application to the
+                    organization caring for them.
                 </p>
 
             </div>
 
 
-            <div class="adoption-step">
+            <div class="process-card">
 
-                <div class="step-number">
-                    03
-                </div>
-
-                <h3>
-                    Meet
-                </h3>
-
-                <p>
-                    Meet the animal and spend some time together
-                    before making your decision.
-                </p>
-
-            </div>
-
-
-            <div class="adoption-step">
-
-                <div class="step-number">
+                <div class="process-number">
                     04
                 </div>
 
+                <div class="process-icon">
+                    🏠
+                </div>
+
                 <h3>
-                    Bring Them Home
+                    Welcome home
                 </h3>
 
                 <p>
-                    Complete the adoption process and welcome your
-                    new family member home.
+                    Complete the process and give your new
+                    friend a forever home.
                 </p>
 
             </div>
 
         </div>
 
-    </section>
+    </div>
+
+</section>
 
 
-    <!-- =========================================
-         RESPONSIBLE ADOPTION
-    ========================================== -->
 
-    <section class="responsible-adoption">
+<!-- =========================================
+     CTA
+========================================= -->
 
-        <div class="responsible-content">
+<section class="adoption-cta">
+
+    <div class="container">
+
+        <div class="adoption-cta-content">
 
             <span>
-                A LIFELONG COMMITMENT
+                🐾
             </span>
 
             <h2>
-                Adoption is not just
-                bringing a pet home.
+                Can't adopt right now?
             </h2>
 
             <p>
-                It means committing to their health, safety,
-                happiness and wellbeing for the rest of their life.
+                You can still make a difference by supporting
+                animal welfare campaigns.
             </p>
 
-            <a href="#animals" class="adoption-primary-btn">
-                Find Your Companion
+            <a href="causes.html"
+               class="adoption-cta-button">
+
+                Support Animal Welfare →
+
             </a>
 
         </div>
 
-    </section>
+    </div>
+
+</section>
 
 
-    <!-- =========================================
-         FOOTER
-    ========================================== -->
 
-    <footer>
+<!-- =========================================
+     ANIMAL DETAILS MODAL
+========================================= -->
 
-        <div class="footer-logo">
-            Kind<span>Link</span>
+<div class="animal-modal"
+     id="animalModal">
+
+    <div class="animal-modal-content">
+
+        <button class="animal-modal-close"
+                onclick="closeAnimal()">
+
+            ×
+
+        </button>
+
+
+        <div class="modal-animal-icon"
+             id="modalAnimalIcon">
+
+            🐶
+
         </div>
+
+
+        <span class="section-label">
+            ADOPTION PROFILE
+        </span>
+
+
+        <h2 id="modalAnimalName">
+            Bruno
+        </h2>
+
+
+        <p id="modalAnimalText">
+
+            Friendly, playful and loves being around people.
+
+        </p>
+
+
+        <div class="modal-info-grid">
+
+            <div>
+
+                <strong>
+                    Breed
+                </strong>
+
+                <span id="modalBreed">
+                    Labrador Mix
+                </span>
+
+            </div>
+
+
+            <div>
+
+                <strong>
+                    Age
+                </strong>
+
+                <span id="modalAge">
+                    2 years
+                </span>
+
+            </div>
+
+
+            <div>
+
+                <strong>
+                    Gender
+                </strong>
+
+                <span id="modalGender">
+                    Male
+                </span>
+
+            </div>
+
+
+            <div>
+
+                <strong>
+                    Location
+                </strong>
+
+                <span id="modalLocation">
+                    Pune
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <div class="adoption-requirements">
+
+            <h3>
+                Adoption requirements
+            </h3>
+
+            <ul>
+
+                <li>
+                    Safe and suitable living environment
+                </li>
+
+                <li>
+                    Willingness to provide regular care
+                </li>
+
+                <li>
+                    Responsible pet ownership
+                </li>
+
+                <li>
+                    Follow-up with the shelter
+                </li>
+
+            </ul>
+
+        </div>
+
+
+        <button class="apply-adoption"
+                onclick="applyForAdoption()">
+
+            Apply for Adoption →
+
+        </button>
+
+    </div>
+
+</div>
+
+
+
+<!-- =========================================
+     FOOTER
+========================================= -->
+
+<footer class="footer">
+
+    <div class="container footer-grid">
+
+        <div class="footer-brand">
+
+            <a href="../index.html"
+               class="logo footer-logo">
+
+                <span class="logo-icon">
+                    K
+                </span>
+
+                <span>
+                    Kind<span>Link</span>
+                </span>
+
+            </a>
+
+            <p>
+                Connecting people, communities and organizations
+                to create meaningful social impact.
+            </p>
+
+        </div>
+
+
+        <div class="footer-column">
+
+            <h4>
+                Explore
+            </h4>
+
+            <a href="../index.html">
+                Home
+            </a>
+
+            <a href="causes.html">
+                Causes
+            </a>
+
+            <a href="emergency.html">
+                Emergency
+            </a>
+
+            <a href="adoption.html">
+                Adoption
+            </a>
+
+        </div>
+
+
+        <div class="footer-column">
+
+            <h4>
+                Get Involved
+            </h4>
+
+            <a href="volunteer.html">
+                Volunteer
+            </a>
+
+            <a href="causes.html">
+                Donate
+            </a>
+
+            <a href="login.html">
+                Login
+            </a>
+
+        </div>
+
+
+        <div class="footer-column">
+
+            <h4>
+                KindLink
+            </h4>
+
+            <a href="about.html">
+                About Us
+            </a>
+
+            <a href="stories.html">
+                Stories
+            </a>
+
+            <a href="organisation-register.html">
+                Organizations
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <div class="container footer-bottom">
 
         <p>
-            Connecting kindness with causes that matter.
+            © 2026 KindLink. Mini Project.
         </p>
 
-        <div class="footer-links">
-
-            <a href="../index.html">Home</a>
-
-            <a href="causes.html">Causes</a>
-
-            <a href="emergency.html">Emergency</a>
-
-            <a href="adoption.html">Adoption</a>
-
-        </div>
-
-        <p class="copyright">
-            © 2026 KindLink. All rights reserved.
+        <p>
+            HTML5 • CSS3 • JavaScript
         </p>
 
-    </footer>
+    </div>
 
+</footer>
+
+
+
+<script src="../js/main.js"></script>
+<script src="../js/adoption.js"></script>
 
 </body>
+
 </html>

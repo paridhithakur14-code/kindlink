@@ -1,29 +1,214 @@
 /* =========================================
    KINDLINK - MAIN JAVASCRIPT
+   Phase 2.5.1
 ========================================= */
 
-const menuToggle = document.getElementById("menuToggle");
-const navMenu = document.getElementById("navMenu");
+document.addEventListener("DOMContentLoaded", () => {
+
+    /* =========================================
+       MOBILE NAVIGATION
+    ========================================= */
+
+    const menuToggle = document.getElementById("menuToggle");
+    const navMenu = document.getElementById("navMenu");
+
+    if (menuToggle && navMenu) {
+
+        menuToggle.addEventListener("click", () => {
+
+            navMenu.classList.toggle("show");
+
+            const isOpen = navMenu.classList.contains("show");
+
+            menuToggle.setAttribute(
+                "aria-expanded",
+                isOpen
+            );
+
+        });
 
 
-// Mobile Navigation
+        /* Close menu after clicking a link */
 
-menuToggle.addEventListener("click", () => {
+        const navLinks = navMenu.querySelectorAll("a");
 
-    navMenu.classList.toggle("show");
+        navLinks.forEach(link => {
 
-});
+            link.addEventListener("click", () => {
+
+                navMenu.classList.remove("show");
+
+                menuToggle.setAttribute(
+                    "aria-expanded",
+                    "false"
+                );
+
+            });
+
+        });
+
+    }
 
 
-// Close mobile menu when a link is clicked
+    /* =========================================
+       CLOSE MOBILE MENU WHEN CLICKING OUTSIDE
+    ========================================= */
 
-const navLinks = document.querySelectorAll(".nav-menu a");
+    document.addEventListener("click", (event) => {
 
-navLinks.forEach(link => {
+        if (!menuToggle || !navMenu) return;
 
-    link.addEventListener("click", () => {
+        const clickedInsideMenu =
+            navMenu.contains(event.target);
 
-        navMenu.classList.remove("show");
+        const clickedToggle =
+            menuToggle.contains(event.target);
+
+        if (
+            !clickedInsideMenu &&
+            !clickedToggle
+        ) {
+
+            navMenu.classList.remove("show");
+
+            menuToggle.setAttribute(
+                "aria-expanded",
+                "false"
+            );
+
+        }
+
+    });
+
+
+    /* =========================================
+       SMOOTH SCROLLING
+    ========================================= */
+
+    const anchorLinks =
+        document.querySelectorAll('a[href^="#"]');
+
+    anchorLinks.forEach(link => {
+
+        link.addEventListener("click", function (event) {
+
+            const targetId =
+                this.getAttribute("href");
+
+            if (
+                !targetId ||
+                targetId === "#"
+            ) {
+                return;
+            }
+
+            const target =
+                document.querySelector(targetId);
+
+            if (!target) {
+                return;
+            }
+
+            event.preventDefault();
+
+            target.scrollIntoView({
+                behavior: "smooth",
+                block: "start"
+            });
+
+        });
+
+    });
+
+
+    /* =========================================
+       HANDLE HASH LINKS
+       Example:
+       index.html#causes
+       index.html#emergency
+    ========================================= */
+
+    if (window.location.hash) {
+
+        setTimeout(() => {
+
+            const target =
+                document.querySelector(
+                    window.location.hash
+                );
+
+            if (target) {
+
+                target.scrollIntoView({
+                    behavior: "smooth",
+                    block: "start"
+                });
+
+            }
+
+        }, 300);
+
+    }
+
+
+    /* =========================================
+       ESCAPE KEY
+       Close mobile menu
+    ========================================= */
+
+    document.addEventListener("keydown", (event) => {
+
+        if (event.key === "Escape") {
+
+            if (navMenu) {
+                navMenu.classList.remove("show");
+            }
+
+            if (menuToggle) {
+                menuToggle.setAttribute(
+                    "aria-expanded",
+                    "false"
+                );
+            }
+
+        }
+
+    });
+
+
+    /* =========================================
+       CURRENT PAGE ACTIVE NAVIGATION
+    ========================================= */
+
+    const currentPage =
+        window.location.pathname.split("/").pop();
+
+    const allNavLinks =
+        document.querySelectorAll(".nav-menu a");
+
+    allNavLinks.forEach(link => {
+
+        const href =
+            link.getAttribute("href");
+
+        if (!href) return;
+
+        /*
+           Don't remove manually assigned active
+           state from homepage anchor links.
+        */
+
+        if (
+            href === currentPage ||
+            (
+                currentPage === "" &&
+                href === "index.html"
+            )
+        ) {
+
+            link.classList.add("active");
+
+        }
 
     });
 
