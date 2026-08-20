@@ -1,0 +1,1274 @@
+/* =========================================
+   KINDLINK - EMERGENCY RESPONSE
+========================================= */
+
+
+/* =========================================
+   HERO
+========================================= */
+
+.emergency-hero {
+    min-height: 70vh;
+
+    display: flex;
+    align-items: center;
+
+    padding: 100px 8%;
+
+    background:
+        linear-gradient(
+            rgba(15, 30, 25, 0.75),
+            rgba(15, 30, 25, 0.75)
+        ),
+        linear-gradient(
+            135deg,
+            #294d3d,
+            #172b23
+        );
+
+    color: white;
+}
+
+
+.emergency-hero-content {
+    max-width: 760px;
+}
+
+
+.live-status {
+    display: inline-flex;
+
+    align-items: center;
+    gap: 9px;
+
+    padding: 8px 15px;
+
+    border-radius: 30px;
+
+    background: rgba(255,255,255,0.12);
+
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+}
+
+
+.live-dot {
+    width: 9px;
+    height: 9px;
+
+    border-radius: 50%;
+
+    background: #ff5c5c;
+
+    animation: livePulse 1.5s infinite;
+}
+
+
+@keyframes livePulse {
+
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    50% {
+        transform: scale(1.5);
+        opacity: 0.5;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+}
+
+
+.emergency-hero h1 {
+    margin: 25px 0 20px;
+
+    font-size: clamp(42px, 6vw, 76px);
+
+    line-height: 1.05;
+}
+
+
+.emergency-hero h1 span {
+    display: block;
+}
+
+
+.emergency-hero p {
+    max-width: 620px;
+
+    font-size: 18px;
+
+    line-height: 1.7;
+
+    opacity: 0.9;
+}
+
+
+/* =========================================
+   BUTTONS
+========================================= */
+
+.hero-buttons,
+.help-buttons {
+    display: flex;
+
+    gap: 15px;
+
+    margin-top: 30px;
+
+    flex-wrap: wrap;
+}
+
+
+.primary-btn,
+.secondary-btn {
+    display: inline-block;
+
+    padding: 14px 25px;
+
+    border-radius: 7px;
+
+    text-decoration: none;
+
+    font-weight: 600;
+
+    transition: 0.3s ease;
+}
+
+
+.primary-btn {
+    background: #f3b562;
+    color: #1c2a24;
+}
+
+
+.primary-btn:hover {
+    transform: translateY(-3px);
+}
+
+
+.secondary-btn {
+    border: 1px solid rgba(255,255,255,0.5);
+
+    color: white;
+}
+
+
+.secondary-btn:hover {
+    background: white;
+    color: #1c2a24;
+}
+
+
+/* =========================================
+   STATS
+========================================= */
+
+.emergency-stats {
+    display: grid;
+
+    grid-template-columns: repeat(4, 1fr);
+
+    padding: 45px 8%;
+
+    background: #f7f4ed;
+}
+
+
+.emergency-stat {
+    text-align: center;
+
+    padding: 15px;
+
+    border-right: 1px solid #ddd;
+}
+
+
+.emergency-stat:last-child {
+    border-right: none;
+}
+
+
+.emergency-stat h2 {
+    margin: 0;
+
+    font-size: 38px;
+
+    color: #294d3d;
+}
+
+
+.emergency-stat p {
+    margin-top: 8px;
+
+    color: #666;
+}
+
+
+/* =========================================
+   SECTION HEADING
+========================================= */
+
+.section-heading {
+    max-width: 700px;
+
+    margin: 0 auto 50px;
+
+    text-align: center;
+}
+
+
+.section-heading > span {
+    font-size: 12px;
+
+    letter-spacing: 2px;
+
+    font-weight: 700;
+
+    color: #b37b36;
+}
+
+
+.section-heading h2 {
+    margin: 12px 0;
+
+    font-size: clamp(32px, 5vw, 52px);
+
+    color: #20352c;
+}
+
+
+.section-heading p {
+    color: #6b6b6b;
+
+    line-height: 1.7;
+}
+
+
+/* =========================================
+   ACTIVE EMERGENCIES
+========================================= */
+
+.active-emergencies {
+    padding: 100px 8%;
+
+    background: white;
+}
+
+
+.emergency-grid {
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 25px;
+}
+
+
+.emergency-card {
+    overflow: hidden;
+
+    border-radius: 15px;
+
+    background: white;
+
+    border: 1px solid #e7e4dc;
+
+    box-shadow: 0 12px 35px rgba(0,0,0,0.06);
+
+    transition: 0.3s ease;
+}
+
+
+.emergency-card:hover {
+    transform: translateY(-8px);
+
+    box-shadow: 0 20px 45px rgba(0,0,0,0.1);
+}
+
+
+/* =========================================
+   CARD IMAGES
+========================================= */
+
+.emergency-card-image {
+    height: 220px;
+
+    position: relative;
+
+    display: flex;
+
+    align-items: flex-start;
+
+    justify-content: flex-end;
+
+    padding: 18px;
+}
+
+
+.flood {
+    background:
+        linear-gradient(
+            135deg,
+            #406b78,
+            #8cb7bd
+        );
+}
+
+
+.fire {
+    background:
+        linear-gradient(
+            135deg,
+            #6e3027,
+            #d57a4a
+        );
+}
+
+
+.medical {
+    background:
+        linear-gradient(
+            135deg,
+            #54756a,
+            #a4c6b7
+        );
+}
+
+
+.emergency-badge {
+    padding: 7px 12px;
+
+    border-radius: 20px;
+
+    background: white;
+
+    color: #333;
+
+    font-size: 11px;
+
+    font-weight: 700;
+
+    letter-spacing: 1px;
+}
+
+
+/* =========================================
+   CARD CONTENT
+========================================= */
+
+.emergency-card-content {
+    padding: 25px;
+}
+
+
+.emergency-location {
+    font-size: 13px;
+
+    color: #9a7650;
+
+    margin-bottom: 10px;
+}
+
+
+.emergency-card h3 {
+    margin: 0 0 10px;
+
+    font-size: 25px;
+
+    color: #253b31;
+}
+
+
+.emergency-card p {
+    color: #707070;
+
+    line-height: 1.6;
+
+    font-size: 14px;
+}
+
+
+/* =========================================
+   PROGRESS
+========================================= */
+
+.need-bar {
+    width: 100%;
+
+    height: 7px;
+
+    margin-top: 20px;
+
+    border-radius: 10px;
+
+    background: #e8e8e8;
+
+    overflow: hidden;
+}
+
+
+.need-progress {
+    height: 100%;
+
+    background: #b58a55;
+
+    border-radius: 10px;
+}
+
+
+.need-info {
+    display: flex;
+
+    justify-content: space-between;
+
+    margin-top: 8px;
+
+    font-size: 11px;
+
+    color: #777;
+}
+
+
+.help-link {
+    display: inline-block;
+
+    margin-top: 20px;
+
+    color: #294d3d;
+
+    text-decoration: none;
+
+    font-weight: 700;
+
+    transition: 0.3s;
+}
+
+
+.help-link:hover {
+    letter-spacing: 0.5px;
+}
+
+
+/* =========================================
+   PROCESS
+========================================= */
+
+.emergency-process {
+    padding: 100px 8%;
+
+    background: #f7f4ed;
+}
+
+
+.process-grid {
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 30px;
+}
+
+
+.process-card {
+    padding: 35px;
+
+    background: white;
+
+    border-radius: 15px;
+
+    border: 1px solid #e5e1d8;
+}
+
+
+.process-number {
+    font-size: 14px;
+
+    font-weight: 800;
+
+    color: #b37b36;
+
+    margin-bottom: 30px;
+}
+
+
+.process-card h3 {
+    color: #243c31;
+
+    font-size: 23px;
+}
+
+
+.process-card p {
+    color: #707070;
+
+    line-height: 1.7;
+}
+
+
+/* =========================================
+   HELP SECTION
+========================================= */
+
+.help-section {
+    padding: 110px 8%;
+
+    background:
+        linear-gradient(
+            135deg,
+            #294d3d,
+            #182c24
+        );
+
+    color: white;
+}
+
+
+.help-content {
+    max-width: 850px;
+
+    margin: auto;
+
+    text-align: center;
+}
+
+
+.help-content > span {
+    font-size: 12px;
+
+    letter-spacing: 2px;
+
+    font-weight: 700;
+
+    color: #f3b562;
+}
+
+
+.help-content h2 {
+    margin: 20px 0;
+
+    font-size: clamp(35px, 5vw, 58px);
+
+    line-height: 1.1;
+}
+
+
+.help-content p {
+    max-width: 600px;
+
+    margin: auto;
+
+    line-height: 1.7;
+
+    opacity: 0.85;
+}
+
+
+/* =========================================
+   FOOTER
+========================================= */
+
+footer {
+    padding: 50px 8%;
+
+    text-align: center;
+
+    background: #14221c;
+
+    color: white;
+}
+
+
+.footer-logo {
+    font-size: 30px;
+
+    font-weight: 800;
+}
+
+
+.footer-logo span {
+    color: #f3b562;
+}
+
+
+footer p {
+    color: #aaa;
+}
+
+
+.footer-links {
+    display: flex;
+
+    justify-content: center;
+
+    gap: 25px;
+
+    flex-wrap: wrap;
+
+    margin: 25px 0;
+}
+
+
+.footer-links a {
+    color: #ddd;
+
+    text-decoration: none;
+}
+
+
+.footer-links a:hover {
+    color: #f3b562;
+}
+
+
+.copyright {
+    font-size: 13px;
+}
+
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 900px) {
+
+    .emergency-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .process-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .emergency-stats {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .emergency-stat:nth-child(2) {
+        border-right: none;
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    .emergency-hero {
+        min-height: 75vh;
+
+        padding: 80px 6%;
+    }
+
+    .emergency-hero h1 {
+        font-size: 42px;
+    }
+
+    .emergency-hero p {
+        font-size: 16px;
+    }
+
+    .emergency-grid,
+    .process-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .emergency-stats {
+        grid-template-columns: 1fr 1fr;
+
+        padding: 30px 5%;
+    }
+
+    .emergency-stat {
+        border-right: none;
+
+        border-bottom: 1px solid #ddd;
+    }
+
+    .emergency-stat h2 {
+        font-size: 30px;
+    }
+
+    .active-emergencies,
+    .emergency-process {
+        padding: 70px 6%;
+    }
+
+    .help-section {
+        padding: 80px 6%;
+    }
+
+}
+/* =========================================
+   EMERGENCY DETAILS PAGE
+========================================= */
+
+.details-hero {
+    min-height: 55vh;
+
+    display: flex;
+    align-items: center;
+
+    padding: 90px 8%;
+
+    background:
+        linear-gradient(
+            rgba(25, 45, 37, 0.88),
+            rgba(25, 45, 37, 0.88)
+        ),
+        linear-gradient(
+            135deg,
+            #315c4b,
+            #172b23
+        );
+
+    color: white;
+}
+
+
+.details-hero-content {
+    max-width: 800px;
+}
+
+
+.back-link {
+    display: inline-block;
+
+    margin-bottom: 25px;
+
+    color: #e8e8e8;
+
+    text-decoration: none;
+
+    font-size: 14px;
+}
+
+
+.back-link:hover {
+    color: #f3b562;
+}
+
+
+.details-status {
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    padding: 7px 13px;
+
+    border-radius: 20px;
+
+    background: rgba(255,255,255,0.12);
+
+    color: #f3b562;
+
+    font-size: 11px;
+
+    font-weight: 700;
+
+    letter-spacing: 1.5px;
+}
+
+
+.details-status span {
+    width: 8px;
+    height: 8px;
+
+    border-radius: 50%;
+
+    background: #ff6868;
+
+    animation: livePulse 1.5s infinite;
+}
+
+
+.details-hero h1 {
+    margin: 22px 0 18px;
+
+    font-size: clamp(45px, 6vw, 75px);
+
+    line-height: 1;
+}
+
+
+.details-hero p {
+    max-width: 650px;
+
+    font-size: 18px;
+
+    line-height: 1.7;
+
+    opacity: 0.9;
+}
+
+
+.details-location {
+    margin-top: 22px;
+
+    color: #f3b562;
+
+    font-weight: 600;
+}
+
+
+/* =========================================
+   DETAILS LAYOUT
+========================================= */
+
+.emergency-details {
+    padding: 90px 8%;
+
+    background: #f7f4ed;
+}
+
+
+.details-layout {
+    display: grid;
+
+    grid-template-columns: minmax(0, 1fr) 380px;
+
+    gap: 60px;
+
+    max-width: 1200px;
+
+    margin: auto;
+}
+
+
+.details-main {
+    min-width: 0;
+}
+
+
+.detail-section {
+    margin-bottom: 70px;
+}
+
+
+.detail-label {
+    color: #b37b36;
+
+    font-size: 11px;
+
+    font-weight: 800;
+
+    letter-spacing: 2px;
+}
+
+
+.detail-section h2 {
+    margin: 12px 0 20px;
+
+    color: #233a30;
+
+    font-size: 38px;
+}
+
+
+.detail-section > p {
+    color: #686868;
+
+    line-height: 1.8;
+
+    max-width: 750px;
+}
+
+
+/* =========================================
+   NEEDS
+========================================= */
+
+.needs-grid {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 18px;
+
+    margin-top: 30px;
+}
+
+
+.need-card {
+    padding: 25px;
+
+    background: white;
+
+    border: 1px solid #e5e0d7;
+
+    border-radius: 12px;
+
+    transition: 0.3s ease;
+}
+
+
+.need-card:hover {
+    transform: translateY(-5px);
+
+    box-shadow: 0 12px 30px rgba(0,0,0,0.07);
+}
+
+
+.need-icon {
+    font-size: 28px;
+
+    margin-bottom: 15px;
+}
+
+
+.need-card h3 {
+    margin: 0 0 8px;
+
+    color: #294d3d;
+}
+
+
+.need-card p {
+    margin: 0;
+
+    color: #777;
+
+    line-height: 1.5;
+
+    font-size: 14px;
+}
+
+
+/* =========================================
+   VOLUNTEER ROLES
+========================================= */
+
+.role-list {
+    margin-top: 30px;
+}
+
+
+.role-item {
+    display: flex;
+
+    gap: 25px;
+
+    padding: 25px 0;
+
+    border-bottom: 1px solid #ddd8cf;
+}
+
+
+.role-number {
+    flex-shrink: 0;
+
+    color: #b37b36;
+
+    font-weight: 800;
+
+    font-size: 14px;
+}
+
+
+.role-item h3 {
+    margin: 0 0 7px;
+
+    color: #294d3d;
+
+    font-size: 20px;
+}
+
+
+.role-item p {
+    margin: 0;
+
+    color: #777;
+
+    line-height: 1.6;
+}
+
+
+/* =========================================
+   SAFETY
+========================================= */
+
+.safety-box {
+    display: flex;
+
+    gap: 20px;
+
+    padding: 25px;
+
+    margin-bottom: 30px;
+
+    border-radius: 12px;
+
+    background: #fff4dc;
+
+    border: 1px solid #ead6aa;
+}
+
+
+.safety-icon {
+    font-size: 25px;
+}
+
+
+.safety-box h3 {
+    margin: 0 0 8px;
+
+    color: #594421;
+}
+
+
+.safety-box p {
+    margin: 0;
+
+    color: #75684d;
+
+    line-height: 1.6;
+
+    font-size: 14px;
+}
+
+
+/* =========================================
+   HELP CARD
+========================================= */
+
+.help-card {
+    align-self: start;
+
+    position: sticky;
+
+    top: 30px;
+
+    padding: 30px;
+
+    background: white;
+
+    border-radius: 15px;
+
+    border: 1px solid #e1ddd4;
+
+    box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+}
+
+
+.help-card-status {
+    display: inline-block;
+
+    padding: 7px 12px;
+
+    border-radius: 20px;
+
+    background: #f8e9d0;
+
+    color: #98682d;
+
+    font-size: 10px;
+
+    font-weight: 800;
+
+    letter-spacing: 1px;
+}
+
+
+.help-card h2 {
+    margin: 20px 0 10px;
+
+    color: #243b31;
+
+    font-size: 30px;
+}
+
+
+.help-card > p {
+    color: #777;
+
+    line-height: 1.6;
+
+    font-size: 14px;
+}
+
+
+/* =========================================
+   FORM
+========================================= */
+
+.help-card form {
+    margin-top: 25px;
+}
+
+
+.help-card label {
+    display: block;
+
+    margin: 17px 0 7px;
+
+    color: #37483f;
+
+    font-size: 13px;
+
+    font-weight: 700;
+}
+
+
+.help-card input,
+.help-card select,
+.help-card textarea {
+    width: 100%;
+
+    box-sizing: border-box;
+
+    padding: 12px 13px;
+
+    border: 1px solid #d9d5cc;
+
+    border-radius: 7px;
+
+    background: #faf9f6;
+
+    font-family: inherit;
+
+    font-size: 13px;
+
+    outline: none;
+}
+
+
+.help-card input:focus,
+.help-card select:focus,
+.help-card textarea:focus {
+    border-color: #8e9e91;
+
+    background: white;
+}
+
+
+.help-card textarea {
+    resize: vertical;
+}
+
+
+.help-card button {
+    width: 100%;
+
+    margin-top: 22px;
+
+    padding: 14px;
+
+    border: none;
+
+    border-radius: 7px;
+
+    background: #294d3d;
+
+    color: white;
+
+    font-family: inherit;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition: 0.3s ease;
+}
+
+
+.help-card button:hover {
+    background: #1d392d;
+
+    transform: translateY(-2px);
+}
+
+
+/* =========================================
+   VERIFIED NOTE
+========================================= */
+
+.verified-note {
+    display: flex;
+
+    gap: 10px;
+
+    margin-top: 22px;
+
+    padding-top: 18px;
+
+    border-top: 1px solid #e5e1d9;
+}
+
+
+.verified-note span {
+    color: #3d8764;
+
+    font-weight: 800;
+}
+
+
+.verified-note p {
+    margin: 0;
+
+    color: #888;
+
+    font-size: 11px;
+
+    line-height: 1.5;
+}
+
+
+/* =========================================
+   DETAILS RESPONSIVE
+========================================= */
+
+@media (max-width: 950px) {
+
+    .details-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .help-card {
+        position: static;
+
+        max-width: 600px;
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    .details-hero {
+        padding: 75px 6%;
+    }
+
+    .details-hero h1 {
+        font-size: 45px;
+    }
+
+    .emergency-details {
+        padding: 70px 6%;
+    }
+
+    .needs-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .detail-section h2 {
+        font-size: 32px;
+    }
+
+    .help-card {
+        padding: 23px;
+    }
+
+    .safety-box {
+        flex-direction: column;
+
+        gap: 10px;
+    }
+
+}

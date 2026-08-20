@@ -1,0 +1,671 @@
+/* =========================================
+   KINDLINK - ADOPTION
+========================================= */
+
+
+/* =========================================
+   HERO
+========================================= */
+
+.adoption-hero {
+    min-height: 68vh;
+
+    display: flex;
+    align-items: center;
+
+    padding: 100px 8%;
+
+    background:
+        linear-gradient(
+            rgba(36, 59, 48, 0.82),
+            rgba(36, 59, 48, 0.82)
+        ),
+        linear-gradient(
+            135deg,
+            #8c765e,
+            #3c5145
+        );
+
+    color: white;
+}
+
+
+.adoption-hero-content {
+    max-width: 760px;
+}
+
+
+.adoption-label {
+    color: #f3b562;
+
+    font-size: 12px;
+
+    font-weight: 800;
+
+    letter-spacing: 2px;
+}
+
+
+.adoption-hero h1 {
+    margin: 20px 0;
+
+    font-size: clamp(45px, 6vw, 75px);
+
+    line-height: 1.03;
+}
+
+
+.adoption-hero h1 span {
+    display: block;
+
+    color: #f3b562;
+}
+
+
+.adoption-hero p {
+    max-width: 620px;
+
+    font-size: 18px;
+
+    line-height: 1.7;
+
+    opacity: 0.9;
+}
+
+
+.adoption-buttons {
+    display: flex;
+
+    gap: 15px;
+
+    margin-top: 30px;
+
+    flex-wrap: wrap;
+}
+
+
+.adoption-primary-btn,
+.adoption-secondary-btn {
+    display: inline-block;
+
+    padding: 14px 25px;
+
+    border-radius: 7px;
+
+    text-decoration: none;
+
+    font-weight: 700;
+
+    transition: 0.3s ease;
+}
+
+
+.adoption-primary-btn {
+    background: #f3b562;
+
+    color: #20352c;
+}
+
+
+.adoption-primary-btn:hover {
+    transform: translateY(-3px);
+}
+
+
+.adoption-secondary-btn {
+    color: white;
+
+    border: 1px solid rgba(255,255,255,0.5);
+}
+
+
+.adoption-secondary-btn:hover {
+    background: white;
+
+    color: #20352c;
+}
+
+
+/* =========================================
+   STATS
+========================================= */
+
+.adoption-stats {
+    display: grid;
+
+    grid-template-columns: repeat(4, 1fr);
+
+    padding: 45px 8%;
+
+    background: #f7f4ed;
+}
+
+
+.adoption-stat {
+    text-align: center;
+
+    padding: 15px;
+
+    border-right: 1px solid #ddd;
+}
+
+
+.adoption-stat:last-child {
+    border-right: none;
+}
+
+
+.adoption-stat h2 {
+    margin: 0;
+
+    color: #294d3d;
+
+    font-size: 38px;
+}
+
+
+.adoption-stat p {
+    margin: 8px 0 0;
+
+    color: #777;
+}
+
+
+/* =========================================
+   HEADINGS
+========================================= */
+
+.adoption-heading {
+    max-width: 720px;
+
+    margin: 0 auto 50px;
+
+    text-align: center;
+}
+
+
+.adoption-heading span {
+    color: #b37b36;
+
+    font-size: 11px;
+
+    font-weight: 800;
+
+    letter-spacing: 2px;
+}
+
+
+.adoption-heading h2 {
+    margin: 12px 0;
+
+    color: #243b31;
+
+    font-size: clamp(34px, 5vw, 52px);
+
+    line-height: 1.1;
+}
+
+
+.adoption-heading p {
+    color: #707070;
+
+    line-height: 1.7;
+}
+
+
+/* =========================================
+   ANIMALS
+========================================= */
+
+.animals-section {
+    padding: 100px 8%;
+
+    background: white;
+}
+
+
+.animal-grid {
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 25px;
+}
+
+
+.animal-card {
+    overflow: hidden;
+
+    background: white;
+
+    border: 1px solid #e5e1d8;
+
+    border-radius: 15px;
+
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+
+    transition: 0.3s ease;
+}
+
+
+.animal-card:hover {
+    transform: translateY(-7px);
+
+    box-shadow: 0 18px 40px rgba(0,0,0,0.1);
+}
+
+
+/* =========================================
+   ANIMAL IMAGES
+========================================= */
+
+.animal-image {
+    height: 250px;
+
+    position: relative;
+
+    display: flex;
+
+    justify-content: flex-end;
+
+    align-items: flex-start;
+
+    padding: 15px;
+
+    background-size: cover;
+
+    background-position: center;
+}
+
+
+/*
+   These are temporary visual backgrounds.
+   Later we can replace them with actual
+   animal photos without changing the cards.
+*/
+
+.animal-1 {
+    background:
+        linear-gradient(
+            135deg,
+            #a88a69,
+            #d5bd99
+        );
+}
+
+
+.animal-2 {
+    background:
+        linear-gradient(
+            135deg,
+            #77766f,
+            #c8c3b5
+        );
+}
+
+
+.animal-3 {
+    background:
+        linear-gradient(
+            135deg,
+            #6c7b72,
+            #b8a58e
+        );
+}
+
+
+.animal-4 {
+    background:
+        linear-gradient(
+            135deg,
+            #c18d63,
+            #efd1ad
+        );
+}
+
+
+.animal-5 {
+    background:
+        linear-gradient(
+            135deg,
+            #756c61,
+            #c5b6a4
+        );
+}
+
+
+.animal-6 {
+    background:
+        linear-gradient(
+            135deg,
+            #635b50,
+            #b39a7d
+        );
+}
+
+
+.animal-status {
+    padding: 7px 12px;
+
+    border-radius: 20px;
+
+    background: white;
+
+    color: #294d3d;
+
+    font-size: 10px;
+
+    font-weight: 800;
+
+    letter-spacing: 1px;
+}
+
+
+/* =========================================
+   ANIMAL CONTENT
+========================================= */
+
+.animal-content {
+    padding: 25px;
+}
+
+
+.animal-title {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+}
+
+
+.animal-title h3 {
+    margin: 0;
+
+    color: #243b31;
+
+    font-size: 25px;
+}
+
+
+.animal-title span {
+    color: #9a7650;
+
+    font-size: 13px;
+}
+
+
+.animal-type {
+    margin: 7px 0 15px;
+
+    color: #b37b36;
+
+    font-size: 13px;
+
+    font-weight: 600;
+}
+
+
+.animal-content > p:not(.animal-type) {
+    color: #777;
+
+    font-size: 14px;
+
+    line-height: 1.6;
+}
+
+
+/* =========================================
+   TAGS
+========================================= */
+
+.animal-tags {
+    display: flex;
+
+    gap: 7px;
+
+    flex-wrap: wrap;
+
+    margin-top: 18px;
+}
+
+
+.animal-tags span {
+    padding: 6px 10px;
+
+    border-radius: 20px;
+
+    background: #f3f0e8;
+
+    color: #5e665f;
+
+    font-size: 10px;
+
+    font-weight: 600;
+}
+
+
+/* =========================================
+   LINK
+========================================= */
+
+.animal-link {
+    display: inline-block;
+
+    margin-top: 20px;
+
+    color: #294d3d;
+
+    text-decoration: none;
+
+    font-weight: 800;
+
+    font-size: 14px;
+
+    transition: 0.3s ease;
+}
+
+
+.animal-link:hover {
+    color: #b37b36;
+
+    transform: translateX(3px);
+}
+
+
+/* =========================================
+   ADOPTION PROCESS
+========================================= */
+
+.adoption-info {
+    padding: 100px 8%;
+
+    background: #f7f4ed;
+}
+
+
+.adoption-process {
+    display: grid;
+
+    grid-template-columns: repeat(4, 1fr);
+
+    gap: 20px;
+}
+
+
+.adoption-step {
+    padding: 30px;
+
+    background: white;
+
+    border-radius: 13px;
+
+    border: 1px solid #e4dfd5;
+}
+
+
+.step-number {
+    margin-bottom: 25px;
+
+    color: #b37b36;
+
+    font-weight: 800;
+
+    font-size: 14px;
+}
+
+
+.adoption-step h3 {
+    margin-bottom: 10px;
+
+    color: #294d3d;
+
+    font-size: 21px;
+}
+
+
+.adoption-step p {
+    margin: 0;
+
+    color: #777;
+
+    line-height: 1.6;
+
+    font-size: 14px;
+}
+
+
+/* =========================================
+   RESPONSIBLE ADOPTION
+========================================= */
+
+.responsible-adoption {
+    padding: 110px 8%;
+
+    background:
+        linear-gradient(
+            135deg,
+            #294d3d,
+            #182c24
+        );
+
+    color: white;
+}
+
+
+.responsible-content {
+    max-width: 850px;
+
+    margin: auto;
+
+    text-align: center;
+}
+
+
+.responsible-content > span {
+    color: #f3b562;
+
+    font-size: 11px;
+
+    font-weight: 800;
+
+    letter-spacing: 2px;
+}
+
+
+.responsible-content h2 {
+    margin: 20px 0;
+
+    font-size: clamp(35px, 5vw, 58px);
+
+    line-height: 1.1;
+}
+
+
+.responsible-content p {
+    max-width: 620px;
+
+    margin: 0 auto;
+
+    line-height: 1.7;
+
+    opacity: 0.85;
+}
+
+
+.responsible-content .adoption-primary-btn {
+    margin-top: 30px;
+}
+
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 1000px) {
+
+    .animal-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .adoption-process {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .adoption-stats {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .adoption-stat:nth-child(2) {
+        border-right: none;
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    .adoption-hero {
+        min-height: 70vh;
+
+        padding: 80px 6%;
+    }
+
+    .adoption-hero h1 {
+        font-size: 45px;
+    }
+
+    .adoption-hero p {
+        font-size: 16px;
+    }
+
+    .animal-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .adoption-process {
+        grid-template-columns: 1fr;
+    }
+
+    .adoption-stats {
+        grid-template-columns: 1fr 1fr;
+
+        padding: 30px 5%;
+    }
+
+    .adoption-stat {
+        border-right: none;
+
+        border-bottom: 1px solid #ddd;
+    }
+
+    .animals-section,
+    .adoption-info {
+        padding: 70px 6%;
+    }
+
+    .responsible-adoption {
+        padding: 80px 6%;
+    }
+
+}
