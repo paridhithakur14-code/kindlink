@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Impact Stories | KindLink</title>
+
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet"
+          href="../css/style.css">
+
+    <link rel="stylesheet"
+          href="../css/stories.css">
+
+    <link rel="stylesheet"
+          href="../css/responsive.css">
+
+</head>
+
+<body>
+
+
+<!-- ================= NAVBAR ================= -->
+
+<header class="navbar">
+
+    <div class="container nav-container">
+
+        <a href="../index.html"
+           class="logo">
+
+            <span class="logo-icon">K</span>
+
+            <span>
+                Kind<span>Link</span>
+            </span>
+
+        </a>
+
+
+        <nav class="nav-menu"
+             id="navMenu">
+
+            <a href="../index.html">Home</a>
+            <a href="causes.html">Causes</a>
+            <a href="emergency.html">Emergency</a>
+            <a href="adoption.html">Adoption</a>
+            <a href="volunteer.html">Volunteer</a>
+
+            <a href="stories.html"
+               class="active">
+                Stories
+            </a>
+
+            <a href="about.html">
+                About
+            </a>
+
+        </nav>
+
+
+        <div class="nav-actions">
+
+            <a href="causes.html"
+               class="donate-btn">
+                Donate
+            </a>
+
+            <a href="login.html"
+               class="login-btn">
+                Login
+            </a>
+
+        </div>
+
+
+        <button
+            class="menu-toggle"
+            id="menuToggle"
+            aria-label="Open navigation menu"
+            aria-expanded="false">
+            ☰
+        </button>
+
+    </div>
+
+</header>
+
+
+<!-- ================= HERO ================= -->
+
+<section class="stories-page-hero">
+
+    <div class="container stories-page-hero-content">
+
+        <span class="section-label">
+            IMPACT STORIES
+        </span>
+
+        <h1>
+            Real actions.
+            <span>Meaningful change.</span>
+        </h1>
+
+        <p>
+            Stories of compassion, volunteering,
+            community support and second chances.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- ================= FEATURED STORY ================= -->
+
+<section class="featured-story-section">
+
+    <div class="container">
+
+        <article class="featured-story">
+
+            <div class="featured-story-image">
+                📚
+            </div>
+
+            <div class="featured-story-content">
+
+                <span>
+                    Featured • Education
+                </span>
+
+                <h2>
+                    A classroom filled with new possibilities.
+                </h2>
+
+                <p>
+                    Community volunteers came together to support
+                    students with books, mentoring and learning
+                    activities. Small contributions helped create
+                    a more encouraging environment for young learners.
+                </p>
+
+                <button
+                    class="read-story-btn"
+                    data-story="education">
+
+                    Read Full Story →
+
+                </button>
+
+            </div>
+
+        </article>
+
+    </div>
+
+</section>
+
+
+<!-- ================= STORY BROWSER ================= -->
+
+<section class="story-browser">
+
+    <div class="container">
+
+        <div class="section-heading">
+
+            <div>
+
+                <span class="section-label">
+                    STORIES OF CHANGE
+                </span>
+
+                <h2>
+                    Inspiration from our community.
+                </h2>
+
+            </div>
+
+            <span id="storyCount">
+                6 stories
+            </span>
+
+        </div>
+
+
+        <div class="story-tools">
+
+            <div class="story-search">
+
+                <span>🔎</span>
+
+                <input
+                    type="text"
+                    id="storySearch"
+                    placeholder="Search stories...">
+
+            </div>
+
+        </div>
+
+
+        <div class="story-filters">
+
+            <button class="story-filter active"
+                    data-category="all">
+                All
+            </button>
+
+            <button class="story-filter"
+                    data-category="education">
+                Education
+            </button>
+
+            <button class="story-filter"
+                    data-category="animals">
+                Animal Welfare
+            </button>
+
+            <button class="story-filter"
+                    data-category="community">
+                Community
+            </button>
+
+            <button class="story-filter"
+                    data-category="environment">
+                Environment
+            </button>
+
+            <button class="story-filter"
+                    data-category="emergency">
+                Emergency
+            </button>
+
+        </div>
+
+
+        <div class="stories-page-grid">
+
+
+            <article class="impact-story-card"
+                     data-category="education">
+
+                <div class="impact-story-image education-story">
+                    📖
+                </div>
+
+                <div class="impact-story-content">
+
+                    <span>Education</span>
+
+                    <h3>
+                        Learning beyond the classroom
+                    </h3>
+
+                    <p>
+                        Volunteers provided weekend learning
+                        support to children who needed extra guidance.
+                    </p>
+
+                    <button
+                        class="read-story-btn"
+                        data-story="education">
+                        Read Story →
+                    </button>
+
+                </div>
+
+            </article>
+
+
+            <article class="impact-story-card"
+                     data-category="animals">
+
+                <div class="impact-story-image animal-story">
+                    🐕
+                </div>
+
+                <div class="impact-story-content">
+
+                    <span>Animal Welfare</span>
+
+                    <h3>
+                        A rescued dog finds a family
+                    </h3>
+
+                    <p>
+                        A rescued animal received treatment,
+                        care and finally a loving home.
+                    </p>
+
+                    <button
+                        class="read-story-btn"
+                        data-story="animal">
+                        Read Story →
+                    </button>
+
+                </div>
+
+            </article>
+
+
+            <article class="impact-story-card"
+                     data-category="community">
+
+                <div class="impact-story-image community-story">
+                    🍲
+                </div>
+
+                <div class="impact-story-content">
+
+                    <span>Community</span>
+
+                    <h3>
+                        Meals shared with dignity
+                    </h3>
+
+                    <p>
+                        Volunteers worked together to prepare
+                        and distribute meals to families.
+                    </p>
+
+                    <button
+                        class="read-story-btn"
+                        data-story="food">
+                        Read Story →
+                    </button>
+
+                </div>
+
+            </article>
+
+
+            <article class="impact-story-card"
+                     data-category="environment">
+
+                <div class="impact-story-image environment-story">
+                    🌱
+                </div>
+
+                <div class="impact-story-content">
+
+                    <span>Environment</span>
+
+                    <h3>
+                        A greener neighbourhood
+                    </h3>
+
+                    <p>
+                        Residents and students participated
+                        in a community plantation activity.
+                    </p>
+
+                    <button
+                        class="read-story-btn"
+                        data-story="environment">
+                        Read Story →
+                    </button>
+
+                </div>
+
+            </article>
+
+
+            <article class="impact-story-card"
+                     data-category="emergency">
+
+                <div class="impact-story-image emergency-story">
+                    🚨
+                </div>
+
+                <div class="impact-story-content">
+
+                    <span>Emergency Response</span>
+
+                    <h3>
+                        Help arrived when it mattered
+                    </h3>
+
+                    <p>
+                        Community volunteers helped organize
+                        essential supplies during an emergency.
+                    </p>
+
+                    <button
+                        class="read-story-btn"
+                        data-story="emergency">
+                        Read Story →
+                    </button>
+
+                </div>
+
+            </article>
+
+
+            <article class="impact-story-card"
+                     data-category="community">
+
+                <div class="impact-story-image kindness-story">
+                    🤝
+                </div>
+
+                <div class="impact-story-content">
+
+                    <span>Volunteering</span>
+
+                    <h3>
+                        One weekend. Many smiles.
+                    </h3>
+
+                    <p>
+                        Young volunteers spent their weekend
+                        supporting a local community activity.
+                    </p>
+
+                    <button
+                        class="read-story-btn"
+                        data-story="volunteer">
+                        Read Story →
+                    </button>
+
+                </div>
+
+            </article>
+
+        </div>
+
+
+        <div id="noStoryResults"
+             class="no-story-results">
+
+            <div>📖</div>
+
+            <h3>No stories found</h3>
+
+            <p>
+                Try a different search or category.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= SHARE YOUR STORY ================= -->
+
+<section class="share-story">
+
+    <div class="container share-story-container">
+
+        <div>
+
+            <span class="section-label">
+                YOUR STORY MATTERS
+            </span>
+
+            <h2>
+                Every act of kindness has a story.
+            </h2>
+
+            <p>
+                Volunteer with KindLink and become part
+                of the next story of positive change.
+            </p>
+
+        </div>
+
+        <a href="volunteer.html"
+           class="btn btn-primary">
+
+            Start Volunteering →
+
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- ================= STORY MODAL ================= -->
+
+<div class="story-modal"
+     id="storyModal">
+
+    <article class="story-modal-content">
+
+        <button
+            id="closeStoryModal"
+            class="story-modal-close">
+            ×
+        </button>
+
+        <div id="storyModalEmoji"
+             class="story-modal-emoji">
+            ❤️
+        </div>
+
+        <span id="storyModalCategory">
+            Community
+        </span>
+
+        <h2 id="storyModalTitle">
+            Story Title
+        </h2>
+
+        <div id="storyModalText">
+        </div>
+
+        <div class="story-modal-quote">
+
+            <p id="storyModalQuote"></p>
+
+        </div>
+
+    </article>
+
+</div>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer class="footer">
+
+    <div class="container footer-grid">
+
+        <div class="footer-brand">
+
+            <a href="../index.html"
+               class="logo footer-logo">
+
+                <span class="logo-icon">K</span>
+
+                <span>
+                    Kind<span>Link</span>
+                </span>
+
+            </a>
+
+            <p>
+                Connecting people and organizations
+                to create meaningful social impact.
+            </p>
+
+        </div>
+
+
+        <div class="footer-column">
+
+            <h4>Explore</h4>
+
+            <a href="causes.html">Causes</a>
+            <a href="emergency.html">Emergency</a>
+            <a href="adoption.html">Adoption</a>
+            <a href="volunteer.html">Volunteer</a>
+
+        </div>
+
+
+        <div class="footer-column">
+
+            <h4>KindLink</h4>
+
+            <a href="about.html">About Us</a>
+            <a href="stories.html">Stories</a>
+
+        </div>
+
+
+        <div class="footer-column">
+
+            <h4>Get Involved</h4>
+
+            <a href="causes.html">Donate</a>
+            <a href="volunteer.html">Volunteer</a>
+            <a href="adoption.html">Adopt</a>
+
+        </div>
+
+    </div>
+
+
+    <div class="container footer-bottom">
+
+        <p>
+            © 2026 KindLink. Mini Project.
+        </p>
+
+        <p>
+            Built with HTML5 • CSS3 • JavaScript
+        </p>
+
+    </div>
+
+</footer>
+
+
+<script src="../js/main.js"></script>
+<script src="../js/stories.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,833 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Volunteer | KindLink</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/volunteer.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+</head>
+
+<body>
+
+<!-- ================= NAVBAR ================= -->
+
+<header class="navbar">
+
+    <div class="container nav-container">
+
+        <a href="../index.html" class="logo">
+            <span class="logo-icon">K</span>
+            <span>Kind<span>Link</span></span>
+        </a>
+
+        <nav class="nav-menu" id="navMenu">
+
+            <a href="../index.html">Home</a>
+            <a href="causes.html">Causes</a>
+            <a href="emergency.html">Emergency</a>
+            <a href="adoption.html">Adoption</a>
+
+            <a href="volunteer.html" class="active">
+                Volunteer
+            </a>
+
+            <a href="stories.html">Stories</a>
+            <a href="about.html">About</a>
+
+        </nav>
+
+        <div class="nav-actions">
+
+            <a href="causes.html" class="donate-btn">
+                Donate
+            </a>
+
+            <a href="login.html" class="login-btn">
+                Login
+            </a>
+
+        </div>
+
+        <button
+            class="menu-toggle"
+            id="menuToggle"
+            aria-label="Open navigation menu"
+            aria-expanded="false">
+            ☰
+        </button>
+
+    </div>
+
+</header>
+
+
+<!-- ================= HERO ================= -->
+
+<section class="volunteer-hero">
+
+    <div class="container volunteer-hero-container">
+
+        <div>
+
+            <span class="section-label">
+                MAKE YOUR TIME MATTER
+            </span>
+
+            <h1>
+                Volunteer for a
+                <span>better tomorrow.</span>
+            </h1>
+
+            <p>
+                Discover opportunities where your time, knowledge
+                and skills can create meaningful change.
+            </p>
+
+            <a href="#opportunities"
+               class="btn btn-primary">
+                Explore Opportunities →
+            </a>
+
+        </div>
+
+        <div class="volunteer-hero-card">
+
+            <div class="hero-hand">🤝</div>
+
+            <h3>
+                Everyone has something to contribute.
+            </h3>
+
+            <p>
+                Teach, rescue, distribute supplies,
+                plant trees or support your community.
+            </p>
+
+            <div class="volunteer-mini-stats">
+
+                <div>
+                    <strong>500+</strong>
+                    <span>Volunteers</span>
+                </div>
+
+                <div>
+                    <strong>40+</strong>
+                    <span>Opportunities</span>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= HOW IT WORKS ================= -->
+
+<section class="volunteer-how">
+
+    <div class="container">
+
+        <div class="section-heading center">
+
+            <span class="section-label">
+                HOW TO VOLUNTEER
+            </span>
+
+            <h2>
+                Start making an impact in three steps.
+            </h2>
+
+        </div>
+
+        <div class="volunteer-steps">
+
+            <div class="volunteer-step">
+                <span>01</span>
+                <div>🔎</div>
+                <h3>Find</h3>
+                <p>
+                    Browse opportunities that match
+                    your interests and skills.
+                </p>
+            </div>
+
+            <div class="volunteer-step">
+                <span>02</span>
+                <div>📝</div>
+                <h3>Apply</h3>
+                <p>
+                    Submit your details to the
+                    organization requesting support.
+                </p>
+            </div>
+
+            <div class="volunteer-step">
+                <span>03</span>
+                <div>❤️</div>
+                <h3>Help</h3>
+                <p>
+                    Give your time and become
+                    part of positive change.
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= OPPORTUNITIES ================= -->
+
+<section class="opportunities-section"
+         id="opportunities">
+
+    <div class="container">
+
+        <div class="section-heading">
+
+            <div>
+                <span class="section-label">
+                    OPPORTUNITIES
+                </span>
+
+                <h2>
+                    Find where you can help.
+                </h2>
+            </div>
+
+            <span id="opportunityCount">
+                6 opportunities
+            </span>
+
+        </div>
+
+
+        <!-- SEARCH -->
+
+        <div class="volunteer-toolbar">
+
+            <div class="volunteer-search">
+
+                <span>🔎</span>
+
+                <input
+                    type="text"
+                    id="volunteerSearch"
+                    placeholder="Search volunteer opportunities...">
+
+            </div>
+
+            <select id="locationFilter">
+
+                <option value="all">
+                    All Locations
+                </option>
+
+                <option value="delhi">
+                    Delhi
+                </option>
+
+                <option value="mumbai">
+                    Mumbai
+                </option>
+
+                <option value="jaipur">
+                    Jaipur
+                </option>
+
+                <option value="online">
+                    Online
+                </option>
+
+            </select>
+
+        </div>
+
+
+        <!-- CATEGORY FILTER -->
+
+        <div class="volunteer-filters">
+
+            <button class="volunteer-filter active"
+                    data-category="all">
+                All
+            </button>
+
+            <button class="volunteer-filter"
+                    data-category="education">
+                📚 Education
+            </button>
+
+            <button class="volunteer-filter"
+                    data-category="animals">
+                🐾 Animals
+            </button>
+
+            <button class="volunteer-filter"
+                    data-category="environment">
+                🌱 Environment
+            </button>
+
+            <button class="volunteer-filter"
+                    data-category="community">
+                🤝 Community
+            </button>
+
+            <button class="volunteer-filter"
+                    data-category="emergency">
+                🚨 Emergency
+            </button>
+
+        </div>
+
+
+        <!-- CARDS -->
+
+        <div class="opportunities-grid">
+
+
+            <article class="opportunity-card"
+                     data-category="education"
+                     data-location="delhi">
+
+                <div class="opportunity-icon education-bg">
+                    📚
+                </div>
+
+                <div class="opportunity-content">
+
+                    <span class="opportunity-category">
+                        Education
+                    </span>
+
+                    <h3>
+                        Teach Children on Weekends
+                    </h3>
+
+                    <p>
+                        Help school students improve basic
+                        mathematics and communication skills.
+                    </p>
+
+                    <div class="opportunity-meta">
+                        <span>📍 Delhi</span>
+                        <span>🕐 Weekends</span>
+                    </div>
+
+                    <button
+                        class="apply-btn"
+                        data-role="Weekend Teacher"
+                        data-organization="Bright Future Foundation">
+
+                        Apply to Volunteer
+
+                    </button>
+
+                </div>
+
+            </article>
+
+
+            <article class="opportunity-card"
+                     data-category="animals"
+                     data-location="mumbai">
+
+                <div class="opportunity-icon animal-bg">
+                    🐶
+                </div>
+
+                <div class="opportunity-content">
+
+                    <span class="opportunity-category">
+                        Animal Welfare
+                    </span>
+
+                    <h3>
+                        Animal Shelter Support
+                    </h3>
+
+                    <p>
+                        Help rescued animals with feeding,
+                        cleaning and basic shelter activities.
+                    </p>
+
+                    <div class="opportunity-meta">
+                        <span>📍 Mumbai</span>
+                        <span>🕐 Flexible</span>
+                    </div>
+
+                    <button
+                        class="apply-btn"
+                        data-role="Animal Shelter Volunteer"
+                        data-organization="Happy Paws Rescue">
+
+                        Apply to Volunteer
+
+                    </button>
+
+                </div>
+
+            </article>
+
+
+            <article class="opportunity-card"
+                     data-category="environment"
+                     data-location="jaipur">
+
+                <div class="opportunity-icon environment-bg">
+                    🌳
+                </div>
+
+                <div class="opportunity-content">
+
+                    <span class="opportunity-category">
+                        Environment
+                    </span>
+
+                    <h3>
+                        Community Plantation Drive
+                    </h3>
+
+                    <p>
+                        Join a local plantation and environmental
+                        awareness activity.
+                    </p>
+
+                    <div class="opportunity-meta">
+                        <span>📍 Jaipur</span>
+                        <span>🕐 Sunday</span>
+                    </div>
+
+                    <button
+                        class="apply-btn"
+                        data-role="Plantation Volunteer"
+                        data-organization="Green Earth Initiative">
+
+                        Apply to Volunteer
+
+                    </button>
+
+                </div>
+
+            </article>
+
+
+            <article class="opportunity-card"
+                     data-category="community"
+                     data-location="delhi">
+
+                <div class="opportunity-icon community-bg">
+                    🍱
+                </div>
+
+                <div class="opportunity-content">
+
+                    <span class="opportunity-category">
+                        Community
+                    </span>
+
+                    <h3>
+                        Food Distribution Volunteer
+                    </h3>
+
+                    <p>
+                        Assist in packing and distributing
+                        meals to communities in need.
+                    </p>
+
+                    <div class="opportunity-meta">
+                        <span>📍 Delhi</span>
+                        <span>🕐 Evening</span>
+                    </div>
+
+                    <button
+                        class="apply-btn"
+                        data-role="Food Distribution Volunteer"
+                        data-organization="Community Care Network">
+
+                        Apply to Volunteer
+
+                    </button>
+
+                </div>
+
+            </article>
+
+
+            <article class="opportunity-card"
+                     data-category="emergency"
+                     data-location="mumbai">
+
+                <div class="opportunity-icon emergency-bg">
+                    🚨
+                </div>
+
+                <div class="opportunity-content">
+
+                    <span class="opportunity-category">
+                        Emergency
+                    </span>
+
+                    <h3>
+                        Relief Support Volunteer
+                    </h3>
+
+                    <p>
+                        Support relief teams during emergency
+                        supply and resource distribution.
+                    </p>
+
+                    <div class="opportunity-meta">
+                        <span>📍 Mumbai</span>
+                        <span>⚡ Urgent</span>
+                    </div>
+
+                    <button
+                        class="apply-btn"
+                        data-role="Emergency Relief Volunteer"
+                        data-organization="Rapid Relief Team">
+
+                        Apply to Volunteer
+
+                    </button>
+
+                </div>
+
+            </article>
+
+
+            <article class="opportunity-card"
+                     data-category="education"
+                     data-location="online">
+
+                <div class="opportunity-icon online-bg">
+                    💻
+                </div>
+
+                <div class="opportunity-content">
+
+                    <span class="opportunity-category">
+                        Digital Education
+                    </span>
+
+                    <h3>
+                        Online Digital Skills Mentor
+                    </h3>
+
+                    <p>
+                        Help learners understand basic computer,
+                        internet and digital literacy skills.
+                    </p>
+
+                    <div class="opportunity-meta">
+                        <span>🌐 Online</span>
+                        <span>🕐 Flexible</span>
+                    </div>
+
+                    <button
+                        class="apply-btn"
+                        data-role="Digital Skills Mentor"
+                        data-organization="Digital Learning Initiative">
+
+                        Apply to Volunteer
+
+                    </button>
+
+                </div>
+
+            </article>
+
+        </div>
+
+        <div class="no-volunteer-results"
+             id="noVolunteerResults">
+
+            <div>🔎</div>
+
+            <h3>No opportunities found</h3>
+
+            <p>
+                Try changing your search or filters.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= CTA ================= -->
+
+<section class="volunteer-cta">
+
+    <div class="container">
+
+        <div class="volunteer-cta-box">
+
+            <span>💚</span>
+
+            <h2>
+                Your time can change someone's day.
+            </h2>
+
+            <p>
+                Find an opportunity and become part
+                of the KindLink community.
+            </p>
+
+            <a href="#opportunities"
+               class="btn btn-light">
+                Start Volunteering
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= APPLICATION MODAL ================= -->
+
+<div class="volunteer-modal"
+     id="volunteerModal">
+
+    <div class="volunteer-modal-content">
+
+        <button
+            class="modal-close"
+            id="closeVolunteerModal">
+            ×
+        </button>
+
+        <span class="section-label">
+            VOLUNTEER APPLICATION
+        </span>
+
+        <h2 id="modalVolunteerRole">
+            Apply to Volunteer
+        </h2>
+
+        <p id="modalOrganization">
+            Organization
+        </p>
+
+        <form id="volunteerForm">
+
+            <div class="form-row">
+
+                <div class="form-group">
+
+                    <label for="volunteerName">
+                        Full Name *
+                    </label>
+
+                    <input
+                        type="text"
+                        id="volunteerName"
+                        required>
+
+                </div>
+
+                <div class="form-group">
+
+                    <label for="volunteerAge">
+                        Age *
+                    </label>
+
+                    <input
+                        type="number"
+                        id="volunteerAge"
+                        min="16"
+                        max="80"
+                        required>
+
+                </div>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="volunteerEmail">
+                    Email *
+                </label>
+
+                <input
+                    type="email"
+                    id="volunteerEmail"
+                    required>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="volunteerPhone">
+                    Phone Number *
+                </label>
+
+                <input
+                    type="tel"
+                    id="volunteerPhone"
+                    pattern="[0-9]{10}"
+                    maxlength="10"
+                    placeholder="10 digit mobile number"
+                    required>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="volunteerSkills">
+                    Skills / Experience
+                </label>
+
+                <input
+                    type="text"
+                    id="volunteerSkills"
+                    placeholder="Teaching, first aid, design...">
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="volunteerMessage">
+                    Why would you like to volunteer?
+                </label>
+
+                <textarea
+                    id="volunteerMessage"
+                    rows="4"
+                    placeholder="Tell us a little about yourself..."></textarea>
+
+            </div>
+
+            <button
+                type="submit"
+                class="submit-volunteer-btn">
+
+                Submit Application
+
+            </button>
+
+        </form>
+
+        <div class="volunteer-success"
+             id="volunteerSuccess">
+
+            <div>✅</div>
+
+            <h3>Application Submitted!</h3>
+
+            <p>
+                Thank you for volunteering with KindLink.
+                The organization can contact you after review.
+            </p>
+
+            <button id="closeSuccess">
+                Done
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer class="footer">
+
+    <div class="container footer-grid">
+
+        <div class="footer-brand">
+
+            <a href="../index.html"
+               class="logo footer-logo">
+
+                <span class="logo-icon">K</span>
+
+                <span>
+                    Kind<span>Link</span>
+                </span>
+
+            </a>
+
+            <p>
+                Connecting people and organizations
+                to create meaningful social impact.
+            </p>
+
+        </div>
+
+        <div class="footer-column">
+
+            <h4>Explore</h4>
+
+            <a href="causes.html">Causes</a>
+            <a href="emergency.html">Emergency</a>
+            <a href="adoption.html">Adoption</a>
+            <a href="volunteer.html">Volunteer</a>
+
+        </div>
+
+        <div class="footer-column">
+
+            <h4>KindLink</h4>
+
+            <a href="about.html">About Us</a>
+            <a href="stories.html">Stories</a>
+
+        </div>
+
+        <div class="footer-column">
+
+            <h4>Get Involved</h4>
+
+            <a href="causes.html">Donate</a>
+            <a href="volunteer.html">Volunteer</a>
+            <a href="adoption.html">Adopt</a>
+
+        </div>
+
+    </div>
+
+    <div class="container footer-bottom">
+
+        <p>© 2026 KindLink. Mini Project.</p>
+
+        <p>
+            Built with HTML5 • CSS3 • JavaScript
+        </p>
+
+    </div>
+
+</footer>
+
+<script src="../js/main.js"></script>
+<script src="../js/volunteer.js"></script>
+
+</body>
+</html>
