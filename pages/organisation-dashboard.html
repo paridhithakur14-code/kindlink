@@ -1,1452 +1,1200 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Organisation Dashboard | KindLink</title>
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
-    <link rel="stylesheet" href="../css/organisation-dashboard.css">
+    <title>
+        Organisation Dashboard | KindLink
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="../css/organisation-dashboard.css"
+    >
 
     <link
         rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
     >
+
 </head>
+
 
 <body>
 
-    <!-- TOPBAR -->
 
-    <header class="topbar">
+<!-- ==========================================
+     TOPBAR
+========================================== -->
 
-        <div class="logo">
-            <a href="../index.html">
-                Kind<span>Link</span>
-            </a>
-        </div>
+<header class="topbar">
 
-        <div class="topbar-right">
+    <div class="logo">
 
-            <button class="notification-btn">
-                <i class="fa-solid fa-bell"></i>
-                <span>4</span>
-            </button>
+        <a href="../index.html">
+            Kind<span>Link</span>
+        </a>
 
-            <div class="organisation-user">
+    </div>
 
-                <div class="organisation-avatar">
-                    HH
-                </div>
 
-                <div>
-                    <strong>Helping Hands</strong>
-                    <small>Verified Organisation</small>
-                </div>
+    <div class="topbar-right">
+
+        <button
+            class="notification-btn"
+            type="button"
+        >
+
+            <i class="fa-solid fa-bell"></i>
+
+            <span>4</span>
+
+        </button>
+
+
+        <div class="organisation-user">
+
+            <div
+                class="organisation-avatar"
+                id="topOrganisationAvatar"
+            >
+                KL
+            </div>
+
+
+            <div>
+
+                <strong id="topOrganisationName">
+                    KindLink Organisation
+                </strong>
+
+                <small id="topOrganisationStatus">
+                    Organisation
+                </small>
 
             </div>
 
-            <button class="menu-btn" id="menuBtn">
-                <i class="fa-solid fa-bars"></i>
-            </button>
-
         </div>
 
-    </header>
+
+        <button
+            class="menu-btn"
+            id="menuBtn"
+            type="button"
+        >
+
+            <i class="fa-solid fa-bars"></i>
+
+        </button>
+
+    </div>
+
+</header>
 
 
-    <!-- DASHBOARD -->
 
-    <div class="dashboard-layout">
+<!-- ==========================================
+     DASHBOARD
+========================================== -->
 
-        <!-- SIDEBAR -->
-
-        <aside class="sidebar" id="sidebar">
-
-            <nav class="sidebar-nav">
-
-                <a
-                    href="#"
-                    class="sidebar-link active"
-                    data-section="overview"
-                >
-                    <i class="fa-solid fa-chart-line"></i>
-                    Overview
-                </a>
-
-                <a
-                    href="#"
-                    class="sidebar-link"
-                    data-section="campaigns"
-                >
-                    <i class="fa-solid fa-bullhorn"></i>
-                    Campaigns
-                </a>
-
-                <a
-                    href="#"
-                    class="sidebar-link"
-                    data-section="volunteers"
-                >
-                    <i class="fa-solid fa-people-group"></i>
-                    Volunteers
-                </a>
-
-                <a
-                    href="#"
-                    class="sidebar-link"
-                    data-section="adoptions"
-                >
-                    <i class="fa-solid fa-paw"></i>
-                    Adoption
-                </a>
-
-                <a
-                    href="#"
-                    class="sidebar-link"
-                    data-section="emergencies"
-                >
-                    <i class="fa-solid fa-triangle-exclamation"></i>
-                    Emergencies
-                </a>
-
-                <a
-                    href="#"
-                    class="sidebar-link"
-                    data-section="applications"
-                >
-                    <i class="fa-solid fa-file-lines"></i>
-                    Applications
-                </a>
-
-                <a
-                    href="#"
-                    class="sidebar-link"
-                    data-section="stories"
-                >
-                    <i class="fa-solid fa-book-open"></i>
-                    Stories
-                </a>
-
-                <a
-                    href="#"
-                    class="sidebar-link"
-                    data-section="profile"
-                >
-                    <i class="fa-solid fa-building"></i>
-                    Organisation Profile
-                </a>
-
-            </nav>
+<div class="dashboard-layout">
 
 
-            <div class="sidebar-bottom">
+    <!-- ======================================
+         SIDEBAR
+    ====================================== -->
 
-                <a href="../index.html">
-                    <i class="fa-solid fa-house"></i>
-                    Back to Website
-                </a>
+    <aside
+        class="sidebar"
+        id="sidebar"
+    >
 
-                <button id="logoutBtn">
-                    <i class="fa-solid fa-right-from-bracket"></i>
-                    Logout
-                </button>
-
-            </div>
-
-        </aside>
+        <nav class="sidebar-nav">
 
 
-        <!-- MAIN -->
-
-        <main class="dashboard-main">
-
-            <!-- OVERVIEW -->
-
-            <section
-                class="dashboard-section active-section"
-                id="overview"
+            <a
+                href="#"
+                class="sidebar-link active"
+                data-section="overview"
             >
 
-                <div class="page-heading">
+                <i class="fa-solid fa-chart-line"></i>
 
-                    <div>
+                Overview
 
-                        <span>Organisation Dashboard</span>
+            </a>
 
-                        <h1>
-                            Welcome, Helping Hands Foundation
-                        </h1>
 
-                        <p>
-                            Manage your organisation's KindLink activity.
-                        </p>
+            <a
+                href="#"
+                class="sidebar-link"
+                data-section="campaigns"
+            >
+
+                <i class="fa-solid fa-bullhorn"></i>
+
+                Campaigns
+
+            </a>
+
+
+            <a
+                href="#"
+                class="sidebar-link"
+                data-section="volunteers"
+            >
+
+                <i class="fa-solid fa-people-group"></i>
+
+                Volunteers
+
+            </a>
+
+
+            <a
+                href="#"
+                class="sidebar-link"
+                data-section="adoptions"
+            >
+
+                <i class="fa-solid fa-paw"></i>
+
+                Adoption
+
+            </a>
+
+
+            <a
+                href="#"
+                class="sidebar-link"
+                data-section="emergencies"
+            >
+
+                <i class="fa-solid fa-triangle-exclamation"></i>
+
+                Emergencies
+
+            </a>
+
+
+            <a
+                href="#"
+                class="sidebar-link"
+                data-section="applications"
+            >
+
+                <i class="fa-solid fa-file-lines"></i>
+
+                Applications
+
+            </a>
+
+
+            <a
+                href="#"
+                class="sidebar-link"
+                data-section="stories"
+            >
+
+                <i class="fa-solid fa-book-open"></i>
+
+                Stories
+
+            </a>
+
+
+            <a
+                href="#"
+                class="sidebar-link"
+                data-section="profile"
+            >
+
+                <i class="fa-solid fa-building"></i>
+
+                Organisation Profile
+
+            </a>
+
+        </nav>
+
+
+
+        <div class="sidebar-bottom">
+
+            <a href="../index.html">
+
+                <i class="fa-solid fa-house"></i>
+
+                Back to Website
+
+            </a>
+
+
+            <button
+                id="logoutBtn"
+                type="button"
+            >
+
+                <i class="fa-solid fa-right-from-bracket"></i>
+
+                Logout
+
+            </button>
+
+        </div>
+
+    </aside>
+
+
+
+    <!-- ======================================
+         MAIN
+    ====================================== -->
+
+    <main class="dashboard-main">
+
+
+        <!-- ==================================
+             OVERVIEW
+        ================================== -->
+
+        <section
+            class="dashboard-section active-section"
+            id="overview"
+        >
+
+
+            <div class="page-heading">
+
+                <div>
+
+                    <span>
+                        Organisation Dashboard
+                    </span>
+
+                    <h1>
+
+                        Welcome back,
+
+                        <span id="welcomeOrganisationName">
+                            Organisation
+                        </span>
+
+                        👋
+
+                    </h1>
+
+                    <p>
+                        Manage your organisation's KindLink activity.
+                    </p>
+
+                </div>
+
+
+                <span
+                    class="verified-status"
+                    id="verificationStatus"
+                >
+
+                    <i class="fa-solid fa-clock"></i>
+
+                    Pending
+
+                </span>
+
+            </div>
+
+
+
+            <!-- STATS -->
+
+            <div class="stats-grid">
+
+
+                <article class="stat-card">
+
+                    <div class="stat-icon">
+
+                        <i class="fa-solid fa-indian-rupee-sign"></i>
 
                     </div>
 
-                    <span class="verified-status">
-                        <i class="fa-solid fa-circle-check"></i>
-                        Verified
-                    </span>
+                    <div>
 
-                </div>
+                        <span>
+                            Funds Raised
+                        </span>
 
+                        <strong id="totalFundsRaised">
+                            ₹0
+                        </strong>
 
-                <!-- STATS -->
+                        <small>
+                            Across your campaigns
+                        </small>
 
-                <div class="stats-grid">
+                    </div>
 
-                    <article class="stat-card">
+                </article>
 
-                        <div class="stat-icon">
-                            <i class="fa-solid fa-indian-rupee-sign"></i>
-                        </div>
 
-                        <div>
-                            <span>Funds Raised</span>
-                            <strong>₹1,68,000</strong>
-                            <small>Across active campaigns</small>
-                        </div>
 
-                    </article>
+                <article class="stat-card">
 
+                    <div class="stat-icon">
 
-                    <article class="stat-card">
+                        <i class="fa-solid fa-people-group"></i>
 
-                        <div class="stat-icon">
-                            <i class="fa-solid fa-people-group"></i>
-                        </div>
+                    </div>
 
-                        <div>
-                            <span>Volunteers</span>
-                            <strong>320</strong>
-                            <small>Registered supporters</small>
-                        </div>
+                    <div>
 
-                    </article>
+                        <span>
+                            Volunteers
+                        </span>
 
+                        <strong>
+                            0
+                        </strong>
 
-                    <article class="stat-card">
+                        <small>
+                            Registered supporters
+                        </small>
 
-                        <div class="stat-icon">
-                            <i class="fa-solid fa-bullhorn"></i>
-                        </div>
+                    </div>
 
-                        <div>
-                            <span>Active Campaigns</span>
-                            <strong>8</strong>
-                            <small>3 ending this month</small>
-                        </div>
+                </article>
 
-                    </article>
 
 
-                    <article class="stat-card">
+                <article class="stat-card">
 
-                        <div class="stat-icon">
-                            <i class="fa-solid fa-users-viewfinder"></i>
-                        </div>
+                    <div class="stat-icon">
 
-                        <div>
-                            <span>People Reached</span>
-                            <strong>12K+</strong>
-                            <small>Estimated impact</small>
-                        </div>
+                        <i class="fa-solid fa-bullhorn"></i>
 
-                    </article>
+                    </div>
 
-                </div>
+                    <div>
 
+                        <span>
+                            Active Campaigns
+                        </span>
 
-                <!-- OVERVIEW GRID -->
+                        <strong id="activeCampaignCount">
+                            0
+                        </strong>
 
-                <div class="overview-grid">
+                        <small>
+                            Current fundraisers
+                        </small>
 
-                    <!-- RECENT -->
+                    </div>
 
-                    <section class="card">
+                </article>
 
-                        <div class="card-heading">
 
-                            <div>
-                                <span>Recent Activity</span>
-                                <h2>Latest Updates</h2>
-                            </div>
 
-                        </div>
+                <article class="stat-card">
 
+                    <div class="stat-icon">
 
-                        <div class="activity-list">
+                        <i class="fa-solid fa-users-viewfinder"></i>
 
-                            <article class="activity-item">
+                    </div>
 
-                                <div class="activity-icon">
-                                    <i class="fa-solid fa-hand-holding-heart"></i>
-                                </div>
+                    <div>
 
-                                <div>
-                                    <strong>New donation received</strong>
-                                    <p>₹500 for Education for Every Child</p>
-                                    <span>15 minutes ago</span>
-                                </div>
+                        <span>
+                            People Reached
+                        </span>
 
-                            </article>
+                        <strong>
+                            0
+                        </strong>
 
+                        <small>
+                            Estimated impact
+                        </small>
 
-                            <article class="activity-item">
+                    </div>
 
-                                <div class="activity-icon">
-                                    <i class="fa-solid fa-user-plus"></i>
-                                </div>
+                </article>
 
-                                <div>
-                                    <strong>New volunteer application</strong>
-                                    <p>Weekend Teaching Volunteer</p>
-                                    <span>2 hours ago</span>
-                                </div>
 
-                            </article>
+            </div>
 
 
-                            <article class="activity-item">
 
-                                <div class="activity-icon">
-                                    <i class="fa-solid fa-paw"></i>
-                                </div>
+            <!-- OVERVIEW GRID -->
 
-                                <div>
-                                    <strong>New adoption request</strong>
-                                    <p>Application received for Bruno</p>
-                                    <span>Yesterday</span>
-                                </div>
+            <div class="overview-grid">
 
-                            </article>
 
-
-                            <article class="activity-item">
-
-                                <div class="activity-icon">
-                                    <i class="fa-solid fa-bullhorn"></i>
-                                </div>
-
-                                <div>
-                                    <strong>Campaign reached 72%</strong>
-                                    <p>School Kits for 500 Children</p>
-                                    <span>2 days ago</span>
-                                </div>
-
-                            </article>
-
-                        </div>
-
-                    </section>
-
-
-                    <!-- QUICK ACTIONS -->
-
-                    <section class="card quick-actions">
-
-                        <div class="card-heading">
-
-                            <div>
-                                <span>Quick Actions</span>
-                                <h2>Create & Manage</h2>
-                            </div>
-
-                        </div>
-
-
-                        <button
-                            class="quick-btn"
-                            data-open="campaignModal"
-                        >
-                            <i class="fa-solid fa-plus"></i>
-                            Create Campaign
-                        </button>
-
-
-                        <button
-                            class="quick-btn"
-                            data-open="volunteerModal"
-                        >
-                            <i class="fa-solid fa-user-plus"></i>
-                            Add Volunteer Opportunity
-                        </button>
-
-
-                        <button
-                            class="quick-btn"
-                            data-open="animalModal"
-                        >
-                            <i class="fa-solid fa-paw"></i>
-                            Add Animal Listing
-                        </button>
-
-
-                        <button
-                            class="quick-btn emergency-action"
-                            data-open="emergencyModal"
-                        >
-                            <i class="fa-solid fa-triangle-exclamation"></i>
-                            Report Emergency
-                        </button>
-
-                    </section>
-
-                </div>
-
-
-                <!-- PERFORMANCE -->
+                <!-- RECENT ACTIVITY -->
 
                 <section class="card">
 
                     <div class="card-heading">
 
                         <div>
-                            <span>Campaign Performance</span>
-                            <h2>Active Fundraisers</h2>
-                        </div>
 
-                        <button
-                            class="text-btn"
-                            data-go="campaigns"
-                        >
-                            View All
-                        </button>
+                            <span>
+                                Recent Activity
+                            </span>
+
+                            <h2>
+                                Latest Updates
+                            </h2>
+
+                        </div>
 
                     </div>
 
 
-                    <div class="performance-list">
+                    <div class="activity-list">
 
-                        <article class="performance-item">
 
-                            <div>
+                        <article class="activity-item">
 
-                                <span class="category-tag">
-                                    Education
-                                </span>
+                            <div class="activity-icon">
 
-                                <h3>
-                                    School Kits for 500 Children
-                                </h3>
-
-                                <p>
-                                    ₹1,08,000 of ₹1,50,000
-                                </p>
+                                <i class="fa-solid fa-bullhorn"></i>
 
                             </div>
 
-                            <div class="progress-area">
+                            <div>
 
-                                <div class="progress">
-                                    <span style="width:72%"></span>
-                                </div>
+                                <strong>
+                                    Campaign management connected
+                                </strong>
 
-                                <strong>72%</strong>
+                                <p>
+                                    Create campaigns directly from your dashboard.
+                                </p>
+
+                                <span>
+                                    KindLink
+                                </span>
 
                             </div>
 
                         </article>
 
 
-                        <article class="performance-item">
+                        <article class="activity-item">
 
-                            <div>
+                            <div class="activity-icon">
 
-                                <span class="category-tag">
-                                    Community
-                                </span>
-
-                                <h3>
-                                    Meals for Families
-                                </h3>
-
-                                <p>
-                                    ₹58,000 of ₹1,00,000
-                                </p>
+                                <i class="fa-solid fa-shield-halved"></i>
 
                             </div>
 
-                            <div class="progress-area">
+                            <div>
 
-                                <div class="progress">
-                                    <span style="width:58%"></span>
-                                </div>
+                                <strong>
+                                    Organisation authentication active
+                                </strong>
 
-                                <strong>58%</strong>
+                                <p>
+                                    Your dashboard is protected using JWT.
+                                </p>
+
+                                <span>
+                                    Backend connected
+                                </span>
 
                             </div>
 
                         </article>
+
 
                     </div>
 
                 </section>
 
-            </section>
 
 
-            <!-- CAMPAIGNS -->
+                <!-- QUICK ACTIONS -->
 
-            <section
-                class="dashboard-section"
-                id="campaigns"
-            >
+                <section class="card quick-actions">
 
-                <div class="page-heading">
-
-                    <div>
-                        <span>Fundraising</span>
-                        <h1>Campaign Management</h1>
-                        <p>Create and manage social-impact campaigns.</p>
-                    </div>
-
-                    <button
-                        class="primary-btn"
-                        data-open="campaignModal"
-                    >
-                        <i class="fa-solid fa-plus"></i>
-                        Create Campaign
-                    </button>
-
-                </div>
-
-
-                <div class="management-grid">
-
-                    <article class="management-card">
-
-                        <div class="management-top">
-
-                            <span class="category-tag">
-                                Education
-                            </span>
-
-                            <span class="status active">
-                                Active
-                            </span>
-
-                        </div>
-
-                        <h3>
-                            School Kits for 500 Children
-                        </h3>
-
-                        <p>
-                            Provide books, bags and learning materials.
-                        </p>
-
-                        <div class="progress">
-                            <span style="width:72%"></span>
-                        </div>
-
-                        <div class="campaign-meta">
-
-                            <span>₹1,08,000 raised</span>
-                            <strong>72%</strong>
-
-                        </div>
-
-
-                        <div class="management-actions">
-
-                            <button>
-                                <i class="fa-solid fa-pen"></i>
-                                Edit
-                            </button>
-
-                            <button>
-                                <i class="fa-solid fa-chart-line"></i>
-                                Analytics
-                            </button>
-
-                        </div>
-
-                    </article>
-
-
-                    <article class="management-card">
-
-                        <div class="management-top">
-
-                            <span class="category-tag">
-                                Community
-                            </span>
-
-                            <span class="status active">
-                                Active
-                            </span>
-
-                        </div>
-
-                        <h3>
-                            Meals for Families
-                        </h3>
-
-                        <p>
-                            Provide nutritious food kits to families.
-                        </p>
-
-                        <div class="progress">
-                            <span style="width:58%"></span>
-                        </div>
-
-                        <div class="campaign-meta">
-
-                            <span>₹58,000 raised</span>
-                            <strong>58%</strong>
-
-                        </div>
-
-
-                        <div class="management-actions">
-
-                            <button>
-                                <i class="fa-solid fa-pen"></i>
-                                Edit
-                            </button>
-
-                            <button>
-                                <i class="fa-solid fa-chart-line"></i>
-                                Analytics
-                            </button>
-
-                        </div>
-
-                    </article>
-
-
-                    <article class="management-card">
-
-                        <div class="management-top">
-
-                            <span class="category-tag">
-                                Education
-                            </span>
-
-                            <span class="status completed">
-                                Completed
-                            </span>
-
-                        </div>
-
-                        <h3>
-                            Digital Learning Centre
-                        </h3>
-
-                        <p>
-                            Technology learning support for students.
-                        </p>
-
-                        <div class="progress">
-                            <span style="width:100%"></span>
-                        </div>
-
-                        <div class="campaign-meta">
-
-                            <span>₹2,00,000 raised</span>
-                            <strong>100%</strong>
-
-                        </div>
-
-
-                        <div class="management-actions">
-
-                            <button>
-                                View Report
-                            </button>
-
-                        </div>
-
-                    </article>
-
-                </div>
-
-            </section>
-
-
-            <!-- VOLUNTEERS -->
-
-            <section
-                class="dashboard-section"
-                id="volunteers"
-            >
-
-                <div class="page-heading">
-
-                    <div>
-                        <span>Volunteer Management</span>
-                        <h1>Volunteer Opportunities</h1>
-                        <p>Create opportunities and connect with volunteers.</p>
-                    </div>
-
-                    <button
-                        class="primary-btn"
-                        data-open="volunteerModal"
-                    >
-                        <i class="fa-solid fa-plus"></i>
-                        Add Opportunity
-                    </button>
-
-                </div>
-
-
-                <div class="management-grid">
-
-                    <article class="management-card">
-
-                        <div class="management-top">
-
-                            <span class="category-tag">
-                                Education
-                            </span>
-
-                            <span class="status active">
-                                Open
-                            </span>
-
-                        </div>
-
-                        <h3>
-                            Weekend Teaching Volunteer
-                        </h3>
-
-                        <p>
-                            Help school students with English and Mathematics.
-                        </p>
-
-                        <div class="info-list">
-
-                            <p>
-                                <i class="fa-solid fa-location-dot"></i>
-                                Delhi
-                            </p>
-
-                            <p>
-                                <i class="fa-solid fa-users"></i>
-                                24 applications
-                            </p>
-
-                            <p>
-                                <i class="fa-solid fa-clock"></i>
-                                Weekends
-                            </p>
-
-                        </div>
-
-                        <div class="management-actions">
-
-                            <button>
-                                Manage Applications
-                            </button>
-
-                            <button>
-                                Edit
-                            </button>
-
-                        </div>
-
-                    </article>
-
-
-                    <article class="management-card">
-
-                        <div class="management-top">
-
-                            <span class="category-tag">
-                                Community
-                            </span>
-
-                            <span class="status active">
-                                Open
-                            </span>
-
-                        </div>
-
-                        <h3>
-                            Food Distribution Volunteer
-                        </h3>
-
-                        <p>
-                            Help organise and distribute food kits.
-                        </p>
-
-                        <div class="info-list">
-
-                            <p>
-                                <i class="fa-solid fa-location-dot"></i>
-                                Delhi
-                            </p>
-
-                            <p>
-                                <i class="fa-solid fa-users"></i>
-                                18 applications
-                            </p>
-
-                            <p>
-                                <i class="fa-solid fa-clock"></i>
-                                3 hours
-                            </p>
-
-                        </div>
-
-                        <div class="management-actions">
-
-                            <button>
-                                Manage Applications
-                            </button>
-
-                            <button>
-                                Edit
-                            </button>
-
-                        </div>
-
-                    </article>
-
-                </div>
-
-            </section>
-
-
-            <!-- ADOPTIONS -->
-
-            <section
-                class="dashboard-section"
-                id="adoptions"
-            >
-
-                <div class="page-heading">
-
-                    <div>
-                        <span>Animal Welfare</span>
-                        <h1>Adoption Listings</h1>
-                        <p>Manage animals available for adoption.</p>
-                    </div>
-
-                    <button
-                        class="primary-btn"
-                        data-open="animalModal"
-                    >
-                        <i class="fa-solid fa-plus"></i>
-                        Add Animal
-                    </button>
-
-                </div>
-
-
-                <div class="animal-grid">
-
-                    <article class="animal-card">
-
-                        <div class="animal-placeholder">
-                            <i class="fa-solid fa-dog"></i>
-                        </div>
+                    <div class="card-heading">
 
                         <div>
 
-                            <div class="management-top">
-
-                                <span class="category-tag">
-                                    Dog
-                                </span>
-
-                                <span class="status active">
-                                    Available
-                                </span>
-
-                            </div>
-
-                            <h3>Bruno</h3>
-
-                            <p>
-                                Labrador • 2 Years • Male
-                            </p>
-
-                            <small>
-                                3 adoption applications
-                            </small>
-
-                            <div class="management-actions">
-
-                                <button>
-                                    Applications
-                                </button>
-
-                                <button>
-                                    Edit
-                                </button>
-
-                            </div>
-
-                        </div>
-
-                    </article>
-
-
-                    <article class="animal-card">
-
-                        <div class="animal-placeholder">
-                            <i class="fa-solid fa-cat"></i>
-                        </div>
-
-                        <div>
-
-                            <div class="management-top">
-
-                                <span class="category-tag">
-                                    Cat
-                                </span>
-
-                                <span class="status active">
-                                    Available
-                                </span>
-
-                            </div>
-
-                            <h3>Luna</h3>
-
-                            <p>
-                                Indian Cat • 1 Year • Female
-                            </p>
-
-                            <small>
-                                5 adoption applications
-                            </small>
-
-                            <div class="management-actions">
-
-                                <button>
-                                    Applications
-                                </button>
-
-                                <button>
-                                    Edit
-                                </button>
-
-                            </div>
-
-                        </div>
-
-                    </article>
-
-                </div>
-
-            </section>
-
-
-            <!-- EMERGENCIES -->
-
-            <section
-                class="dashboard-section"
-                id="emergencies"
-            >
-
-                <div class="page-heading">
-
-                    <div>
-                        <span>Disaster Response</span>
-                        <h1>Emergency Management</h1>
-                        <p>Coordinate relief efforts and emergency support.</p>
-                    </div>
-
-                    <button
-                        class="danger-btn"
-                        data-open="emergencyModal"
-                    >
-                        <i class="fa-solid fa-triangle-exclamation"></i>
-                        Report Emergency
-                    </button>
-
-                </div>
-
-
-                <article class="emergency-management-card">
-
-                    <div class="emergency-header">
-
-                        <div>
-
-                            <span class="critical">
-                                Critical
+                            <span>
+                                Quick Actions
                             </span>
 
                             <h2>
-                                Assam Flood Relief
+                                Create & Manage
                             </h2>
 
-                            <p>
-                                Flood response and relief support.
-                            </p>
-
                         </div>
 
-                        <span class="status active">
-                            Active
+                    </div>
+
+
+                    <button
+                        class="quick-btn"
+                        type="button"
+                        data-open="campaignModal"
+                    >
+
+                        <i class="fa-solid fa-plus"></i>
+
+                        Create Campaign
+
+                    </button>
+
+
+                    <button
+                        class="quick-btn"
+                        type="button"
+                        data-open="volunteerModal"
+                    >
+
+                        <i class="fa-solid fa-user-plus"></i>
+
+                        Add Volunteer Opportunity
+
+                    </button>
+
+
+                    <button
+                        class="quick-btn"
+                        type="button"
+                        data-open="animalModal"
+                    >
+
+                        <i class="fa-solid fa-paw"></i>
+
+                        Add Animal Listing
+
+                    </button>
+
+
+                    <button
+                        class="quick-btn emergency-action"
+                        type="button"
+                        data-open="emergencyModal"
+                    >
+
+                        <i class="fa-solid fa-triangle-exclamation"></i>
+
+                        Report Emergency
+
+                    </button>
+
+                </section>
+
+
+            </div>
+
+
+
+            <!-- CAMPAIGN PERFORMANCE -->
+
+            <section class="card">
+
+                <div class="card-heading">
+
+                    <div>
+
+                        <span>
+                            Campaign Performance
                         </span>
 
-                    </div>
-
-
-                    <div class="emergency-stats">
-
-                        <div>
-                            <strong>450</strong>
-                            <span>Volunteers</span>
-                        </div>
-
-                        <div>
-                            <strong>₹2.8L</strong>
-                            <span>Raised</span>
-                        </div>
-
-                        <div>
-                            <strong>1,200+</strong>
-                            <span>People Supported</span>
-                        </div>
-
-                        <div>
-                            <strong>8</strong>
-                            <span>Relief Centres</span>
-                        </div>
+                        <h2>
+                            Active Fundraisers
+                        </h2>
 
                     </div>
 
-
-                    <div class="management-actions">
-
-                        <button>
-                            Update Emergency
-                        </button>
-
-                        <button>
-                            Volunteer List
-                        </button>
-
-                        <button>
-                            View Donations
-                        </button>
-
-                    </div>
-
-                </article>
-
-            </section>
-
-
-            <!-- APPLICATIONS -->
-
-            <section
-                class="dashboard-section"
-                id="applications"
-            >
-
-                <div class="page-heading">
-
-                    <div>
-                        <span>Application Management</span>
-                        <h1>Applications</h1>
-                        <p>Review volunteer and adoption applications.</p>
-                    </div>
-
-                </div>
-
-
-                <div class="tab-buttons">
 
                     <button
-                        class="application-tab active"
-                        data-tab="volunteerApplications"
+                        class="text-btn"
+                        type="button"
+                        data-go="campaigns"
                     >
-                        Volunteer Applications
-                    </button>
-
-                    <button
-                        class="application-tab"
-                        data-tab="adoptionApplications"
-                    >
-                        Adoption Applications
+                        View All
                     </button>
 
                 </div>
 
 
-                <!-- VOLUNTEER APPLICATIONS -->
-
                 <div
-                    class="application-content active"
-                    id="volunteerApplications"
+                    class="performance-list"
+                    id="overviewCampaignList"
                 >
 
-                    <div class="table-card">
-
-                        <div class="responsive-table">
-
-                            <table>
-
-                                <thead>
-
-                                    <tr>
-                                        <th>Applicant</th>
-                                        <th>Opportunity</th>
-                                        <th>Location</th>
-                                        <th>Date</th>
-                                        <th>Status</th>
-                                        <th>Actions</th>
-                                    </tr>
-
-                                </thead>
-
-                                <tbody>
-
-                                    <tr>
-
-                                        <td>Rahul Sharma</td>
-
-                                        <td>
-                                            Weekend Teaching Volunteer
-                                        </td>
-
-                                        <td>Delhi</td>
-
-                                        <td>21 Aug 2026</td>
-
-                                        <td>
-                                            <span class="status pending">
-                                                Pending
-                                            </span>
-                                        </td>
-
-                                        <td>
-
-                                            <div class="table-actions">
-
-                                                <button class="accept-btn">
-                                                    Accept
-                                                </button>
-
-                                                <button class="reject-btn">
-                                                    Reject
-                                                </button>
-
-                                            </div>
-
-                                        </td>
-
-                                    </tr>
-
-
-                                    <tr>
-
-                                        <td>Ananya Gupta</td>
-
-                                        <td>
-                                            Food Distribution Volunteer
-                                        </td>
-
-                                        <td>Delhi</td>
-
-                                        <td>20 Aug 2026</td>
-
-                                        <td>
-                                            <span class="status pending">
-                                                Pending
-                                            </span>
-                                        </td>
-
-                                        <td>
-
-                                            <div class="table-actions">
-
-                                                <button class="accept-btn">
-                                                    Accept
-                                                </button>
-
-                                                <button class="reject-btn">
-                                                    Reject
-                                                </button>
-
-                                            </div>
-
-                                        </td>
-
-                                    </tr>
-
-                                </tbody>
-
-                            </table>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-
-                <!-- ADOPTION APPLICATIONS -->
-
-                <div
-                    class="application-content"
-                    id="adoptionApplications"
-                >
-
-                    <div class="table-card">
-
-                        <div class="responsive-table">
-
-                            <table>
-
-                                <thead>
-
-                                    <tr>
-                                        <th>Applicant</th>
-                                        <th>Animal</th>
-                                        <th>City</th>
-                                        <th>Date</th>
-                                        <th>Status</th>
-                                        <th>Actions</th>
-                                    </tr>
-
-                                </thead>
-
-                                <tbody>
-
-                                    <tr>
-
-                                        <td>Priya Verma</td>
-
-                                        <td>Bruno</td>
-
-                                        <td>Mumbai</td>
-
-                                        <td>18 Aug 2026</td>
-
-                                        <td>
-                                            <span class="status pending">
-                                                Pending
-                                            </span>
-                                        </td>
-
-                                        <td>
-
-                                            <div class="table-actions">
-
-                                                <button class="accept-btn">
-                                                    Approve
-                                                </button>
-
-                                                <button class="reject-btn">
-                                                    Reject
-                                                </button>
-
-                                            </div>
-
-                                        </td>
-
-                                    </tr>
-
-                                </tbody>
-
-                            </table>
-
-                        </div>
-
-                    </div>
+                    <p>
+                        Your latest campaigns will appear here.
+                    </p>
 
                 </div>
 
             </section>
 
 
-            <!-- STORIES -->
+        </section>
 
-            <section
-                class="dashboard-section"
-                id="stories"
-            >
 
-                <div class="page-heading">
 
-                    <div>
-                        <span>Impact Stories</span>
-                        <h1>Stories</h1>
-                        <p>Publish updates and success stories.</p>
-                    </div>
+        <!-- ==================================
+             CAMPAIGNS
+        ================================== -->
 
-                    <button
-                        class="primary-btn"
-                        id="newStoryBtn"
-                    >
-                        <i class="fa-solid fa-plus"></i>
-                        Publish Story
-                    </button>
+        <section
+            class="dashboard-section"
+            id="campaigns"
+        >
+
+
+            <div class="page-heading">
+
+                <div>
+
+                    <span>
+                        Fundraising
+                    </span>
+
+                    <h1>
+                        Campaign Management
+                    </h1>
+
+                    <p>
+                        Create and manage social-impact campaigns.
+                    </p>
 
                 </div>
 
 
-                <div class="management-grid">
+                <button
+                    class="primary-btn"
+                    type="button"
+                    data-open="campaignModal"
+                >
 
-                    <article class="management-card">
+                    <i class="fa-solid fa-plus"></i>
+
+                    Create Campaign
+
+                </button>
+
+            </div>
+
+
+
+            <!-- REAL MONGODB CAMPAIGNS -->
+
+            <div
+                class="management-grid"
+                id="organisationCampaignList"
+            >
+
+                <div class="empty-state">
+
+                    <i class="fa-solid fa-spinner fa-spin"></i>
+
+                    <h3>
+                        Loading campaigns...
+                    </h3>
+
+                    <p>
+                        Please wait while we load your campaigns.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- ==================================
+             VOLUNTEERS
+        ================================== -->
+
+        <section
+            class="dashboard-section"
+            id="volunteers"
+        >
+
+
+            <div class="page-heading">
+
+                <div>
+
+                    <span>
+                        Volunteer Management
+                    </span>
+
+                    <h1>
+                        Volunteer Opportunities
+                    </h1>
+
+                    <p>
+                        Create opportunities and connect with volunteers.
+                    </p>
+
+                </div>
+
+
+                <button
+                    class="primary-btn"
+                    type="button"
+                    data-open="volunteerModal"
+                >
+
+                    <i class="fa-solid fa-plus"></i>
+
+                    Add Opportunity
+
+                </button>
+
+            </div>
+
+
+
+            <div class="management-grid">
+
+
+                <article class="management-card">
+
+                    <div class="management-top">
 
                         <span class="category-tag">
                             Education
                         </span>
 
+                        <span class="status active">
+                            Demo
+                        </span>
+
+                    </div>
+
+                    <h3>
+                        Weekend Teaching Volunteer
+                    </h3>
+
+                    <p>
+                        Volunteer backend will be connected in Phase 3.11.
+                    </p>
+
+                </article>
+
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- ==================================
+             ADOPTION
+        ================================== -->
+
+        <section
+            class="dashboard-section"
+            id="adoptions"
+        >
+
+
+            <div class="page-heading">
+
+                <div>
+
+                    <span>
+                        Animal Welfare
+                    </span>
+
+                    <h1>
+                        Adoption Listings
+                    </h1>
+
+                    <p>
+                        Manage animals available for adoption.
+                    </p>
+
+                </div>
+
+
+                <button
+                    class="primary-btn"
+                    type="button"
+                    data-open="animalModal"
+                >
+
+                    <i class="fa-solid fa-plus"></i>
+
+                    Add Animal
+
+                </button>
+
+            </div>
+
+
+
+            <div class="animal-grid">
+
+                <article class="animal-card">
+
+                    <div class="animal-placeholder">
+
+                        <i class="fa-solid fa-paw"></i>
+
+                    </div>
+
+                    <div>
+
+                        <span class="category-tag">
+                            Coming Soon
+                        </span>
+
                         <h3>
-                            A Classroom Full of Possibilities
+                            Adoption Backend
                         </h3>
 
                         <p>
-                            How community support helped students return
-                            to learning.
+                            Adoption listings will be connected in Phase 3.12.
                         </p>
 
-                        <div class="story-meta">
-                            Published • 12 August 2026
-                        </div>
-
-                        <div class="management-actions">
-
-                            <button>Edit</button>
-
-                            <button>View</button>
-
-                        </div>
-
-                    </article>
-
-                </div>
-
-            </section>
-
-
-            <!-- PROFILE -->
-
-            <section
-                class="dashboard-section"
-                id="profile"
-            >
-
-                <div class="page-heading">
-
-                    <div>
-                        <span>Organisation Account</span>
-                        <h1>Organisation Profile</h1>
-                        <p>Manage your public organisation information.</p>
                     </div>
 
-                    <span class="verified-status">
-                        <i class="fa-solid fa-circle-check"></i>
-                        Verified Organisation
+                </article>
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- ==================================
+             EMERGENCIES
+        ================================== -->
+
+        <section
+            class="dashboard-section"
+            id="emergencies"
+        >
+
+
+            <div class="page-heading">
+
+                <div>
+
+                    <span>
+                        Disaster Response
                     </span>
 
+                    <h1>
+                        Emergency Management
+                    </h1>
+
+                    <p>
+                        Coordinate relief efforts and emergency support.
+                    </p>
+
                 </div>
 
 
-                <div class="profile-card">
+                <button
+                    class="danger-btn"
+                    type="button"
+                    data-open="emergencyModal"
+                >
 
-                    <div class="organisation-profile-header">
+                    <i class="fa-solid fa-triangle-exclamation"></i>
 
-                        <div class="large-org-avatar">
-                            HH
-                        </div>
+                    Report Emergency
 
-                        <div>
+                </button>
 
-                            <h2>
-                                Helping Hands Foundation
-                            </h2>
+            </div>
 
-                            <p>
-                                Delhi, India
-                            </p>
 
-                            <span class="verified-status">
-                                <i class="fa-solid fa-circle-check"></i>
-                                Verified
-                            </span>
 
-                        </div>
+            <article class="emergency-management-card">
+
+                <div class="emergency-header">
+
+                    <div>
+
+                        <span class="critical">
+                            Coming Soon
+                        </span>
+
+                        <h2>
+                            Emergency Backend
+                        </h2>
+
+                        <p>
+                            Emergency management will be connected in Phase 3.13.
+                        </p>
 
                     </div>
 
+                </div>
 
-                    <form id="profileForm">
-
-                        <div class="form-row">
-
-                            <div class="form-group">
-
-                                <label>
-                                    Organisation Name
-                                </label>
-
-                                <input
-                                    type="text"
-                                    value="Helping Hands Foundation"
-                                >
-
-                            </div>
+            </article>
 
 
-                            <div class="form-group">
-
-                                <label>
-                                    Organisation Type
-                                </label>
-
-                                <input
-                                    type="text"
-                                    value="NGO"
-                                >
-
-                            </div>
-
-                        </div>
+        </section>
 
 
-                        <div class="form-row">
 
-                            <div class="form-group">
+        <!-- ==================================
+             APPLICATIONS
+        ================================== -->
 
-                                <label>
-                                    Official Email
-                                </label>
-
-                                <input
-                                    type="email"
-                                    value="contact@helpinghands.org"
-                                >
-
-                            </div>
+        <section
+            class="dashboard-section"
+            id="applications"
+        >
 
 
-                            <div class="form-group">
+            <div class="page-heading">
 
-                                <label>
-                                    Phone
-                                </label>
+                <div>
 
-                                <input
-                                    type="tel"
-                                    value="9876543210"
-                                >
+                    <span>
+                        Application Management
+                    </span>
 
-                            </div>
+                    <h1>
+                        Applications
+                    </h1>
 
-                        </div>
+                    <p>
+                        Review volunteer and adoption applications.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="tab-buttons">
+
+                <button
+                    type="button"
+                    class="application-tab active"
+                    data-tab="volunteerApplications"
+                >
+                    Volunteer Applications
+                </button>
+
+
+                <button
+                    type="button"
+                    class="application-tab"
+                    data-tab="adoptionApplications"
+                >
+                    Adoption Applications
+                </button>
+
+            </div>
+
+
+
+            <div
+                class="application-content active"
+                id="volunteerApplications"
+            >
+
+                <div class="table-card">
+
+                    <p>
+                        Volunteer applications will appear here after the
+                        volunteer backend is connected.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <div
+                class="application-content"
+                id="adoptionApplications"
+            >
+
+                <div class="table-card">
+
+                    <p>
+                        Adoption applications will appear here after the
+                        adoption backend is connected.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- ==================================
+             STORIES
+        ================================== -->
+
+        <section
+            class="dashboard-section"
+            id="stories"
+        >
+
+
+            <div class="page-heading">
+
+                <div>
+
+                    <span>
+                        Impact Stories
+                    </span>
+
+                    <h1>
+                        Stories
+                    </h1>
+
+                    <p>
+                        Publish updates and success stories.
+                    </p>
+
+                </div>
+
+
+                <button
+                    class="primary-btn"
+                    type="button"
+                    id="newStoryBtn"
+                >
+
+                    <i class="fa-solid fa-plus"></i>
+
+                    Publish Story
+
+                </button>
+
+            </div>
+
+
+            <div class="management-grid">
+
+                <article class="management-card">
+
+                    <span class="category-tag">
+                        Coming Soon
+                    </span>
+
+                    <h3>
+                        Story Management
+                    </h3>
+
+                    <p>
+                        Story publishing will be connected in Phase 3.14.
+                    </p>
+
+                </article>
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- ==================================
+             PROFILE
+        ================================== -->
+
+        <section
+            class="dashboard-section"
+            id="profile"
+        >
+
+
+            <div class="page-heading">
+
+                <div>
+
+                    <span>
+                        Organisation Account
+                    </span>
+
+                    <h1>
+                        Organisation Profile
+                    </h1>
+
+                    <p>
+                        View your organisation information.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="profile-card">
+
+
+                <div class="organisation-profile-header">
+
+                    <div
+                        class="large-org-avatar"
+                        id="profileOrganisationAvatar"
+                    >
+                        KL
+                    </div>
+
+
+                    <div>
+
+                        <h2 id="profileOrganisationName">
+                            KindLink Organisation
+                        </h2>
+
+                        <p id="profileOrganisationLocation">
+                            Location
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+
+                <form id="profileForm">
+
+
+                    <div class="form-row">
 
 
                         <div class="form-group">
 
                             <label>
-                                Address
+                                Organisation Name
                             </label>
 
                             <input
                                 type="text"
-                                value="New Delhi, India"
+                                id="profileOrganisationNameInput"
                             >
 
                         </div>
@@ -1455,464 +1203,377 @@
                         <div class="form-group">
 
                             <label>
-                                About Organisation
+                                Organisation Type
                             </label>
 
-                            <textarea>
-Helping Hands Foundation supports education, meals and community development programmes.
-                            </textarea>
+                            <input
+                                type="text"
+                                id="profileOrganisationType"
+                            >
 
                         </div>
 
 
-                        <button
-                            type="submit"
-                            class="primary-btn"
-                        >
-                            Save Profile
-                        </button>
-
-                        <small id="profileMessage"></small>
-
-                    </form>
-
-                </div>
-
-            </section>
-
-        </main>
-
-    </div>
+                    </div>
 
 
-    <!-- ================= CREATE CAMPAIGN MODAL ================= -->
 
-    <div
-        class="modal-overlay"
-        id="campaignModal"
-    >
-
-        <div class="form-modal">
-
-            <div class="modal-heading">
-
-                <div>
-
-                    <span>Create Campaign</span>
-
-                    <h2>
-                        New Fundraising Campaign
-                    </h2>
-
-                </div>
-
-                <button class="close-modal">
-                    <i class="fa-solid fa-xmark"></i>
-                </button>
-
-            </div>
+                    <div class="form-row">
 
 
-            <form class="demo-form">
+                        <div class="form-group">
 
-                <div class="form-group">
+                            <label>
+                                Official Email
+                            </label>
 
-                    <label>
-                        Campaign Title
-                    </label>
+                            <input
+                                type="email"
+                                id="profileEmail"
+                            >
 
-                    <input
-                        type="text"
-                        placeholder="Enter campaign title"
-                        required
-                    >
-
-                </div>
+                        </div>
 
 
-                <div class="form-row">
+                        <div class="form-group">
 
-                    <div class="form-group">
+                            <label>
+                                Phone
+                            </label>
 
-                        <label>
-                            Category
-                        </label>
+                            <input
+                                type="tel"
+                                id="profilePhone"
+                            >
 
-                        <select required>
+                        </div>
 
-                            <option value="">
-                                Select category
-                            </option>
-
-                            <option>Education</option>
-                            <option>Health</option>
-                            <option>Environment</option>
-                            <option>Community</option>
-                            <option>Animals</option>
-                            <option>Emergency</option>
-
-                        </select>
 
                     </div>
+
+
+
+                    <div class="form-row">
+
+
+                        <div class="form-group">
+
+                            <label>
+                                Contact Person
+                            </label>
+
+                            <input
+                                type="text"
+                                id="profileContactName"
+                            >
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label>
+                                Designation
+                            </label>
+
+                            <input
+                                type="text"
+                                id="profileDesignation"
+                            >
+
+                        </div>
+
+
+                    </div>
+
 
 
                     <div class="form-group">
 
                         <label>
-                            Fundraising Goal
-                        </label>
-
-                        <input
-                            type="number"
-                            placeholder="₹ Amount"
-                            required
-                        >
-
-                    </div>
-
-                </div>
-
-
-                <div class="form-group">
-
-                    <label>
-                        Campaign Description
-                    </label>
-
-                    <textarea
-                        placeholder="Describe the campaign"
-                        required
-                    ></textarea>
-
-                </div>
-
-
-                <button
-                    type="submit"
-                    class="primary-btn modal-submit"
-                >
-                    Create Demo Campaign
-                </button>
-
-            </form>
-
-        </div>
-
-    </div>
-
-
-    <!-- ================= VOLUNTEER MODAL ================= -->
-
-    <div
-        class="modal-overlay"
-        id="volunteerModal"
-    >
-
-        <div class="form-modal">
-
-            <div class="modal-heading">
-
-                <div>
-                    <span>Volunteer Opportunity</span>
-                    <h2>Add Opportunity</h2>
-                </div>
-
-                <button class="close-modal">
-                    <i class="fa-solid fa-xmark"></i>
-                </button>
-
-            </div>
-
-
-            <form class="demo-form">
-
-                <div class="form-group">
-
-                    <label>
-                        Opportunity Title
-                    </label>
-
-                    <input
-                        type="text"
-                        placeholder="Example: Teaching Volunteer"
-                        required
-                    >
-
-                </div>
-
-
-                <div class="form-row">
-
-                    <div class="form-group">
-
-                        <label>Location</label>
-
-                        <input
-                            type="text"
-                            placeholder="City"
-                            required
-                        >
-
-                    </div>
-
-
-                    <div class="form-group">
-
-                        <label>Volunteers Needed</label>
-
-                        <input
-                            type="number"
-                            placeholder="Number"
-                            required
-                        >
-
-                    </div>
-
-                </div>
-
-
-                <div class="form-group">
-
-                    <label>Description</label>
-
-                    <textarea
-                        placeholder="Describe the volunteer role"
-                        required
-                    ></textarea>
-
-                </div>
-
-
-                <button
-                    type="submit"
-                    class="primary-btn modal-submit"
-                >
-                    Add Demo Opportunity
-                </button>
-
-            </form>
-
-        </div>
-
-    </div>
-
-
-    <!-- ================= ANIMAL MODAL ================= -->
-
-    <div
-        class="modal-overlay"
-        id="animalModal"
-    >
-
-        <div class="form-modal">
-
-            <div class="modal-heading">
-
-                <div>
-                    <span>Animal Adoption</span>
-                    <h2>Add Animal Listing</h2>
-                </div>
-
-                <button class="close-modal">
-                    <i class="fa-solid fa-xmark"></i>
-                </button>
-
-            </div>
-
-
-            <form class="demo-form">
-
-                <div class="form-row">
-
-                    <div class="form-group">
-
-                        <label>
-                            Animal Name
+                            Address
                         </label>
 
                         <input
                             type="text"
-                            placeholder="Name"
-                            required
+                            id="profileAddress"
                         >
 
                     </div>
 
 
-                    <div class="form-group">
 
-                        <label>
-                            Species
-                        </label>
+                    <div class="form-row">
 
-                        <select required>
 
-                            <option value="">
-                                Select
-                            </option>
+                        <div class="form-group">
 
-                            <option>Dog</option>
-                            <option>Cat</option>
-                            <option>Other</option>
+                            <label>
+                                City
+                            </label>
 
-                        </select>
+                            <input
+                                type="text"
+                                id="profileCity"
+                            >
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label>
+                                State
+                            </label>
+
+                            <input
+                                type="text"
+                                id="profileState"
+                            >
+
+                        </div>
+
 
                     </div>
 
-                </div>
 
-
-                <div class="form-row">
 
                     <div class="form-group">
 
-                        <label>Age</label>
+                        <label>
+                            Website
+                        </label>
 
                         <input
-                            type="text"
-                            placeholder="Example: 2 years"
+                            type="url"
+                            id="profileWebsite"
                         >
 
                     </div>
 
 
-                    <div class="form-group">
-
-                        <label>Gender</label>
-
-                        <select>
-
-                            <option>Male</option>
-                            <option>Female</option>
-
-                        </select>
-
-                    </div>
-
-                </div>
-
-
-                <div class="form-group">
-
-                    <label>Description</label>
-
-                    <textarea
-                        placeholder="Tell users about the animal"
-                        required
-                    ></textarea>
-
-                </div>
-
-
-                <button
-                    type="submit"
-                    class="primary-btn modal-submit"
-                >
-                    Add Demo Listing
-                </button>
-
-            </form>
-
-        </div>
-
-    </div>
-
-
-    <!-- ================= EMERGENCY MODAL ================= -->
-
-    <div
-        class="modal-overlay"
-        id="emergencyModal"
-    >
-
-        <div class="form-modal">
-
-            <div class="modal-heading">
-
-                <div>
-                    <span>Emergency Response</span>
-                    <h2>Report Emergency</h2>
-                </div>
-
-                <button class="close-modal">
-                    <i class="fa-solid fa-xmark"></i>
-                </button>
-
-            </div>
-
-
-            <form class="demo-form">
-
-                <div class="form-group">
-
-                    <label>
-                        Emergency Title
-                    </label>
-
-                    <input
-                        type="text"
-                        placeholder="Example: Flood Relief"
-                        required
-                    >
-
-                </div>
-
-
-                <div class="form-row">
 
                     <div class="form-group">
 
                         <label>
-                            Emergency Type
+                            Social Link
                         </label>
 
-                        <select required>
-
-                            <option value="">
-                                Select
-                            </option>
-
-                            <option>Flood</option>
-                            <option>Earthquake</option>
-                            <option>Fire</option>
-                            <option>Cyclone</option>
-                            <option>Landslide</option>
-                            <option>Other</option>
-
-                        </select>
+                        <input
+                            type="url"
+                            id="profileSocialLink"
+                        >
 
                     </div>
+
 
 
                     <div class="form-group">
 
                         <label>
-                            Severity
+                            About Organisation
                         </label>
 
-                        <select required>
-
-                            <option>Moderate</option>
-                            <option>High</option>
-                            <option>Critical</option>
-
-                        </select>
+                        <textarea
+                            id="profileDescription"
+                        ></textarea>
 
                     </div>
 
-                </div>
+
+
+                    <button
+                        type="submit"
+                        class="primary-btn"
+                    >
+                        Save Profile
+                    </button>
+
+
+                    <small id="profileMessage"></small>
+
+
+                </form>
+
+
+            </div>
+
+
+        </section>
+
+
+    </main>
+
+
+</div>
+
+
+
+<!-- ==========================================
+     CREATE CAMPAIGN MODAL
+========================================== -->
+
+<div
+    class="modal-overlay"
+    id="campaignModal"
+>
+
+    <div class="form-modal">
+
+
+        <div class="modal-heading">
+
+            <div>
+
+                <span>
+                    Fundraising Campaign
+                </span>
+
+                <h2>
+                    Create Campaign
+                </h2>
+
+            </div>
+
+
+            <button
+                type="button"
+                class="close-modal"
+            >
+
+                <i class="fa-solid fa-xmark"></i>
+
+            </button>
+
+        </div>
+
+
+
+        <form id="createCampaignForm">
+
+
+            <div class="form-group">
+
+                <label for="campaignTitle">
+                    Campaign Title
+                </label>
+
+                <input
+                    type="text"
+                    id="campaignTitle"
+                    placeholder="Example: Education for Every Child"
+                    required
+                >
+
+            </div>
+
+
+
+            <div class="form-group">
+
+                <label for="campaignCategory">
+                    Category
+                </label>
+
+
+                <select
+                    id="campaignCategory"
+                    required
+                >
+
+                    <option value="">
+                        Select Category
+                    </option>
+
+                    <option value="Education">
+                        Education
+                    </option>
+
+                    <option value="Healthcare">
+                        Healthcare
+                    </option>
+
+                    <option value="Environment">
+                        Environment
+                    </option>
+
+                    <option value="Animals">
+                        Animals
+                    </option>
+
+                    <option value="Community">
+                        Community
+                    </option>
+
+                    <option value="Women Empowerment">
+                        Women Empowerment
+                    </option>
+
+                    <option value="Child Welfare">
+                        Child Welfare
+                    </option>
+
+                    <option value="Disaster Relief">
+                        Disaster Relief
+                    </option>
+
+                    <option value="Other">
+                        Other
+                    </option>
+
+                </select>
+
+            </div>
+
+
+
+            <div class="form-group">
+
+                <label for="campaignDescription">
+                    Description
+                </label>
+
+                <textarea
+                    id="campaignDescription"
+                    placeholder="Describe your campaign..."
+                    required
+                ></textarea>
+
+            </div>
+
+
+
+            <div class="form-group">
+
+                <label for="campaignGoal">
+                    Fundraising Goal (₹)
+                </label>
+
+                <input
+                    type="number"
+                    id="campaignGoal"
+                    min="1"
+                    placeholder="50000"
+                    required
+                >
+
+            </div>
+
+
+
+            <div class="form-row">
 
 
                 <div class="form-group">
 
-                    <label>
-                        Location
+                    <label for="campaignCity">
+                        City
                     </label>
 
                     <input
                         type="text"
-                        placeholder="Affected location"
-                        required
+                        id="campaignCity"
+                        placeholder="Delhi"
                     >
 
                 </div>
@@ -1920,100 +1581,499 @@ Helping Hands Foundation supports education, meals and community development pro
 
                 <div class="form-group">
 
-                    <label>
-                        Immediate Requirements
+                    <label for="campaignState">
+                        State
                     </label>
 
-                    <textarea
-                        placeholder="Food, shelter, rescue, medicines..."
-                        required
-                    ></textarea>
+                    <input
+                        type="text"
+                        id="campaignState"
+                        placeholder="Delhi"
+                    >
 
                 </div>
 
 
-                <div class="warning-box">
+            </div>
 
-                    <i class="fa-solid fa-circle-info"></i>
 
-                    <p>
-                        In the final KindLink system, emergency reports
-                        will require administrator verification before
-                        becoming publicly active.
-                    </p>
+
+            <div class="form-row">
+
+
+                <div class="form-group">
+
+                    <label for="campaignStartDate">
+                        Start Date
+                    </label>
+
+                    <input
+                        type="date"
+                        id="campaignStartDate"
+                    >
 
                 </div>
 
 
-                <button
-                    type="submit"
-                    class="danger-btn modal-submit"
+                <div class="form-group">
+
+                    <label for="campaignEndDate">
+                        End Date
+                    </label>
+
+                    <input
+                        type="date"
+                        id="campaignEndDate"
+                    >
+
+                </div>
+
+
+            </div>
+
+
+
+            <div class="form-group">
+
+                <label for="campaignImage">
+                    Image URL
+                </label>
+
+                <input
+                    type="url"
+                    id="campaignImage"
+                    placeholder="https://example.com/image.jpg"
                 >
-                    Submit Demo Emergency
-                </button>
-
-            </form>
-
-        </div>
-
-    </div>
-
-
-    <!-- SUCCESS TOAST -->
-
-    <div class="toast" id="toast">
-
-        <i class="fa-solid fa-circle-check"></i>
-
-        <div>
-            <strong>Demo action completed</strong>
-            <p id="toastMessage">
-                Changes saved.
-            </p>
-        </div>
-
-    </div>
-
-
-    <!-- LOGOUT MODAL -->
-
-    <div
-        class="modal-overlay"
-        id="logoutModal"
-    >
-
-        <div class="logout-modal">
-
-            <div class="logout-icon">
-                <i class="fa-solid fa-right-from-bracket"></i>
-            </div>
-
-            <h2>
-                Logout from KindLink?
-            </h2>
-
-            <p>
-                You will return to the login page.
-            </p>
-
-            <div class="logout-actions">
-
-                <button id="cancelLogout">
-                    Cancel
-                </button>
-
-                <button id="confirmLogout">
-                    Logout
-                </button>
 
             </div>
 
-        </div>
+
+
+            <button
+                type="submit"
+                class="primary-btn modal-submit"
+                id="createCampaignSubmitBtn"
+            >
+
+                <i class="fa-solid fa-plus"></i>
+
+                Create Campaign
+
+            </button>
+
+
+        </form>
+
 
     </div>
 
+</div>
 
-    <script src="../js/organisation-dashboard.js"></script>
+
+
+<!-- ==========================================
+     VOLUNTEER MODAL
+========================================== -->
+
+<div
+    class="modal-overlay"
+    id="volunteerModal"
+>
+
+    <div class="form-modal">
+
+        <div class="modal-heading">
+
+            <div>
+
+                <span>
+                    Volunteer Opportunity
+                </span>
+
+                <h2>
+                    Add Opportunity
+                </h2>
+
+            </div>
+
+
+            <button
+                type="button"
+                class="close-modal"
+            >
+
+                <i class="fa-solid fa-xmark"></i>
+
+            </button>
+
+        </div>
+
+
+        <form class="demo-form">
+
+            <div class="form-group">
+
+                <label>
+                    Opportunity Title
+                </label>
+
+                <input
+                    type="text"
+                    placeholder="Teaching Volunteer"
+                    required
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    Location
+                </label>
+
+                <input
+                    type="text"
+                    placeholder="City"
+                    required
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    Description
+                </label>
+
+                <textarea
+                    placeholder="Describe the volunteer opportunity"
+                    required
+                ></textarea>
+
+            </div>
+
+
+            <button
+                type="submit"
+                class="primary-btn modal-submit"
+            >
+                Add Demo Opportunity
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+
+<!-- ==========================================
+     ANIMAL MODAL
+========================================== -->
+
+<div
+    class="modal-overlay"
+    id="animalModal"
+>
+
+    <div class="form-modal">
+
+        <div class="modal-heading">
+
+            <div>
+
+                <span>
+                    Animal Adoption
+                </span>
+
+                <h2>
+                    Add Animal Listing
+                </h2>
+
+            </div>
+
+
+            <button
+                type="button"
+                class="close-modal"
+            >
+
+                <i class="fa-solid fa-xmark"></i>
+
+            </button>
+
+        </div>
+
+
+        <form class="demo-form">
+
+
+            <div class="form-group">
+
+                <label>
+                    Animal Name
+                </label>
+
+                <input
+                    type="text"
+                    placeholder="Name"
+                    required
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    Species
+                </label>
+
+                <select required>
+
+                    <option value="">
+                        Select
+                    </option>
+
+                    <option>
+                        Dog
+                    </option>
+
+                    <option>
+                        Cat
+                    </option>
+
+                    <option>
+                        Other
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    Description
+                </label>
+
+                <textarea
+                    placeholder="Tell users about the animal"
+                    required
+                ></textarea>
+
+            </div>
+
+
+            <button
+                type="submit"
+                class="primary-btn modal-submit"
+            >
+                Add Demo Listing
+            </button>
+
+
+        </form>
+
+    </div>
+
+</div>
+
+
+
+<!-- ==========================================
+     EMERGENCY MODAL
+========================================== -->
+
+<div
+    class="modal-overlay"
+    id="emergencyModal"
+>
+
+    <div class="form-modal">
+
+
+        <div class="modal-heading">
+
+            <div>
+
+                <span>
+                    Emergency Response
+                </span>
+
+                <h2>
+                    Report Emergency
+                </h2>
+
+            </div>
+
+
+            <button
+                type="button"
+                class="close-modal"
+            >
+
+                <i class="fa-solid fa-xmark"></i>
+
+            </button>
+
+        </div>
+
+
+
+        <form class="demo-form">
+
+
+            <div class="form-group">
+
+                <label>
+                    Emergency Title
+                </label>
+
+                <input
+                    type="text"
+                    placeholder="Example: Flood Relief"
+                    required
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    Location
+                </label>
+
+                <input
+                    type="text"
+                    placeholder="Affected location"
+                    required
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    Immediate Requirements
+                </label>
+
+                <textarea
+                    placeholder="Food, shelter, rescue, medicines..."
+                    required
+                ></textarea>
+
+            </div>
+
+
+            <button
+                type="submit"
+                class="danger-btn modal-submit"
+            >
+                Submit Demo Emergency
+            </button>
+
+
+        </form>
+
+
+    </div>
+
+</div>
+
+
+
+<!-- ==========================================
+     TOAST
+========================================== -->
+
+<div
+    class="toast"
+    id="toast"
+>
+
+    <i class="fa-solid fa-circle-check"></i>
+
+    <div>
+
+        <strong>
+            KindLink
+        </strong>
+
+        <p id="toastMessage">
+            Changes saved.
+        </p>
+
+    </div>
+
+</div>
+
+
+
+<!-- ==========================================
+     LOGOUT MODAL
+========================================== -->
+
+<div
+    class="modal-overlay"
+    id="logoutModal"
+>
+
+    <div class="logout-modal">
+
+
+        <div class="logout-icon">
+
+            <i class="fa-solid fa-right-from-bracket"></i>
+
+        </div>
+
+
+        <h2>
+            Logout from KindLink?
+        </h2>
+
+
+        <p>
+            You will return to the login page.
+        </p>
+
+
+        <div class="logout-actions">
+
+            <button
+                id="cancelLogout"
+                type="button"
+            >
+                Cancel
+            </button>
+
+
+            <button
+                id="confirmLogout"
+                type="button"
+            >
+                Logout
+            </button>
+
+        </div>
+
+
+    </div>
+
+</div>
+
+
+
+<script src="../js/organisation-dashboard.js"></script>
+
 
 </body>
+
 </html>

@@ -4,7 +4,7 @@
 
 
 // ==========================================
-// ELEMENTS
+// DOM ELEMENTS
 // ==========================================
 
 const organisationForm =
@@ -19,8 +19,14 @@ const organisationType =
 const registrationNumber =
     document.getElementById("registrationNumber");
 
+const yearEstablished =
+    document.getElementById("yearEstablished");
+
 const contactName =
     document.getElementById("contactName");
+
+const designation =
+    document.getElementById("designation");
 
 const email =
     document.getElementById("email");
@@ -40,8 +46,11 @@ const state =
 const description =
     document.getElementById("description");
 
-const verificationDocument =
-    document.getElementById("verificationDocument");
+const website =
+    document.getElementById("website");
+
+const socialLink =
+    document.getElementById("socialLink");
 
 const password =
     document.getElementById("password");
@@ -49,12 +58,15 @@ const password =
 const confirmPassword =
     document.getElementById("confirmPassword");
 
+const verificationDocument =
+    document.getElementById("verificationDocument");
+
 const terms =
     document.getElementById("terms");
 
 
 // ==========================================
-// ERRORS
+// ERROR ELEMENTS
 // ==========================================
 
 const organisationNameError =
@@ -87,31 +99,25 @@ const stateError =
 const descriptionError =
     document.getElementById("descriptionError");
 
-const documentError =
-    document.getElementById("documentError");
-
 const passwordError =
     document.getElementById("passwordError");
 
 const confirmPasswordError =
     document.getElementById("confirmPasswordError");
 
+const documentError =
+    document.getElementById("documentError");
+
 const termsError =
     document.getElementById("termsError");
 
 
 // ==========================================
-// EXTRA ELEMENTS
+// OTHER ELEMENTS
 // ==========================================
 
 const togglePassword =
     document.getElementById("togglePassword");
-
-const fileName =
-    document.getElementById("fileName");
-
-const characterCount =
-    document.getElementById("characterCount");
 
 const successModal =
     document.getElementById("successModal");
@@ -124,6 +130,12 @@ const menuBtn =
 
 const navLinks =
     document.querySelector(".nav-links");
+
+const strengthIndicator =
+    document.getElementById("strengthIndicator");
+
+const strengthText =
+    document.getElementById("strengthText");
 
 
 // ==========================================
@@ -141,143 +153,207 @@ function validateEmail(value) {
 
 
 // ==========================================
-// PHONE
+// PHONE INPUT
 // ==========================================
 
-phone.addEventListener("input", function () {
+if (phone) {
 
-    this.value =
-        this.value.replace(/\D/g, "");
+    phone.addEventListener(
+        "input",
+        function () {
 
-    phoneError.textContent = "";
+            this.value =
+                this.value.replace(/\D/g, "");
 
-});
-
-
-// ==========================================
-// DESCRIPTION COUNT
-// ==========================================
-
-description.addEventListener("input", function () {
-
-    characterCount.textContent =
-        `${description.value.length} / 500`;
-
-    descriptionError.textContent = "";
-
-});
-
-
-// ==========================================
-// FILE NAME
-// ==========================================
-
-verificationDocument.addEventListener(
-    "change",
-    function () {
-
-        documentError.textContent = "";
-
-        if (
-            verificationDocument.files.length > 0
-        ) {
-
-            const file =
-                verificationDocument.files[0];
-
-            fileName.textContent =
-                file.name;
+            if (phoneError) {
+                phoneError.textContent = "";
+            }
 
         }
+    );
 
-        else {
+}
 
-            fileName.textContent =
-                "No file selected";
+
+// ==========================================
+// SHOW / HIDE PASSWORD
+// ==========================================
+
+if (togglePassword && password) {
+
+    togglePassword.addEventListener(
+        "click",
+        function () {
+
+            const icon =
+                togglePassword.querySelector("i");
+
+
+            if (password.type === "password") {
+
+                password.type = "text";
+
+                if (icon) {
+
+                    icon.classList.remove(
+                        "fa-eye"
+                    );
+
+                    icon.classList.add(
+                        "fa-eye-slash"
+                    );
+
+                }
+
+            } else {
+
+                password.type = "password";
+
+                if (icon) {
+
+                    icon.classList.remove(
+                        "fa-eye-slash"
+                    );
+
+                    icon.classList.add(
+                        "fa-eye"
+                    );
+
+                }
+
+            }
 
         }
+    );
+
+}
+
+
+// ==========================================
+// PASSWORD STRENGTH
+// ==========================================
+
+if (password) {
+
+    password.addEventListener(
+        "input",
+        function () {
+
+            const value =
+                password.value;
+
+            let strength = 0;
+
+
+            if (value.length >= 6) {
+                strength++;
+            }
+
+
+            if (/[A-Z]/.test(value)) {
+                strength++;
+            }
+
+
+            if (/[0-9]/.test(value)) {
+                strength++;
+            }
+
+
+            if (/[^A-Za-z0-9]/.test(value)) {
+                strength++;
+            }
+
+
+            updatePasswordStrength(
+                strength
+            );
+
+
+            if (passwordError) {
+                passwordError.textContent = "";
+            }
+
+        }
+    );
+
+}
+
+
+function updatePasswordStrength(strength) {
+
+    if (
+        !strengthIndicator ||
+        !strengthText
+    ) {
+        return;
+    }
+
+
+    if (password.value.length === 0) {
+
+        strengthIndicator.style.width =
+            "0";
+
+        strengthText.textContent =
+            "Password strength";
+
+        return;
 
     }
-);
 
 
-// ==========================================
-// SHOW PASSWORD
-// ==========================================
+    if (strength === 1) {
 
-togglePassword.addEventListener(
-    "click",
-    function () {
+        strengthIndicator.style.width =
+            "25%";
 
-        const icon =
-            togglePassword.querySelector("i");
+        strengthIndicator.style.background =
+            "#d94a4a";
 
-
-        if (password.type === "password") {
-
-            password.type = "text";
-
-            icon.classList.remove(
-                "fa-eye"
-            );
-
-            icon.classList.add(
-                "fa-eye-slash"
-            );
-
-        }
-
-        else {
-
-            password.type = "password";
-
-            icon.classList.remove(
-                "fa-eye-slash"
-            );
-
-            icon.classList.add(
-                "fa-eye"
-            );
-
-        }
+        strengthText.textContent =
+            "Weak password";
 
     }
-);
 
+    else if (strength === 2) {
 
-// ==========================================
-// CLEAR ERRORS
-// ==========================================
+        strengthIndicator.style.width =
+            "50%";
 
-function clearErrors() {
+        strengthIndicator.style.background =
+            "#e3a12c";
 
-    organisationNameError.textContent = "";
+        strengthText.textContent =
+            "Fair password";
 
-    organisationTypeError.textContent = "";
+    }
 
-    registrationNumberError.textContent = "";
+    else if (strength === 3) {
 
-    contactNameError.textContent = "";
+        strengthIndicator.style.width =
+            "75%";
 
-    emailError.textContent = "";
+        strengthIndicator.style.background =
+            "#79a839";
 
-    phoneError.textContent = "";
+        strengthText.textContent =
+            "Good password";
 
-    addressError.textContent = "";
+    }
 
-    cityError.textContent = "";
+    else {
 
-    stateError.textContent = "";
+        strengthIndicator.style.width =
+            "100%";
 
-    descriptionError.textContent = "";
+        strengthIndicator.style.background =
+            "#218956";
 
-    documentError.textContent = "";
+        strengthText.textContent =
+            "Strong password";
 
-    passwordError.textContent = "";
-
-    confirmPasswordError.textContent = "";
-
-    termsError.textContent = "";
+    }
 
 }
 
@@ -286,521 +362,741 @@ function clearErrors() {
 // FORM SUBMISSION
 // ==========================================
 
-organisationForm.addEventListener(
-    "submit",
-    function (event) {
+if (organisationForm) {
 
-        event.preventDefault();
+    organisationForm.addEventListener(
+        "submit",
+        async function (event) {
 
-        clearErrors();
+            event.preventDefault();
 
-        let valid = true;
+            clearErrors();
 
+            let valid = true;
 
-        // ORGANISATION NAME
 
-        if (
-            organisationName.value.trim() === ""
-        ) {
+            // ==================================
+            // ORGANISATION NAME
+            // ==================================
 
-            organisationNameError.textContent =
-                "Please enter the organisation name.";
+            if (
+                organisationName.value.trim() === ""
+            ) {
 
-            valid = false;
+                organisationNameError.textContent =
+                    "Please enter organisation name.";
 
-        }
+                valid = false;
 
+            }
 
-        // ORGANISATION TYPE
 
-        if (
-            organisationType.value === ""
-        ) {
+            // ==================================
+            // ORGANISATION TYPE
+            // ==================================
 
-            organisationTypeError.textContent =
-                "Please select organisation type.";
+            if (
+                organisationType.value === ""
+            ) {
 
-            valid = false;
+                organisationTypeError.textContent =
+                    "Please select organisation type.";
 
-        }
+                valid = false;
 
+            }
 
-        // REGISTRATION NUMBER
 
-        if (
-            registrationNumber.value.trim() === ""
-        ) {
+            // ==================================
+            // REGISTRATION NUMBER
+            // ==================================
 
-            registrationNumberError.textContent =
-                "Please enter the registration number.";
+            if (
+                registrationNumber.value.trim() === ""
+            ) {
 
-            valid = false;
+                registrationNumberError.textContent =
+                    "Please enter registration number.";
 
-        }
+                valid = false;
 
+            }
 
-        // CONTACT PERSON
 
-        if (
-            contactName.value.trim() === ""
-        ) {
+            // ==================================
+            // CONTACT PERSON
+            // ==================================
 
-            contactNameError.textContent =
-                "Please enter the contact person's name.";
+            if (
+                contactName.value.trim() === ""
+            ) {
 
-            valid = false;
+                contactNameError.textContent =
+                    "Please enter contact person name.";
 
-        }
+                valid = false;
 
+            }
 
-        // EMAIL
 
-        if (
-            email.value.trim() === ""
-        ) {
+            // ==================================
+            // EMAIL
+            // ==================================
 
-            emailError.textContent =
-                "Please enter the organisation email.";
+            if (email.value.trim() === "") {
 
-            valid = false;
+                emailError.textContent =
+                    "Please enter official email.";
 
-        }
+                valid = false;
 
-        else if (
-            !validateEmail(email.value.trim())
-        ) {
+            }
 
-            emailError.textContent =
-                "Please enter a valid email address.";
+            else if (
+                !validateEmail(
+                    email.value.trim()
+                )
+            ) {
 
-            valid = false;
+                emailError.textContent =
+                    "Please enter a valid email address.";
 
-        }
+                valid = false;
 
+            }
 
-        // PHONE
 
-        if (
-            phone.value.length !== 10
-        ) {
+            // ==================================
+            // PHONE
+            // ==================================
 
-            phoneError.textContent =
-                "Phone number must contain 10 digits.";
+            if (phone.value.trim() === "") {
 
-            valid = false;
+                phoneError.textContent =
+                    "Please enter phone number.";
 
-        }
+                valid = false;
 
+            }
 
-        // ADDRESS
+            else if (
+                phone.value.trim().length !== 10
+            ) {
 
-        if (
-            address.value.trim() === ""
-        ) {
+                phoneError.textContent =
+                    "Phone number must contain 10 digits.";
 
-            addressError.textContent =
-                "Please enter the organisation address.";
+                valid = false;
 
-            valid = false;
+            }
 
-        }
 
+            // ==================================
+            // ADDRESS
+            // ==================================
 
-        // CITY
+            if (address.value.trim() === "") {
 
-        if (
-            city.value.trim() === ""
-        ) {
+                addressError.textContent =
+                    "Please enter organisation address.";
 
-            cityError.textContent =
-                "Please enter the city.";
+                valid = false;
 
-            valid = false;
+            }
 
-        }
 
+            // ==================================
+            // CITY
+            // ==================================
 
-        // STATE
+            if (city.value.trim() === "") {
 
-        if (
-            state.value.trim() === ""
-        ) {
+                cityError.textContent =
+                    "Please enter city.";
 
-            stateError.textContent =
-                "Please enter the state.";
+                valid = false;
 
-            valid = false;
+            }
 
-        }
 
+            // ==================================
+            // STATE
+            // ==================================
 
-        // DESCRIPTION
+            if (state.value.trim() === "") {
 
-        if (
-            description.value.trim() === ""
-        ) {
+                stateError.textContent =
+                    "Please enter state.";
 
-            descriptionError.textContent =
-                "Please describe your organisation.";
+                valid = false;
 
-            valid = false;
+            }
 
-        }
 
-        else if (
-            description.value.trim().length < 30
-        ) {
+            // ==================================
+            // DESCRIPTION
+            // ==================================
 
-            descriptionError.textContent =
-                "Please provide at least 30 characters.";
+            if (
+                description.value.trim() === ""
+            ) {
 
-            valid = false;
+                descriptionError.textContent =
+                    "Please describe your organisation.";
 
-        }
+                valid = false;
 
+            }
 
-        // DOCUMENT
+            else if (
+                description.value.trim().length > 500
+            ) {
 
-        if (
-            verificationDocument.files.length === 0
-        ) {
+                descriptionError.textContent =
+                    "Description cannot exceed 500 characters.";
 
-            documentError.textContent =
-                "Please upload a verification document.";
+                valid = false;
 
-            valid = false;
+            }
 
-        }
 
+            // ==================================
+            // PASSWORD
+            // ==================================
 
-        // PASSWORD
+            if (password.value === "") {
 
-        if (
-            password.value.length < 6
-        ) {
+                passwordError.textContent =
+                    "Please create a password.";
 
-            passwordError.textContent =
-                "Password must contain at least 6 characters.";
+                valid = false;
 
-            valid = false;
+            }
 
-        }
+            else if (
+                password.value.length < 6
+            ) {
 
+                passwordError.textContent =
+                    "Password must contain at least 6 characters.";
 
-        // CONFIRM PASSWORD
+                valid = false;
 
-        if (
-            confirmPassword.value === ""
-        ) {
+            }
 
-            confirmPasswordError.textContent =
-                "Please confirm your password.";
 
-            valid = false;
+            // ==================================
+            // CONFIRM PASSWORD
+            // ==================================
 
-        }
+            if (
+                confirmPassword.value === ""
+            ) {
 
-        else if (
-            password.value !==
-            confirmPassword.value
-        ) {
+                confirmPasswordError.textContent =
+                    "Please confirm your password.";
 
-            confirmPasswordError.textContent =
-                "Passwords do not match.";
+                valid = false;
 
-            valid = false;
+            }
 
-        }
+            else if (
+                password.value !==
+                confirmPassword.value
+            ) {
 
+                confirmPasswordError.textContent =
+                    "Passwords do not match.";
 
-        // TERMS
+                valid = false;
 
-        if (!terms.checked) {
+            }
 
-            termsError.textContent =
-                "Please accept the verification terms.";
 
-            valid = false;
+            // ==================================
+            // DOCUMENT
+            // ==================================
 
-        }
+            if (
+                verificationDocument &&
+                verificationDocument.files.length === 0
+            ) {
 
+                if (documentError) {
 
-        // STOP IF INVALID
+                    documentError.textContent =
+                        "Please select a verification document.";
 
-        if (!valid) {
+                }
 
-            return;
+                valid = false;
 
-        }
+            }
 
 
-        // ==========================================
-        // SELECTED CAUSES
-        // ==========================================
+            // ==================================
+            // TERMS
+            // ==================================
 
-        const causes = [];
+            if (!terms.checked) {
 
-        document
-            .querySelectorAll(
-                'input[name="cause"]:checked'
-            )
-            .forEach(function (item) {
+                termsError.textContent =
+                    "You must accept the terms and conditions.";
 
-                causes.push(item.value);
+                valid = false;
 
-            });
+            }
 
 
-        // ==========================================
-        // ORGANISATION OBJECT
-        // ==========================================
+            // ==================================
+            // STOP IF INVALID
+            // ==================================
 
-        const organisationData = {
+            if (!valid) {
+                return;
+            }
 
-            organisationName:
-                organisationName.value.trim(),
 
-            organisationType:
-                organisationType.value,
+            // ==================================
+            // GET SELECTED CAUSES
+            // ==================================
 
-            registrationNumber:
-                registrationNumber.value.trim(),
+            const selectedCauses = [];
 
-            yearEstablished:
-                document
-                    .getElementById(
-                        "yearEstablished"
-                    )
-                    .value,
+            const causeInputs =
+                document.querySelectorAll(
+                    'input[name="cause"]:checked'
+                );
 
-            contactPerson: {
 
-                name:
-                    contactName.value.trim(),
+            causeInputs.forEach(
+                function (item) {
 
-                designation:
-                    document
-                        .getElementById(
-                            "designation"
+                    selectedCauses.push(
+                        item.value
+                    );
+
+                }
+            );
+
+
+            // ==================================
+            // ORGANISATION DATA
+            // ==================================
+
+            const organisationData = {
+
+                organisationName:
+                    organisationName.value.trim(),
+
+                organisationType:
+                    organisationType.value,
+
+                registrationNumber:
+                    registrationNumber.value.trim(),
+
+                yearEstablished:
+                    yearEstablished &&
+                    yearEstablished.value
+                        ? Number(
+                            yearEstablished.value
                         )
-                        .value
-                        .trim(),
+                        : null,
+
+                contactPerson: {
+
+                    name:
+                        contactName.value.trim(),
+
+                    designation:
+                        designation
+                            ? designation.value.trim()
+                            : ""
+
+                },
 
                 email:
-                    email.value.trim(),
+                    email.value
+                        .trim()
+                        .toLowerCase(),
 
                 phone:
-                    phone.value.trim()
+                    phone.value.trim(),
 
-            },
+                location: {
 
-            location: {
+                    address:
+                        address.value.trim(),
 
-                address:
-                    address.value.trim(),
+                    city:
+                        city.value.trim(),
 
-                city:
-                    city.value.trim(),
+                    state:
+                        state.value.trim()
 
-                state:
-                    state.value.trim()
+                },
 
-            },
+                causes:
+                    selectedCauses,
 
-            causes:
-                causes,
+                description:
+                    description.value.trim(),
 
-            description:
-                description.value.trim(),
+                website:
+                    website
+                        ? website.value.trim()
+                        : "",
 
-            website:
-                document
-                    .getElementById(
-                        "website"
-                    )
-                    .value
-                    .trim(),
+                socialLink:
+                    socialLink
+                        ? socialLink.value.trim()
+                        : "",
 
-            socialLink:
-                document
-                    .getElementById(
-                        "socialLink"
-                    )
-                    .value
-                    .trim(),
+                password:
+                    password.value
 
-            verificationStatus:
-                "pending"
-
-        };
+            };
 
 
-        console.log(
-            "KindLink Organisation:",
-            organisationData
-        );
+            console.log(
+                "Sending organisation:",
+                organisationData
+            );
 
 
-        /*
-        ==========================================
-        BACKEND PHASE
+            // ==================================
+            // SEND TO BACKEND
+            // ==================================
 
-        Later this data will be submitted using:
+            try {
 
-        POST /api/auth/register/organisation
+                const response =
+                    await fetch(
+                        "http://localhost:5000/api/organisations/auth/register",
+                        {
+                            method: "POST",
 
-        The verification document will use
-        FormData / multipart upload.
+                            headers: {
+                                "Content-Type":
+                                    "application/json"
+                            },
 
-        MongoDB will store:
-
-        verificationStatus: "pending"
-
-        Passwords must be hashed with bcrypt
-        on the backend.
-
-        ==========================================
-        */
+                            body:
+                                JSON.stringify(
+                                    organisationData
+                                )
+                        }
+                    );
 
 
-        successModal.classList.add(
-            "show"
-        );
+                const data =
+                    await response.json();
 
-    }
-);
+
+                // ==================================
+                // BACKEND ERROR
+                // ==================================
+
+                if (!response.ok) {
+
+                    console.error(
+                        "Registration failed:",
+                        data
+                    );
+
+
+                    if (
+                        data.message ===
+                        "Organisation with this email already exists"
+                    ) {
+
+                        emailError.textContent =
+                            "An organisation with this email already exists.";
+
+                        email.focus();
+
+                        return;
+
+                    }
+
+
+                    if (
+                        data.message ===
+                        "Organisation registration number already exists"
+                    ) {
+
+                        registrationNumberError.textContent =
+                            "This registration number is already registered.";
+
+                        registrationNumber.focus();
+
+                        return;
+
+                    }
+
+
+                    alert(
+                        data.message ||
+                        "Organisation registration failed."
+                    );
+
+                    return;
+
+                }
+
+
+                // ==================================
+                // SUCCESS
+                // ==================================
+
+                console.log(
+                    "Organisation registered:",
+                    data.organisation
+                );
+
+
+                organisationForm.reset();
+
+
+                if (
+                    strengthIndicator &&
+                    strengthText
+                ) {
+
+                    strengthIndicator.style.width =
+                        "0";
+
+                    strengthText.textContent =
+                        "Password strength";
+
+                }
+
+
+                if (successModal) {
+
+                    successModal.classList.add(
+                        "show"
+                    );
+
+                } else {
+
+                    alert(
+                        "Organisation registration submitted successfully."
+                    );
+
+                    window.location.href =
+                        "login.html";
+
+                }
+
+            }
+
+            catch (error) {
+
+                console.error(
+                    "Organisation registration error:",
+                    error
+                );
+
+
+                alert(
+                    "Unable to connect to the KindLink server. Make sure the backend is running."
+                );
+
+            }
+
+        }
+    );
+
+}
 
 
 // ==========================================
-// RETURN TO LOGIN
+// CLEAR ERRORS
 // ==========================================
 
-continueBtn.addEventListener(
-    "click",
-    function () {
+function clearErrors() {
 
-        window.location.href =
-            "login.html";
+    const errors = [
 
-    }
-);
+        organisationNameError,
+        organisationTypeError,
+        registrationNumberError,
+        contactNameError,
+        emailError,
+        phoneError,
+        addressError,
+        cityError,
+        stateError,
+        descriptionError,
+        passwordError,
+        confirmPasswordError,
+        documentError,
+        termsError
+
+    ];
+
+
+    errors.forEach(
+        function (errorElement) {
+
+            if (errorElement) {
+
+                errorElement.textContent =
+                    "";
+
+            }
+
+        }
+    );
+
+}
+
+
+// ==========================================
+// CONTINUE TO LOGIN
+// ==========================================
+
+if (continueBtn) {
+
+    continueBtn.addEventListener(
+        "click",
+        function () {
+
+            window.location.href =
+                "login.html";
+
+        }
+    );
+
+}
 
 
 // ==========================================
 // MOBILE NAVIGATION
 // ==========================================
 
-menuBtn.addEventListener(
-    "click",
-    function () {
+if (menuBtn && navLinks) {
 
-        navLinks.classList.toggle(
-            "active"
-        );
+    menuBtn.addEventListener(
+        "click",
+        function () {
+
+            navLinks.classList.toggle(
+                "active"
+            );
+
+        }
+    );
+
+}
+
+
+// ==========================================
+// CLEAR ERRORS WHILE TYPING
+// ==========================================
+
+const fieldErrorPairs = [
+
+    [organisationName, organisationNameError],
+    [registrationNumber, registrationNumberError],
+    [contactName, contactNameError],
+    [email, emailError],
+    [address, addressError],
+    [city, cityError],
+    [state, stateError],
+    [description, descriptionError],
+    [confirmPassword, confirmPasswordError]
+
+];
+
+
+fieldErrorPairs.forEach(
+    function (pair) {
+
+        const field =
+            pair[0];
+
+        const errorElement =
+            pair[1];
+
+
+        if (field && errorElement) {
+
+            field.addEventListener(
+                "input",
+                function () {
+
+                    errorElement.textContent =
+                        "";
+
+                }
+            );
+
+        }
 
     }
 );
 
 
 // ==========================================
-// CLEAR INDIVIDUAL ERRORS
+// ORGANISATION TYPE ERROR
 // ==========================================
 
-organisationName.addEventListener(
-    "input",
-    function () {
+if (
+    organisationType &&
+    organisationTypeError
+) {
 
-        organisationNameError.textContent = "";
+    organisationType.addEventListener(
+        "change",
+        function () {
 
-    }
-);
+            organisationTypeError.textContent =
+                "";
 
-organisationType.addEventListener(
-    "change",
-    function () {
+        }
+    );
 
-        organisationTypeError.textContent = "";
+}
 
-    }
-);
 
-registrationNumber.addEventListener(
-    "input",
-    function () {
+// ==========================================
+// DOCUMENT ERROR
+// ==========================================
 
-        registrationNumberError.textContent = "";
+if (
+    verificationDocument &&
+    documentError
+) {
 
-    }
-);
+    verificationDocument.addEventListener(
+        "change",
+        function () {
 
-contactName.addEventListener(
-    "input",
-    function () {
+            documentError.textContent =
+                "";
 
-        contactNameError.textContent = "";
+        }
+    );
 
-    }
-);
+}
 
-email.addEventListener(
-    "input",
-    function () {
 
-        emailError.textContent = "";
+// ==========================================
+// TERMS ERROR
+// ==========================================
 
-    }
-);
+if (terms && termsError) {
 
-address.addEventListener(
-    "input",
-    function () {
+    terms.addEventListener(
+        "change",
+        function () {
 
-        addressError.textContent = "";
+            termsError.textContent =
+                "";
 
-    }
-);
+        }
+    );
 
-city.addEventListener(
-    "input",
-    function () {
-
-        cityError.textContent = "";
-
-    }
-);
-
-state.addEventListener(
-    "input",
-    function () {
-
-        stateError.textContent = "";
-
-    }
-);
-
-password.addEventListener(
-    "input",
-    function () {
-
-        passwordError.textContent = "";
-
-    }
-);
-
-confirmPassword.addEventListener(
-    "input",
-    function () {
-
-        confirmPasswordError.textContent = "";
-
-    }
-);
-
-terms.addEventListener(
-    "change",
-    function () {
-
-        termsError.textContent = "";
-
-    }
-);
+}

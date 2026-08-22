@@ -9,6 +9,7 @@
 
 const userBtn = document.getElementById("userBtn");
 const organisationBtn = document.getElementById("organisationBtn");
+
 const accountType = document.getElementById("accountType");
 
 const registerBtn = document.getElementById("registerBtn");
@@ -35,7 +36,7 @@ const navLinks = document.querySelector(".nav-links");
 
 
 // =======================================
-// ACCOUNT TYPE
+// ACCOUNT TYPE - USER
 // =======================================
 
 userBtn.addEventListener("click", () => {
@@ -53,8 +54,13 @@ userBtn.addEventListener("click", () => {
 
     registerBtn.href =
         "user-register.html";
+
 });
 
+
+// =======================================
+// ACCOUNT TYPE - ORGANISATION
+// =======================================
 
 organisationBtn.addEventListener("click", () => {
 
@@ -71,6 +77,7 @@ organisationBtn.addEventListener("click", () => {
 
     registerBtn.href =
         "organisation-register.html";
+
 });
 
 
@@ -80,7 +87,9 @@ organisationBtn.addEventListener("click", () => {
 
 showPassword.addEventListener("click", () => {
 
-    const icon = showPassword.querySelector("i");
+    const icon =
+        showPassword.querySelector("i");
+
 
     if (password.type === "password") {
 
@@ -95,7 +104,9 @@ showPassword.addEventListener("click", () => {
 
         icon.classList.remove("fa-eye-slash");
         icon.classList.add("fa-eye");
+
     }
+
 });
 
 
@@ -109,6 +120,7 @@ function validateEmail(emailValue) {
         /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
     return emailPattern.test(emailValue);
+
 }
 
 
@@ -116,153 +128,331 @@ function validateEmail(emailValue) {
 // LOGIN FORM
 // =======================================
 
-loginForm.addEventListener("submit", async function (event) {
+loginForm.addEventListener(
+    "submit",
+    async function (event) {
 
-    event.preventDefault();
-
-    emailError.textContent = "";
-    passwordError.textContent = "";
-
-    let valid = true;
+        event.preventDefault();
 
 
-    // =======================================
-    // EMAIL VALIDATION
-    // =======================================
+        // Clear old errors
 
-    if (email.value.trim() === "") {
-
-        emailError.textContent =
-            "Please enter your email address.";
-
-        valid = false;
-
-    } else if (!validateEmail(email.value.trim())) {
-
-        emailError.textContent =
-            "Please enter a valid email address.";
-
-        valid = false;
-    }
+        emailError.textContent = "";
+        passwordError.textContent = "";
 
 
-    // =======================================
-    // PASSWORD VALIDATION
-    // =======================================
-
-    if (password.value.trim() === "") {
-
-        passwordError.textContent =
-            "Please enter your password.";
-
-        valid = false;
-
-    } else if (password.value.length < 6) {
-
-        passwordError.textContent =
-            "Password must contain at least 6 characters.";
-
-        valid = false;
-    }
+        let valid = true;
 
 
-    if (!valid) {
-        return;
-    }
+        // ===================================
+        // EMAIL VALIDATION
+        // ===================================
+
+        if (email.value.trim() === "") {
+
+            emailError.textContent =
+                "Please enter your email address.";
+
+            valid = false;
+
+        }
+
+        else if (
+            !validateEmail(
+                email.value.trim()
+            )
+        ) {
+
+            emailError.textContent =
+                "Please enter a valid email address.";
+
+            valid = false;
+
+        }
 
 
-    const selectedAccount = accountType.value;
+        // ===================================
+        // PASSWORD VALIDATION
+        // ===================================
+
+        if (password.value.trim() === "") {
+
+            passwordError.textContent =
+                "Please enter your password.";
+
+            valid = false;
+
+        }
+
+        else if (
+            password.value.length < 6
+        ) {
+
+            passwordError.textContent =
+                "Password must contain at least 6 characters.";
+
+            valid = false;
+
+        }
 
 
-    // =======================================
-    // USER LOGIN
-    // =======================================
+        if (!valid) {
+            return;
+        }
 
-    if (selectedAccount === "user") {
+
+        const selectedAccount =
+            accountType.value;
+
+
+        // ===================================
+        // SELECT CORRECT LOGIN API
+        // ===================================
+
+        let loginURL;
+
+
+        if (selectedAccount === "user") {
+
+            loginURL =
+                "http://localhost:5000/api/auth/login";
+
+        }
+
+        else if (
+            selectedAccount === "organisation"
+        ) {
+
+            loginURL =
+                "http://localhost:5000/api/organisations/auth/login";
+
+        }
+
+        else {
+
+            showToast(
+                "Login Error",
+                "Please select an account type."
+            );
+
+            return;
+
+        }
+
+
+        // ===================================
+        // SEND LOGIN REQUEST
+        // ===================================
 
         try {
 
-            const response = await fetch(
-                "http://localhost:5000/api/auth/login",
-                {
-                    method: "POST",
+            const response =
+                await fetch(
+                    loginURL,
+                    {
+                        method: "POST",
 
-                    headers: {
-                        "Content-Type": "application/json"
-                    },
+                        headers: {
+                            "Content-Type":
+                                "application/json"
+                        },
 
-                    body: JSON.stringify({
-                        email: email.value.trim(),
-                        password: password.value
-                    })
-                }
-            );
+                        body: JSON.stringify({
+
+                            email:
+                                email.value
+                                    .trim()
+                                    .toLowerCase(),
+
+                            password:
+                                password.value
+
+                        })
+                    }
+                );
 
 
-            const data = await response.json();
+            const data =
+                await response.json();
 
 
-            // =======================================
+            // ===================================
             // LOGIN FAILED
-            // =======================================
+            // ===================================
 
             if (!response.ok) {
 
                 showToast(
                     "Login Failed",
-                    data.message || "Invalid email or password."
+
+                    data.message ||
+                    "Invalid email or password."
                 );
 
                 return;
+
             }
 
 
-            // =======================================
-            // SAVE LOGIN DATA
-            // =======================================
+            // ===================================
+            // USER LOGIN SUCCESS
+            // ===================================
 
-            localStorage.setItem(
-                "kindlinkToken",
-                data.token
-            );
+            if (selectedAccount === "user") {
 
+                // Remove old organisation data
 
-            localStorage.setItem(
-                "kindlinkUser",
-                JSON.stringify(data.user)
-            );
+                localStorage.removeItem(
+                    "kindlinkOrganisation"
+                );
 
 
-            // Remember account type
+                // Save JWT
 
-            localStorage.setItem(
-                "kindlinkAccountType",
-                "user"
-            );
-
-
-            showToast(
-                "Login Successful",
-                "Opening your KindLink dashboard..."
-            );
+                localStorage.setItem(
+                    "kindlinkToken",
+                    data.token
+                );
 
 
-            // =======================================
-            // REDIRECT
-            // =======================================
+                // Save user information
 
-            setTimeout(() => {
-
-                window.location.href =
-                    "user-dashboard.html";
-
-            }, 1200);
+                localStorage.setItem(
+                    "kindlinkUser",
+                    JSON.stringify(
+                        data.user
+                    )
+                );
 
 
-        } catch (error) {
+                // Save account type
+
+                localStorage.setItem(
+                    "kindlinkAccountType",
+                    "user"
+                );
+
+
+                showToast(
+                    "Login Successful",
+                    "Opening your KindLink user dashboard..."
+                );
+
+
+                setTimeout(
+                    function () {
+
+                        window.location.href =
+                            "user-dashboard.html";
+
+                    },
+                    1200
+                );
+
+            }
+
+
+            // ===================================
+            // ORGANISATION LOGIN SUCCESS
+            // ===================================
+
+            else {
+
+                // Remove old user data
+
+                localStorage.removeItem(
+                    "kindlinkUser"
+                );
+
+
+                // Save organisation JWT
+
+                localStorage.setItem(
+                    "kindlinkToken",
+                    data.token
+                );
+
+
+                // Save organisation information
+
+                localStorage.setItem(
+                    "kindlinkOrganisation",
+                    JSON.stringify(
+                        data.organisation
+                    )
+                );
+
+
+                // Save account type
+
+                localStorage.setItem(
+                    "kindlinkAccountType",
+                    "organisation"
+                );
+
+
+                // ===================================
+                // VERIFICATION STATUS
+                // ===================================
+
+                if (
+                    data.organisation
+                        .verificationStatus ===
+                    "pending"
+                ) {
+
+                    showToast(
+                        "Login Successful",
+                        "Your organisation verification is currently pending."
+                    );
+
+                }
+
+                else if (
+                    data.organisation
+                        .verificationStatus ===
+                    "verified"
+                ) {
+
+                    showToast(
+                        "Login Successful",
+                        "Opening your organisation dashboard..."
+                    );
+
+                }
+
+                else {
+
+                    showToast(
+                        "Login Successful",
+                        "Opening your organisation dashboard..."
+                    );
+
+                }
+
+
+                // ===================================
+                // REDIRECT
+                // ===================================
+
+                setTimeout(
+                    function () {
+
+                        window.location.href =
+                            "organisation-dashboard.html";
+
+                    },
+                    1500
+                );
+
+            }
+
+        }
+
+        catch (error) {
 
             console.error(
-                "Login error:",
+                "KindLink Login Error:",
                 error
             );
 
@@ -271,26 +461,11 @@ loginForm.addEventListener("submit", async function (event) {
                 "Connection Error",
                 "Unable to connect to the KindLink server."
             );
+
         }
 
-
     }
-
-
-    // =======================================
-    // ORGANISATION LOGIN
-    // =======================================
-
-    else {
-
-        showToast(
-            "Organisation Login",
-            "Organisation backend login will be connected next."
-        );
-
-    }
-
-});
+);
 
 
 // =======================================
@@ -299,16 +474,28 @@ loginForm.addEventListener("submit", async function (event) {
 
 function showToast(title, message) {
 
-    toastTitle.textContent = title;
-    toastMessage.textContent = message;
+    toastTitle.textContent =
+        title;
 
-    toast.classList.add("show");
+    toastMessage.textContent =
+        message;
 
-    setTimeout(() => {
+    toast.classList.add(
+        "show"
+    );
 
-        toast.classList.remove("show");
 
-    }, 3000);
+    setTimeout(
+        function () {
+
+            toast.classList.remove(
+                "show"
+            );
+
+        },
+        3000
+    );
+
 }
 
 
@@ -322,10 +509,12 @@ forgotPassword.addEventListener(
 
         event.preventDefault();
 
+
         showToast(
             "Coming Soon",
             "Password recovery will be connected during backend development."
         );
+
     }
 );
 
@@ -334,26 +523,47 @@ forgotPassword.addEventListener(
 // MOBILE NAVIGATION
 // =======================================
 
-menuBtn.addEventListener("click", () => {
+if (menuBtn && navLinks) {
 
-    navLinks.classList.toggle("active");
+    menuBtn.addEventListener(
+        "click",
+        function () {
 
-});
+            navLinks.classList.toggle(
+                "active"
+            );
+
+        }
+    );
+
+}
 
 
 // =======================================
-// CLEAR ERRORS WHILE TYPING
+// CLEAR EMAIL ERROR
 // =======================================
 
-email.addEventListener("input", () => {
+email.addEventListener(
+    "input",
+    function () {
 
-    emailError.textContent = "";
+        emailError.textContent =
+            "";
 
-});
+    }
+);
 
 
-password.addEventListener("input", () => {
+// =======================================
+// CLEAR PASSWORD ERROR
+// =======================================
 
-    passwordError.textContent = "";
+password.addEventListener(
+    "input",
+    function () {
 
-});
+        passwordError.textContent =
+            "";
+
+    }
+);
