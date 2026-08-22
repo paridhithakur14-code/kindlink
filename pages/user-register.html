@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Create User Account | KindLink</title>
+
+    <link rel="stylesheet" href="../css/user-register.css">
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
+</head>
+
+<body>
+
+    <!-- ================= NAVBAR ================= -->
+
+    <header class="navbar">
+
+        <div class="logo">
+            <a href="../index.html">
+                Kind<span>Link</span>
+            </a>
+        </div>
+
+        <nav class="nav-links">
+
+            <a href="../index.html">Home</a>
+
+            <a href="causes.html">Causes</a>
+
+            <a href="volunteer.html">Volunteer</a>
+
+            <a href="adoption.html">Adoption</a>
+
+            <a href="emergency.html">Emergency</a>
+
+            <a href="stories.html">Stories</a>
+
+            <a href="about.html">About</a>
+
+        </nav>
+
+        <a href="login.html" class="login-btn-nav">
+            Login
+        </a>
+
+        <button class="menu-btn" id="menuBtn">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+
+    </header>
+
+
+    <!-- ================= REGISTER SECTION ================= -->
+
+    <main class="register-page">
+
+        <!-- LEFT SIDE -->
+
+        <section class="register-info">
+
+            <div class="info-content">
+
+                <div class="small-heading">
+                    <i class="fa-solid fa-heart"></i>
+                    Join KindLink
+                </div>
+
+                <h1>
+                    Small actions can create
+                    <span>big impact.</span>
+                </h1>
+
+                <p>
+                    Create your KindLink account and become part of a
+                    community working together for people, animals and
+                    the planet.
+                </p>
+
+
+                <div class="benefits">
+
+                    <div class="benefit">
+
+                        <div class="benefit-icon">
+                            <i class="fa-solid fa-hand-holding-heart"></i>
+                        </div>
+
+                        <div>
+                            <h3>Support Causes</h3>
+
+                            <p>
+                                Discover campaigns that match the causes
+                                you care about.
+                            </p>
+                        </div>
+
+                    </div>
+
+
+                    <div class="benefit">
+
+                        <div class="benefit-icon">
+                            <i class="fa-solid fa-people-group"></i>
+                        </div>
+
+                        <div>
+                            <h3>Volunteer</h3>
+
+                            <p>
+                                Find volunteer opportunities near you
+                                and contribute your time.
+                            </p>
+                        </div>
+
+                    </div>
+
+
+                    <div class="benefit">
+
+                        <div class="benefit-icon">
+                            <i class="fa-solid fa-paw"></i>
+                        </div>
+
+                        <div>
+                            <h3>Help Animals</h3>
+
+                            <p>
+                                Explore adoption opportunities and help
+                                animals find loving homes.
+                            </p>
+                        </div>
+
+                    </div>
+
+
+                    <div class="benefit">
+
+                        <div class="benefit-icon">
+                            <i class="fa-solid fa-triangle-exclamation"></i>
+                        </div>
+
+                        <div>
+                            <h3>Emergency Response</h3>
+
+                            <p>
+                                Volunteer, donate and support verified
+                                disaster relief operations.
+                            </p>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- RIGHT SIDE -->
+
+        <section class="register-form-area">
+
+            <div class="register-card">
+
+                <div class="form-heading">
+
+                    <p class="subtitle">
+                        Create Your Account
+                    </p>
+
+                    <h2>
+                        Join KindLink
+                    </h2>
+
+                    <p>
+                        Start your journey of creating meaningful impact.
+                    </p>
+
+                </div>
+
+
+                <form id="registerForm">
+
+                    <!-- NAME -->
+
+                    <div class="form-row">
+
+                        <div class="form-group">
+
+                            <label for="firstName">
+                                First Name
+                            </label>
+
+                            <div class="input-box">
+
+                                <i class="fa-solid fa-user"></i>
+
+                                <input
+                                    type="text"
+                                    id="firstName"
+                                    placeholder="First name"
+                                    required
+                                >
+
+                            </div>
+
+                            <small
+                                class="error"
+                                id="firstNameError"
+                            ></small>
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="lastName">
+                                Last Name
+                            </label>
+
+                            <div class="input-box">
+
+                                <i class="fa-solid fa-user"></i>
+
+                                <input
+                                    type="text"
+                                    id="lastName"
+                                    placeholder="Last name"
+                                    required
+                                >
+
+                            </div>
+
+                            <small
+                                class="error"
+                                id="lastNameError"
+                            ></small>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- EMAIL -->
+
+                    <div class="form-group">
+
+                        <label for="email">
+                            Email Address
+                        </label>
+
+                        <div class="input-box">
+
+                            <i class="fa-solid fa-envelope"></i>
+
+                            <input
+                                type="email"
+                                id="email"
+                                placeholder="example@email.com"
+                                required
+                            >
+
+                        </div>
+
+                        <small
+                            class="error"
+                            id="emailError"
+                        ></small>
+
+                    </div>
+
+
+                    <!-- PHONE -->
+
+                    <div class="form-group">
+
+                        <label for="phone">
+                            Phone Number
+                        </label>
+
+                        <div class="input-box">
+
+                            <i class="fa-solid fa-phone"></i>
+
+                            <input
+                                type="tel"
+                                id="phone"
+                                placeholder="Enter 10 digit mobile number"
+                                maxlength="10"
+                                required
+                            >
+
+                        </div>
+
+                        <small
+                            class="error"
+                            id="phoneError"
+                        ></small>
+
+                    </div>
+
+
+                    <!-- LOCATION -->
+
+                    <div class="form-group">
+
+                        <label for="city">
+                            City
+                        </label>
+
+                        <div class="input-box">
+
+                            <i class="fa-solid fa-location-dot"></i>
+
+                            <input
+                                type="text"
+                                id="city"
+                                placeholder="Enter your city"
+                            >
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- INTERESTS -->
+
+                    <div class="form-group">
+
+                        <label>
+                            What are you interested in?
+                        </label>
+
+                        <p class="interest-help">
+                            Select one or more options.
+                        </p>
+
+
+                        <div class="interest-grid">
+
+                            <label class="interest-card">
+
+                                <input
+                                    type="checkbox"
+                                    name="interest"
+                                    value="donation"
+                                >
+
+                                <span class="interest-content">
+
+                                    <i class="fa-solid fa-hand-holding-dollar"></i>
+
+                                    <strong>
+                                        Donations
+                                    </strong>
+
+                                </span>
+
+                            </label>
+
+
+                            <label class="interest-card">
+
+                                <input
+                                    type="checkbox"
+                                    name="interest"
+                                    value="volunteering"
+                                >
+
+                                <span class="interest-content">
+
+                                    <i class="fa-solid fa-people-group"></i>
+
+                                    <strong>
+                                        Volunteering
+                                    </strong>
+
+                                </span>
+
+                            </label>
+
+
+                            <label class="interest-card">
+
+                                <input
+                                    type="checkbox"
+                                    name="interest"
+                                    value="adoption"
+                                >
+
+                                <span class="interest-content">
+
+                                    <i class="fa-solid fa-paw"></i>
+
+                                    <strong>
+                                        Adoption
+                                    </strong>
+
+                                </span>
+
+                            </label>
+
+
+                            <label class="interest-card">
+
+                                <input
+                                    type="checkbox"
+                                    name="interest"
+                                    value="emergency"
+                                >
+
+                                <span class="interest-content">
+
+                                    <i class="fa-solid fa-triangle-exclamation"></i>
+
+                                    <strong>
+                                        Emergency Help
+                                    </strong>
+
+                                </span>
+
+                            </label>
+
+
+                            <label class="interest-card">
+
+                                <input
+                                    type="checkbox"
+                                    name="interest"
+                                    value="environment"
+                                >
+
+                                <span class="interest-content">
+
+                                    <i class="fa-solid fa-leaf"></i>
+
+                                    <strong>
+                                        Environment
+                                    </strong>
+
+                                </span>
+
+                            </label>
+
+
+                            <label class="interest-card">
+
+                                <input
+                                    type="checkbox"
+                                    name="interest"
+                                    value="education"
+                                >
+
+                                <span class="interest-content">
+
+                                    <i class="fa-solid fa-book-open"></i>
+
+                                    <strong>
+                                        Education
+                                    </strong>
+
+                                </span>
+
+                            </label>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- PASSWORD -->
+
+                    <div class="form-group">
+
+                        <label for="password">
+                            Password
+                        </label>
+
+                        <div class="input-box">
+
+                            <i class="fa-solid fa-lock"></i>
+
+                            <input
+                                type="password"
+                                id="password"
+                                placeholder="Create password"
+                                required
+                            >
+
+                            <button
+                                type="button"
+                                class="password-toggle"
+                                id="togglePassword"
+                            >
+
+                                <i class="fa-solid fa-eye"></i>
+
+                            </button>
+
+                        </div>
+
+                        <small
+                            class="error"
+                            id="passwordError"
+                        ></small>
+
+                    </div>
+
+
+                    <!-- PASSWORD STRENGTH -->
+
+                    <div class="password-strength">
+
+                        <div class="strength-bar">
+
+                            <span id="strengthIndicator"></span>
+
+                        </div>
+
+                        <p id="strengthText">
+                            Password strength
+                        </p>
+
+                    </div>
+
+
+                    <!-- CONFIRM PASSWORD -->
+
+                    <div class="form-group">
+
+                        <label for="confirmPassword">
+                            Confirm Password
+                        </label>
+
+                        <div class="input-box">
+
+                            <i class="fa-solid fa-lock"></i>
+
+                            <input
+                                type="password"
+                                id="confirmPassword"
+                                placeholder="Confirm password"
+                                required
+                            >
+
+                        </div>
+
+                        <small
+                            class="error"
+                            id="confirmPasswordError"
+                        ></small>
+
+                    </div>
+
+
+                    <!-- TERMS -->
+
+                    <div class="terms-area">
+
+                        <label>
+
+                            <input
+                                type="checkbox"
+                                id="terms"
+                            >
+
+                            <span>
+                                I agree to the
+                                <a href="#">
+                                    Terms & Conditions
+                                </a>
+
+                                and
+
+                                <a href="#">
+                                    Privacy Policy
+                                </a>.
+                            </span>
+
+                        </label>
+
+                        <small
+                            class="error"
+                            id="termsError"
+                        ></small>
+
+                    </div>
+
+
+                    <!-- BUTTON -->
+
+                    <button
+                        type="submit"
+                        class="create-account-btn"
+                    >
+
+                        Create Account
+
+                        <i class="fa-solid fa-arrow-right"></i>
+
+                    </button>
+
+                </form>
+
+
+                <div class="login-divider">
+
+                    <span></span>
+
+                    <p>
+                        Already have an account?
+                    </p>
+
+                    <span></span>
+
+                </div>
+
+
+                <a
+                    href="login.html"
+                    class="existing-login"
+                >
+                    Login to KindLink
+                </a>
+
+
+                <div class="organisation-link">
+
+                    <i class="fa-solid fa-building"></i>
+
+                    <p>
+                        Representing an organisation?
+
+                        <a href="organisation-register.html">
+                            Register your organisation
+                        </a>
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- SUCCESS MODAL -->
+
+    <div class="modal-overlay" id="successModal">
+
+        <div class="success-modal">
+
+            <div class="success-icon">
+
+                <i class="fa-solid fa-check"></i>
+
+            </div>
+
+            <h2>
+                Welcome to KindLink!
+            </h2>
+
+            <p>
+                Your account has been created successfully.
+            </p>
+
+            <button id="continueBtn">
+                Continue to Login
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <script src="../js/user-register.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,886 @@
+/* =========================
+   GLOBAL
+========================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f7faf8;
+    color: #24372e;
+}
+
+a {
+    text-decoration: none;
+}
+
+button,
+input {
+    font-family: inherit;
+}
+
+
+/* =========================
+   NAVBAR
+========================= */
+
+.navbar {
+    width: 100%;
+    height: 75px;
+
+    padding: 0 7%;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    background: white;
+
+    border-bottom: 1px solid #e6ebe8;
+
+    position: relative;
+
+    z-index: 1000;
+}
+
+.logo a {
+    color: #143d2b;
+
+    font-size: 27px;
+
+    font-weight: 800;
+}
+
+.logo span {
+    color: #2e9d63;
+}
+
+.nav-links {
+    display: flex;
+
+    gap: 25px;
+
+    align-items: center;
+}
+
+.nav-links a {
+    color: #56625c;
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    transition: 0.3s;
+}
+
+.nav-links a:hover {
+    color: #218956;
+}
+
+.login-btn-nav {
+    padding: 10px 20px;
+
+    background: #218956;
+
+    color: white;
+
+    border-radius: 8px;
+
+    font-weight: 600;
+}
+
+.menu-btn {
+    display: none;
+
+    border: none;
+
+    background: transparent;
+
+    font-size: 22px;
+
+    color: #173e2d;
+
+    cursor: pointer;
+}
+
+
+/* =========================
+   MAIN
+========================= */
+
+.register-page {
+    display: grid;
+
+    grid-template-columns: 42% 58%;
+
+    min-height: calc(100vh - 75px);
+}
+
+
+/* =========================
+   LEFT SIDE
+========================= */
+
+.register-info {
+    background:
+        linear-gradient(
+            145deg,
+            #135936,
+            #218956
+        );
+
+    color: white;
+
+    padding: 75px 10%;
+
+    display: flex;
+
+    align-items: center;
+}
+
+.info-content {
+    max-width: 520px;
+}
+
+.small-heading {
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    background: rgba(255, 255, 255, 0.12);
+
+    padding: 9px 15px;
+
+    border-radius: 30px;
+
+    font-size: 14px;
+
+    margin-bottom: 25px;
+}
+
+.info-content h1 {
+    font-size: clamp(38px, 4vw, 58px);
+
+    line-height: 1.1;
+
+    margin-bottom: 22px;
+}
+
+.info-content h1 span {
+    color: #b9f1cf;
+}
+
+.info-content > p {
+    color: #dcf2e5;
+
+    line-height: 1.8;
+
+    font-size: 16px;
+}
+
+
+/* =========================
+   BENEFITS
+========================= */
+
+.benefits {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 22px;
+
+    margin-top: 38px;
+}
+
+.benefit {
+    display: flex;
+
+    gap: 15px;
+
+    align-items: center;
+}
+
+.benefit-icon {
+    width: 48px;
+
+    height: 48px;
+
+    min-width: 48px;
+
+    border-radius: 12px;
+
+    background: rgba(255, 255, 255, 0.13);
+
+    display: grid;
+
+    place-items: center;
+
+    font-size: 18px;
+}
+
+.benefit h3 {
+    font-size: 15px;
+
+    margin-bottom: 5px;
+}
+
+.benefit p {
+    font-size: 12px;
+
+    line-height: 1.5;
+
+    color: #d7eee1;
+}
+
+
+/* =========================
+   FORM SIDE
+========================= */
+
+.register-form-area {
+    padding: 55px 8%;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: flex-start;
+}
+
+.register-card {
+    width: min(100%, 660px);
+}
+
+.form-heading {
+    margin-bottom: 30px;
+}
+
+.subtitle {
+    color: #218956;
+
+    font-size: 14px;
+
+    font-weight: 700;
+
+    margin-bottom: 6px;
+}
+
+.form-heading h2 {
+    font-size: 34px;
+
+    color: #153d2b;
+
+    margin-bottom: 8px;
+}
+
+.form-heading > p:last-child {
+    color: #768179;
+
+    font-size: 14px;
+}
+
+
+/* =========================
+   FORM
+========================= */
+
+.form-row {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 15px;
+}
+
+.form-group {
+    margin-bottom: 18px;
+}
+
+.form-group > label {
+    display: block;
+
+    margin-bottom: 7px;
+
+    font-size: 13px;
+
+    font-weight: 700;
+
+    color: #3e5047;
+}
+
+.input-box {
+    height: 50px;
+
+    background: white;
+
+    border: 1px solid #dce3df;
+
+    border-radius: 9px;
+
+    display: flex;
+
+    align-items: center;
+
+    padding: 0 14px;
+
+    transition: 0.25s;
+}
+
+.input-box:focus-within {
+    border-color: #218956;
+
+    box-shadow: 0 0 0 3px rgba(33, 137, 86, 0.1);
+}
+
+.input-box > i {
+    color: #88948e;
+
+    margin-right: 10px;
+}
+
+.input-box input {
+    height: 100%;
+
+    flex: 1;
+
+    border: none;
+
+    outline: none;
+
+    background: transparent;
+
+    font-size: 14px;
+
+    color: #283a31;
+}
+
+.input-box input::placeholder {
+    color: #abb4af;
+}
+
+.password-toggle {
+    border: none;
+
+    background: transparent;
+
+    cursor: pointer;
+
+    color: #77847d;
+
+    font-size: 15px;
+}
+
+.error {
+    display: block;
+
+    color: #c84242;
+
+    margin-top: 5px;
+
+    min-height: 13px;
+
+    font-size: 11px;
+}
+
+
+/* =========================
+   INTERESTS
+========================= */
+
+.interest-help {
+    font-size: 12px;
+
+    color: #859089;
+
+    margin-top: -3px;
+
+    margin-bottom: 10px;
+}
+
+.interest-grid {
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 10px;
+}
+
+.interest-card {
+    cursor: pointer;
+}
+
+.interest-card input {
+    display: none;
+}
+
+.interest-content {
+    min-height: 82px;
+
+    padding: 13px 8px;
+
+    border: 1px solid #dfe5e1;
+
+    border-radius: 9px;
+
+    background: white;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    align-items: center;
+
+    gap: 8px;
+
+    text-align: center;
+
+    transition: 0.25s;
+}
+
+.interest-content i {
+    color: #218956;
+
+    font-size: 19px;
+}
+
+.interest-content strong {
+    font-size: 11px;
+
+    color: #48574f;
+}
+
+.interest-card:hover .interest-content {
+    border-color: #78bd97;
+}
+
+.interest-card input:checked + .interest-content {
+    border-color: #218956;
+
+    background: #edf8f2;
+
+    box-shadow: 0 0 0 2px rgba(33, 137, 86, 0.07);
+}
+
+
+/* =========================
+   PASSWORD STRENGTH
+========================= */
+
+.password-strength {
+    margin-top: -7px;
+
+    margin-bottom: 16px;
+}
+
+.strength-bar {
+    height: 5px;
+
+    width: 100%;
+
+    background: #e4e8e6;
+
+    border-radius: 10px;
+
+    overflow: hidden;
+}
+
+#strengthIndicator {
+    display: block;
+
+    height: 100%;
+
+    width: 0;
+
+    background: #d45b5b;
+
+    transition: 0.3s;
+}
+
+#strengthText {
+    color: #8a938f;
+
+    font-size: 10px;
+
+    margin-top: 5px;
+}
+
+
+/* =========================
+   TERMS
+========================= */
+
+.terms-area {
+    margin: 5px 0 20px;
+}
+
+.terms-area label {
+    display: flex;
+
+    align-items: flex-start;
+
+    gap: 8px;
+
+    font-size: 12px;
+
+    line-height: 1.6;
+
+    color: #68756e;
+}
+
+.terms-area input {
+    margin-top: 3px;
+
+    accent-color: #218956;
+}
+
+.terms-area a {
+    color: #218956;
+
+    font-weight: 600;
+}
+
+
+/* =========================
+   CREATE BUTTON
+========================= */
+
+.create-account-btn {
+    width: 100%;
+
+    border: none;
+
+    border-radius: 9px;
+
+    background: #218956;
+
+    color: white;
+
+    padding: 15px;
+
+    font-weight: 700;
+
+    font-size: 14px;
+
+    cursor: pointer;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    gap: 9px;
+
+    transition: 0.25s;
+}
+
+.create-account-btn:hover {
+    background: #176f47;
+
+    transform: translateY(-1px);
+}
+
+
+/* =========================
+   LOGIN
+========================= */
+
+.login-divider {
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    margin: 25px 0 18px;
+}
+
+.login-divider span {
+    flex: 1;
+
+    height: 1px;
+
+    background: #e0e5e2;
+}
+
+.login-divider p {
+    font-size: 11px;
+
+    color: #89938e;
+}
+
+.existing-login {
+    display: block;
+
+    width: 100%;
+
+    border: 1px solid #218956;
+
+    color: #218956;
+
+    text-align: center;
+
+    border-radius: 9px;
+
+    padding: 12px;
+
+    font-size: 13px;
+
+    font-weight: 700;
+
+    transition: 0.25s;
+}
+
+.existing-login:hover {
+    background: #218956;
+
+    color: white;
+}
+
+
+/* =========================
+   ORGANISATION
+========================= */
+
+.organisation-link {
+    background: #f0f7f3;
+
+    margin-top: 18px;
+
+    border-radius: 9px;
+
+    padding: 13px;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    gap: 8px;
+
+    color: #68776f;
+
+    font-size: 11px;
+}
+
+.organisation-link i {
+    color: #218956;
+}
+
+.organisation-link a {
+    color: #218956;
+
+    font-weight: 700;
+}
+
+
+/* =========================
+   SUCCESS MODAL
+========================= */
+
+.modal-overlay {
+    position: fixed;
+
+    inset: 0;
+
+    background: rgba(17, 35, 27, 0.58);
+
+    display: none;
+
+    justify-content: center;
+
+    align-items: center;
+
+    padding: 20px;
+
+    z-index: 5000;
+}
+
+.modal-overlay.show {
+    display: flex;
+}
+
+.success-modal {
+    width: min(100%, 390px);
+
+    background: white;
+
+    padding: 38px 30px;
+
+    border-radius: 15px;
+
+    text-align: center;
+
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+}
+
+.success-icon {
+    width: 65px;
+
+    height: 65px;
+
+    margin: auto;
+
+    border-radius: 50%;
+
+    background: #e5f7ed;
+
+    color: #218956;
+
+    display: grid;
+
+    place-items: center;
+
+    font-size: 27px;
+
+    margin-bottom: 18px;
+}
+
+.success-modal h2 {
+    color: #153d2b;
+
+    margin-bottom: 10px;
+}
+
+.success-modal p {
+    color: #77827c;
+
+    font-size: 13px;
+
+    margin-bottom: 22px;
+}
+
+.success-modal button {
+    width: 100%;
+
+    padding: 13px;
+
+    border: none;
+
+    border-radius: 8px;
+
+    background: #218956;
+
+    color: white;
+
+    cursor: pointer;
+
+    font-weight: 700;
+}
+
+
+/* =========================
+   TABLET
+========================= */
+
+@media (max-width: 1050px) {
+
+    .nav-links {
+        display: none;
+    }
+
+    .login-btn-nav {
+        display: none;
+    }
+
+    .menu-btn {
+        display: block;
+    }
+
+    .nav-links.active {
+        position: absolute;
+
+        display: flex;
+
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        top: 75px;
+
+        left: 0;
+
+        width: 100%;
+
+        background: white;
+
+        padding: 25px 7%;
+
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+    }
+
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 850px) {
+
+    .register-page {
+        grid-template-columns: 1fr;
+    }
+
+    .register-info {
+        padding: 55px 8%;
+    }
+
+    .benefits {
+        display: grid;
+
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .register-form-area {
+        padding: 50px 7%;
+    }
+
+}
+
+
+@media (max-width: 560px) {
+
+    .navbar {
+        padding: 0 5%;
+    }
+
+    .register-info {
+        padding: 45px 6%;
+    }
+
+    .info-content h1 {
+        font-size: 37px;
+    }
+
+    .benefits {
+        display: none;
+    }
+
+    .register-form-area {
+        padding: 40px 5%;
+    }
+
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+
+    .interest-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .form-heading h2 {
+        font-size: 29px;
+    }
+
+}

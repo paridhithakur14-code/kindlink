@@ -1,0 +1,1021 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Register Organisation | KindLink</title>
+
+    <link rel="stylesheet" href="../css/organisation-register.css">
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
+</head>
+
+<body>
+
+    <!-- ================= NAVBAR ================= -->
+
+    <header class="navbar">
+
+        <div class="logo">
+            <a href="../index.html">
+                Kind<span>Link</span>
+            </a>
+        </div>
+
+        <nav class="nav-links">
+
+            <a href="../index.html">Home</a>
+            <a href="causes.html">Causes</a>
+            <a href="volunteer.html">Volunteer</a>
+            <a href="adoption.html">Adoption</a>
+            <a href="emergency.html">Emergency</a>
+            <a href="stories.html">Stories</a>
+            <a href="about.html">About</a>
+
+        </nav>
+
+        <a href="login.html" class="login-nav-btn">
+            Login
+        </a>
+
+        <button class="menu-btn" id="menuBtn">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+
+    </header>
+
+
+    <!-- ================= MAIN ================= -->
+
+    <main class="organisation-register-page">
+
+        <!-- LEFT SIDE -->
+
+        <section class="organisation-info">
+
+            <div class="info-content">
+
+                <div class="small-title">
+                    <i class="fa-solid fa-building-circle-check"></i>
+                    Join KindLink as an Organisation
+                </div>
+
+                <h1>
+                    Connect your organisation with
+                    <span>people who care.</span>
+                </h1>
+
+                <p>
+                    Register your organisation on KindLink to create
+                    campaigns, find volunteers, support emergency
+                    responses and connect with people who want to help.
+                </p>
+
+
+                <div class="feature-list">
+
+                    <div class="feature-item">
+
+                        <div class="feature-icon">
+                            <i class="fa-solid fa-bullhorn"></i>
+                        </div>
+
+                        <div>
+                            <h3>Create Campaigns</h3>
+                            <p>
+                                Share social-impact campaigns with
+                                supporters.
+                            </p>
+                        </div>
+
+                    </div>
+
+
+                    <div class="feature-item">
+
+                        <div class="feature-icon">
+                            <i class="fa-solid fa-people-group"></i>
+                        </div>
+
+                        <div>
+                            <h3>Find Volunteers</h3>
+                            <p>
+                                Publish opportunities and manage
+                                applications.
+                            </p>
+                        </div>
+
+                    </div>
+
+
+                    <div class="feature-item">
+
+                        <div class="feature-icon">
+                            <i class="fa-solid fa-triangle-exclamation"></i>
+                        </div>
+
+                        <div>
+                            <h3>Emergency Response</h3>
+                            <p>
+                                Coordinate verified disaster support
+                                and relief activities.
+                            </p>
+                        </div>
+
+                    </div>
+
+
+                    <div class="feature-item">
+
+                        <div class="feature-icon">
+                            <i class="fa-solid fa-shield-heart"></i>
+                        </div>
+
+                        <div>
+                            <h3>Build Trust</h3>
+                            <p>
+                                Verified organisations receive a trust
+                                badge on KindLink.
+                            </p>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="verification-note">
+
+                    <i class="fa-solid fa-circle-info"></i>
+
+                    <div>
+
+                        <strong>
+                            Organisation Verification
+                        </strong>
+
+                        <p>
+                            Your organisation will remain under review
+                            until verification is completed.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- RIGHT SIDE -->
+
+        <section class="form-area">
+
+            <div class="form-card">
+
+                <div class="form-heading">
+
+                    <p>
+                        Organisation Registration
+                    </p>
+
+                    <h2>
+                        Register your organisation
+                    </h2>
+
+                    <span>
+                        Provide accurate information for verification.
+                    </span>
+
+                </div>
+
+
+                <form id="organisationForm">
+
+                    <!-- ORGANISATION NAME -->
+
+                    <div class="form-group">
+
+                        <label for="organisationName">
+                            Organisation Name *
+                        </label>
+
+                        <div class="input-box">
+
+                            <i class="fa-solid fa-building"></i>
+
+                            <input
+                                type="text"
+                                id="organisationName"
+                                placeholder="Enter organisation name"
+                                required
+                            >
+
+                        </div>
+
+                        <small
+                            class="error"
+                            id="organisationNameError"
+                        ></small>
+
+                    </div>
+
+
+                    <!-- TYPE + YEAR -->
+
+                    <div class="form-row">
+
+                        <div class="form-group">
+
+                            <label for="organisationType">
+                                Organisation Type *
+                            </label>
+
+                            <div class="select-box">
+
+                                <i class="fa-solid fa-sitemap"></i>
+
+                                <select id="organisationType">
+
+                                    <option value="">
+                                        Select type
+                                    </option>
+
+                                    <option value="ngo">
+                                        NGO
+                                    </option>
+
+                                    <option value="trust">
+                                        Charitable Trust
+                                    </option>
+
+                                    <option value="foundation">
+                                        Foundation
+                                    </option>
+
+                                    <option value="shelter">
+                                        Animal Shelter
+                                    </option>
+
+                                    <option value="community">
+                                        Community Organisation
+                                    </option>
+
+                                    <option value="other">
+                                        Other
+                                    </option>
+
+                                </select>
+
+                            </div>
+
+                            <small
+                                class="error"
+                                id="organisationTypeError"
+                            ></small>
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="yearEstablished">
+                                Year Established
+                            </label>
+
+                            <div class="input-box">
+
+                                <i class="fa-solid fa-calendar"></i>
+
+                                <input
+                                    type="number"
+                                    id="yearEstablished"
+                                    placeholder="Example: 2018"
+                                    min="1900"
+                                    max="2026"
+                                >
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- REGISTRATION NUMBER -->
+
+                    <div class="form-group">
+
+                        <label for="registrationNumber">
+                            Registration Number *
+                        </label>
+
+                        <div class="input-box">
+
+                            <i class="fa-solid fa-id-card"></i>
+
+                            <input
+                                type="text"
+                                id="registrationNumber"
+                                placeholder="Government / NGO registration number"
+                                required
+                            >
+
+                        </div>
+
+                        <small
+                            class="error"
+                            id="registrationNumberError"
+                        ></small>
+
+                    </div>
+
+
+                    <!-- CONTACT PERSON -->
+
+                    <div class="section-title">
+                        Contact Person
+                    </div>
+
+
+                    <div class="form-row">
+
+                        <div class="form-group">
+
+                            <label for="contactName">
+                                Full Name *
+                            </label>
+
+                            <div class="input-box">
+
+                                <i class="fa-solid fa-user"></i>
+
+                                <input
+                                    type="text"
+                                    id="contactName"
+                                    placeholder="Contact person"
+                                    required
+                                >
+
+                            </div>
+
+                            <small
+                                class="error"
+                                id="contactNameError"
+                            ></small>
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="designation">
+                                Designation
+                            </label>
+
+                            <div class="input-box">
+
+                                <i class="fa-solid fa-briefcase"></i>
+
+                                <input
+                                    type="text"
+                                    id="designation"
+                                    placeholder="Founder / Manager"
+                                >
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- EMAIL + PHONE -->
+
+                    <div class="form-row">
+
+                        <div class="form-group">
+
+                            <label for="email">
+                                Official Email *
+                            </label>
+
+                            <div class="input-box">
+
+                                <i class="fa-solid fa-envelope"></i>
+
+                                <input
+                                    type="email"
+                                    id="email"
+                                    placeholder="organisation@email.com"
+                                    required
+                                >
+
+                            </div>
+
+                            <small
+                                class="error"
+                                id="emailError"
+                            ></small>
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="phone">
+                                Phone Number *
+                            </label>
+
+                            <div class="input-box">
+
+                                <i class="fa-solid fa-phone"></i>
+
+                                <input
+                                    type="tel"
+                                    id="phone"
+                                    maxlength="10"
+                                    placeholder="10 digit mobile number"
+                                    required
+                                >
+
+                            </div>
+
+                            <small
+                                class="error"
+                                id="phoneError"
+                            ></small>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- ADDRESS -->
+
+                    <div class="section-title">
+                        Organisation Address
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="address">
+                            Address *
+                        </label>
+
+                        <div class="textarea-box">
+
+                            <i class="fa-solid fa-location-dot"></i>
+
+                            <textarea
+                                id="address"
+                                placeholder="Enter organisation address"
+                            ></textarea>
+
+                        </div>
+
+                        <small
+                            class="error"
+                            id="addressError"
+                        ></small>
+
+                    </div>
+
+
+                    <div class="form-row">
+
+                        <div class="form-group">
+
+                            <label for="city">
+                                City *
+                            </label>
+
+                            <div class="input-box">
+
+                                <i class="fa-solid fa-city"></i>
+
+                                <input
+                                    type="text"
+                                    id="city"
+                                    placeholder="City"
+                                    required
+                                >
+
+                            </div>
+
+                            <small
+                                class="error"
+                                id="cityError"
+                            ></small>
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="state">
+                                State *
+                            </label>
+
+                            <div class="input-box">
+
+                                <i class="fa-solid fa-map"></i>
+
+                                <input
+                                    type="text"
+                                    id="state"
+                                    placeholder="State"
+                                    required
+                                >
+
+                            </div>
+
+                            <small
+                                class="error"
+                                id="stateError"
+                            ></small>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- CAUSES -->
+
+                    <div class="section-title">
+                        Areas of Work
+                    </div>
+
+                    <p class="help-text">
+                        Select the causes your organisation works on.
+                    </p>
+
+
+                    <div class="cause-grid">
+
+                        <label class="cause-card">
+
+                            <input
+                                type="checkbox"
+                                name="cause"
+                                value="education"
+                            >
+
+                            <span>
+                                <i class="fa-solid fa-book-open"></i>
+                                Education
+                            </span>
+
+                        </label>
+
+
+                        <label class="cause-card">
+
+                            <input
+                                type="checkbox"
+                                name="cause"
+                                value="health"
+                            >
+
+                            <span>
+                                <i class="fa-solid fa-heart-pulse"></i>
+                                Health
+                            </span>
+
+                        </label>
+
+
+                        <label class="cause-card">
+
+                            <input
+                                type="checkbox"
+                                name="cause"
+                                value="animals"
+                            >
+
+                            <span>
+                                <i class="fa-solid fa-paw"></i>
+                                Animals
+                            </span>
+
+                        </label>
+
+
+                        <label class="cause-card">
+
+                            <input
+                                type="checkbox"
+                                name="cause"
+                                value="environment"
+                            >
+
+                            <span>
+                                <i class="fa-solid fa-leaf"></i>
+                                Environment
+                            </span>
+
+                        </label>
+
+
+                        <label class="cause-card">
+
+                            <input
+                                type="checkbox"
+                                name="cause"
+                                value="disaster"
+                            >
+
+                            <span>
+                                <i class="fa-solid fa-house-flood-water"></i>
+                                Disaster Relief
+                            </span>
+
+                        </label>
+
+
+                        <label class="cause-card">
+
+                            <input
+                                type="checkbox"
+                                name="cause"
+                                value="women"
+                            >
+
+                            <span>
+                                <i class="fa-solid fa-person-dress"></i>
+                                Women Support
+                            </span>
+
+                        </label>
+
+
+                        <label class="cause-card">
+
+                            <input
+                                type="checkbox"
+                                name="cause"
+                                value="community"
+                            >
+
+                            <span>
+                                <i class="fa-solid fa-people-group"></i>
+                                Community
+                            </span>
+
+                        </label>
+
+
+                        <label class="cause-card">
+
+                            <input
+                                type="checkbox"
+                                name="cause"
+                                value="other"
+                            >
+
+                            <span>
+                                <i class="fa-solid fa-hand-holding-heart"></i>
+                                Other
+                            </span>
+
+                        </label>
+
+                    </div>
+
+
+                    <!-- DESCRIPTION -->
+
+                    <div class="form-group description-group">
+
+                        <label for="description">
+                            About Your Organisation *
+                        </label>
+
+                        <div class="textarea-box">
+
+                            <i class="fa-solid fa-align-left"></i>
+
+                            <textarea
+                                id="description"
+                                maxlength="500"
+                                placeholder="Briefly describe your organisation and its work"
+                            ></textarea>
+
+                        </div>
+
+                        <div class="description-bottom">
+
+                            <small
+                                class="error"
+                                id="descriptionError"
+                            ></small>
+
+                            <span id="characterCount">
+                                0 / 500
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- WEBSITE -->
+
+                    <div class="form-row">
+
+                        <div class="form-group">
+
+                            <label for="website">
+                                Website
+                            </label>
+
+                            <div class="input-box">
+
+                                <i class="fa-solid fa-globe"></i>
+
+                                <input
+                                    type="url"
+                                    id="website"
+                                    placeholder="https://example.org"
+                                >
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="socialLink">
+                                Social Media
+                            </label>
+
+                            <div class="input-box">
+
+                                <i class="fa-solid fa-link"></i>
+
+                                <input
+                                    type="url"
+                                    id="socialLink"
+                                    placeholder="Instagram / LinkedIn URL"
+                                >
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- DOCUMENT -->
+
+                    <div class="section-title">
+                        Verification Document
+                    </div>
+
+
+                    <div class="upload-area">
+
+                        <input
+                            type="file"
+                            id="verificationDocument"
+                            accept=".pdf,.jpg,.jpeg,.png"
+                        >
+
+                        <label
+                            for="verificationDocument"
+                            class="upload-label"
+                        >
+
+                            <i class="fa-solid fa-cloud-arrow-up"></i>
+
+                            <strong>
+                                Upload registration document
+                            </strong>
+
+                            <span>
+                                PDF, JPG or PNG
+                            </span>
+
+                            <small id="fileName">
+                                No file selected
+                            </small>
+
+                        </label>
+
+                    </div>
+
+                    <small
+                        class="error upload-error"
+                        id="documentError"
+                    ></small>
+
+
+                    <!-- PASSWORD -->
+
+                    <div class="section-title">
+                        Account Security
+                    </div>
+
+
+                    <div class="form-row">
+
+                        <div class="form-group">
+
+                            <label for="password">
+                                Password *
+                            </label>
+
+                            <div class="input-box">
+
+                                <i class="fa-solid fa-lock"></i>
+
+                                <input
+                                    type="password"
+                                    id="password"
+                                    placeholder="Create password"
+                                    required
+                                >
+
+                                <button
+                                    type="button"
+                                    class="password-toggle"
+                                    id="togglePassword"
+                                >
+                                    <i class="fa-solid fa-eye"></i>
+                                </button>
+
+                            </div>
+
+                            <small
+                                class="error"
+                                id="passwordError"
+                            ></small>
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="confirmPassword">
+                                Confirm Password *
+                            </label>
+
+                            <div class="input-box">
+
+                                <i class="fa-solid fa-lock"></i>
+
+                                <input
+                                    type="password"
+                                    id="confirmPassword"
+                                    placeholder="Confirm password"
+                                    required
+                                >
+
+                            </div>
+
+                            <small
+                                class="error"
+                                id="confirmPasswordError"
+                            ></small>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- TERMS -->
+
+                    <div class="terms-area">
+
+                        <label>
+
+                            <input
+                                type="checkbox"
+                                id="terms"
+                            >
+
+                            <span>
+                                I confirm that the information provided
+                                is correct and I agree to KindLink's
+                                <a href="#">
+                                    Terms
+                                </a>
+                                and
+                                <a href="#">
+                                    Verification Policy
+                                </a>.
+                            </span>
+
+                        </label>
+
+                        <small
+                            class="error"
+                            id="termsError"
+                        ></small>
+
+                    </div>
+
+
+                    <!-- SUBMIT -->
+
+                    <button
+                        type="submit"
+                        class="register-btn"
+                    >
+
+                        Submit for Verification
+
+                        <i class="fa-solid fa-arrow-right"></i>
+
+                    </button>
+
+                </form>
+
+
+                <div class="login-area">
+
+                    <p>
+                        Already registered?
+                    </p>
+
+                    <a href="login.html">
+                        Login to KindLink
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- ================= SUCCESS MODAL ================= -->
+
+    <div
+        class="modal-overlay"
+        id="successModal"
+    >
+
+        <div class="success-modal">
+
+            <div class="pending-icon">
+
+                <i class="fa-solid fa-clock"></i>
+
+            </div>
+
+            <span class="status">
+                Pending Verification
+            </span>
+
+            <h2>
+                Registration submitted!
+            </h2>
+
+            <p>
+                Your organisation registration has been received.
+                KindLink will review the submitted information before
+                activating the organisation account.
+            </p>
+
+            <div class="verification-steps">
+
+                <div>
+                    <span>1</span>
+                    Registration submitted
+                </div>
+
+                <div>
+                    <span>2</span>
+                    Documents reviewed
+                </div>
+
+                <div>
+                    <span>3</span>
+                    Organisation verified
+                </div>
+
+            </div>
+
+            <button id="continueBtn">
+                Return to Login
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <script src="../js/organisation-register.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,1445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>User Dashboard | KindLink</title>
+
+    <link rel="stylesheet" href="../css/user-dashboard.css">
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
+</head>
+
+<body>
+
+    <!-- ================= NAVBAR ================= -->
+
+    <header class="topbar">
+
+        <div class="logo">
+            <a href="../index.html">
+                Kind<span>Link</span>
+            </a>
+        </div>
+
+        <div class="topbar-right">
+
+            <button class="notification-btn">
+                <i class="fa-solid fa-bell"></i>
+                <span>3</span>
+            </button>
+
+            <div class="user-box">
+
+                <div class="user-avatar">
+                    PT
+                </div>
+
+                <div>
+                    <strong>Paridhi</strong>
+                    <small>KindLink User</small>
+                </div>
+
+            </div>
+
+            <button class="menu-btn" id="menuBtn">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+
+        </div>
+
+    </header>
+
+
+    <!-- ================= LAYOUT ================= -->
+
+    <div class="dashboard-layout">
+
+        <!-- SIDEBAR -->
+
+        <aside class="sidebar" id="sidebar">
+
+            <nav class="sidebar-nav">
+
+                <a href="#" class="sidebar-link active" data-section="overview">
+
+                    <i class="fa-solid fa-chart-pie"></i>
+
+                    Overview
+
+                </a>
+
+
+                <a href="#" class="sidebar-link" data-section="donations">
+
+                    <i class="fa-solid fa-hand-holding-heart"></i>
+
+                    My Donations
+
+                </a>
+
+
+                <a href="#" class="sidebar-link" data-section="volunteer">
+
+                    <i class="fa-solid fa-people-group"></i>
+
+                    Volunteering
+
+                </a>
+
+
+                <a href="#" class="sidebar-link" data-section="adoption">
+
+                    <i class="fa-solid fa-paw"></i>
+
+                    Adoption
+
+                </a>
+
+
+                <a href="#" class="sidebar-link" data-section="emergency">
+
+                    <i class="fa-solid fa-triangle-exclamation"></i>
+
+                    Emergency Help
+
+                </a>
+
+
+                <a href="#" class="sidebar-link" data-section="saved">
+
+                    <i class="fa-solid fa-bookmark"></i>
+
+                    Saved Causes
+
+                </a>
+
+
+                <a href="#" class="sidebar-link" data-section="profile">
+
+                    <i class="fa-solid fa-user"></i>
+
+                    Profile
+
+                </a>
+
+            </nav>
+
+
+            <div class="sidebar-bottom">
+
+                <a href="../index.html">
+
+                    <i class="fa-solid fa-house"></i>
+
+                    Back to Website
+
+                </a>
+
+                <button id="logoutBtn">
+
+                    <i class="fa-solid fa-right-from-bracket"></i>
+
+                    Logout
+
+                </button>
+
+            </div>
+
+        </aside>
+
+
+        <!-- ================= MAIN CONTENT ================= -->
+
+        <main class="dashboard-main">
+
+            <!-- ================= OVERVIEW ================= -->
+
+            <section class="dashboard-section active-section" id="overview">
+
+                <div class="welcome-row">
+
+                    <div>
+
+                        <span class="small-label">
+                            User Dashboard
+                        </span>
+
+                        <h1>
+                            Welcome back, Paridhi 👋
+                        </h1>
+
+                        <p>
+                            Here's an overview of your KindLink impact.
+                        </p>
+
+                    </div>
+
+
+                    <a href="causes.html" class="primary-btn">
+
+                        <i class="fa-solid fa-heart"></i>
+
+                        Support a Cause
+
+                    </a>
+
+                </div>
+
+
+                <!-- STATS -->
+
+                <div class="stats-grid">
+
+                    <article class="stat-card">
+
+                        <div class="stat-icon donation-icon">
+                            <i class="fa-solid fa-indian-rupee-sign"></i>
+                        </div>
+
+                        <div>
+
+                            <span>Total Donated</span>
+
+                            <strong>₹2,500</strong>
+
+                            <small>
+                                Across 4 campaigns
+                            </small>
+
+                        </div>
+
+                    </article>
+
+
+                    <article class="stat-card">
+
+                        <div class="stat-icon volunteer-icon">
+                            <i class="fa-solid fa-people-group"></i>
+                        </div>
+
+                        <div>
+
+                            <span>Volunteer Activities</span>
+
+                            <strong>3</strong>
+
+                            <small>
+                                18 hours contributed
+                            </small>
+
+                        </div>
+
+                    </article>
+
+
+                    <article class="stat-card">
+
+                        <div class="stat-icon adoption-icon">
+                            <i class="fa-solid fa-paw"></i>
+                        </div>
+
+                        <div>
+
+                            <span>Adoption Requests</span>
+
+                            <strong>1</strong>
+
+                            <small>
+                                Currently under review
+                            </small>
+
+                        </div>
+
+                    </article>
+
+
+                    <article class="stat-card">
+
+                        <div class="stat-icon emergency-icon">
+                            <i class="fa-solid fa-triangle-exclamation"></i>
+                        </div>
+
+                        <div>
+
+                            <span>Emergency Support</span>
+
+                            <strong>2</strong>
+
+                            <small>
+                                Relief activities joined
+                            </small>
+
+                        </div>
+
+                    </article>
+
+                </div>
+
+
+                <!-- MAIN GRID -->
+
+                <div class="overview-grid">
+
+                    <!-- ACTIVITY -->
+
+                    <section class="dashboard-card">
+
+                        <div class="card-heading">
+
+                            <div>
+
+                                <span>Recent Activity</span>
+
+                                <h2>
+                                    Your Impact
+                                </h2>
+
+                            </div>
+
+                            <button class="text-btn">
+                                View All
+                            </button>
+
+                        </div>
+
+
+                        <div class="activity-list">
+
+                            <article class="activity-item">
+
+                                <div class="activity-icon donation-activity">
+                                    <i class="fa-solid fa-heart"></i>
+                                </div>
+
+                                <div class="activity-content">
+
+                                    <strong>
+                                        Donated ₹500
+                                    </strong>
+
+                                    <p>
+                                        Education for Every Child
+                                    </p>
+
+                                    <span>
+                                        2 days ago
+                                    </span>
+
+                                </div>
+
+                                <span class="status completed">
+                                    Completed
+                                </span>
+
+                            </article>
+
+
+                            <article class="activity-item">
+
+                                <div class="activity-icon volunteer-activity">
+                                    <i class="fa-solid fa-people-group"></i>
+                                </div>
+
+                                <div class="activity-content">
+
+                                    <strong>
+                                        Volunteer application accepted
+                                    </strong>
+
+                                    <p>
+                                        Weekend Teaching Volunteer
+                                    </p>
+
+                                    <span>
+                                        5 days ago
+                                    </span>
+
+                                </div>
+
+                                <span class="status accepted">
+                                    Accepted
+                                </span>
+
+                            </article>
+
+
+                            <article class="activity-item">
+
+                                <div class="activity-icon adoption-activity">
+                                    <i class="fa-solid fa-paw"></i>
+                                </div>
+
+                                <div class="activity-content">
+
+                                    <strong>
+                                        Adoption application submitted
+                                    </strong>
+
+                                    <p>
+                                        Bruno - Paws Care India
+                                    </p>
+
+                                    <span>
+                                        1 week ago
+                                    </span>
+
+                                </div>
+
+                                <span class="status pending">
+                                    Pending
+                                </span>
+
+                            </article>
+
+
+                            <article class="activity-item">
+
+                                <div class="activity-icon emergency-activity">
+                                    <i class="fa-solid fa-triangle-exclamation"></i>
+                                </div>
+
+                                <div class="activity-content">
+
+                                    <strong>
+                                        Joined emergency response
+                                    </strong>
+
+                                    <p>
+                                        Assam Flood Relief
+                                    </p>
+
+                                    <span>
+                                        2 weeks ago
+                                    </span>
+
+                                </div>
+
+                                <span class="status accepted">
+                                    Registered
+                                </span>
+
+                            </article>
+
+                        </div>
+
+                    </section>
+
+
+                    <!-- IMPACT SCORE -->
+
+                    <section class="dashboard-card impact-score-card">
+
+                        <span class="card-label">
+                            KindLink Impact
+                        </span>
+
+                        <div class="impact-circle">
+
+                            <div>
+
+                                <strong>72</strong>
+
+                                <span>/ 100</span>
+
+                            </div>
+
+                        </div>
+
+                        <h3>
+                            Great progress!
+                        </h3>
+
+                        <p>
+                            Your donations, volunteering and community
+                            participation are helping you build your
+                            KindLink impact score.
+                        </p>
+
+
+                        <div class="impact-level">
+
+                            <div>
+                                <span>Impact Level</span>
+                                <strong>Active Contributor</strong>
+                            </div>
+
+                            <div class="level-bar">
+                                <span></span>
+                            </div>
+
+                        </div>
+
+                    </section>
+
+                </div>
+
+
+                <!-- RECOMMENDED -->
+
+                <section class="dashboard-card recommended-section">
+
+                    <div class="card-heading">
+
+                        <div>
+
+                            <span>Recommended For You</span>
+
+                            <h2>
+                                Causes you may care about
+                            </h2>
+
+                        </div>
+
+                        <a href="causes.html">
+                            Explore Causes
+                        </a>
+
+                    </div>
+
+
+                    <div class="recommendation-grid">
+
+                        <article class="recommendation-card">
+
+                            <div class="recommendation-icon">
+                                <i class="fa-solid fa-graduation-cap"></i>
+                            </div>
+
+                            <div>
+
+                                <span>Education</span>
+
+                                <h3>
+                                    School Kits for Children
+                                </h3>
+
+                                <p>
+                                    Help provide learning materials
+                                    to students.
+                                </p>
+
+                            </div>
+
+                            <a href="donate.html">
+                                Donate
+                            </a>
+
+                        </article>
+
+
+                        <article class="recommendation-card">
+
+                            <div class="recommendation-icon">
+                                <i class="fa-solid fa-leaf"></i>
+                            </div>
+
+                            <div>
+
+                                <span>Environment</span>
+
+                                <h3>
+                                    Plant Trees, Protect Tomorrow
+                                </h3>
+
+                                <p>
+                                    Join a community plantation
+                                    campaign.
+                                </p>
+
+                            </div>
+
+                            <a href="volunteer.html">
+                                Volunteer
+                            </a>
+
+                        </article>
+
+
+                        <article class="recommendation-card">
+
+                            <div class="recommendation-icon">
+                                <i class="fa-solid fa-paw"></i>
+                            </div>
+
+                            <div>
+
+                                <span>Animals</span>
+
+                                <h3>
+                                    Give a Pet a Home
+                                </h3>
+
+                                <p>
+                                    Explore animals currently
+                                    available for adoption.
+                                </p>
+
+                            </div>
+
+                            <a href="adoption.html">
+                                Explore
+                            </a>
+
+                        </article>
+
+                    </div>
+
+                </section>
+
+            </section>
+
+
+            <!-- ================= DONATIONS ================= -->
+
+            <section class="dashboard-section" id="donations">
+
+                <div class="page-heading">
+
+                    <div>
+
+                        <span>
+                            Your Contributions
+                        </span>
+
+                        <h1>
+                            My Donations
+                        </h1>
+
+                        <p>
+                            View your donation activity and supported campaigns.
+                        </p>
+
+                    </div>
+
+                    <a href="donate.html" class="primary-btn">
+
+                        <i class="fa-solid fa-heart"></i>
+
+                        Donate Again
+
+                    </a>
+
+                </div>
+
+
+                <div class="table-card">
+
+                    <div class="responsive-table">
+
+                        <table>
+
+                            <thead>
+
+                                <tr>
+                                    <th>Campaign</th>
+                                    <th>Organisation</th>
+                                    <th>Date</th>
+                                    <th>Amount</th>
+                                    <th>Status</th>
+                                </tr>
+
+                            </thead>
+
+                            <tbody>
+
+                                <tr>
+
+                                    <td>
+                                        Education for Every Child
+                                    </td>
+
+                                    <td>
+                                        Helping Hands Foundation
+                                    </td>
+
+                                    <td>
+                                        20 Aug 2026
+                                    </td>
+
+                                    <td class="amount">
+                                        ₹500
+                                    </td>
+
+                                    <td>
+                                        <span class="status completed">
+                                            Completed
+                                        </span>
+                                    </td>
+
+                                </tr>
+
+
+                                <tr>
+
+                                    <td>
+                                        Emergency Flood Relief
+                                    </td>
+
+                                    <td>
+                                        Rapid Relief Network
+                                    </td>
+
+                                    <td>
+                                        12 Aug 2026
+                                    </td>
+
+                                    <td class="amount">
+                                        ₹1,000
+                                    </td>
+
+                                    <td>
+                                        <span class="status completed">
+                                            Completed
+                                        </span>
+                                    </td>
+
+                                </tr>
+
+
+                                <tr>
+
+                                    <td>
+                                        Animal Rescue Support
+                                    </td>
+
+                                    <td>
+                                        Paws Care India
+                                    </td>
+
+                                    <td>
+                                        02 Aug 2026
+                                    </td>
+
+                                    <td class="amount">
+                                        ₹500
+                                    </td>
+
+                                    <td>
+                                        <span class="status completed">
+                                            Completed
+                                        </span>
+                                    </td>
+
+                                </tr>
+
+
+                                <tr>
+
+                                    <td>
+                                        Green Community Project
+                                    </td>
+
+                                    <td>
+                                        Green Future Collective
+                                    </td>
+
+                                    <td>
+                                        18 Jul 2026
+                                    </td>
+
+                                    <td class="amount">
+                                        ₹500
+                                    </td>
+
+                                    <td>
+                                        <span class="status completed">
+                                            Completed
+                                        </span>
+                                    </td>
+
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- ================= VOLUNTEER ================= -->
+
+            <section class="dashboard-section" id="volunteer">
+
+                <div class="page-heading">
+
+                    <div>
+
+                        <span>
+                            Volunteer Journey
+                        </span>
+
+                        <h1>
+                            My Volunteer Applications
+                        </h1>
+
+                        <p>
+                            Track your applications and volunteer activities.
+                        </p>
+
+                    </div>
+
+                    <a href="volunteer.html" class="primary-btn">
+
+                        Find Opportunities
+
+                    </a>
+
+                </div>
+
+
+                <div class="application-grid">
+
+                    <article class="application-card">
+
+                        <div class="application-top">
+
+                            <span class="category">
+                                Education
+                            </span>
+
+                            <span class="status accepted">
+                                Accepted
+                            </span>
+
+                        </div>
+
+                        <h3>
+                            Weekend Teaching Volunteer
+                        </h3>
+
+                        <p class="organisation">
+                            Helping Hands Foundation
+                        </p>
+
+                        <div class="application-info">
+
+                            <p>
+                                <i class="fa-solid fa-location-dot"></i>
+                                Delhi
+                            </p>
+
+                            <p>
+                                <i class="fa-solid fa-calendar"></i>
+                                Saturdays & Sundays
+                            </p>
+
+                        </div>
+
+                        <button class="outline-btn">
+                            View Details
+                        </button>
+
+                    </article>
+
+
+                    <article class="application-card">
+
+                        <div class="application-top">
+
+                            <span class="category">
+                                Environment
+                            </span>
+
+                            <span class="status pending">
+                                Pending
+                            </span>
+
+                        </div>
+
+                        <h3>
+                            Tree Plantation Volunteer
+                        </h3>
+
+                        <p class="organisation">
+                            Green Future Collective
+                        </p>
+
+                        <div class="application-info">
+
+                            <p>
+                                <i class="fa-solid fa-location-dot"></i>
+                                Bangalore
+                            </p>
+
+                            <p>
+                                <i class="fa-solid fa-calendar"></i>
+                                30 August 2026
+                            </p>
+
+                        </div>
+
+                        <button class="outline-btn">
+                            View Details
+                        </button>
+
+                    </article>
+
+
+                    <article class="application-card">
+
+                        <div class="application-top">
+
+                            <span class="category">
+                                Community
+                            </span>
+
+                            <span class="status completed">
+                                Completed
+                            </span>
+
+                        </div>
+
+                        <h3>
+                            Food Distribution Drive
+                        </h3>
+
+                        <p class="organisation">
+                            Helping Hands Foundation
+                        </p>
+
+                        <div class="application-info">
+
+                            <p>
+                                <i class="fa-solid fa-location-dot"></i>
+                                Delhi
+                            </p>
+
+                            <p>
+                                <i class="fa-solid fa-clock"></i>
+                                6 Hours Completed
+                            </p>
+
+                        </div>
+
+                        <button class="outline-btn">
+                            View Activity
+                        </button>
+
+                    </article>
+
+                </div>
+
+            </section>
+
+
+            <!-- ================= ADOPTION ================= -->
+
+            <section class="dashboard-section" id="adoption">
+
+                <div class="page-heading">
+
+                    <div>
+
+                        <span>
+                            Animal Adoption
+                        </span>
+
+                        <h1>
+                            My Adoption Applications
+                        </h1>
+
+                        <p>
+                            Track animals you have applied to adopt.
+                        </p>
+
+                    </div>
+
+                    <a href="adoption.html" class="primary-btn">
+                        Explore Animals
+                    </a>
+
+                </div>
+
+
+                <div class="application-card adoption-request">
+
+                    <div class="animal-placeholder">
+
+                        <i class="fa-solid fa-dog"></i>
+
+                    </div>
+
+
+                    <div class="adoption-info">
+
+                        <span class="category">
+                            Dog
+                        </span>
+
+                        <h2>
+                            Bruno
+                        </h2>
+
+                        <p>
+                            Paws Care India • Mumbai
+                        </p>
+
+
+                        <div class="application-info">
+
+                            <p>
+                                <i class="fa-solid fa-calendar"></i>
+                                Applied: 15 August 2026
+                            </p>
+
+                            <p>
+                                <i class="fa-solid fa-clock"></i>
+                                Under organisation review
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <span class="status pending">
+                        Pending
+                    </span>
+
+                </div>
+
+            </section>
+
+
+            <!-- ================= EMERGENCY ================= -->
+
+            <section class="dashboard-section" id="emergency">
+
+                <div class="page-heading">
+
+                    <div>
+
+                        <span>
+                            Emergency Response
+                        </span>
+
+                        <h1>
+                            My Emergency Participation
+                        </h1>
+
+                        <p>
+                            Track relief and emergency activities you joined.
+                        </p>
+
+                    </div>
+
+                    <a href="emergency.html" class="primary-btn">
+                        View Emergencies
+                    </a>
+
+                </div>
+
+
+                <div class="application-grid">
+
+                    <article class="application-card emergency-card">
+
+                        <div class="application-top">
+
+                            <span class="emergency-label">
+                                Flood Relief
+                            </span>
+
+                            <span class="status accepted">
+                                Registered
+                            </span>
+
+                        </div>
+
+                        <h3>
+                            Assam Flood Relief
+                        </h3>
+
+                        <p class="organisation">
+                            Rapid Relief Network
+                        </p>
+
+                        <div class="application-info">
+
+                            <p>
+                                <i class="fa-solid fa-location-dot"></i>
+                                Assam
+                            </p>
+
+                            <p>
+                                <i class="fa-solid fa-box"></i>
+                                Relief Distribution
+                            </p>
+
+                        </div>
+
+                    </article>
+
+
+                    <article class="application-card emergency-card">
+
+                        <div class="application-top">
+
+                            <span class="emergency-label">
+                                Relief Support
+                            </span>
+
+                            <span class="status completed">
+                                Completed
+                            </span>
+
+                        </div>
+
+                        <h3>
+                            Community Emergency Supply Drive
+                        </h3>
+
+                        <p class="organisation">
+                            Helping Hands Foundation
+                        </p>
+
+                        <div class="application-info">
+
+                            <p>
+                                <i class="fa-solid fa-location-dot"></i>
+                                Delhi
+                            </p>
+
+                            <p>
+                                <i class="fa-solid fa-hand-holding-heart"></i>
+                                Supplies Donated
+                            </p>
+
+                        </div>
+
+                    </article>
+
+                </div>
+
+            </section>
+
+
+            <!-- ================= SAVED ================= -->
+
+            <section class="dashboard-section" id="saved">
+
+                <div class="page-heading">
+
+                    <div>
+
+                        <span>
+                            Saved For Later
+                        </span>
+
+                        <h1>
+                            Saved Causes
+                        </h1>
+
+                        <p>
+                            Causes and campaigns you want to revisit.
+                        </p>
+
+                    </div>
+
+                    <a href="causes.html" class="primary-btn">
+                        Explore More
+                    </a>
+
+                </div>
+
+
+                <div class="saved-grid">
+
+                    <article class="saved-card">
+
+                        <div class="saved-icon">
+                            <i class="fa-solid fa-book-open"></i>
+                        </div>
+
+                        <span>Education</span>
+
+                        <h3>
+                            Education for Every Child
+                        </h3>
+
+                        <p>
+                            Helping Hands Foundation
+                        </p>
+
+                        <div class="saved-actions">
+
+                            <a href="donate.html">
+                                Donate
+                            </a>
+
+                            <button>
+                                <i class="fa-solid fa-bookmark"></i>
+                            </button>
+
+                        </div>
+
+                    </article>
+
+
+                    <article class="saved-card">
+
+                        <div class="saved-icon">
+                            <i class="fa-solid fa-leaf"></i>
+                        </div>
+
+                        <span>Environment</span>
+
+                        <h3>
+                            Plant Trees, Protect Tomorrow
+                        </h3>
+
+                        <p>
+                            Green Future Collective
+                        </p>
+
+                        <div class="saved-actions">
+
+                            <a href="volunteer.html">
+                                Volunteer
+                            </a>
+
+                            <button>
+                                <i class="fa-solid fa-bookmark"></i>
+                            </button>
+
+                        </div>
+
+                    </article>
+
+                </div>
+
+            </section>
+
+
+            <!-- ================= PROFILE ================= -->
+
+            <section class="dashboard-section" id="profile">
+
+                <div class="page-heading">
+
+                    <div>
+
+                        <span>
+                            Account Settings
+                        </span>
+
+                        <h1>
+                            My Profile
+                        </h1>
+
+                        <p>
+                            Manage your personal information and interests.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="profile-card">
+
+                    <div class="profile-top">
+
+                        <div class="large-avatar">
+                            PT
+                        </div>
+
+                        <div>
+
+                            <h2>
+                                Paridhi Thakur
+                            </h2>
+
+                            <p>
+                                KindLink Member
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <form id="profileForm">
+
+                        <div class="form-row">
+
+                            <div class="form-group">
+
+                                <label>
+                                    First Name
+                                </label>
+
+                                <input
+                                    type="text"
+                                    value="Paridhi"
+                                >
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label>
+                                    Last Name
+                                </label>
+
+                                <input
+                                    type="text"
+                                    value="Thakur"
+                                >
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="form-row">
+
+                            <div class="form-group">
+
+                                <label>
+                                    Email
+                                </label>
+
+                                <input
+                                    type="email"
+                                    value="paridhi@example.com"
+                                >
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label>
+                                    Phone
+                                </label>
+
+                                <input
+                                    type="tel"
+                                    value="9876543210"
+                                >
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label>
+                                City
+                            </label>
+
+                            <input
+                                type="text"
+                                value="Delhi"
+                            >
+
+                        </div>
+
+
+                        <div class="interest-section">
+
+                            <label>
+                                Interests
+                            </label>
+
+
+                            <div class="interest-tags">
+
+                                <button type="button" class="interest active">
+                                    Education
+                                </button>
+
+                                <button type="button" class="interest active">
+                                    Volunteering
+                                </button>
+
+                                <button type="button" class="interest active">
+                                    Animals
+                                </button>
+
+                                <button type="button" class="interest">
+                                    Environment
+                                </button>
+
+                                <button type="button" class="interest">
+                                    Emergency Help
+                                </button>
+
+                            </div>
+
+                        </div>
+
+
+                        <button
+                            type="submit"
+                            class="primary-btn save-profile"
+                        >
+                            Save Changes
+                        </button>
+
+                        <small id="profileMessage"></small>
+
+                    </form>
+
+                </div>
+
+            </section>
+
+        </main>
+
+    </div>
+
+
+    <!-- ================= LOGOUT MODAL ================= -->
+
+    <div class="modal-overlay" id="logoutModal">
+
+        <div class="logout-modal">
+
+            <div class="logout-icon">
+
+                <i class="fa-solid fa-right-from-bracket"></i>
+
+            </div>
+
+            <h2>
+                Logout from KindLink?
+            </h2>
+
+            <p>
+                You will return to the KindLink login page.
+            </p>
+
+            <div class="logout-actions">
+
+                <button id="cancelLogout">
+                    Cancel
+                </button>
+
+                <button id="confirmLogout">
+                    Logout
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <script src="../js/user-dashboard.js"></script>
+
+</body>
+</html>

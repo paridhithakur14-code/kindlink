@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Organisations | KindLink</title>
+
+    <link rel="stylesheet" href="../css/organisations.css">
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+
+    <header class="navbar">
+
+        <div class="logo">
+            <a href="../index.html">
+                Kind<span>Link</span>
+            </a>
+        </div>
+
+        <nav class="nav-links">
+            <a href="../index.html">Home</a>
+            <a href="causes.html">Causes</a>
+            <a href="volunteer.html">Volunteer</a>
+            <a href="adoption.html">Adoption</a>
+            <a href="emergency.html">Emergency</a>
+            <a href="stories.html">Stories</a>
+            <a href="organisations.html" class="active">Organisations</a>
+            <a href="about.html">About</a>
+        </nav>
+
+        <a href="login.html" class="login-btn">
+            Login
+        </a>
+
+        <button class="menu-btn" id="menuBtn">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+
+    </header>
+
+
+    <!-- HERO -->
+
+    <section class="hero">
+
+        <div class="hero-content">
+
+            <span class="hero-tag">
+                <i class="fa-solid fa-shield-heart"></i>
+                Trusted Social Impact Network
+            </span>
+
+            <h1>
+                Discover organisations
+                <span>creating real impact.</span>
+            </h1>
+
+            <p>
+                Connect with verified NGOs, foundations, shelters
+                and community organisations working across different
+                social causes.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- SEARCH SECTION -->
+
+    <section class="search-section">
+
+        <div class="search-container">
+
+            <div class="search-box">
+
+                <i class="fa-solid fa-magnifying-glass"></i>
+
+                <input
+                    type="text"
+                    id="searchInput"
+                    placeholder="Search organisations..."
+                >
+
+            </div>
+
+
+            <select id="categoryFilter">
+
+                <option value="all">
+                    All Causes
+                </option>
+
+                <option value="education">
+                    Education
+                </option>
+
+                <option value="health">
+                    Health
+                </option>
+
+                <option value="animals">
+                    Animals
+                </option>
+
+                <option value="environment">
+                    Environment
+                </option>
+
+                <option value="disaster">
+                    Disaster Relief
+                </option>
+
+                <option value="women">
+                    Women Support
+                </option>
+
+                <option value="community">
+                    Community
+                </option>
+
+            </select>
+
+
+            <select id="locationFilter">
+
+                <option value="all">
+                    All Locations
+                </option>
+
+                <option value="delhi">
+                    Delhi
+                </option>
+
+                <option value="mumbai">
+                    Mumbai
+                </option>
+
+                <option value="jaipur">
+                    Jaipur
+                </option>
+
+                <option value="guwahati">
+                    Guwahati
+                </option>
+
+                <option value="bangalore">
+                    Bangalore
+                </option>
+
+                <option value="dehradun">
+                    Dehradun
+                </option>
+
+            </select>
+
+        </div>
+
+    </section>
+
+
+    <!-- STATS -->
+
+    <section class="organisation-stats">
+
+        <div class="stat-card">
+            <strong>24+</strong>
+            <span>Verified Organisations</span>
+        </div>
+
+        <div class="stat-card">
+            <strong>40+</strong>
+            <span>Active Campaigns</span>
+        </div>
+
+        <div class="stat-card">
+            <strong>1,200+</strong>
+            <span>Volunteers Connected</span>
+        </div>
+
+        <div class="stat-card">
+            <strong>12</strong>
+            <span>Regions Supported</span>
+        </div>
+
+    </section>
+
+
+    <!-- ORGANISATIONS -->
+
+    <section class="organisations-section">
+
+        <div class="section-heading">
+
+            <div>
+                <span>
+                    Verified Partners
+                </span>
+
+                <h2>
+                    Organisations on KindLink
+                </h2>
+            </div>
+
+            <p id="resultCount">
+                Showing 6 organisations
+            </p>
+
+        </div>
+
+
+        <div class="organisation-grid" id="organisationGrid">
+
+
+            <!-- CARD 1 -->
+
+            <article
+                class="organisation-card"
+                data-name="Helping Hands Foundation"
+                data-category="education community"
+                data-location="delhi"
+            >
+
+                <div class="org-cover education-cover">
+
+                    <div class="org-logo">
+                        HH
+                    </div>
+
+                    <span class="verified-badge">
+                        <i class="fa-solid fa-circle-check"></i>
+                        Verified
+                    </span>
+
+                </div>
+
+
+                <div class="org-content">
+
+                    <div class="org-title">
+
+                        <div>
+
+                            <h3>
+                                Helping Hands Foundation
+                            </h3>
+
+                            <p>
+                                <i class="fa-solid fa-location-dot"></i>
+                                Delhi, India
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <p class="org-description">
+                        Supporting underprivileged children through
+                        education, meals and community development
+                        programmes.
+                    </p>
+
+
+                    <div class="org-tags">
+
+                        <span>Education</span>
+                        <span>Community</span>
+
+                    </div>
+
+
+                    <div class="org-numbers">
+
+                        <div>
+                            <strong>8</strong>
+                            <span>Campaigns</span>
+                        </div>
+
+                        <div>
+                            <strong>320</strong>
+                            <span>Volunteers</span>
+                        </div>
+
+                        <div>
+                            <strong>4.8</strong>
+                            <span>Impact</span>
+                        </div>
+
+                    </div>
+
+
+                    <a
+                        href="organisation-details.html?id=helping-hands"
+                        class="view-btn"
+                    >
+                        View Organisation
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+
+                </div>
+
+            </article>
+
+
+            <!-- CARD 2 -->
+
+            <article
+                class="organisation-card"
+                data-name="Paws Care India"
+                data-category="animals"
+                data-location="mumbai"
+            >
+
+                <div class="org-cover animal-cover">
+
+                    <div class="org-logo">
+                        PC
+                    </div>
+
+                    <span class="verified-badge">
+                        <i class="fa-solid fa-circle-check"></i>
+                        Verified
+                    </span>
+
+                </div>
+
+
+                <div class="org-content">
+
+                    <h3>
+                        Paws Care India
+                    </h3>
+
+                    <p class="org-location">
+                        <i class="fa-solid fa-location-dot"></i>
+                        Mumbai, India
+                    </p>
+
+
+                    <p class="org-description">
+                        Rescue, treatment and adoption support for
+                        abandoned and injured animals.
+                    </p>
+
+
+                    <div class="org-tags">
+                        <span>Animals</span>
+                        <span>Adoption</span>
+                    </div>
+
+
+                    <div class="org-numbers">
+
+                        <div>
+                            <strong>12</strong>
+                            <span>Campaigns</span>
+                        </div>
+
+                        <div>
+                            <strong>210</strong>
+                            <span>Volunteers</span>
+                        </div>
+
+                        <div>
+                            <strong>4.9</strong>
+                            <span>Impact</span>
+                        </div>
+
+                    </div>
+
+
+                    <a
+                        href="organisation-details.html?id=paws-care"
+                        class="view-btn"
+                    >
+                        View Organisation
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+
+                </div>
+
+            </article>
+
+
+            <!-- CARD 3 -->
+
+            <article
+                class="organisation-card"
+                data-name="Green Future Collective"
+                data-category="environment"
+                data-location="bangalore"
+            >
+
+                <div class="org-cover environment-cover">
+
+                    <div class="org-logo">
+                        GF
+                    </div>
+
+                    <span class="verified-badge">
+                        <i class="fa-solid fa-circle-check"></i>
+                        Verified
+                    </span>
+
+                </div>
+
+
+                <div class="org-content">
+
+                    <h3>
+                        Green Future Collective
+                    </h3>
+
+                    <p class="org-location">
+                        <i class="fa-solid fa-location-dot"></i>
+                        Bangalore, India
+                    </p>
+
+
+                    <p class="org-description">
+                        Working on tree plantation, waste reduction
+                        and environmental awareness.
+                    </p>
+
+
+                    <div class="org-tags">
+                        <span>Environment</span>
+                        <span>Climate</span>
+                    </div>
+
+
+                    <div class="org-numbers">
+
+                        <div>
+                            <strong>6</strong>
+                            <span>Campaigns</span>
+                        </div>
+
+                        <div>
+                            <strong>185</strong>
+                            <span>Volunteers</span>
+                        </div>
+
+                        <div>
+                            <strong>4.7</strong>
+                            <span>Impact</span>
+                        </div>
+
+                    </div>
+
+
+                    <a
+                        href="organisation-details.html?id=green-future"
+                        class="view-btn"
+                    >
+                        View Organisation
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+
+                </div>
+
+            </article>
+
+
+            <!-- CARD 4 -->
+
+            <article
+                class="organisation-card"
+                data-name="Hope Health Trust"
+                data-category="health"
+                data-location="jaipur"
+            >
+
+                <div class="org-cover health-cover">
+
+                    <div class="org-logo">
+                        HH
+                    </div>
+
+                    <span class="verified-badge">
+                        <i class="fa-solid fa-circle-check"></i>
+                        Verified
+                    </span>
+
+                </div>
+
+
+                <div class="org-content">
+
+                    <h3>
+                        Hope Health Trust
+                    </h3>
+
+                    <p class="org-location">
+                        <i class="fa-solid fa-location-dot"></i>
+                        Jaipur, India
+                    </p>
+
+
+                    <p class="org-description">
+                        Community health camps, medicine support and
+                        awareness programmes for underserved families.
+                    </p>
+
+
+                    <div class="org-tags">
+                        <span>Health</span>
+                        <span>Medical Support</span>
+                    </div>
+
+
+                    <div class="org-numbers">
+
+                        <div>
+                            <strong>9</strong>
+                            <span>Campaigns</span>
+                        </div>
+
+                        <div>
+                            <strong>140</strong>
+                            <span>Volunteers</span>
+                        </div>
+
+                        <div>
+                            <strong>4.8</strong>
+                            <span>Impact</span>
+                        </div>
+
+                    </div>
+
+
+                    <a
+                        href="organisation-details.html?id=hope-health"
+                        class="view-btn"
+                    >
+                        View Organisation
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+
+                </div>
+
+            </article>
+
+
+            <!-- CARD 5 -->
+
+            <article
+                class="organisation-card"
+                data-name="Rapid Relief Network"
+                data-category="disaster community"
+                data-location="guwahati"
+            >
+
+                <div class="org-cover disaster-cover">
+
+                    <div class="org-logo">
+                        RR
+                    </div>
+
+                    <span class="verified-badge">
+                        <i class="fa-solid fa-circle-check"></i>
+                        Verified
+                    </span>
+
+                </div>
+
+
+                <div class="org-content">
+
+                    <h3>
+                        Rapid Relief Network
+                    </h3>
+
+                    <p class="org-location">
+                        <i class="fa-solid fa-location-dot"></i>
+                        Guwahati, India
+                    </p>
+
+
+                    <p class="org-description">
+                        Disaster response organisation coordinating
+                        emergency relief, supplies and volunteers.
+                    </p>
+
+
+                    <div class="org-tags">
+                        <span>Disaster Relief</span>
+                        <span>Emergency</span>
+                    </div>
+
+
+                    <div class="org-numbers">
+
+                        <div>
+                            <strong>5</strong>
+                            <span>Responses</span>
+                        </div>
+
+                        <div>
+                            <strong>450</strong>
+                            <span>Volunteers</span>
+                        </div>
+
+                        <div>
+                            <strong>4.9</strong>
+                            <span>Impact</span>
+                        </div>
+
+                    </div>
+
+
+                    <a
+                        href="organisation-details.html?id=rapid-relief"
+                        class="view-btn"
+                    >
+                        View Organisation
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+
+                </div>
+
+            </article>
+
+
+            <!-- CARD 6 -->
+
+            <article
+                class="organisation-card"
+                data-name="Sakhi Support Foundation"
+                data-category="women community"
+                data-location="dehradun"
+            >
+
+                <div class="org-cover women-cover">
+
+                    <div class="org-logo">
+                        SS
+                    </div>
+
+                    <span class="verified-badge">
+                        <i class="fa-solid fa-circle-check"></i>
+                        Verified
+                    </span>
+
+                </div>
+
+
+                <div class="org-content">
+
+                    <h3>
+                        Sakhi Support Foundation
+                    </h3>
+
+                    <p class="org-location">
+                        <i class="fa-solid fa-location-dot"></i>
+                        Dehradun, India
+                    </p>
+
+
+                    <p class="org-description">
+                        Supporting women through education, skills,
+                        safety awareness and financial independence.
+                    </p>
+
+
+                    <div class="org-tags">
+                        <span>Women Support</span>
+                        <span>Community</span>
+                    </div>
+
+
+                    <div class="org-numbers">
+
+                        <div>
+                            <strong>7</strong>
+                            <span>Campaigns</span>
+                        </div>
+
+                        <div>
+                            <strong>165</strong>
+                            <span>Volunteers</span>
+                        </div>
+
+                        <div>
+                            <strong>4.8</strong>
+                            <span>Impact</span>
+                        </div>
+
+                    </div>
+
+
+                    <a
+                        href="organisation-details.html?id=sakhi-support"
+                        class="view-btn"
+                    >
+                        View Organisation
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+
+                </div>
+
+            </article>
+
+        </div>
+
+
+        <!-- EMPTY RESULT -->
+
+        <div class="empty-state" id="emptyState">
+
+            <i class="fa-solid fa-magnifying-glass"></i>
+
+            <h3>
+                No organisations found
+            </h3>
+
+            <p>
+                Try changing your search or filters.
+            </p>
+
+            <button id="clearFilters">
+                Clear Filters
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- CTA -->
+
+    <section class="organisation-cta">
+
+        <div>
+
+            <span>
+                Represent an NGO or social organisation?
+            </span>
+
+            <h2>
+                Join KindLink and expand your impact.
+            </h2>
+
+        </div>
+
+        <a href="organisation-register.html">
+
+            Register Organisation
+
+            <i class="fa-solid fa-arrow-right"></i>
+
+        </a>
+
+    </section>
+
+
+    <script src="../js/organisations.js"></script>
+
+</body>
+</html>

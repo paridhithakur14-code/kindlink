@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | KindLink</title>
+
+    <link rel="stylesheet" href="../css/login.css">
+
+    <!-- Font Awesome -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
+</head>
+
+<body>
+
+    <!-- ================= NAVBAR ================= -->
+    <header class="navbar">
+        <div class="logo">
+            <a href="../index.html">Kind<span>Link</span></a>
+        </div>
+
+        <nav class="nav-links">
+            <a href="../index.html">Home</a>
+            <a href="causes.html">Causes</a>
+            <a href="volunteer.html">Volunteer</a>
+            <a href="adoption.html">Adoption</a>
+            <a href="emergency.html">Emergency</a>
+            <a href="stories.html">Stories</a>
+            <a href="about.html">About</a>
+        </nav>
+
+        <a href="login.html" class="login-nav-btn">Login</a>
+
+        <button class="menu-btn" id="menuBtn">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+    </header>
+
+
+    <!-- ================= LOGIN SECTION ================= -->
+    <main class="login-section">
+
+        <!-- Left Side -->
+        <section class="login-info">
+
+            <div class="info-content">
+                <div class="small-title">
+                    <i class="fa-solid fa-heart"></i>
+                    Welcome to KindLink
+                </div>
+
+                <h1>
+                    Together, we can create
+                    <span>meaningful change.</span>
+                </h1>
+
+                <p>
+                    Login to support causes, volunteer for communities,
+                    help during emergencies, adopt animals and track
+                    the impact you create.
+                </p>
+
+                <div class="impact-points">
+
+                    <div class="impact-item">
+                        <div class="impact-icon">
+                            <i class="fa-solid fa-hand-holding-heart"></i>
+                        </div>
+
+                        <div>
+                            <h3>Support Causes</h3>
+                            <p>Discover meaningful campaigns and contribute.</p>
+                        </div>
+                    </div>
+
+
+                    <div class="impact-item">
+                        <div class="impact-icon">
+                            <i class="fa-solid fa-people-group"></i>
+                        </div>
+
+                        <div>
+                            <h3>Volunteer</h3>
+                            <p>Use your skills and time to help communities.</p>
+                        </div>
+                    </div>
+
+
+                    <div class="impact-item">
+                        <div class="impact-icon">
+                            <i class="fa-solid fa-shield-heart"></i>
+                        </div>
+
+                        <div>
+                            <h3>Make an Impact</h3>
+                            <p>Track your contribution through KindLink.</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </section>
+
+
+        <!-- Right Side -->
+        <section class="login-area">
+
+            <div class="login-card">
+
+                <div class="login-heading">
+                    <p class="welcome-text">Welcome Back</p>
+                    <h2>Login to KindLink</h2>
+                    <p>
+                        Choose your account type to continue.
+                    </p>
+                </div>
+
+
+                <!-- Account Type -->
+                <div class="account-selector">
+
+                    <button
+                        type="button"
+                        class="account-btn active"
+                        id="userBtn"
+                        data-role="user"
+                    >
+                        <i class="fa-solid fa-user"></i>
+
+                        <div>
+                            <strong>User</strong>
+                            <span>Support & volunteer</span>
+                        </div>
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="account-btn"
+                        id="organisationBtn"
+                        data-role="organisation"
+                    >
+                        <i class="fa-solid fa-building"></i>
+
+                        <div>
+                            <strong>Organisation</strong>
+                            <span>Manage social impact</span>
+                        </div>
+                    </button>
+
+                </div>
+
+
+                <!-- Form -->
+                <form id="loginForm">
+
+                    <input
+                        type="hidden"
+                        id="accountType"
+                        value="user"
+                    >
+
+
+                    <div class="form-group">
+
+                        <label for="email">
+                            Email Address
+                        </label>
+
+                        <div class="input-box">
+                            <i class="fa-solid fa-envelope"></i>
+
+                            <input
+                                type="email"
+                                id="email"
+                                placeholder="Enter your email"
+                                required
+                            >
+                        </div>
+
+                        <small class="error-message" id="emailError"></small>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <div class="password-label">
+
+                            <label for="password">
+                                Password
+                            </label>
+
+                            <a href="#" id="forgotPassword">
+                                Forgot Password?
+                            </a>
+
+                        </div>
+
+
+                        <div class="input-box">
+                            <i class="fa-solid fa-lock"></i>
+
+                            <input
+                                type="password"
+                                id="password"
+                                placeholder="Enter your password"
+                                required
+                            >
+
+                            <button
+                                type="button"
+                                class="show-password"
+                                id="showPassword"
+                            >
+                                <i class="fa-solid fa-eye"></i>
+                            </button>
+
+                        </div>
+
+                        <small class="error-message" id="passwordError"></small>
+
+                    </div>
+
+
+                    <div class="remember-row">
+
+                        <label class="remember">
+                            <input type="checkbox" id="rememberMe">
+                            <span>Remember me</span>
+                        </label>
+
+                    </div>
+
+
+                    <button type="submit" class="login-btn">
+                        Login
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+
+                </form>
+
+
+                <!-- Divider -->
+                <div class="divider">
+                    <span></span>
+                    <p>New to KindLink?</p>
+                    <span></span>
+                </div>
+
+
+                <!-- Registration -->
+                <div class="register-area">
+
+                    <p id="registerText">
+                        Create your account and start making an impact.
+                    </p>
+
+                    <a
+                        href="user-register.html"
+                        id="registerBtn"
+                        class="register-btn"
+                    >
+                        Create User Account
+                    </a>
+
+                </div>
+
+
+                <div class="security-note">
+                    <i class="fa-solid fa-shield-halved"></i>
+                    Your information is kept secure and private.
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- Toast -->
+    <div class="toast" id="toast">
+        <i class="fa-solid fa-circle-check"></i>
+
+        <div>
+            <strong id="toastTitle">Success</strong>
+            <p id="toastMessage">Login successful.</p>
+        </div>
+    </div>
+
+
+    <script src="../js/login.js"></script>
+
+</body>
+</html>
