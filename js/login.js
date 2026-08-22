@@ -3,11 +3,12 @@
 // =======================================
 
 
-// DOM Elements
+// =======================================
+// DOM ELEMENTS
+// =======================================
 
 const userBtn = document.getElementById("userBtn");
 const organisationBtn = document.getElementById("organisationBtn");
-
 const accountType = document.getElementById("accountType");
 
 const registerBtn = document.getElementById("registerBtn");
@@ -94,9 +95,7 @@ showPassword.addEventListener("click", () => {
 
         icon.classList.remove("fa-eye-slash");
         icon.classList.add("fa-eye");
-
     }
-
 });
 
 
@@ -110,15 +109,14 @@ function validateEmail(emailValue) {
         /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
     return emailPattern.test(emailValue);
-
 }
 
 
 // =======================================
-// FORM VALIDATION
+// LOGIN FORM
 // =======================================
 
-loginForm.addEventListener("submit", function (event) {
+loginForm.addEventListener("submit", async function (event) {
 
     event.preventDefault();
 
@@ -128,7 +126,9 @@ loginForm.addEventListener("submit", function (event) {
     let valid = true;
 
 
-    // Email
+    // =======================================
+    // EMAIL VALIDATION
+    // =======================================
 
     if (email.value.trim() === "") {
 
@@ -143,11 +143,12 @@ loginForm.addEventListener("submit", function (event) {
             "Please enter a valid email address.";
 
         valid = false;
-
     }
 
 
-    // Password
+    // =======================================
+    // PASSWORD VALIDATION
+    // =======================================
 
     if (password.value.trim() === "") {
 
@@ -162,7 +163,6 @@ loginForm.addEventListener("submit", function (event) {
             "Password must contain at least 6 characters.";
 
         valid = false;
-
     }
 
 
@@ -171,46 +171,122 @@ loginForm.addEventListener("submit", function (event) {
     }
 
 
-    // =======================================
-    // TEMPORARY FRONTEND LOGIN
-    // =======================================
+    const selectedAccount = accountType.value;
 
-    const selectedAccount =
-        accountType.value;
 
+    // =======================================
+    // USER LOGIN
+    // =======================================
 
     if (selectedAccount === "user") {
 
+        try {
+
+            const response = await fetch(
+                "http://localhost:5000/api/auth/login",
+                {
+                    method: "POST",
+
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+
+                    body: JSON.stringify({
+                        email: email.value.trim(),
+                        password: password.value
+                    })
+                }
+            );
+
+
+            const data = await response.json();
+
+
+            // =======================================
+            // LOGIN FAILED
+            // =======================================
+
+            if (!response.ok) {
+
+                showToast(
+                    "Login Failed",
+                    data.message || "Invalid email or password."
+                );
+
+                return;
+            }
+
+
+            // =======================================
+            // SAVE LOGIN DATA
+            // =======================================
+
+            localStorage.setItem(
+                "kindlinkToken",
+                data.token
+            );
+
+
+            localStorage.setItem(
+                "kindlinkUser",
+                JSON.stringify(data.user)
+            );
+
+
+            // Remember account type
+
+            localStorage.setItem(
+                "kindlinkAccountType",
+                "user"
+            );
+
+
+            showToast(
+                "Login Successful",
+                "Opening your KindLink dashboard..."
+            );
+
+
+            // =======================================
+            // REDIRECT
+            // =======================================
+
+            setTimeout(() => {
+
+                window.location.href =
+                    "user-dashboard.html";
+
+            }, 1200);
+
+
+        } catch (error) {
+
+            console.error(
+                "Login error:",
+                error
+            );
+
+
+            showToast(
+                "Connection Error",
+                "Unable to connect to the KindLink server."
+            );
+        }
+
+
+    }
+
+
+    // =======================================
+    // ORGANISATION LOGIN
+    // =======================================
+
+    else {
+
         showToast(
-            "User Login Successful",
-            "Opening your KindLink user dashboard..."
+            "Organisation Login",
+            "Organisation backend login will be connected next."
         );
-
-
-        // Phase 2.11 page
-        setTimeout(() => {
-
-            window.location.href =
-                "user-dashboard.html";
-
-        }, 1200);
-
-
-    } else {
-
-        showToast(
-            "Organisation Login Successful",
-            "Opening your organisation dashboard..."
-        );
-
-
-        // Phase 2.12 page
-        setTimeout(() => {
-
-            window.location.href =
-                "organisation-dashboard.html";
-
-        }, 1200);
 
     }
 
@@ -233,7 +309,6 @@ function showToast(title, message) {
         toast.classList.remove("show");
 
     }, 3000);
-
 }
 
 
@@ -241,16 +316,18 @@ function showToast(title, message) {
 // FORGOT PASSWORD
 // =======================================
 
-forgotPassword.addEventListener("click", function (event) {
+forgotPassword.addEventListener(
+    "click",
+    function (event) {
 
-    event.preventDefault();
+        event.preventDefault();
 
-    showToast(
-        "Coming Soon",
-        "Password recovery will be connected during backend development."
-    );
-
-});
+        showToast(
+            "Coming Soon",
+            "Password recovery will be connected during backend development."
+        );
+    }
+);
 
 
 // =======================================

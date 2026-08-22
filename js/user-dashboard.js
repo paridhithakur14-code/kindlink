@@ -4,28 +4,323 @@
 
 
 // ==========================================
-// ELEMENTS
+// AUTHENTICATION CHECK
+// ==========================================
+
+const token = localStorage.getItem("kindlinkToken");
+
+if (!token) {
+    window.location.replace("login.html");
+}
+
+
+// ==========================================
+// DOM ELEMENTS
 // ==========================================
 
 const sidebarLinks =
-    document.querySelectorAll(
-        ".sidebar-link"
-    );
+    document.querySelectorAll(".sidebar-link");
 
 const sections =
-    document.querySelectorAll(
-        ".dashboard-section"
-    );
+    document.querySelectorAll(".dashboard-section");
 
 const sidebar =
-    document.getElementById(
-        "sidebar"
-    );
+    document.getElementById("sidebar");
 
 const menuBtn =
-    document.getElementById(
-        "menuBtn"
+    document.getElementById("menuBtn");
+
+const interests =
+    document.querySelectorAll(".interest");
+
+const profileForm =
+    document.getElementById("profileForm");
+
+const profileMessage =
+    document.getElementById("profileMessage");
+
+const savedButtons =
+    document.querySelectorAll(".saved-actions button");
+
+const logoutBtn =
+    document.getElementById("logoutBtn");
+
+
+// ==========================================
+// VERIFY USER WITH BACKEND
+// ==========================================
+
+async function verifyUser() {
+
+    try {
+
+        const response = await fetch(
+            "http://localhost:5000/api/auth/profile",
+            {
+                method: "GET",
+
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            }
+        );
+
+
+        const data =
+            await response.json();
+
+
+        if (!response.ok) {
+
+            clearLoginData();
+
+            window.location.replace(
+                "login.html"
+            );
+
+            return;
+        }
+
+
+        displayUserData(data.user);
+
+
+    } catch (error) {
+
+        console.error(
+            "Authentication error:",
+            error
+        );
+
+    }
+
+}
+
+
+verifyUser();
+
+
+// ==========================================
+// DISPLAY LOGGED-IN USER
+// ==========================================
+
+function displayUserData(user) {
+
+    const topUserName =
+        document.getElementById(
+            "topUserName"
+        );
+
+    const welcomeUserName =
+        document.getElementById(
+            "welcomeUserName"
+        );
+
+    const topUserAvatar =
+        document.getElementById(
+            "topUserAvatar"
+        );
+
+    const profileAvatar =
+        document.getElementById(
+            "profileAvatar"
+        );
+
+    const profileFullName =
+        document.getElementById(
+            "profileFullName"
+        );
+
+    const profileName =
+        document.getElementById(
+            "profileName"
+        );
+
+    const profileEmail =
+        document.getElementById(
+            "profileEmail"
+        );
+
+    const profilePhone =
+        document.getElementById(
+            "profilePhone"
+        );
+
+    const profileRole =
+        document.getElementById(
+            "profileRole"
+        );
+
+
+    // ==========================================
+    // TOPBAR USER NAME
+    // ==========================================
+
+    if (topUserName) {
+
+        topUserName.textContent =
+            user.name || "KindLink User";
+
+    }
+
+
+    // ==========================================
+    // WELCOME MESSAGE
+    // ==========================================
+
+    if (welcomeUserName) {
+
+        const firstName =
+            user.name
+                ? user.name.trim().split(" ")[0]
+                : "User";
+
+
+        welcomeUserName.textContent =
+            firstName;
+
+    }
+
+
+    // ==========================================
+    // PROFILE NAME
+    // ==========================================
+
+    if (profileFullName) {
+
+        profileFullName.textContent =
+            user.name || "KindLink User";
+
+    }
+
+
+    // ==========================================
+    // PROFILE FORM VALUES
+    // ==========================================
+
+    if (profileName) {
+
+        profileName.value =
+            user.name || "";
+
+    }
+
+
+    if (profileEmail) {
+
+        profileEmail.value =
+            user.email || "";
+
+    }
+
+
+    if (profilePhone) {
+
+        profilePhone.value =
+            user.phone || "";
+
+    }
+
+
+    if (profileRole) {
+
+        profileRole.value =
+            user.role || "user";
+
+    }
+
+
+    // ==========================================
+    // USER INITIALS
+    // ==========================================
+
+    const initials =
+        getInitials(user.name);
+
+
+    if (topUserAvatar) {
+
+        topUserAvatar.textContent =
+            initials;
+
+    }
+
+
+    if (profileAvatar) {
+
+        profileAvatar.textContent =
+            initials;
+
+    }
+
+
+    // ==========================================
+    // SAVE CURRENT USER LOCALLY
+    // ==========================================
+
+    localStorage.setItem(
+        "kindlinkUser",
+        JSON.stringify(user)
     );
+
+}
+
+
+// ==========================================
+// GET USER INITIALS
+// ==========================================
+
+function getInitials(name) {
+
+    if (!name) {
+
+        return "KL";
+
+    }
+
+
+    const parts =
+        name
+            .trim()
+            .split(/\s+/);
+
+
+    if (parts.length === 1) {
+
+        return parts[0]
+            .substring(0, 2)
+            .toUpperCase();
+
+    }
+
+
+    return (
+        parts[0][0] +
+        parts[parts.length - 1][0]
+    ).toUpperCase();
+
+}
+
+
+// ==========================================
+// CLEAR LOGIN DATA
+// ==========================================
+
+function clearLoginData() {
+
+    localStorage.removeItem(
+        "kindlinkToken"
+    );
+
+    localStorage.removeItem(
+        "kindlinkUser"
+    );
+
+    localStorage.removeItem(
+        "kindlinkAccountType"
+    );
+
+}
 
 
 // ==========================================
@@ -46,7 +341,8 @@ sidebarLinks.forEach(
                     link.dataset.section;
 
 
-                // REMOVE ACTIVE FROM LINKS
+                // Remove active class
+                // from sidebar links
 
                 sidebarLinks.forEach(
                     function (item) {
@@ -64,7 +360,7 @@ sidebarLinks.forEach(
                 );
 
 
-                // HIDE ALL SECTIONS
+                // Hide all sections
 
                 sections.forEach(
                     function (section) {
@@ -77,7 +373,7 @@ sidebarLinks.forEach(
                 );
 
 
-                // SHOW SELECTED SECTION
+                // Show selected section
 
                 const targetSection =
                     document.getElementById(
@@ -94,10 +390,12 @@ sidebarLinks.forEach(
                 }
 
 
-                // CLOSE MOBILE SIDEBAR
+                // Close sidebar
+                // on mobile devices
 
                 if (
-                    window.innerWidth <= 850
+                    window.innerWidth <= 850 &&
+                    sidebar
                 ) {
 
                     sidebar.classList.remove(
@@ -117,27 +415,25 @@ sidebarLinks.forEach(
 // MOBILE MENU
 // ==========================================
 
-menuBtn.addEventListener(
-    "click",
-    function () {
+if (menuBtn && sidebar) {
 
-        sidebar.classList.toggle(
-            "show"
-        );
+    menuBtn.addEventListener(
+        "click",
+        function () {
 
-    }
-);
+            sidebar.classList.toggle(
+                "show"
+            );
+
+        }
+    );
+
+}
 
 
 // ==========================================
 // PROFILE INTERESTS
 // ==========================================
-
-const interests =
-    document.querySelectorAll(
-        ".interest"
-    );
-
 
 interests.forEach(
     function (interest) {
@@ -161,67 +457,46 @@ interests.forEach(
 // PROFILE FORM
 // ==========================================
 
-const profileForm =
-    document.getElementById(
-        "profileForm"
-    );
+if (profileForm) {
 
-const profileMessage =
-    document.getElementById(
-        "profileMessage"
-    );
+    profileForm.addEventListener(
+        "submit",
+        function (event) {
+
+            event.preventDefault();
 
 
-profileForm.addEventListener(
-    "submit",
-    function (event) {
-
-        event.preventDefault();
-
-
-        profileMessage.textContent =
-            "Profile changes saved for this demo.";
-
-
-        setTimeout(
-            function () {
+            if (profileMessage) {
 
                 profileMessage.textContent =
-                    "";
+                    "Profile changes saved for this demo.";
 
-            },
-            3000
-        );
+            }
 
 
-        /*
-        ======================================
+            setTimeout(
+                function () {
 
-        BACKEND PHASE
+                    if (profileMessage) {
 
-        This will later become:
+                        profileMessage.textContent =
+                            "";
 
-        PUT /api/users/profile
+                    }
 
-        and update the logged-in user's
-        MongoDB profile.
+                },
+                3000
+            );
 
-        ======================================
-        */
+        }
+    );
 
-    }
-);
+}
 
 
 // ==========================================
 // SAVED CAUSES
 // ==========================================
-
-const savedButtons =
-    document.querySelectorAll(
-        ".saved-actions button"
-    );
-
 
 savedButtons.forEach(
     function (button) {
@@ -234,6 +509,11 @@ savedButtons.forEach(
                     button.closest(
                         ".saved-card"
                     );
+
+
+                if (!card) {
+                    return;
+                }
 
 
                 card.style.opacity =
@@ -260,92 +540,25 @@ savedButtons.forEach(
 // LOGOUT
 // ==========================================
 
-const logoutBtn =
-    document.getElementById(
-        "logoutBtn"
-    );
+if (logoutBtn) {
 
-const logoutModal =
-    document.getElementById(
-        "logoutModal"
-    );
+    logoutBtn.addEventListener(
+        "click",
+        function () {
 
-const cancelLogout =
-    document.getElementById(
-        "cancelLogout"
-    );
+            // Remove authentication
+            // information
 
-const confirmLogout =
-    document.getElementById(
-        "confirmLogout"
-    );
+            clearLoginData();
 
 
-logoutBtn.addEventListener(
-    "click",
-    function () {
+            // Redirect to login page
 
-        logoutModal.classList.add(
-            "show"
-        );
-
-    }
-);
-
-
-cancelLogout.addEventListener(
-    "click",
-    function () {
-
-        logoutModal.classList.remove(
-            "show"
-        );
-
-    }
-);
-
-
-confirmLogout.addEventListener(
-    "click",
-    function () {
-
-        /*
-        ======================================
-
-        BACKEND PHASE
-
-        Later we will remove the user's
-        authentication token/session here.
-
-        ======================================
-        */
-
-
-        window.location.href =
-            "login.html";
-
-    }
-);
-
-
-// ==========================================
-// CLOSE MODAL ON OUTSIDE CLICK
-// ==========================================
-
-logoutModal.addEventListener(
-    "click",
-    function (event) {
-
-        if (
-            event.target ===
-            logoutModal
-        ) {
-
-            logoutModal.classList.remove(
-                "show"
+            window.location.replace(
+                "login.html"
             );
 
         }
+    );
 
-    }
-);
+}

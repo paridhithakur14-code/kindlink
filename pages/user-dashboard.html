@@ -18,41 +18,48 @@
 
     <!-- ================= NAVBAR ================= -->
 
-    <header class="topbar">
+<!-- ================= NAVBAR ================= -->
 
-        <div class="logo">
-            <a href="../index.html">
-                Kind<span>Link</span>
-            </a>
-        </div>
+<header class="topbar">
 
-        <div class="topbar-right">
+    <div class="logo">
+        <a href="../index.html">
+            Kind<span>Link</span>
+        </a>
+    </div>
 
-            <button class="notification-btn">
-                <i class="fa-solid fa-bell"></i>
-                <span>3</span>
-            </button>
+    <div class="topbar-right">
 
-            <div class="user-box">
+        <button class="notification-btn">
+            <i class="fa-solid fa-bell"></i>
+            <span>3</span>
+        </button>
 
-                <div class="user-avatar">
-                    PT
-                </div>
+        <div class="user-box">
 
-                <div>
-                    <strong>Paridhi</strong>
-                    <small>KindLink User</small>
-                </div>
-
+            <div class="user-avatar" id="topUserAvatar">
+                KL
             </div>
 
-            <button class="menu-btn" id="menuBtn">
-                <i class="fa-solid fa-bars"></i>
-            </button>
+            <div>
+                <strong id="topUserName">
+                    KindLink User
+                </strong>
+
+                <small>
+                    KindLink User
+                </small>
+            </div>
 
         </div>
 
-    </header>
+        <button class="menu-btn" id="menuBtn">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+
+    </div>
+
+</header>
 
 
     <!-- ================= LAYOUT ================= -->
@@ -170,8 +177,8 @@
                         </span>
 
                         <h1>
-                            Welcome back, Paridhi 👋
-                        </h1>
+    Welcome back, <span id="welcomeUserName">User</span> 👋
+</h1>
 
                         <p>
                             Here's an overview of your KindLink impact.
@@ -1249,104 +1256,77 @@
 
                     <div class="profile-top">
 
-                        <div class="large-avatar">
-                            PT
-                        </div>
+                        <div class="large-avatar" id="profileAvatar">
+    KL
+</div>
 
-                        <div>
+<div>
+    <h2 id="profileFullName">
+        KindLink User
+    </h2>
 
-                            <h2>
-                                Paridhi Thakur
-                            </h2>
-
-                            <p>
-                                KindLink Member
-                            </p>
-
-                        </div>
+    <p>
+        KindLink Member
+    </p>
+</div>
 
                     </div>
 
 
-                    <form id="profileForm">
+                    <div class="form-row">
 
-                        <div class="form-row">
+    <div class="form-group">
+        <label>
+            Name
+        </label>
 
-                            <div class="form-group">
+        <input
+            type="text"
+            id="profileName"
+        >
+    </div>
 
-                                <label>
-                                    First Name
-                                </label>
+    <div class="form-group">
+        <label>
+            Email
+        </label>
 
-                                <input
-                                    type="text"
-                                    value="Paridhi"
-                                >
+        <input
+            type="email"
+            id="profileEmail"
+            readonly
+        >
+    </div>
 
-                            </div>
-
-
-                            <div class="form-group">
-
-                                <label>
-                                    Last Name
-                                </label>
-
-                                <input
-                                    type="text"
-                                    value="Thakur"
-                                >
-
-                            </div>
-
-                        </div>
+</div>
 
 
-                        <div class="form-row">
+<div class="form-row">
 
-                            <div class="form-group">
+    <div class="form-group">
+        <label>
+            Phone
+        </label>
 
-                                <label>
-                                    Email
-                                </label>
+        <input
+            type="tel"
+            id="profilePhone"
+        >
+    </div>
 
-                                <input
-                                    type="email"
-                                    value="paridhi@example.com"
-                                >
+    <div class="form-group">
+        <label>
+            Account Type
+        </label>
 
-                            </div>
+        <input
+            type="text"
+            id="profileRole"
+            readonly
+        >
+    </div>
 
-
-                            <div class="form-group">
-
-                                <label>
-                                    Phone
-                                </label>
-
-                                <input
-                                    type="tel"
-                                    value="9876543210"
-                                >
-
-                            </div>
-
-                        </div>
-
-
-                        <div class="form-group">
-
-                            <label>
-                                City
-                            </label>
-
-                            <input
-                                type="text"
-                                value="Delhi"
-                            >
-
-                        </div>
-
+</div>
 
                         <div class="interest-section">
 

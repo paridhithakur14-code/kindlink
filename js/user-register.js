@@ -3,9 +3,9 @@
 // ==========================================
 
 
-// -----------------------------
+// ==========================================
 // ELEMENTS
-// -----------------------------
+// ==========================================
 
 const registerForm =
     document.getElementById("registerForm");
@@ -21,6 +21,9 @@ const email =
 
 const phone =
     document.getElementById("phone");
+
+const city =
+    document.getElementById("city");
 
 const password =
     document.getElementById("password");
@@ -108,98 +111,98 @@ function validateName(value) {
 // PHONE NUMBER
 // ==========================================
 
-phone.addEventListener("input", function () {
+phone.addEventListener(
+    "input",
+    function () {
 
-    this.value =
-        this.value.replace(/\D/g, "");
+        this.value =
+            this.value.replace(/\D/g, "");
 
-    phoneError.textContent = "";
+        phoneError.textContent = "";
 
-});
+    }
+);
 
 
 // ==========================================
 // PASSWORD SHOW / HIDE
 // ==========================================
 
-togglePassword.addEventListener("click", function () {
+togglePassword.addEventListener(
+    "click",
+    function () {
 
-    const icon =
-        togglePassword.querySelector("i");
+        const icon =
+            togglePassword.querySelector("i");
 
 
-    if (password.type === "password") {
+        if (password.type === "password") {
 
-        password.type = "text";
+            password.type = "text";
 
-        icon.classList.remove("fa-eye");
+            icon.classList.remove("fa-eye");
 
-        icon.classList.add("fa-eye-slash");
+            icon.classList.add("fa-eye-slash");
+
+        } else {
+
+            password.type = "password";
+
+            icon.classList.remove("fa-eye-slash");
+
+            icon.classList.add("fa-eye");
+
+        }
 
     }
-
-    else {
-
-        password.type = "password";
-
-        icon.classList.remove("fa-eye-slash");
-
-        icon.classList.add("fa-eye");
-
-    }
-
-});
+);
 
 
 // ==========================================
 // PASSWORD STRENGTH
 // ==========================================
 
-password.addEventListener("input", function () {
+password.addEventListener(
+    "input",
+    function () {
 
-    const value = password.value;
+        const value = password.value;
 
-    let strength = 0;
+        let strength = 0;
 
 
-    if (value.length >= 6) {
+        if (value.length >= 6) {
+            strength++;
+        }
 
-        strength++;
+
+        if (/[A-Z]/.test(value)) {
+            strength++;
+        }
+
+
+        if (/[0-9]/.test(value)) {
+            strength++;
+        }
+
+
+        if (/[^A-Za-z0-9]/.test(value)) {
+            strength++;
+        }
+
+
+        updateStrength(strength);
 
     }
-
-
-    if (/[A-Z]/.test(value)) {
-
-        strength++;
-
-    }
-
-
-    if (/[0-9]/.test(value)) {
-
-        strength++;
-
-    }
-
-
-    if (/[^A-Za-z0-9]/.test(value)) {
-
-        strength++;
-
-    }
-
-
-    updateStrength(strength);
-
-});
+);
 
 
 function updateStrength(strength) {
 
     if (password.value.length === 0) {
 
-        strengthIndicator.style.width = "0";
+        strengthIndicator.style.width =
+            "0";
 
         strengthText.textContent =
             "Password strength";
@@ -220,10 +223,7 @@ function updateStrength(strength) {
         strengthText.textContent =
             "Weak password";
 
-    }
-
-
-    else if (strength === 2) {
+    } else if (strength === 2) {
 
         strengthIndicator.style.width =
             "50%";
@@ -234,10 +234,7 @@ function updateStrength(strength) {
         strengthText.textContent =
             "Fair password";
 
-    }
-
-
-    else if (strength === 3) {
+    } else if (strength === 3) {
 
         strengthIndicator.style.width =
             "75%";
@@ -248,10 +245,7 @@ function updateStrength(strength) {
         strengthText.textContent =
             "Good password";
 
-    }
-
-
-    else if (strength >= 4) {
+    } else if (strength >= 4) {
 
         strengthIndicator.style.width =
             "100%";
@@ -273,20 +267,18 @@ function updateStrength(strength) {
 
 registerForm.addEventListener(
     "submit",
-    function (event) {
+    async function (event) {
 
         event.preventDefault();
 
-
         clearErrors();
-
 
         let valid = true;
 
 
-        // -----------------------------
+        // ==================================
         // FIRST NAME
-        // -----------------------------
+        // ==================================
 
         if (firstName.value.trim() === "") {
 
@@ -295,10 +287,10 @@ registerForm.addEventListener(
 
             valid = false;
 
-        }
-
-        else if (
-            !validateName(firstName.value.trim())
+        } else if (
+            !validateName(
+                firstName.value.trim()
+            )
         ) {
 
             firstNameError.textContent =
@@ -309,9 +301,9 @@ registerForm.addEventListener(
         }
 
 
-        // -----------------------------
+        // ==================================
         // LAST NAME
-        // -----------------------------
+        // ==================================
 
         if (lastName.value.trim() === "") {
 
@@ -320,10 +312,10 @@ registerForm.addEventListener(
 
             valid = false;
 
-        }
-
-        else if (
-            !validateName(lastName.value.trim())
+        } else if (
+            !validateName(
+                lastName.value.trim()
+            )
         ) {
 
             lastNameError.textContent =
@@ -334,9 +326,9 @@ registerForm.addEventListener(
         }
 
 
-        // -----------------------------
+        // ==================================
         // EMAIL
-        // -----------------------------
+        // ==================================
 
         if (email.value.trim() === "") {
 
@@ -345,10 +337,10 @@ registerForm.addEventListener(
 
             valid = false;
 
-        }
-
-        else if (
-            !validateEmail(email.value.trim())
+        } else if (
+            !validateEmail(
+                email.value.trim()
+            )
         ) {
 
             emailError.textContent =
@@ -359,9 +351,9 @@ registerForm.addEventListener(
         }
 
 
-        // -----------------------------
+        // ==================================
         // PHONE
-        // -----------------------------
+        // ==================================
 
         if (phone.value.trim() === "") {
 
@@ -370,9 +362,7 @@ registerForm.addEventListener(
 
             valid = false;
 
-        }
-
-        else if (
+        } else if (
             phone.value.length !== 10
         ) {
 
@@ -384,9 +374,9 @@ registerForm.addEventListener(
         }
 
 
-        // -----------------------------
+        // ==================================
         // PASSWORD
-        // -----------------------------
+        // ==================================
 
         if (password.value === "") {
 
@@ -395,9 +385,7 @@ registerForm.addEventListener(
 
             valid = false;
 
-        }
-
-        else if (
+        } else if (
             password.value.length < 6
         ) {
 
@@ -409,22 +397,18 @@ registerForm.addEventListener(
         }
 
 
-        // -----------------------------
+        // ==================================
         // CONFIRM PASSWORD
-        // -----------------------------
+        // ==================================
 
-        if (
-            confirmPassword.value === ""
-        ) {
+        if (confirmPassword.value === "") {
 
             confirmPasswordError.textContent =
                 "Please confirm your password.";
 
             valid = false;
 
-        }
-
-        else if (
+        } else if (
             password.value !==
             confirmPassword.value
         ) {
@@ -437,9 +421,9 @@ registerForm.addEventListener(
         }
 
 
-        // -----------------------------
+        // ==================================
         // TERMS
-        // -----------------------------
+        // ==================================
 
         if (!terms.checked) {
 
@@ -451,20 +435,18 @@ registerForm.addEventListener(
         }
 
 
-        // -----------------------------
+        // ==================================
         // STOP IF INVALID
-        // -----------------------------
+        // ==================================
 
         if (!valid) {
-
             return;
-
         }
 
 
-        // =================================
-        // GET USER INTERESTS
-        // =================================
+        // ==================================
+        // GET SELECTED INTERESTS
+        // ==================================
 
         const selectedInterests = [];
 
@@ -474,26 +456,32 @@ registerForm.addEventListener(
             );
 
 
-        interestInputs.forEach(function (item) {
+        interestInputs.forEach(
+            function (item) {
 
-            selectedInterests.push(
-                item.value
-            );
+                selectedInterests.push(
+                    item.value
+                );
 
-        });
+            }
+        );
 
 
-        // =================================
-        // USER OBJECT
-        // =================================
+        // ==================================
+        // CREATE FULL NAME
+        // ==================================
 
-        const newUser = {
+        const fullName =
+            `${firstName.value.trim()} ${lastName.value.trim()}`;
 
-            firstName:
-                firstName.value.trim(),
 
-            lastName:
-                lastName.value.trim(),
+        // ==================================
+        // USER DATA FOR BACKEND
+        // ==================================
+
+        const userData = {
+
+            name: fullName,
 
             email:
                 email.value.trim(),
@@ -502,43 +490,121 @@ registerForm.addEventListener(
                 phone.value.trim(),
 
             city:
-                document
-                    .getElementById("city")
-                    .value
-                    .trim(),
+                city.value.trim(),
 
             interests:
-                selectedInterests
+                selectedInterests,
+
+            password:
+                password.value
 
         };
 
 
-        console.log(
-            "KindLink User Registration:",
-            newUser
-        );
+        // ==================================
+        // SEND TO BACKEND
+        // ==================================
+
+        try {
+
+            const response =
+                await fetch(
+                    "http://localhost:5000/api/auth/register",
+                    {
+                        method: "POST",
+
+                        headers: {
+                            "Content-Type":
+                                "application/json"
+                        },
+
+                        body:
+                            JSON.stringify(
+                                userData
+                            )
+                    }
+                );
 
 
-        /*
-        ====================================
-
-        IMPORTANT
-
-        We intentionally DO NOT save
-        passwords to localStorage.
-
-        Later Phase 3 will send this data
-        securely to:
-
-        POST /api/auth/register/user
-
-        Node.js + Express + MongoDB
-
-        ====================================
-        */
+            const data =
+                await response.json();
 
 
-        successModal.classList.add("show");
+            // ==================================
+            // REGISTRATION ERROR
+            // ==================================
+
+            if (!response.ok) {
+
+                if (
+                    data.message ===
+                    "User already exists"
+                ) {
+
+                    emailError.textContent =
+                        "An account with this email already exists.";
+
+                    email.focus();
+
+                    return;
+
+                }
+
+
+                alert(
+                    data.message ||
+                    "Registration failed. Please try again."
+                );
+
+                return;
+
+            }
+
+
+            // ==================================
+            // REGISTRATION SUCCESS
+            // ==================================
+
+            console.log(
+                "Registration successful:",
+                data
+            );
+
+
+            // Clear form
+
+            registerForm.reset();
+
+
+            // Reset password strength
+
+            strengthIndicator.style.width =
+                "0";
+
+            strengthText.textContent =
+                "Password strength";
+
+
+            // Show success modal
+
+            successModal.classList.add(
+                "show"
+            );
+
+
+        } catch (error) {
+
+            console.error(
+                "Registration error:",
+                error
+            );
+
+
+            alert(
+                "Unable to connect to the KindLink server. Make sure npm run dev is running."
+            );
+
+        }
 
     }
 );
@@ -568,7 +634,7 @@ function clearErrors() {
 
 
 // ==========================================
-// CONTINUE LOGIN
+// CONTINUE TO LOGIN
 // ==========================================
 
 continueBtn.addEventListener(
@@ -586,20 +652,24 @@ continueBtn.addEventListener(
 // MOBILE MENU
 // ==========================================
 
-menuBtn.addEventListener(
-    "click",
-    function () {
+if (menuBtn && navLinks) {
 
-        navLinks.classList.toggle(
-            "active"
-        );
+    menuBtn.addEventListener(
+        "click",
+        function () {
 
-    }
-);
+            navLinks.classList.toggle(
+                "active"
+            );
+
+        }
+    );
+
+}
 
 
 // ==========================================
-// REMOVE ERROR WHILE TYPING
+// REMOVE ERRORS WHILE TYPING
 // ==========================================
 
 firstName.addEventListener(
@@ -646,7 +716,8 @@ confirmPassword.addEventListener(
     "input",
     function () {
 
-        confirmPasswordError.textContent = "";
+        confirmPasswordError.textContent =
+            "";
 
     }
 );
