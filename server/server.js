@@ -2,9 +2,14 @@
 // KINDLINK SERVER
 // ==========================================
 
-const express = require("express");
-const cors = require("cors");
-const dotenv = require("dotenv");
+const express =
+    require("express");
+
+const cors =
+    require("cors");
+
+const dotenv =
+    require("dotenv");
 
 
 // ==========================================
@@ -18,7 +23,8 @@ dotenv.config();
 // DATABASE
 // ==========================================
 
-const connectDB = require("./config/db");
+const connectDB =
+    require("./config/db");
 
 connectDB();
 
@@ -30,27 +36,46 @@ connectDB();
 const authRoutes =
     require("./routes/authRoutes");
 
+
 const organisationAuthRoutes =
-    require("./routes/organisationAuthRoutes");
+    require(
+        "./routes/organisationAuthRoutes"
+    );
+
 
 const campaignRoutes =
-    require("./routes/campaignRoutes");    
+    require(
+        "./routes/campaignRoutes"
+    );
+
+
+const donationRoutes =
+    require(
+        "./routes/donationRoutes"
+    );
 
 
 // ==========================================
 // CREATE EXPRESS APP
 // ==========================================
 
-const app = express();
+const app =
+    express();
 
 
 // ==========================================
 // MIDDLEWARE
 // ==========================================
 
-app.use(cors());
+app.use(
+    cors()
+);
 
-app.use(express.json());
+
+app.use(
+    express.json()
+);
+
 
 app.use(
     express.urlencoded({
@@ -63,18 +88,30 @@ app.use(
 // API ROUTES
 // ==========================================
 
-// User authentication
+
+// ==========================================
+// USER AUTHENTICATION
+// ==========================================
+
 app.use(
     "/api/auth",
     authRoutes
 );
 
 
-// Organisation authentication
+// ==========================================
+// ORGANISATION AUTHENTICATION
+// ==========================================
+
 app.use(
     "/api/organisations/auth",
     organisationAuthRoutes
 );
+
+
+// ==========================================
+// CAMPAIGNS
+// ==========================================
 
 app.use(
     "/api/campaigns",
@@ -83,21 +120,34 @@ app.use(
 
 
 // ==========================================
+// DONATIONS
+// ==========================================
+
+app.use(
+    "/api/donations",
+    donationRoutes
+);
+
+
+// ==========================================
 // TEST ROUTE
 // ==========================================
 
-app.get("/", (req, res) => {
+app.get(
+    "/",
+    (req, res) => {
 
-    res.json({
+        res.json({
 
-        success: true,
+            success: true,
 
-        message:
-            "KindLink API is running successfully"
+            message:
+                "KindLink API is running successfully"
 
-    });
+        });
 
-});
+    }
+);
 
 
 // ==========================================
@@ -105,17 +155,23 @@ app.get("/", (req, res) => {
 // ==========================================
 
 const PORT =
-    process.env.PORT || 5000;
+    process.env.PORT ||
+    5000;
 
 
 // ==========================================
 // START SERVER
 // ==========================================
 
-app.listen(PORT, () => {
+app.listen(
+    PORT,
+    () => {
 
-    console.log(
-        `KindLink server running on port ${PORT}`
-    );
+        console.log(
 
-});
+            `KindLink server running on port ${PORT}`
+
+        );
+
+    }
+);

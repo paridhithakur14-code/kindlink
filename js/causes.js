@@ -1,22 +1,11 @@
 /* =========================================
    KINDLINK - CAUSES PAGE
-   PHASE 3.10
-   MongoDB Campaign Integration
 ========================================= */
 
 
-/* =========================================
-   API
-========================================= */
+const API_URL =
+    "http://localhost:5000";
 
-const CAMPAIGN_API =
-    "http://localhost:5000/api/campaigns";
-
-
-
-/* =========================================
-   DOM ELEMENTS
-========================================= */
 
 const searchInput =
     document.getElementById(
@@ -54,34 +43,792 @@ const sortSelect =
     );
 
 
-const campaignLoading =
-    document.getElementById(
-        "campaignLoading"
+let selectedCategory =
+    "all";
+
+
+let campaigns =
+    [];
+
+
+let selectedCampaignId =
+    null;
+
+
+let selectedCampaignName =
+    "";
+
+
+// =========================================
+// LOAD CAMPAIGNS FROM MONGODB
+// =========================================
+
+async function loadCampaigns() {
+
+    if (!campaignGrid) {
+
+        return;
+
+    }
+
+
+    campaignGrid.innerHTML = `
+
+        <div
+            style="
+                grid-column: 1 / -1;
+                text-align:center;
+                padding:50px;
+            "
+        >
+            Loading campaigns...
+        </div>
+
+    `;
+
+
+    try {
+
+        const response =
+            await fetch(
+
+                `${API_URL}/api/campaigns`
+
+            );
+
+
+        const data =
+            await response.json();
+
+
+        if (!response.ok) {
+
+            throw new Error(
+                data.message ||
+                "Unable to load campaigns"
+            );
+
+        }
+
+
+        campaigns =
+            Array.isArray(
+                data.campaigns
+            )
+                ? data.campaigns
+                : [];
+
+
+        renderCampaigns();
+
+
+    } catch (error) {
+
+        console.error(
+            "Campaign Load Error:",
+            error
+        );
+
+
+        campaignGrid.innerHTML = `
+
+            <div
+                style="
+                    grid-column:1 / -1;
+                    text-align:center;
+                    padding:50px;
+                "
+            >
+
+                <h3>
+                    Unable to load campaigns
+                </h3>
+
+                <p>
+                    Make sure the KindLink backend
+                    is running on port 5000.
+                </p>
+
+            </div>
+
+        `;
+
+    }
+
+}
+
+
+// =========================================
+// RENDER CAMPAIGNS
+// =========================================
+
+function renderCampaigns() {
+
+    let filteredCampaigns =
+        [...campaigns];
+
+
+    // =====================================
+    // SEARCH
+    // =====================================
+
+    const searchText =
+        searchInput
+            ? searchInput
+                .value
+                .trim()
+                .toLowerCase()
+            : "";
+
+
+    if (searchText) {
+
+        filteredCampaigns =
+            filteredCampaigns.filter(
+                campaign => {
+
+                    const title =
+                        campaign.title ||
+                        "";
+
+
+                    const description =
+                        campaign.description ||
+                        "";
+
+
+                    const organisation =
+                        campaign
+                            .organisation
+                            ?.organisationName ||
+                        "";
+
+
+                    return (
+
+                        title
+                            .toLowerCase()
+                            .includes(
+                                searchText
+                            ) ||
+
+                        description
+                            .toLowerCase()
+                            .includes(
+                                searchText
+                            ) ||
+
+                        organisation
+                            .toLowerCase()
+                            .includes(
+                                searchText
+                            )
+
+                    );
+
+                }
+            );
+
+    }
+
+
+    // =====================================
+    // CATEGORY FILTER
+    // =====================================
+
+    if (
+        selectedCategory !==
+        "all"
+    ) {
+
+        filteredCampaigns =
+            filteredCampaigns.filter(
+                campaign => {
+
+                    return (
+                        normalizeCategory(
+                            campaign.category
+                        ) ===
+                        selectedCategory
+                    );
+
+                }
+            );
+
+    }
+
+
+    // =====================================
+    // SORT
+    // =====================================
+
+    if (
+        sortSelect &&
+        sortSelect.value ===
+        "progress"
+    ) {
+
+        filteredCampaigns.sort(
+            (a, b) => {
+
+                return (
+                    getPercentage(b) -
+                    getPercentage(a)
+                );
+
+            }
+        );
+
+    }
+
+
+    if (
+        sortSelect &&
+        sortSelect.value ===
+        "urgent"
+    ) {
+
+        filteredCampaigns.sort(
+            (a, b) => {
+
+                const aEnd =
+                    a.endDate
+                        ? new Date(
+                            a.endDate
+                        ).getTime()
+                        : Infinity;
+
+
+                const bEnd =
+                    b.endDate
+                        ? new Date(
+                            b.endDate
+                        ).getTime()
+                        : Infinity;
+
+
+                return (
+                    aEnd -
+                    bEnd
+                );
+
+            }
+        );
+
+    }
+
+
+    // =====================================
+    // COUNT
+    // =====================================
+
+    if (resultCount) {
+
+        resultCount.textContent =
+            `${filteredCampaigns.length} campaign${
+                filteredCampaigns.length === 1
+                    ? ""
+                    : "s"
+            }`;
+
+    }
+
+
+    // =====================================
+    // EMPTY STATE
+    // =====================================
+
+    if (
+        filteredCampaigns.length === 0
+    ) {
+
+        campaignGrid.innerHTML =
+            "";
+
+
+        if (noResults) {
+
+            noResults.classList.add(
+                "show"
+            );
+
+        }
+
+
+        return;
+
+    }
+
+
+    if (noResults) {
+
+        noResults.classList.remove(
+            "show"
+        );
+
+    }
+
+
+    // =====================================
+    // CREATE CARDS
+    // =====================================
+
+    campaignGrid.innerHTML =
+        filteredCampaigns
+            .map(
+                campaign =>
+                    createCampaignCard(
+                        campaign
+                    )
+            )
+            .join("");
+
+}
+
+
+// =========================================
+// CREATE CAMPAIGN CARD
+// =========================================
+
+function createCampaignCard(
+    campaign
+) {
+
+    const goal =
+        Number(
+            campaign.goalAmount
+        ) || 0;
+
+
+    const raised =
+        Number(
+            campaign.amountRaised
+        ) || 0;
+
+
+    const percentage =
+        getPercentage(
+            campaign
+        );
+
+
+    const organisationName =
+        campaign
+            .organisation
+            ?.organisationName ||
+        "KindLink Organisation";
+
+
+    const city =
+        campaign
+            .location
+            ?.city ||
+        "";
+
+
+    const state =
+        campaign
+            .location
+            ?.state ||
+        "";
+
+
+    let locationText =
+        "Location not provided";
+
+
+    if (
+        city &&
+        state
+    ) {
+
+        locationText =
+            `${city}, ${state}`;
+
+    } else if (city) {
+
+        locationText =
+            city;
+
+    } else if (state) {
+
+        locationText =
+            state;
+
+    }
+
+
+    return `
+
+        <article
+            class="campaign-card"
+            data-category="${escapeHTML(
+                normalizeCategory(
+                    campaign.category
+                )
+            )}"
+            data-title="${escapeHTML(
+                campaign.title
+            )}"
+            data-progress="${percentage}"
+        >
+
+            <div class="campaign-top">
+
+                <div class="campaign-emoji">
+
+                    ${getCategoryEmoji(
+                        campaign.category
+                    )}
+
+                </div>
+
+            </div>
+
+
+            <div class="campaign-content">
+
+                <span
+                    style="
+                        font-size:11px;
+                        font-weight:700;
+                        color:#e88935;
+                    "
+                >
+
+                    ${escapeHTML(
+                        campaign.category ||
+                        "Other"
+                    )}
+
+                </span>
+
+
+                <h3>
+
+                    ${escapeHTML(
+                        campaign.title ||
+                        "Untitled Campaign"
+                    )}
+
+                </h3>
+
+
+                <p>
+
+                    ${escapeHTML(
+                        campaign.description ||
+                        ""
+                    )}
+
+                </p>
+
+
+                <div class="campaign-meta">
+
+                    <span>
+
+                        📍 ${escapeHTML(
+                            locationText
+                        )}
+
+                    </span>
+
+                    <span>
+
+                        🏢 ${escapeHTML(
+                            organisationName
+                        )}
+
+                    </span>
+
+                </div>
+
+
+                <div class="progress-info">
+
+                    <span>
+
+                        ₹${raised.toLocaleString(
+                            "en-IN"
+                        )} raised
+
+                    </span>
+
+
+                    <strong>
+
+                        ${percentage}%
+
+                    </strong>
+
+                </div>
+
+
+                <div class="progress-bar">
+
+                    <div
+                        style="width:${percentage}%"
+                    ></div>
+
+                </div>
+
+
+                <div class="campaign-bottom">
+
+                    <span>
+
+                        Goal:
+                        ₹${goal.toLocaleString(
+                            "en-IN"
+                        )}
+
+                    </span>
+
+
+                    <button
+                        type="button"
+                        class="support-btn"
+                        onclick="openDonation(
+                            '${escapeAttribute(
+                                campaign._id
+                            )}',
+                            '${escapeAttribute(
+                                campaign.title
+                            )}'
+                        )"
+                    >
+
+                        Support →
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </article>
+
+    `;
+
+}
+
+
+// =========================================
+// CATEGORY NORMALIZATION
+// =========================================
+
+function normalizeCategory(
+    category
+) {
+
+    const value =
+        String(
+            category || ""
+        )
+            .trim()
+            .toLowerCase();
+
+
+    const map = {
+
+        "education":
+            "education",
+
+        "healthcare":
+            "health",
+
+        "environment":
+            "environment",
+
+        "animals":
+            "animals",
+
+        "community":
+            "community",
+
+        "women empowerment":
+            "women",
+
+        "child welfare":
+            "children",
+
+        "disaster relief":
+            "emergency",
+
+        "other":
+            "other"
+
+    };
+
+
+    return (
+        map[value] ||
+        value
     );
 
+}
 
-const campaignError =
-    document.getElementById(
-        "campaignError"
+
+// =========================================
+// CATEGORY EMOJI
+// =========================================
+
+function getCategoryEmoji(
+    category
+) {
+
+    const emojis = {
+
+        Education:
+            "📚",
+
+        Healthcare:
+            "🏥",
+
+        Environment:
+            "🌱",
+
+        Animals:
+            "🐾",
+
+        Community:
+            "🤝",
+
+        "Women Empowerment":
+            "👩",
+
+        "Child Welfare":
+            "🧒",
+
+        "Disaster Relief":
+            "🚨",
+
+        Other:
+            "❤️"
+
+    };
+
+
+    return (
+        emojis[category] ||
+        "❤️"
     );
 
+}
 
-const campaignErrorMessage =
-    document.getElementById(
-        "campaignErrorMessage"
+
+// =========================================
+// GET PROGRESS
+// =========================================
+
+function getPercentage(
+    campaign
+) {
+
+    const goal =
+        Number(
+            campaign.goalAmount
+        ) || 0;
+
+
+    const raised =
+        Number(
+            campaign.amountRaised
+        ) || 0;
+
+
+    if (goal <= 0) {
+
+        return 0;
+
+    }
+
+
+    return Math.min(
+
+        100,
+
+        Math.max(
+
+            0,
+
+            Math.round(
+                raised /
+                goal *
+                100
+            )
+
+        )
+
     );
 
+}
 
-const retryCampaignsButton =
-    document.getElementById(
-        "retryCampaigns"
+
+// =========================================
+// FILTER EVENTS
+// =========================================
+
+categoryButtons.forEach(
+    button => {
+
+        button.addEventListener(
+            "click",
+            () => {
+
+                categoryButtons.forEach(
+                    item => {
+
+                        item.classList.remove(
+                            "active"
+                        );
+
+                    }
+                );
+
+
+                button.classList.add(
+                    "active"
+                );
+
+
+                selectedCategory =
+                    button.dataset.category;
+
+
+                renderCampaigns();
+
+            }
+        );
+
+    }
+);
+
+
+if (searchInput) {
+
+    searchInput.addEventListener(
+        "input",
+        renderCampaigns
     );
 
+}
 
 
-/* =========================================
-   DONATION ELEMENTS
-========================================= */
+if (sortSelect) {
+
+    sortSelect.addEventListener(
+        "change",
+        renderCampaigns
+    );
+
+}
+
+
+// =========================================
+// DONATION MODAL
+// =========================================
 
 const donationModal =
     document.getElementById(
@@ -101,165 +848,383 @@ const customAmount =
     );
 
 
+// =========================================
+// OPEN DONATION MODAL
+// =========================================
 
-/* =========================================
-   STATE
-========================================= */
+function openDonation(
+    campaignId,
+    campaignName
+) {
 
-let allCampaigns = [];
-
-let selectedCategory =
-    "all";
-
-let selectedCampaign =
-    null;
-
+    selectedCampaignId =
+        campaignId;
 
 
-/* =========================================
-   CATEGORY SETTINGS
-========================================= */
-
-const categorySettings = {
-
-    Education: {
-
-        emoji: "📚",
-
-        label:
-            "Education",
-
-        imageClass:
-            "education-image"
-
-    },
+    selectedCampaignName =
+        campaignName;
 
 
-    Healthcare: {
+    if (donationCause) {
 
-        emoji: "🏥",
-
-        label:
-            "Healthcare",
-
-        imageClass:
-            "health-image"
-
-    },
-
-
-    Animals: {
-
-        emoji: "🐾",
-
-        label:
-            "Animal Welfare",
-
-        imageClass:
-            "animal-image"
-
-    },
-
-
-    Environment: {
-
-        emoji: "🌱",
-
-        label:
-            "Environment",
-
-        imageClass:
-            "environment-image"
-
-    },
-
-
-    Community: {
-
-        emoji: "🤝",
-
-        label:
-            "Community",
-
-        imageClass:
-            "community-image"
-
-    },
-
-
-    "Women Empowerment": {
-
-        emoji: "👩",
-
-        label:
-            "Women Empowerment",
-
-        imageClass:
-            "women-image"
-
-    },
-
-
-    "Child Welfare": {
-
-        emoji: "🧒",
-
-        label:
-            "Child Welfare",
-
-        imageClass:
-            "child-image"
-
-    },
-
-
-    "Disaster Relief": {
-
-        emoji: "🚨",
-
-        label:
-            "Disaster Relief",
-
-        imageClass:
-            "disaster-image"
-
-    },
-
-
-    Other: {
-
-        emoji: "💚",
-
-        label:
-            "Other",
-
-        imageClass:
-            "other-image"
+        donationCause.textContent =
+            campaignName;
 
     }
 
-};
+
+    if (customAmount) {
+
+        customAmount.value =
+            "";
+
+    }
 
 
+    if (donationModal) {
 
-/* =========================================
-   ESCAPE HTML
-   Prevent unwanted HTML injection
-========================================= */
+        donationModal.classList.add(
+            "show"
+        );
 
-function escapeHTML(value) {
+    }
+
+
+    document.body.style.overflow =
+        "hidden";
+
+}
+
+
+// =========================================
+// CLOSE DONATION MODAL
+// =========================================
+
+function closeDonation() {
+
+    if (donationModal) {
+
+        donationModal.classList.remove(
+            "show"
+        );
+
+    }
+
+
+    document.body.style.overflow =
+        "";
+
+
+    selectedCampaignId =
+        null;
+
+
+    selectedCampaignName =
+        "";
+
+}
+
+
+// =========================================
+// SELECT DONATION AMOUNT
+// =========================================
+
+function selectAmount(
+    amount
+) {
+
+    if (customAmount) {
+
+        customAmount.value =
+            amount;
+
+    }
+
+}
+
+
+// =========================================
+// PROCESS REAL DONATION
+// =========================================
+
+async function processDonation() {
+
+    const amount =
+        Number(
+            customAmount?.value
+        );
+
 
     if (
-        value === null ||
-        value === undefined
+        !amount ||
+        amount <= 0
     ) {
 
-        return "";
+        alert(
+            "Please enter a valid donation amount."
+        );
+
+        return;
 
     }
 
 
-    return String(value)
+    if (!selectedCampaignId) {
+
+        alert(
+            "Campaign could not be identified."
+        );
+
+        return;
+
+    }
+
+
+    // =====================================
+    // USER AUTHENTICATION
+    // =====================================
+
+    const token =
+        localStorage.getItem(
+            "kindlinkToken"
+        );
+
+
+    const accountType =
+        localStorage.getItem(
+            "kindlinkAccountType"
+        );
+
+
+    if (
+        !token ||
+        accountType !== "user"
+    ) {
+
+        alert(
+            "Please login as a user to make a donation."
+        );
+
+
+        window.location.href =
+            "login.html";
+
+
+        return;
+
+    }
+
+
+    const donateButton =
+        document.querySelector(
+            ".modal-donate"
+        );
+
+
+    if (donateButton) {
+
+        donateButton.disabled =
+            true;
+
+
+        donateButton.textContent =
+            "Processing...";
+
+    }
+
+
+    try {
+
+        const response =
+            await fetch(
+
+                `${API_URL}/api/donations`,
+
+                {
+
+                    method:
+                        "POST",
+
+                    headers: {
+
+                        "Content-Type":
+                            "application/json",
+
+                        Authorization:
+                            `Bearer ${token}`
+
+                    },
+
+                    body:
+                        JSON.stringify({
+
+                            campaignId:
+                                selectedCampaignId,
+
+                            amount
+
+                        })
+
+                }
+
+            );
+
+
+        const data =
+            await response.json();
+
+
+        if (
+            response.status === 401 ||
+            response.status === 403
+        ) {
+
+            localStorage.removeItem(
+                "kindlinkToken"
+            );
+
+
+            localStorage.removeItem(
+                "kindlinkUser"
+            );
+
+
+            localStorage.removeItem(
+                "kindlinkAccountType"
+            );
+
+
+            alert(
+                "Your login has expired. Please login again."
+            );
+
+
+            window.location.href =
+                "login.html";
+
+
+            return;
+
+        }
+
+
+        if (!response.ok) {
+
+            alert(
+                data.message ||
+                "Unable to process donation."
+            );
+
+            return;
+
+        }
+
+
+        alert(
+
+            `Thank you! Your donation of ₹${amount.toLocaleString(
+                "en-IN"
+            )} to "${selectedCampaignName}" was recorded successfully.`
+
+        );
+
+
+        closeDonation();
+
+
+        // Reload campaigns so
+        // amountRaised changes immediately
+
+        await loadCampaigns();
+
+
+    } catch (error) {
+
+        console.error(
+            "Donation Error:",
+            error
+        );
+
+
+        alert(
+            "Unable to connect to the KindLink server."
+        );
+
+    } finally {
+
+        if (donateButton) {
+
+            donateButton.disabled =
+                false;
+
+
+            donateButton.textContent =
+                "Continue Donation →";
+
+        }
+
+    }
+
+}
+
+
+// =========================================
+// CLOSE ON BACKGROUND
+// =========================================
+
+if (donationModal) {
+
+    donationModal.addEventListener(
+        "click",
+        event => {
+
+            if (
+                event.target ===
+                donationModal
+            ) {
+
+                closeDonation();
+
+            }
+
+        }
+    );
+
+}
+
+
+// =========================================
+// ESCAPE KEY
+// =========================================
+
+document.addEventListener(
+    "keydown",
+    event => {
+
+        if (
+            event.key ===
+            "Escape"
+        ) {
+
+            closeDonation();
+
+        }
+
+    }
+);
+
+
+// =========================================
+// ESCAPE HTML
+// =========================================
+
+function escapeHTML(
+    value
+) {
+
+    return String(
+        value ?? ""
+    )
 
         .replaceAll(
             "&",
@@ -289,1236 +1254,43 @@ function escapeHTML(value) {
 }
 
 
+// =========================================
+// ESCAPE JS ATTRIBUTE VALUE
+// =========================================
 
-/* =========================================
-   FORMAT MONEY
-========================================= */
-
-function formatMoney(amount) {
-
-    const number =
-        Number(amount) || 0;
-
-
-    return new Intl.NumberFormat(
-        "en-IN",
-        {
-
-            maximumFractionDigits: 0
-
-        }
-
-    ).format(number);
-
-}
-
-
-
-/* =========================================
-   CALCULATE CAMPAIGN PROGRESS
-========================================= */
-
-function getCampaignProgress(
-    campaign
+function escapeAttribute(
+    value
 ) {
 
-    const goal =
-        Number(
-            campaign.goalAmount
-        ) || 0;
+    return String(
+        value ?? ""
+    )
 
-
-    const raised =
-        Number(
-            campaign.amountRaised
-        ) || 0;
-
-
-    if (goal <= 0) {
-
-        return 0;
-
-    }
-
-
-    const progress =
-        (raised / goal) * 100;
-
-
-    return Math.min(
-        Math.max(
-            Math.round(progress),
-            0
-        ),
-        100
-    );
-
-}
-
-
-
-/* =========================================
-   FORMAT LOCATION
-========================================= */
-
-function getCampaignLocation(
-    campaign
-) {
-
-    const city =
-        campaign.location?.city
-            ?.trim();
-
-
-    const state =
-        campaign.location?.state
-            ?.trim();
-
-
-    if (
-        city &&
-        state
-    ) {
-
-        return `${city}, ${state}`;
-
-    }
-
-
-    if (city) {
-
-        return city;
-
-    }
-
-
-    if (state) {
-
-        return state;
-
-    }
-
-
-    return "Location not specified";
-
-}
-
-
-
-/* =========================================
-   GET ORGANISATION NAME
-========================================= */
-
-function getOrganisationName(
-    campaign
-) {
-
-    if (
-        campaign.organisation &&
-        typeof campaign.organisation
-            === "object"
-    ) {
-
-        return (
-            campaign
-                .organisation
-                .organisationName
-            ||
-            "KindLink Organisation"
-        );
-
-    }
-
-
-    return "KindLink Organisation";
-
-}
-
-
-
-/* =========================================
-   FORMAT DATE
-========================================= */
-
-function formatCampaignDate(
-    dateValue
-) {
-
-    if (!dateValue) {
-
-        return "";
-
-    }
-
-
-    const date =
-        new Date(dateValue);
-
-
-    if (
-        Number.isNaN(
-            date.getTime()
+        .replaceAll(
+            "\\",
+            "\\\\"
         )
-    ) {
 
-        return "";
+        .replaceAll(
+            "'",
+            "\\'"
+        )
 
-    }
+        .replaceAll(
+            "\n",
+            " "
+        )
 
-
-    return date.toLocaleDateString(
-        "en-IN",
-        {
-
-            day: "numeric",
-
-            month: "short",
-
-            year: "numeric"
-
-        }
-    );
+        .replaceAll(
+            "\r",
+            " "
+        );
 
 }
 
 
-
-/* =========================================
-   CREATE CAMPAIGN CARD
-========================================= */
-
-function createCampaignCard(
-    campaign
-) {
-
-    const category =
-        categorySettings[
-            campaign.category
-        ]
-        ||
-        categorySettings.Other;
-
-
-    const progress =
-        getCampaignProgress(
-            campaign
-        );
-
-
-    const amountRaised =
-        Number(
-            campaign.amountRaised
-        ) || 0;
-
-
-    const goalAmount =
-        Number(
-            campaign.goalAmount
-        ) || 0;
-
-
-    const organisationName =
-        getOrganisationName(
-            campaign
-        );
-
-
-    const location =
-        getCampaignLocation(
-            campaign
-        );
-
-
-    const endDate =
-        formatCampaignDate(
-            campaign.endDate
-        );
-
-
-    const safeTitle =
-        escapeHTML(
-            campaign.title
-        );
-
-
-    const safeDescription =
-        escapeHTML(
-            campaign.description
-        );
-
-
-    const safeOrganisation =
-        escapeHTML(
-            organisationName
-        );
-
-
-    const safeLocation =
-        escapeHTML(
-            location
-        );
-
-
-    let imageContent = "";
-
-
-    let imageExtraClass = "";
-
-
-    if (
-        campaign.image &&
-        String(
-            campaign.image
-        ).trim()
-    ) {
-
-        imageExtraClass =
-            "has-image";
-
-
-        imageContent = `
-
-            <img
-                src="${escapeHTML(
-                    campaign.image
-                )}"
-                alt="${safeTitle}"
-                loading="lazy"
-                onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"
-            >
-
-            <div
-                class="campaign-emoji"
-                style="display:none;"
-            >
-                ${category.emoji}
-            </div>
-
-        `;
-
-    } else {
-
-        imageContent = `
-
-            <div class="campaign-emoji">
-                ${category.emoji}
-            </div>
-
-        `;
-
-    }
-
-
-
-    return `
-
-        <article
-            class="campaign-card"
-            data-id="${escapeHTML(
-                campaign._id
-            )}"
-        >
-
-
-            <div
-                class="
-                    campaign-image
-                    ${category.imageClass}
-                    ${imageExtraClass}
-                "
-            >
-
-
-                <span class="campaign-category">
-
-                    ${category.emoji}
-                    ${escapeHTML(
-                        category.label
-                    )}
-
-                </span>
-
-
-                <span class="campaign-status">
-                    Active
-                </span>
-
-
-                ${imageContent}
-
-
-            </div>
-
-
-
-            <div class="campaign-content">
-
-
-                <h3>
-                    ${safeTitle}
-                </h3>
-
-
-                <p class="campaign-description">
-                    ${safeDescription}
-                </p>
-
-
-
-                <div class="campaign-organisation">
-
-                    <span class="organisation-icon">
-                        🏢
-                    </span>
-
-                    <span>
-                        ${safeOrganisation}
-                    </span>
-
-                </div>
-
-
-
-                <div class="campaign-meta">
-
-                    <span
-                        title="${safeLocation}"
-                    >
-
-                        📍 ${safeLocation}
-
-                    </span>
-
-
-                    <span>
-
-                        ${
-                            endDate
-                            ?
-                            `📅 Until ${escapeHTML(
-                                endDate
-                            )}`
-                            :
-                            "📅 Ongoing"
-                        }
-
-                    </span>
-
-                </div>
-
-
-
-                <div class="progress-info">
-
-                    <span>
-
-                        ₹${formatMoney(
-                            amountRaised
-                        )}
-                        raised
-
-                    </span>
-
-
-                    <strong>
-                        ${progress}%
-                    </strong>
-
-                </div>
-
-
-
-                <div class="progress-bar">
-
-                    <div
-                        style="
-                            width:${progress}%
-                        "
-                    >
-                    </div>
-
-                </div>
-
-
-
-                <div class="campaign-bottom">
-
-                    <span>
-
-                        Goal:
-                        ₹${formatMoney(
-                            goalAmount
-                        )}
-
-                    </span>
-
-
-                    <button
-                        class="support-btn"
-                        type="button"
-                        data-campaign-id="${escapeHTML(
-                            campaign._id
-                        )}"
-                    >
-
-                        Support →
-
-                    </button>
-
-                </div>
-
-
-            </div>
-
-
-        </article>
-
-    `;
-
-}
-
-
-
-/* =========================================
-   DISPLAY CAMPAIGNS
-========================================= */
-
-function renderCampaigns(
-    campaigns
-) {
-
-    campaignGrid.innerHTML =
-        campaigns
-            .map(
-                createCampaignCard
-            )
-            .join("");
-
-
-    resultCount.textContent =
-        `${campaigns.length} campaign${
-            campaigns.length !== 1
-                ? "s"
-                : ""
-        }`;
-
-
-    if (
-        campaigns.length === 0
-    ) {
-
-        noResults.classList.add(
-            "show"
-        );
-
-    } else {
-
-        noResults.classList.remove(
-            "show"
-        );
-
-    }
-
-}
-
-
-
-/* =========================================
-   FILTER + SORT CAMPAIGNS
-========================================= */
-
-function filterAndSortCampaigns() {
-
-    const searchText =
-        searchInput.value
-            .toLowerCase()
-            .trim();
-
-
-    let campaigns =
-        [...allCampaigns];
-
-
-
-    /* =====================================
-       CATEGORY FILTER
-    ====================================== */
-
-    if (
-        selectedCategory !== "all"
-    ) {
-
-        campaigns =
-            campaigns.filter(
-                campaign =>
-
-                    campaign.category
-                    === selectedCategory
-
-            );
-
-    }
-
-
-
-    /* =====================================
-       SEARCH FILTER
-    ====================================== */
-
-    if (searchText) {
-
-        campaigns =
-            campaigns.filter(
-                campaign => {
-
-
-                    const title =
-                        campaign.title
-                            || "";
-
-
-                    const description =
-                        campaign.description
-                            || "";
-
-
-                    const category =
-                        campaign.category
-                            || "";
-
-
-                    const organisation =
-                        getOrganisationName(
-                            campaign
-                        );
-
-
-                    const location =
-                        getCampaignLocation(
-                            campaign
-                        );
-
-
-                    const searchableText =
-                        `
-
-                            ${title}
-
-                            ${description}
-
-                            ${category}
-
-                            ${organisation}
-
-                            ${location}
-
-                        `
-                        .toLowerCase();
-
-
-                    return searchableText
-                        .includes(
-                            searchText
-                        );
-
-                }
-            );
-
-    }
-
-
-
-    /* =====================================
-       SORT
-    ====================================== */
-
-    const sortValue =
-        sortSelect.value;
-
-
-
-    if (
-        sortValue === "progress"
-    ) {
-
-        campaigns.sort(
-            (a, b) =>
-
-                getCampaignProgress(b)
-                -
-                getCampaignProgress(a)
-
-        );
-
-    }
-
-
-
-    else if (
-        sortValue === "goal"
-    ) {
-
-        campaigns.sort(
-            (a, b) =>
-
-                Number(
-                    b.goalAmount
-                )
-                -
-                Number(
-                    a.goalAmount
-                )
-
-        );
-
-    }
-
-
-
-    else {
-
-        campaigns.sort(
-            (a, b) => {
-
-                const dateA =
-                    new Date(
-                        a.createdAt
-                    ).getTime();
-
-
-                const dateB =
-                    new Date(
-                        b.createdAt
-                    ).getTime();
-
-
-                return (
-                    dateB - dateA
-                );
-
-            }
-        );
-
-    }
-
-
-
-    renderCampaigns(
-        campaigns
-    );
-
-}
-
-
-
-/* =========================================
-   LOAD CAMPAIGNS FROM BACKEND
-========================================= */
-
-async function loadCampaigns() {
-
-
-    /* Reset states */
-
-    campaignLoading
-        .classList
-        .remove(
-            "hide"
-        );
-
-
-    campaignError
-        .classList
-        .remove(
-            "show"
-        );
-
-
-    noResults
-        .classList
-        .remove(
-            "show"
-        );
-
-
-    campaignGrid.innerHTML =
-        "";
-
-
-    resultCount.textContent =
-        "Loading campaigns...";
-
-
-    try {
-
-
-        const response =
-            await fetch(
-                CAMPAIGN_API,
-                {
-
-                    method:
-                        "GET",
-
-                    headers: {
-
-                        "Content-Type":
-                            "application/json"
-
-                    }
-
-                }
-            );
-
-
-        const data =
-            await response.json();
-
-
-
-        if (
-            !response.ok
-        ) {
-
-            throw new Error(
-
-                data.message
-                ||
-                "Failed to load campaigns"
-
-            );
-
-        }
-
-
-
-        if (
-            !data.success
-        ) {
-
-            throw new Error(
-
-                data.message
-                ||
-                "Unable to load campaigns"
-
-            );
-
-        }
-
-
-
-        allCampaigns =
-            Array.isArray(
-                data.campaigns
-            )
-                ?
-                data.campaigns
-                :
-                [];
-
-
-
-        campaignLoading
-            .classList
-            .add(
-                "hide"
-            );
-
-
-
-        filterAndSortCampaigns();
-
-
-    } catch (error) {
-
-
-        console.error(
-            "Load Campaigns Error:",
-            error
-        );
-
-
-        allCampaigns = [];
-
-
-        campaignLoading
-            .classList
-            .add(
-                "hide"
-            );
-
-
-        campaignGrid.innerHTML =
-            "";
-
-
-        resultCount.textContent =
-            "0 campaigns";
-
-
-        campaignErrorMessage.textContent =
-            error.message
-            ||
-            "Please make sure the KindLink server is running.";
-
-
-        campaignError
-            .classList
-            .add(
-                "show"
-            );
-
-    }
-
-}
-
-
-
-/* =========================================
-   CATEGORY BUTTONS
-========================================= */
-
-categoryButtons.forEach(
-    button => {
-
-
-        button.addEventListener(
-            "click",
-            () => {
-
-
-                categoryButtons
-                    .forEach(
-                        btn => {
-
-                            btn.classList
-                                .remove(
-                                    "active"
-                                );
-
-                        }
-                    );
-
-
-                button.classList
-                    .add(
-                        "active"
-                    );
-
-
-                selectedCategory =
-                    button.dataset
-                        .category;
-
-
-                filterAndSortCampaigns();
-
-            }
-        );
-
-    }
-);
-
-
-
-/* =========================================
-   SEARCH
-========================================= */
-
-searchInput.addEventListener(
-    "input",
-    () => {
-
-        filterAndSortCampaigns();
-
-    }
-);
-
-
-
-/* =========================================
-   SORT
-========================================= */
-
-sortSelect.addEventListener(
-    "change",
-    () => {
-
-        filterAndSortCampaigns();
-
-    }
-);
-
-
-
-/* =========================================
-   RETRY
-========================================= */
-
-retryCampaignsButton.addEventListener(
-    "click",
-    () => {
-
-        loadCampaigns();
-
-    }
-);
-
-
-
-/* =========================================
-   SUPPORT BUTTONS
-   Event Delegation
-========================================= */
-
-campaignGrid.addEventListener(
-    "click",
-    event => {
-
-
-        const supportButton =
-            event.target.closest(
-                ".support-btn"
-            );
-
-
-        if (!supportButton) {
-
-            return;
-
-        }
-
-
-        const campaignId =
-            supportButton.dataset
-                .campaignId;
-
-
-        const campaign =
-            allCampaigns.find(
-                item =>
-
-                    item._id
-                    === campaignId
-
-            );
-
-
-        if (!campaign) {
-
-            alert(
-                "Campaign information could not be found."
-            );
-
-            return;
-
-        }
-
-
-        openDonation(
-            campaign
-        );
-
-    }
-);
-
-
-
-/* =========================================
-   OPEN DONATION MODAL
-========================================= */
-
-function openDonation(
-    campaign
-) {
-
-
-    selectedCampaign =
-        campaign;
-
-
-    donationCause.textContent =
-        campaign.title
-        ||
-        "Selected Campaign";
-
-
-    customAmount.value =
-        "";
-
-
-    donationModal
-        .classList
-        .add(
-            "show"
-        );
-
-
-    document.body.style.overflow =
-        "hidden";
-
-}
-
-
-
-/* =========================================
-   CLOSE DONATION MODAL
-========================================= */
-
-function closeDonation() {
-
-
-    donationModal
-        .classList
-        .remove(
-            "show"
-        );
-
-
-    document.body.style.overflow =
-        "";
-
-
-    selectedCampaign =
-        null;
-
-}
-
-
-
-/* =========================================
-   SELECT DONATION AMOUNT
-========================================= */
-
-function selectAmount(
-    amount
-) {
-
-    customAmount.value =
-        amount;
-
-}
-
-
-
-/* =========================================
-   PROCESS DONATION
-   Prototype for Phase 3.10
-========================================= */
-
-function processDonation() {
-
-
-    const amount =
-        Number(
-            customAmount.value
-        );
-
-
-    if (
-        !amount ||
-        amount <= 0
-    ) {
-
-        alert(
-            "Please enter a valid donation amount."
-        );
-
-        return;
-
-    }
-
-
-
-    if (
-        !selectedCampaign
-    ) {
-
-        alert(
-            "Please select a campaign first."
-        );
-
-        return;
-
-    }
-
-
-
-    alert(
-
-        `Thank you!
-
-Your donation of ₹${formatMoney(amount)}
-for "${selectedCampaign.title}"
-is ready to be processed.
-
-Real donation storage will be connected in the next backend phase.`
-
-    );
-
-
-    closeDonation();
-
-}
-
-
-
-/* =========================================
-   CLOSE MODAL ON BACKGROUND CLICK
-========================================= */
-
-donationModal.addEventListener(
-    "click",
-    event => {
-
-
-        if (
-            event.target
-            === donationModal
-        ) {
-
-            closeDonation();
-
-        }
-
-    }
-);
-
-
-
-/* =========================================
-   ESCAPE KEY
-========================================= */
-
-document.addEventListener(
-    "keydown",
-    event => {
-
-
-        if (
-            event.key
-            === "Escape"
-        ) {
-
-            closeDonation();
-
-        }
-
-    }
-);
-
-
-
-/* =========================================
-   LOAD CAMPAIGNS WHEN PAGE OPENS
-========================================= */
-
-document.addEventListener(
-    "DOMContentLoaded",
-    () => {
-
-        loadCampaigns();
-
-    }
-);
+// =========================================
+// INITIAL LOAD
+// =========================================
+
+loadCampaigns();

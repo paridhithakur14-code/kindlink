@@ -4,13 +4,38 @@
 
 
 // ==========================================
-// AUTHENTICATION CHECK
+// API
 // ==========================================
 
-const token = localStorage.getItem("kindlinkToken");
+const API_URL =
+    "http://localhost:5000";
 
-if (!token) {
-    window.location.replace("login.html");
+
+// ==========================================
+// AUTHENTICATION
+// ==========================================
+
+const token =
+    localStorage.getItem(
+        "kindlinkToken"
+    );
+
+
+const accountType =
+    localStorage.getItem(
+        "kindlinkAccountType"
+    );
+
+
+if (
+    !token ||
+    accountType !== "user"
+) {
+
+    window.location.replace(
+        "login.html"
+    );
+
 }
 
 
@@ -19,70 +44,147 @@ if (!token) {
 // ==========================================
 
 const sidebarLinks =
-    document.querySelectorAll(".sidebar-link");
+    document.querySelectorAll(
+        ".sidebar-link"
+    );
+
 
 const sections =
-    document.querySelectorAll(".dashboard-section");
+    document.querySelectorAll(
+        ".dashboard-section"
+    );
+
 
 const sidebar =
-    document.getElementById("sidebar");
+    document.getElementById(
+        "sidebar"
+    );
+
 
 const menuBtn =
-    document.getElementById("menuBtn");
+    document.getElementById(
+        "menuBtn"
+    );
+
 
 const interests =
-    document.querySelectorAll(".interest");
+    document.querySelectorAll(
+        ".interest"
+    );
+
 
 const profileForm =
-    document.getElementById("profileForm");
+    document.getElementById(
+        "profileForm"
+    );
+
 
 const profileMessage =
-    document.getElementById("profileMessage");
+    document.getElementById(
+        "profileMessage"
+    );
+
 
 const savedButtons =
-    document.querySelectorAll(".saved-actions button");
+    document.querySelectorAll(
+        ".saved-actions button"
+    );
+
 
 const logoutBtn =
-    document.getElementById("logoutBtn");
+    document.getElementById(
+        "logoutBtn"
+    );
+
+
+const totalDonatedAmount =
+    document.getElementById(
+        "totalDonatedAmount"
+    );
+
+
+const donationCampaignCount =
+    document.getElementById(
+        "donationCampaignCount"
+    );
+
+
+const donationTableBody =
+    document.getElementById(
+        "donationTableBody"
+    );
 
 
 // ==========================================
-// VERIFY USER WITH BACKEND
+// VERIFY USER
 // ==========================================
 
 async function verifyUser() {
 
     try {
 
-        const response = await fetch(
-            "http://localhost:5000/api/auth/profile",
-            {
-                method: "GET",
+        const response =
+            await fetch(
 
-                headers: {
-                    Authorization: `Bearer ${token}`
+                `${API_URL}/api/auth/profile`,
+
+                {
+
+                    method:
+                        "GET",
+
+                    headers: {
+
+                        Authorization:
+                            `Bearer ${token}`
+
+                    }
+
                 }
-            }
-        );
+
+            );
 
 
         const data =
             await response.json();
 
 
-        if (!response.ok) {
+        if (
+            response.status === 401 ||
+            response.status === 403
+        ) {
 
             clearLoginData();
+
 
             window.location.replace(
                 "login.html"
             );
 
-            return;
+
+            return false;
+
         }
 
 
-        displayUserData(data.user);
+        if (!response.ok) {
+
+            console.error(
+                data.message
+            );
+
+
+            return false;
+
+        }
+
+
+        displayUserData(
+            data.user
+        );
+
+
+        return true;
 
 
     } catch (error) {
@@ -92,59 +194,76 @@ async function verifyUser() {
             error
         );
 
+
+        return false;
+
     }
 
 }
 
 
-verifyUser();
-
-
 // ==========================================
-// DISPLAY LOGGED-IN USER
+// DISPLAY USER
 // ==========================================
 
-function displayUserData(user) {
+function displayUserData(
+    user
+) {
+
+    if (!user) {
+
+        return;
+
+    }
+
 
     const topUserName =
         document.getElementById(
             "topUserName"
         );
 
+
     const welcomeUserName =
         document.getElementById(
             "welcomeUserName"
         );
+
 
     const topUserAvatar =
         document.getElementById(
             "topUserAvatar"
         );
 
+
     const profileAvatar =
         document.getElementById(
             "profileAvatar"
         );
+
 
     const profileFullName =
         document.getElementById(
             "profileFullName"
         );
 
+
     const profileName =
         document.getElementById(
             "profileName"
         );
+
 
     const profileEmail =
         document.getElementById(
             "profileEmail"
         );
 
+
     const profilePhone =
         document.getElementById(
             "profilePhone"
         );
+
 
     const profileRole =
         document.getElementById(
@@ -152,56 +271,49 @@ function displayUserData(user) {
         );
 
 
-    // ==========================================
-    // TOPBAR USER NAME
-    // ==========================================
+    // ======================================
+    // NAME
+    // ======================================
 
     if (topUserName) {
 
         topUserName.textContent =
-            user.name || "KindLink User";
+            user.name ||
+            "KindLink User";
 
     }
 
-
-    // ==========================================
-    // WELCOME MESSAGE
-    // ==========================================
 
     if (welcomeUserName) {
 
-        const firstName =
-            user.name
-                ? user.name.trim().split(" ")[0]
-                : "User";
-
-
         welcomeUserName.textContent =
-            firstName;
+            user.name
+                ? user.name
+                    .trim()
+                    .split(" ")[0]
+                : "User";
 
     }
 
-
-    // ==========================================
-    // PROFILE NAME
-    // ==========================================
 
     if (profileFullName) {
 
         profileFullName.textContent =
-            user.name || "KindLink User";
+            user.name ||
+            "KindLink User";
 
     }
 
 
-    // ==========================================
-    // PROFILE FORM VALUES
-    // ==========================================
+    // ======================================
+    // FORM
+    // ======================================
 
     if (profileName) {
 
         profileName.value =
-            user.name || "";
+            user.name ||
+            "";
 
     }
 
@@ -209,7 +321,8 @@ function displayUserData(user) {
     if (profileEmail) {
 
         profileEmail.value =
-            user.email || "";
+            user.email ||
+            "";
 
     }
 
@@ -217,7 +330,8 @@ function displayUserData(user) {
     if (profilePhone) {
 
         profilePhone.value =
-            user.phone || "";
+            user.phone ||
+            "";
 
     }
 
@@ -225,17 +339,20 @@ function displayUserData(user) {
     if (profileRole) {
 
         profileRole.value =
-            user.role || "user";
+            user.role ||
+            "user";
 
     }
 
 
-    // ==========================================
-    // USER INITIALS
-    // ==========================================
+    // ======================================
+    // INITIALS
+    // ======================================
 
     const initials =
-        getInitials(user.name);
+        getInitials(
+            user.name
+        );
 
 
     if (topUserAvatar) {
@@ -254,23 +371,30 @@ function displayUserData(user) {
     }
 
 
-    // ==========================================
-    // SAVE CURRENT USER LOCALLY
-    // ==========================================
+    // ======================================
+    // SAVE CURRENT USER
+    // ======================================
 
     localStorage.setItem(
+
         "kindlinkUser",
-        JSON.stringify(user)
+
+        JSON.stringify(
+            user
+        )
+
     );
 
 }
 
 
 // ==========================================
-// GET USER INITIALS
+// USER INITIALS
 // ==========================================
 
-function getInitials(name) {
+function getInitials(
+    name
+) {
 
     if (!name) {
 
@@ -285,19 +409,491 @@ function getInitials(name) {
             .split(/\s+/);
 
 
-    if (parts.length === 1) {
+    if (
+        parts.length === 1
+    ) {
 
         return parts[0]
-            .substring(0, 2)
+            .substring(
+                0,
+                2
+            )
             .toUpperCase();
 
     }
 
 
     return (
+
         parts[0][0] +
-        parts[parts.length - 1][0]
+
+        parts[
+            parts.length - 1
+        ][0]
+
     ).toUpperCase();
+
+}
+
+
+// ==========================================
+// LOAD USER DONATIONS
+// ==========================================
+
+async function loadMyDonations() {
+
+    try {
+
+        const response =
+            await fetch(
+
+                `${API_URL}/api/donations/my`,
+
+                {
+
+                    method:
+                        "GET",
+
+                    headers: {
+
+                        Authorization:
+                            `Bearer ${token}`
+
+                    }
+
+                }
+
+            );
+
+
+        const data =
+            await response.json();
+
+
+        // ==================================
+        // AUTH FAILED
+        // ==================================
+
+        if (
+            response.status === 401 ||
+            response.status === 403
+        ) {
+
+            clearLoginData();
+
+
+            window.location.replace(
+                "login.html"
+            );
+
+
+            return;
+
+        }
+
+
+        // ==================================
+        // REQUEST FAILED
+        // ==================================
+
+        if (!response.ok) {
+
+            console.error(
+                "Unable to load donations:",
+                data.message
+            );
+
+
+            displayDonationError();
+
+
+            return;
+
+        }
+
+
+        const donations =
+            Array.isArray(
+                data.donations
+            )
+                ? data.donations
+                : [];
+
+
+        // ==================================
+        // UPDATE STATS
+        // ==================================
+
+        const total =
+            Number(
+                data.summary
+                    ?.totalDonated
+            ) || 0;
+
+
+        const campaignsSupported =
+            Number(
+                data.summary
+                    ?.campaignsSupported
+            ) || 0;
+
+
+        if (totalDonatedAmount) {
+
+            totalDonatedAmount.textContent =
+
+                `₹${total.toLocaleString(
+                    "en-IN"
+                )}`;
+
+        }
+
+
+        if (donationCampaignCount) {
+
+            donationCampaignCount.textContent =
+
+                `Across ${campaignsSupported} campaign${
+                    campaignsSupported === 1
+                        ? ""
+                        : "s"
+                }`;
+
+        }
+
+
+        displayDonations(
+            donations
+        );
+
+
+    } catch (error) {
+
+        console.error(
+            "Donation Load Error:",
+            error
+        );
+
+
+        displayDonationError();
+
+    }
+
+}
+
+
+// ==========================================
+// DISPLAY DONATIONS
+// ==========================================
+
+function displayDonations(
+    donations
+) {
+
+    if (!donationTableBody) {
+
+        return;
+
+    }
+
+
+    // ==================================
+    // NO DONATIONS
+    // ==================================
+
+    if (
+        !donations ||
+        donations.length === 0
+    ) {
+
+        donationTableBody.innerHTML = `
+
+            <tr>
+
+                <td
+                    colspan="5"
+                    style="
+                        text-align:center;
+                        padding:30px;
+                    "
+                >
+
+                    You haven't made any donations yet.
+
+                </td>
+
+            </tr>
+
+        `;
+
+
+        return;
+
+    }
+
+
+    // ==================================
+    // ROWS
+    // ==================================
+
+    donationTableBody.innerHTML =
+
+        donations
+            .map(
+                donation => {
+
+                    const campaignName =
+                        donation
+                            .campaign
+                            ?.title ||
+                        "Campaign";
+
+
+                    const organisationName =
+                        donation
+                            .organisation
+                            ?.organisationName ||
+                        "KindLink Organisation";
+
+
+                    const amount =
+                        Number(
+                            donation.amount
+                        ) || 0;
+
+
+                    const status =
+                        donation.status ||
+                        "completed";
+
+
+                    const date =
+                        formatDonationDate(
+                            donation.createdAt
+                        );
+
+
+                    return `
+
+                        <tr>
+
+                            <td>
+
+                                ${escapeHTML(
+                                    campaignName
+                                )}
+
+                            </td>
+
+
+                            <td>
+
+                                ${escapeHTML(
+                                    organisationName
+                                )}
+
+                            </td>
+
+
+                            <td>
+
+                                ${escapeHTML(
+                                    date
+                                )}
+
+                            </td>
+
+
+                            <td class="amount">
+
+                                ₹${amount.toLocaleString(
+                                    "en-IN"
+                                )}
+
+                            </td>
+
+
+                            <td>
+
+                                <span
+                                    class="status ${escapeHTML(
+                                        status
+                                    )}"
+                                >
+
+                                    ${escapeHTML(
+                                        capitalize(
+                                            status
+                                        )
+                                    )}
+
+                                </span>
+
+                            </td>
+
+                        </tr>
+
+                    `;
+
+                }
+            )
+            .join("");
+
+}
+
+
+// ==========================================
+// DONATION ERROR
+// ==========================================
+
+function displayDonationError() {
+
+    if (!donationTableBody) {
+
+        return;
+
+    }
+
+
+    donationTableBody.innerHTML = `
+
+        <tr>
+
+            <td
+                colspan="5"
+                style="
+                    text-align:center;
+                    padding:30px;
+                "
+            >
+
+                Unable to load your donations.
+                Make sure the backend server is running.
+
+            </td>
+
+        </tr>
+
+    `;
+
+}
+
+
+// ==========================================
+// FORMAT DATE
+// ==========================================
+
+function formatDonationDate(
+    value
+) {
+
+    if (!value) {
+
+        return "-";
+
+    }
+
+
+    const date =
+        new Date(
+            value
+        );
+
+
+    if (
+        Number.isNaN(
+            date.getTime()
+        )
+    ) {
+
+        return "-";
+
+    }
+
+
+    return date.toLocaleDateString(
+        "en-IN",
+        {
+
+            day:
+                "2-digit",
+
+            month:
+                "short",
+
+            year:
+                "numeric"
+
+        }
+    );
+
+}
+
+
+// ==========================================
+// CAPITALIZE
+// ==========================================
+
+function capitalize(
+    value
+) {
+
+    if (!value) {
+
+        return "";
+
+    }
+
+
+    return (
+
+        value
+            .charAt(0)
+            .toUpperCase() +
+
+        value.slice(1)
+
+    );
+
+}
+
+
+// ==========================================
+// ESCAPE HTML
+// ==========================================
+
+function escapeHTML(
+    value
+) {
+
+    return String(
+        value ?? ""
+    )
+
+        .replaceAll(
+            "&",
+            "&amp;"
+        )
+
+        .replaceAll(
+            "<",
+            "&lt;"
+        )
+
+        .replaceAll(
+            ">",
+            "&gt;"
+        )
+
+        .replaceAll(
+            '"',
+            "&quot;"
+        )
+
+        .replaceAll(
+            "'",
+            "&#039;"
+        );
 
 }
 
@@ -312,9 +908,11 @@ function clearLoginData() {
         "kindlinkToken"
     );
 
+
     localStorage.removeItem(
         "kindlinkUser"
     );
+
 
     localStorage.removeItem(
         "kindlinkAccountType"
@@ -328,11 +926,11 @@ function clearLoginData() {
 // ==========================================
 
 sidebarLinks.forEach(
-    function (link) {
+    link => {
 
         link.addEventListener(
             "click",
-            function (event) {
+            event => {
 
                 event.preventDefault();
 
@@ -341,11 +939,8 @@ sidebarLinks.forEach(
                     link.dataset.section;
 
 
-                // Remove active class
-                // from sidebar links
-
                 sidebarLinks.forEach(
-                    function (item) {
+                    item => {
 
                         item.classList.remove(
                             "active"
@@ -360,10 +955,8 @@ sidebarLinks.forEach(
                 );
 
 
-                // Hide all sections
-
                 sections.forEach(
-                    function (section) {
+                    section => {
 
                         section.classList.remove(
                             "active-section"
@@ -372,8 +965,6 @@ sidebarLinks.forEach(
                     }
                 );
 
-
-                // Show selected section
 
                 const targetSection =
                     document.getElementById(
@@ -389,9 +980,6 @@ sidebarLinks.forEach(
 
                 }
 
-
-                // Close sidebar
-                // on mobile devices
 
                 if (
                     window.innerWidth <= 850 &&
@@ -415,11 +1003,14 @@ sidebarLinks.forEach(
 // MOBILE MENU
 // ==========================================
 
-if (menuBtn && sidebar) {
+if (
+    menuBtn &&
+    sidebar
+) {
 
     menuBtn.addEventListener(
         "click",
-        function () {
+        () => {
 
             sidebar.classList.toggle(
                 "show"
@@ -436,11 +1027,11 @@ if (menuBtn && sidebar) {
 // ==========================================
 
 interests.forEach(
-    function (interest) {
+    interest => {
 
         interest.addEventListener(
             "click",
-            function () {
+            () => {
 
                 interest.classList.toggle(
                     "active"
@@ -461,7 +1052,7 @@ if (profileForm) {
 
     profileForm.addEventListener(
         "submit",
-        function (event) {
+        event => {
 
             event.preventDefault();
 
@@ -469,15 +1060,17 @@ if (profileForm) {
             if (profileMessage) {
 
                 profileMessage.textContent =
-                    "Profile changes saved for this demo.";
+                    "Profile editing backend will be connected later.";
 
             }
 
 
             setTimeout(
-                function () {
+                () => {
 
-                    if (profileMessage) {
+                    if (
+                        profileMessage
+                    ) {
 
                         profileMessage.textContent =
                             "";
@@ -499,11 +1092,11 @@ if (profileForm) {
 // ==========================================
 
 savedButtons.forEach(
-    function (button) {
+    button => {
 
         button.addEventListener(
             "click",
-            function () {
+            () => {
 
                 const card =
                     button.closest(
@@ -512,7 +1105,9 @@ savedButtons.forEach(
 
 
                 if (!card) {
+
                     return;
+
                 }
 
 
@@ -521,7 +1116,7 @@ savedButtons.forEach(
 
 
                 setTimeout(
-                    function () {
+                    () => {
 
                         card.remove();
 
@@ -544,15 +1139,10 @@ if (logoutBtn) {
 
     logoutBtn.addEventListener(
         "click",
-        function () {
-
-            // Remove authentication
-            // information
+        () => {
 
             clearLoginData();
 
-
-            // Redirect to login page
 
             window.location.replace(
                 "login.html"
@@ -562,3 +1152,28 @@ if (logoutBtn) {
     );
 
 }
+
+
+// ==========================================
+// INITIAL DASHBOARD LOAD
+// ==========================================
+
+async function initialiseDashboard() {
+
+    const authenticated =
+        await verifyUser();
+
+
+    if (!authenticated) {
+
+        return;
+
+    }
+
+
+    await loadMyDonations();
+
+}
+
+
+initialiseDashboard();
