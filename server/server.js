@@ -55,6 +55,12 @@ const donationRoutes =
     );
 
 
+const volunteerRoutes =
+    require(
+        "./routes/volunteerRoutes"
+    );
+
+
 // ==========================================
 // CREATE EXPRESS APP
 // ==========================================
@@ -130,6 +136,16 @@ app.use(
 
 
 // ==========================================
+// VOLUNTEERING
+// ==========================================
+
+app.use(
+    "/api/volunteers",
+    volunteerRoutes
+);
+
+
+// ==========================================
 // TEST ROUTE
 // ==========================================
 
@@ -139,7 +155,8 @@ app.get(
 
         res.json({
 
-            success: true,
+            success:
+                true,
 
             message:
                 "KindLink API is running successfully"

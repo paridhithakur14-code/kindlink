@@ -1680,3 +1680,55 @@ td {
     }
 
 }
+/* ==========================================
+   VOLUNTEER APPLICATION ACTIONS
+========================================== */
+
+.application-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+
+.accept-application-btn,
+.reject-application-btn {
+    border: none;
+    border-radius: 8px;
+    padding: 8px 12px;
+    cursor: pointer;
+    font-family: inherit;
+    font-weight: 600;
+    font-size: 12px;
+}
+
+
+.accept-application-btn {
+    background: #e4f3e9;
+    color: #1d6b3a;
+}
+
+
+.accept-application-btn:hover {
+    background: #1d6b3a;
+    color: white;
+}
+
+
+.reject-application-btn {
+    background: #fde7e7;
+    color: #b83b3b;
+}
+
+
+.reject-application-btn:hover {
+    background: #b83b3b;
+    color: white;
+}
+
+
+.accept-application-btn:disabled,
+.reject-application-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}

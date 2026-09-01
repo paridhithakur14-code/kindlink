@@ -725,82 +725,68 @@
         <!-- ==================================
              VOLUNTEERS
         ================================== -->
+       
+<section
+    class="dashboard-section"
+    id="volunteers"
+>
 
-        <section
-            class="dashboard-section"
-            id="volunteers"
+    <div class="page-heading">
+
+        <div>
+
+            <span>
+                Volunteer Management
+            </span>
+
+            <h1>
+                Volunteer Opportunities
+            </h1>
+
+            <p>
+                Create opportunities and connect with volunteers.
+            </p>
+
+        </div>
+
+
+        <button
+            class="primary-btn"
+            type="button"
+            data-open="volunteerModal"
         >
 
+            <i class="fa-solid fa-plus"></i>
 
-            <div class="page-heading">
+            Add Opportunity
 
-                <div>
+        </button>
 
-                    <span>
-                        Volunteer Management
-                    </span>
-
-                    <h1>
-                        Volunteer Opportunities
-                    </h1>
-
-                    <p>
-                        Create opportunities and connect with volunteers.
-                    </p>
-
-                </div>
+    </div>
 
 
-                <button
-                    class="primary-btn"
-                    type="button"
-                    data-open="volunteerModal"
-                >
+    <div
+        class="management-grid"
+        id="organisationVolunteerList"
+    >
 
-                    <i class="fa-solid fa-plus"></i>
+        <div class="empty-state">
 
-                    Add Opportunity
+            <i class="fa-solid fa-spinner fa-spin"></i>
 
-                </button>
+            <h3>
+                Loading opportunities...
+            </h3>
 
-            </div>
+            <p>
+                Please wait while we load your volunteer opportunities.
+            </p>
 
+        </div>
 
+    </div>
 
-            <div class="management-grid">
-
-
-                <article class="management-card">
-
-                    <div class="management-top">
-
-                        <span class="category-tag">
-                            Education
-                        </span>
-
-                        <span class="status active">
-                            Demo
-                        </span>
-
-                    </div>
-
-                    <h3>
-                        Weekend Teaching Volunteer
-                    </h3>
-
-                    <p>
-                        Volunteer backend will be connected in Phase 3.11.
-                    </p>
-
-                </article>
-
-
-            </div>
-
-
-        </section>
-
-
+</section>
 
         <!-- ==================================
              ADOPTION
@@ -1012,20 +998,22 @@
 
 
             <div
-                class="application-content active"
-                id="volunteerApplications"
-            >
+    class="application-content active"
+    id="volunteerApplications"
+>
 
-                <div class="table-card">
+    <div
+        class="table-card"
+        id="organisationVolunteerApplications"
+    >
 
-                    <p>
-                        Volunteer applications will appear here after the
-                        volunteer backend is connected.
-                    </p>
+        <p>
+            Loading volunteer applications...
+        </p>
 
-                </div>
+    </div>
 
-            </div>
+</div>
 
 
 
@@ -1669,8 +1657,6 @@
 
 </div>
 
-
-
 <!-- ==========================================
      VOLUNTEER MODAL
 ========================================== -->
@@ -1709,16 +1695,20 @@
         </div>
 
 
-        <form class="demo-form">
+        <form id="createVolunteerForm">
+
+
+            <!-- TITLE -->
 
             <div class="form-group">
 
-                <label>
-                    Opportunity Title
+                <label for="volunteerTitle">
+                    Opportunity Title *
                 </label>
 
                 <input
                     type="text"
+                    id="volunteerTitle"
                     placeholder="Teaching Volunteer"
                     required
                 >
@@ -1726,48 +1716,255 @@
             </div>
 
 
-            <div class="form-group">
+            <!-- CATEGORY + MODE -->
 
-                <label>
-                    Location
-                </label>
+            <div class="form-row">
 
-                <input
-                    type="text"
-                    placeholder="City"
-                    required
-                >
+
+                <div class="form-group">
+
+                    <label for="volunteerCategory">
+                        Category *
+                    </label>
+
+                    <select
+                        id="volunteerCategory"
+                        required
+                    >
+
+                        <option value="">
+                            Select Category
+                        </option>
+
+                        <option value="education">
+                            Education
+                        </option>
+
+                        <option value="animals">
+                            Animal Welfare
+                        </option>
+
+                        <option value="environment">
+                            Environment
+                        </option>
+
+                        <option value="community">
+                            Community
+                        </option>
+
+                        <option value="emergency">
+                            Emergency
+                        </option>
+
+                        <option value="other">
+                            Other
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="volunteerMode">
+                        Volunteer Mode
+                    </label>
+
+                    <select id="volunteerMode">
+
+                        <option value="onsite">
+                            On-site
+                        </option>
+
+                        <option value="online">
+                            Online
+                        </option>
+
+                        <option value="hybrid">
+                            Hybrid
+                        </option>
+
+                    </select>
+
+                </div>
+
 
             </div>
 
 
+            <!-- CITY + STATE -->
+
+            <div class="form-row">
+
+
+                <div class="form-group">
+
+                    <label for="volunteerCity">
+                        City
+                    </label>
+
+                    <input
+                        type="text"
+                        id="volunteerCity"
+                        placeholder="Delhi"
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="volunteerState">
+                        State
+                    </label>
+
+                    <input
+                        type="text"
+                        id="volunteerState"
+                        placeholder="Delhi"
+                    >
+
+                </div>
+
+
+            </div>
+
+
+            <!-- SCHEDULE + SLOTS -->
+
+            <div class="form-row">
+
+
+                <div class="form-group">
+
+                    <label for="volunteerSchedule">
+                        Schedule
+                    </label>
+
+                    <input
+                        type="text"
+                        id="volunteerSchedule"
+                        placeholder="Weekends / Flexible"
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="volunteerSlots">
+                        Volunteers Needed *
+                    </label>
+
+                    <input
+                        type="number"
+                        id="volunteerSlots"
+                        min="1"
+                        value="1"
+                        required
+                    >
+
+                </div>
+
+
+            </div>
+
+
+            <!-- SKILLS -->
+
             <div class="form-group">
 
-                <label>
-                    Description
+                <label for="volunteerSkillsRequired">
+                    Required Skills
+                </label>
+
+                <input
+                    type="text"
+                    id="volunteerSkillsRequired"
+                    placeholder="Teaching, First Aid, Communication"
+                >
+
+                <small>
+                    Separate multiple skills using commas.
+                </small>
+
+            </div>
+
+
+            <!-- DESCRIPTION -->
+
+            <div class="form-group">
+
+                <label for="volunteerDescription">
+                    Description *
                 </label>
 
                 <textarea
-                    placeholder="Describe the volunteer opportunity"
+                    id="volunteerDescription"
+                    rows="5"
+                    placeholder="Describe the volunteer opportunity..."
                     required
                 ></textarea>
 
             </div>
 
 
+            <!-- IMAGE -->
+
+            <div class="form-group">
+
+                <label for="volunteerImage">
+                    Image URL
+                </label>
+
+                <input
+                    type="url"
+                    id="volunteerImage"
+                    placeholder="https://example.com/image.jpg"
+                >
+
+            </div>
+
+
+            <!-- URGENT -->
+
+            <div class="form-group">
+
+                <label>
+
+                    <input
+                        type="checkbox"
+                        id="volunteerUrgent"
+                    >
+
+                    Mark this opportunity as urgent
+
+                </label>
+
+            </div>
+
+
+            <!-- SUBMIT -->
+
             <button
                 type="submit"
                 class="primary-btn modal-submit"
+                id="createVolunteerSubmitBtn"
             >
-                Add Demo Opportunity
+
+                <i class="fa-solid fa-plus"></i>
+
+                Create Opportunity
+
             </button>
+
 
         </form>
 
     </div>
 
 </div>
-
 
 
 <!-- ==========================================

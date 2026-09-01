@@ -213,7 +213,7 @@
             </div>
 
             <span id="opportunityCount">
-                6 opportunities
+                0 opportunities
             </span>
 
         </div>
@@ -236,27 +236,11 @@
 
             <select id="locationFilter">
 
-                <option value="all">
-                    All Locations
-                </option>
+    <option value="all">
+        All Locations
+    </option>
 
-                <option value="delhi">
-                    Delhi
-                </option>
-
-                <option value="mumbai">
-                    Mumbai
-                </option>
-
-                <option value="jaipur">
-                    Jaipur
-                </option>
-
-                <option value="online">
-                    Online
-                </option>
-
-            </select>
+</select>
 
         </div>
 
@@ -295,264 +279,35 @@
                 🚨 Emergency
             </button>
 
+            <button class="volunteer-filter"
+                    data-category="other">
+    💚          Other
+            </button>
         </div>
 
 
         <!-- CARDS -->
 
-        <div class="opportunities-grid">
+       <div
+    class="opportunities-grid"
+    id="opportunitiesGrid"
+>
 
+    <div class="volunteer-loading">
 
-            <article class="opportunity-card"
-                     data-category="education"
-                     data-location="delhi">
+        <div>⏳</div>
 
-                <div class="opportunity-icon education-bg">
-                    📚
-                </div>
+        <h3>
+            Loading opportunities...
+        </h3>
 
-                <div class="opportunity-content">
+        <p>
+            Finding volunteer opportunities for you.
+        </p>
 
-                    <span class="opportunity-category">
-                        Education
-                    </span>
+    </div>
 
-                    <h3>
-                        Teach Children on Weekends
-                    </h3>
-
-                    <p>
-                        Help school students improve basic
-                        mathematics and communication skills.
-                    </p>
-
-                    <div class="opportunity-meta">
-                        <span>📍 Delhi</span>
-                        <span>🕐 Weekends</span>
-                    </div>
-
-                    <button
-                        class="apply-btn"
-                        data-role="Weekend Teacher"
-                        data-organization="Bright Future Foundation">
-
-                        Apply to Volunteer
-
-                    </button>
-
-                </div>
-
-            </article>
-
-
-            <article class="opportunity-card"
-                     data-category="animals"
-                     data-location="mumbai">
-
-                <div class="opportunity-icon animal-bg">
-                    🐶
-                </div>
-
-                <div class="opportunity-content">
-
-                    <span class="opportunity-category">
-                        Animal Welfare
-                    </span>
-
-                    <h3>
-                        Animal Shelter Support
-                    </h3>
-
-                    <p>
-                        Help rescued animals with feeding,
-                        cleaning and basic shelter activities.
-                    </p>
-
-                    <div class="opportunity-meta">
-                        <span>📍 Mumbai</span>
-                        <span>🕐 Flexible</span>
-                    </div>
-
-                    <button
-                        class="apply-btn"
-                        data-role="Animal Shelter Volunteer"
-                        data-organization="Happy Paws Rescue">
-
-                        Apply to Volunteer
-
-                    </button>
-
-                </div>
-
-            </article>
-
-
-            <article class="opportunity-card"
-                     data-category="environment"
-                     data-location="jaipur">
-
-                <div class="opportunity-icon environment-bg">
-                    🌳
-                </div>
-
-                <div class="opportunity-content">
-
-                    <span class="opportunity-category">
-                        Environment
-                    </span>
-
-                    <h3>
-                        Community Plantation Drive
-                    </h3>
-
-                    <p>
-                        Join a local plantation and environmental
-                        awareness activity.
-                    </p>
-
-                    <div class="opportunity-meta">
-                        <span>📍 Jaipur</span>
-                        <span>🕐 Sunday</span>
-                    </div>
-
-                    <button
-                        class="apply-btn"
-                        data-role="Plantation Volunteer"
-                        data-organization="Green Earth Initiative">
-
-                        Apply to Volunteer
-
-                    </button>
-
-                </div>
-
-            </article>
-
-
-            <article class="opportunity-card"
-                     data-category="community"
-                     data-location="delhi">
-
-                <div class="opportunity-icon community-bg">
-                    🍱
-                </div>
-
-                <div class="opportunity-content">
-
-                    <span class="opportunity-category">
-                        Community
-                    </span>
-
-                    <h3>
-                        Food Distribution Volunteer
-                    </h3>
-
-                    <p>
-                        Assist in packing and distributing
-                        meals to communities in need.
-                    </p>
-
-                    <div class="opportunity-meta">
-                        <span>📍 Delhi</span>
-                        <span>🕐 Evening</span>
-                    </div>
-
-                    <button
-                        class="apply-btn"
-                        data-role="Food Distribution Volunteer"
-                        data-organization="Community Care Network">
-
-                        Apply to Volunteer
-
-                    </button>
-
-                </div>
-
-            </article>
-
-
-            <article class="opportunity-card"
-                     data-category="emergency"
-                     data-location="mumbai">
-
-                <div class="opportunity-icon emergency-bg">
-                    🚨
-                </div>
-
-                <div class="opportunity-content">
-
-                    <span class="opportunity-category">
-                        Emergency
-                    </span>
-
-                    <h3>
-                        Relief Support Volunteer
-                    </h3>
-
-                    <p>
-                        Support relief teams during emergency
-                        supply and resource distribution.
-                    </p>
-
-                    <div class="opportunity-meta">
-                        <span>📍 Mumbai</span>
-                        <span>⚡ Urgent</span>
-                    </div>
-
-                    <button
-                        class="apply-btn"
-                        data-role="Emergency Relief Volunteer"
-                        data-organization="Rapid Relief Team">
-
-                        Apply to Volunteer
-
-                    </button>
-
-                </div>
-
-            </article>
-
-
-            <article class="opportunity-card"
-                     data-category="education"
-                     data-location="online">
-
-                <div class="opportunity-icon online-bg">
-                    💻
-                </div>
-
-                <div class="opportunity-content">
-
-                    <span class="opportunity-category">
-                        Digital Education
-                    </span>
-
-                    <h3>
-                        Online Digital Skills Mentor
-                    </h3>
-
-                    <p>
-                        Help learners understand basic computer,
-                        internet and digital literacy skills.
-                    </p>
-
-                    <div class="opportunity-meta">
-                        <span>🌐 Online</span>
-                        <span>🕐 Flexible</span>
-                    </div>
-
-                    <button
-                        class="apply-btn"
-                        data-role="Digital Skills Mentor"
-                        data-organization="Digital Learning Initiative">
-
-                        Apply to Volunteer
-
-                    </button>
-
-                </div>
-
-            </article>
+</div>
 
         </div>
 

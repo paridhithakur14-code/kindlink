@@ -2020,7 +2020,1582 @@ function escapeHTML(value) {
 
 }
 
+// ==========================================
+// CREATE VOLUNTEER OPPORTUNITY
+// ==========================================
 
+const createVolunteerForm =
+    document.getElementById(
+        "createVolunteerForm"
+    );
+
+
+if (createVolunteerForm) {
+
+    createVolunteerForm.addEventListener(
+        "submit",
+        async function (event) {
+
+            event.preventDefault();
+
+
+            const organisationToken =
+                localStorage.getItem(
+                    "kindlinkToken"
+                );
+
+
+            if (!organisationToken) {
+
+                clearOrganisationLogin();
+
+                window.location.replace(
+                    "login.html"
+                );
+
+                return;
+
+            }
+
+
+            // ==================================
+            // FORM VALUES
+            // ==================================
+
+            const title =
+                document
+                    .getElementById(
+                        "volunteerTitle"
+                    )
+                    .value
+                    .trim();
+
+
+            const category =
+                document
+                    .getElementById(
+                        "volunteerCategory"
+                    )
+                    .value;
+
+
+            const mode =
+                document
+                    .getElementById(
+                        "volunteerMode"
+                    )
+                    .value;
+
+
+            const city =
+                document
+                    .getElementById(
+                        "volunteerCity"
+                    )
+                    .value
+                    .trim();
+
+
+            const state =
+                document
+                    .getElementById(
+                        "volunteerState"
+                    )
+                    .value
+                    .trim();
+
+
+            const schedule =
+                document
+                    .getElementById(
+                        "volunteerSchedule"
+                    )
+                    .value
+                    .trim();
+
+
+            const slots =
+                Number(
+                    document
+                        .getElementById(
+                            "volunteerSlots"
+                        )
+                        .value
+                );
+
+
+            const requiredSkills =
+                document
+                    .getElementById(
+                        "volunteerSkillsRequired"
+                    )
+                    .value
+                    .trim();
+
+
+            const description =
+                document
+                    .getElementById(
+                        "volunteerDescription"
+                    )
+                    .value
+                    .trim();
+
+
+            const image =
+                document
+                    .getElementById(
+                        "volunteerImage"
+                    )
+                    .value
+                    .trim();
+
+
+            const isUrgent =
+                document
+                    .getElementById(
+                        "volunteerUrgent"
+                    )
+                    .checked;
+
+
+            // ==================================
+            // VALIDATION
+            // ==================================
+
+            if (
+                !title ||
+                !category ||
+                !description
+            ) {
+
+                showToast(
+                    "Please fill all required volunteer fields."
+                );
+
+                return;
+
+            }
+
+
+            if (
+                !Number.isInteger(slots) ||
+                slots < 1
+            ) {
+
+                showToast(
+                    "Volunteers needed must be at least 1."
+                );
+
+                return;
+
+            }
+
+
+            const submitButton =
+                document.getElementById(
+                    "createVolunteerSubmitBtn"
+                );
+
+
+            if (submitButton) {
+
+                submitButton.disabled =
+                    true;
+
+
+                submitButton.innerHTML = `
+                    <i class="fa-solid fa-spinner fa-spin"></i>
+                    Creating...
+                `;
+
+            }
+
+
+            try {
+
+                // ==================================
+                // REQUEST DATA
+                // ==================================
+
+                const volunteerData = {
+
+                    title,
+
+                    category,
+
+                    description,
+
+                    city,
+
+                    state,
+
+                    mode,
+
+                    schedule,
+
+                    requiredSkills,
+
+                    slots,
+
+                    isUrgent,
+
+                    image
+
+                };
+
+
+                // ==================================
+                // POST TO BACKEND
+                // ==================================
+
+                const response =
+                    await fetch(
+                        `${API_URL}/api/volunteers`,
+                        {
+
+                            method:
+                                "POST",
+
+                            headers: {
+
+                                "Content-Type":
+                                    "application/json",
+
+                                Authorization:
+                                    `Bearer ${organisationToken}`
+
+                            },
+
+                            body:
+                                JSON.stringify(
+                                    volunteerData
+                                )
+
+                        }
+                    );
+
+
+                let data = {};
+
+
+                try {
+
+                    data =
+                        await response.json();
+
+                } catch (error) {
+
+                    console.error(
+                        "Unable to read volunteer response."
+                    );
+
+                }
+
+
+                // ==================================
+                // AUTH FAILED
+                // ==================================
+
+                if (
+                    response.status === 401 ||
+                    response.status === 403
+                ) {
+
+                    clearOrganisationLogin();
+
+                    window.location.replace(
+                        "login.html"
+                    );
+
+                    return;
+
+                }
+
+
+                // ==================================
+                // REQUEST FAILED
+                // ==================================
+
+                if (!response.ok) {
+
+                    showToast(
+                        data.message ||
+                        "Unable to create volunteer opportunity."
+                    );
+
+                    return;
+
+                }
+
+
+                // ==================================
+                // SUCCESS
+                // ==================================
+
+                showToast(
+                    "Volunteer opportunity created successfully!"
+                );
+
+
+                createVolunteerForm.reset();
+
+
+                document
+                    .getElementById(
+                        "volunteerSlots"
+                    )
+                    .value = 1;
+
+
+                const volunteerModal =
+                    document.getElementById(
+                        "volunteerModal"
+                    );
+
+
+                if (volunteerModal) {
+
+                    volunteerModal.classList.remove(
+                        "show"
+                    );
+
+                }
+
+
+                await loadOrganisationVolunteerOpportunities();
+
+
+                openSection(
+                    "volunteers"
+                );
+
+
+            } catch (error) {
+
+                console.error(
+                    "Create Volunteer Opportunity Error:",
+                    error
+                );
+
+
+                showToast(
+                    "Unable to connect to the KindLink server."
+                );
+
+            } finally {
+
+                if (submitButton) {
+
+                    submitButton.disabled =
+                        false;
+
+
+                    submitButton.innerHTML = `
+                        <i class="fa-solid fa-plus"></i>
+                        Create Opportunity
+                    `;
+
+                }
+
+            }
+
+        }
+    );
+
+}
+
+
+
+// ==========================================
+// LOAD ORGANISATION VOLUNTEER OPPORTUNITIES
+// ==========================================
+
+async function loadOrganisationVolunteerOpportunities() {
+
+    const organisationToken =
+        localStorage.getItem(
+            "kindlinkToken"
+        );
+
+
+    if (!organisationToken) {
+
+        return;
+
+    }
+
+
+    try {
+
+        const response =
+            await fetch(
+                `${API_URL}/api/volunteers/organisation/mine`,
+                {
+
+                    method:
+                        "GET",
+
+                    headers: {
+
+                        Authorization:
+                            `Bearer ${organisationToken}`
+
+                    }
+
+                }
+            );
+
+
+        let data = {};
+
+
+        try {
+
+            data =
+                await response.json();
+
+        } catch (error) {
+
+            console.error(
+                "Unable to read volunteer opportunities."
+            );
+
+        }
+
+
+        if (
+            response.status === 401 ||
+            response.status === 403
+        ) {
+
+            clearOrganisationLogin();
+
+            window.location.replace(
+                "login.html"
+            );
+
+            return;
+
+        }
+
+
+        if (!response.ok) {
+
+            console.error(
+                data.message ||
+                "Unable to load volunteer opportunities."
+            );
+
+
+            displayVolunteerOpportunityError();
+
+            return;
+
+        }
+
+
+        const opportunities =
+            Array.isArray(
+                data.opportunities
+            )
+                ? data.opportunities
+                : [];
+
+
+        displayOrganisationVolunteerOpportunities(
+            opportunities
+        );
+
+
+    } catch (error) {
+
+        console.error(
+            "Load Volunteer Opportunities Error:",
+            error
+        );
+
+
+        displayVolunteerOpportunityError();
+
+    }
+
+}
+
+
+
+// ==========================================
+// DISPLAY ORGANISATION VOLUNTEERS
+// ==========================================
+
+function displayOrganisationVolunteerOpportunities(
+    opportunities
+) {
+
+    const container =
+        document.getElementById(
+            "organisationVolunteerList"
+        );
+
+
+    if (!container) {
+
+        return;
+
+    }
+
+
+    // ==================================
+    // EMPTY
+    // ==================================
+
+    if (
+        !opportunities ||
+        opportunities.length === 0
+    ) {
+
+        container.innerHTML = `
+
+            <div class="empty-state">
+
+                <i class="fa-solid fa-people-group"></i>
+
+                <h3>
+                    No volunteer opportunities yet
+                </h3>
+
+                <p>
+                    Create your first opportunity and
+                    connect with KindLink volunteers.
+                </p>
+
+            </div>
+
+        `;
+
+
+        return;
+
+    }
+
+
+    // ==================================
+    // CARDS
+    // ==================================
+
+    container.innerHTML =
+        opportunities
+            .map(
+                function (opportunity) {
+
+                    const status =
+                        opportunity.status ||
+                        "active";
+
+
+                    const city =
+                        opportunity.location?.city ||
+                        "";
+
+
+                    const state =
+                        opportunity.location?.state ||
+                        "";
+
+
+                    const mode =
+                        opportunity.location?.mode ||
+                        "onsite";
+
+
+                    let locationText =
+                        "";
+
+
+                    if (
+                        city &&
+                        state
+                    ) {
+
+                        locationText =
+                            `${city}, ${state}`;
+
+                    } else {
+
+                        locationText =
+                            city ||
+                            state ||
+                            formatVolunteerMode(
+                                mode
+                            );
+
+                    }
+
+
+                    const skills =
+                        Array.isArray(
+                            opportunity.requiredSkills
+                        )
+                            ? opportunity.requiredSkills
+                            : [];
+
+
+                    return `
+
+                        <article class="management-card">
+
+                            <div class="management-top">
+
+                                <span class="category-tag">
+
+                                    ${escapeHTML(
+                                        formatVolunteerCategory(
+                                            opportunity.category
+                                        )
+                                    )}
+
+                                </span>
+
+
+                                <span class="status ${escapeHTML(status)}">
+
+                                    ${escapeHTML(
+                                        formatStatus(
+                                            status
+                                        )
+                                    )}
+
+                                </span>
+
+                            </div>
+
+
+                            <h3>
+
+                                ${escapeHTML(
+                                    opportunity.title
+                                )}
+
+                            </h3>
+
+
+                            <p>
+
+                                ${escapeHTML(
+                                    opportunity.description
+                                )}
+
+                            </p>
+
+
+                            <div class="application-info">
+
+                                <p>
+
+                                    <i class="fa-solid fa-location-dot"></i>
+
+                                    ${escapeHTML(
+                                        locationText
+                                    )}
+
+                                </p>
+
+
+                                <p>
+
+                                    <i class="fa-solid fa-clock"></i>
+
+                                    ${escapeHTML(
+                                        opportunity.schedule ||
+                                        "Flexible"
+                                    )}
+
+                                </p>
+
+
+                                <p>
+
+                                    <i class="fa-solid fa-users"></i>
+
+                                    ${escapeHTML(
+                                        opportunity.slots ||
+                                        1
+                                    )}
+                                    needed
+
+                                </p>
+
+
+                                <p>
+
+                                    <i class="fa-solid fa-laptop-house"></i>
+
+                                    ${escapeHTML(
+                                        formatVolunteerMode(
+                                            mode
+                                        )
+                                    )}
+
+                                </p>
+
+                            </div>
+
+
+                            ${
+                                opportunity.isUrgent
+                                    ? `
+
+                                        <p class="critical">
+                                            <i class="fa-solid fa-triangle-exclamation"></i>
+                                            Urgent Requirement
+                                        </p>
+
+                                    `
+                                    : ""
+                            }
+
+
+                            ${
+                                skills.length > 0
+                                    ? `
+
+                                        <p>
+                                            <strong>
+                                                Skills:
+                                            </strong>
+
+                                            ${escapeHTML(
+                                                skills.join(", ")
+                                            )}
+                                        </p>
+
+                                    `
+                                    : ""
+                            }
+
+                        </article>
+
+                    `;
+
+                }
+            )
+            .join("");
+
+}
+
+
+
+// ==========================================
+// VOLUNTEER LOAD ERROR
+// ==========================================
+
+function displayVolunteerOpportunityError() {
+
+    const container =
+        document.getElementById(
+            "organisationVolunteerList"
+        );
+
+
+    if (!container) {
+
+        return;
+
+    }
+
+
+    container.innerHTML = `
+
+        <div class="empty-state">
+
+            <i class="fa-solid fa-circle-exclamation"></i>
+
+            <h3>
+                Unable to load volunteer opportunities
+            </h3>
+
+            <p>
+                Make sure the KindLink backend
+                is running on port 5000.
+            </p>
+
+        </div>
+
+    `;
+
+}
+
+
+
+// ==========================================
+// FORMAT VOLUNTEER CATEGORY
+// ==========================================
+
+function formatVolunteerCategory(
+    category
+) {
+
+    const categories = {
+
+        education:
+            "Education",
+
+        animals:
+            "Animal Welfare",
+
+        environment:
+            "Environment",
+
+        community:
+            "Community",
+
+        emergency:
+            "Emergency",
+
+        other:
+            "Other"
+
+    };
+
+
+    return (
+        categories[category] ||
+        "Other"
+    );
+
+}
+
+
+
+// ==========================================
+// FORMAT VOLUNTEER MODE
+// ==========================================
+
+function formatVolunteerMode(
+    mode
+) {
+
+    const modes = {
+
+        onsite:
+            "On-site",
+
+        online:
+            "Online",
+
+        hybrid:
+            "Hybrid"
+
+    };
+
+
+    return (
+        modes[mode] ||
+        "On-site"
+    );
+
+}
+
+// ==========================================
+// LOAD VOLUNTEER APPLICATIONS
+// ==========================================
+
+async function loadOrganisationVolunteerApplications() {
+
+    const container =
+        document.getElementById(
+            "organisationVolunteerApplications"
+        );
+
+
+    if (!container) {
+
+        return;
+
+    }
+
+
+    const organisationToken =
+        localStorage.getItem(
+            "kindlinkToken"
+        );
+
+
+    if (!organisationToken) {
+
+        return;
+
+    }
+
+
+    try {
+
+        const response =
+            await fetch(
+
+                `${API_URL}/api/volunteers/organisation/applications`,
+
+                {
+
+                    method:
+                        "GET",
+
+                    headers: {
+
+                        Authorization:
+                            `Bearer ${organisationToken}`
+
+                    }
+
+                }
+
+            );
+
+
+        let data = {};
+
+
+        try {
+
+            data =
+                await response.json();
+
+        } catch (error) {
+
+            console.error(
+                "Unable to read volunteer applications."
+            );
+
+        }
+
+
+        if (
+            response.status === 401 ||
+            response.status === 403
+        ) {
+
+            clearOrganisationLogin();
+
+
+            window.location.replace(
+                "login.html"
+            );
+
+
+            return;
+
+        }
+
+
+        if (!response.ok) {
+
+            throw new Error(
+
+                data.message ||
+                "Unable to load volunteer applications."
+
+            );
+
+        }
+
+
+        const applications =
+            Array.isArray(
+                data.applications
+            )
+                ? data.applications
+                : [];
+
+
+        displayOrganisationVolunteerApplications(
+            applications
+        );
+
+
+    } catch (error) {
+
+        console.error(
+
+            "Organisation Volunteer Applications Error:",
+
+            error
+
+        );
+
+
+        container.innerHTML = `
+
+            <div class="empty-state">
+
+                <i class="fa-solid fa-circle-exclamation"></i>
+
+                <h3>
+                    Unable to load applications
+                </h3>
+
+                <p>
+                    Make sure the KindLink backend is running.
+                </p>
+
+            </div>
+
+        `;
+
+    }
+
+}
+
+
+
+// ==========================================
+// DISPLAY VOLUNTEER APPLICATIONS
+// ==========================================
+
+function displayOrganisationVolunteerApplications(
+    applications
+) {
+
+    const container =
+        document.getElementById(
+            "organisationVolunteerApplications"
+        );
+
+
+    if (!container) {
+
+        return;
+
+    }
+
+
+    // ======================================
+    // EMPTY STATE
+    // ======================================
+
+    if (
+        !applications ||
+        applications.length === 0
+    ) {
+
+        container.innerHTML = `
+
+            <div class="empty-state">
+
+                <i class="fa-solid fa-file-circle-plus"></i>
+
+                <h3>
+                    No volunteer applications yet
+                </h3>
+
+                <p>
+                    Applications submitted to your
+                    volunteer opportunities will appear here.
+                </p>
+
+            </div>
+
+        `;
+
+
+        return;
+
+    }
+
+
+    // ======================================
+    // TABLE
+    // ======================================
+
+    container.innerHTML = `
+
+        <div class="responsive-table">
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>
+                            Applicant
+                        </th>
+
+                        <th>
+                            Opportunity
+                        </th>
+
+                        <th>
+                            Contact
+                        </th>
+
+                        <th>
+                            Date
+                        </th>
+
+                        <th>
+                            Status
+                        </th>
+
+                        <th>
+                            Action
+                        </th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody>
+
+                    ${applications
+                        .map(
+                            function (
+                                application
+                            ) {
+
+                                const opportunity =
+                                    application.opportunity ||
+                                    {};
+
+
+                                const status =
+                                    application.status ||
+                                    "pending";
+
+
+                                const date =
+                                    application.createdAt
+                                        ? new Date(
+                                            application.createdAt
+                                        ).toLocaleDateString(
+                                            "en-IN",
+                                            {
+
+                                                day:
+                                                    "2-digit",
+
+                                                month:
+                                                    "short",
+
+                                                year:
+                                                    "numeric"
+
+                                            }
+                                        )
+                                        : "";
+
+
+                                return `
+
+                                    <tr>
+
+                                        <td>
+
+                                            <strong>
+
+                                                ${escapeHTML(
+                                                    application.name ||
+                                                    application.user?.name ||
+                                                    "Volunteer"
+                                                )}
+
+                                            </strong>
+
+
+                                            ${
+                                                application.age
+                                                    ? `
+
+                                                        <br>
+
+                                                        <small>
+                                                            Age:
+                                                            ${escapeHTML(
+                                                                application.age
+                                                            )}
+                                                        </small>
+
+                                                    `
+                                                    : ""
+                                            }
+
+                                        </td>
+
+
+                                        <td>
+
+                                            ${escapeHTML(
+                                                opportunity.title ||
+                                                "Volunteer Opportunity"
+                                            )}
+
+                                        </td>
+
+
+                                        <td>
+
+                                            ${escapeHTML(
+                                                application.email ||
+                                                ""
+                                            )}
+
+                                            <br>
+
+                                            <small>
+
+                                                ${escapeHTML(
+                                                    application.phone ||
+                                                    ""
+                                                )}
+
+                                            </small>
+
+                                        </td>
+
+
+                                        <td>
+
+                                            ${escapeHTML(
+                                                date
+                                            )}
+
+                                        </td>
+
+
+                                        <td>
+
+                                            <span
+                                                class="status ${escapeHTML(
+                                                    status
+                                                )}"
+                                            >
+
+                                                ${escapeHTML(
+                                                    formatVolunteerApplicationStatus(
+                                                        status
+                                                    )
+                                                )}
+
+                                            </span>
+
+                                        </td>
+
+
+                                        <td>
+
+                                            ${
+                                                status ===
+                                                "pending"
+
+                                                    ? `
+
+                                                        <div class="application-actions">
+
+                                                            <button
+                                                                type="button"
+                                                                class="accept-application-btn"
+                                                                data-id="${escapeHTML(
+                                                                    application._id
+                                                                )}"
+                                                                data-status="accepted"
+                                                            >
+
+                                                                <i class="fa-solid fa-check"></i>
+
+                                                                Accept
+
+                                                            </button>
+
+
+                                                            <button
+                                                                type="button"
+                                                                class="reject-application-btn"
+                                                                data-id="${escapeHTML(
+                                                                    application._id
+                                                                )}"
+                                                                data-status="rejected"
+                                                            >
+
+                                                                <i class="fa-solid fa-xmark"></i>
+
+                                                                Reject
+
+                                                            </button>
+
+                                                        </div>
+
+                                                    `
+
+                                                    : `
+
+                                                        <span>
+                                                            Reviewed
+                                                        </span>
+
+                                                    `
+                                            }
+
+                                        </td>
+
+                                    </tr>
+
+                                `;
+
+                            }
+                        )
+                        .join("")}
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    `;
+
+}
+
+
+
+// ==========================================
+// ACCEPT / REJECT VOLUNTEER APPLICATION
+// ==========================================
+
+document.addEventListener(
+    "click",
+    async function (event) {
+
+        const button =
+            event.target.closest(
+
+                ".accept-application-btn, .reject-application-btn"
+
+            );
+
+
+        if (!button) {
+
+            return;
+
+        }
+
+
+        const applicationId =
+            button.dataset.id;
+
+
+        const newStatus =
+            button.dataset.status;
+
+
+        if (
+            !applicationId ||
+            !newStatus
+        ) {
+
+            return;
+
+        }
+
+
+        const organisationToken =
+            localStorage.getItem(
+                "kindlinkToken"
+            );
+
+
+        if (!organisationToken) {
+
+            clearOrganisationLogin();
+
+
+            window.location.replace(
+                "login.html"
+            );
+
+
+            return;
+
+        }
+
+
+        button.disabled =
+            true;
+
+
+        const originalText =
+            button.innerHTML;
+
+
+        button.innerHTML = `
+
+            <i class="fa-solid fa-spinner fa-spin"></i>
+
+            Updating...
+
+        `;
+
+
+        try {
+
+            const response =
+                await fetch(
+
+                    `${API_URL}/api/volunteers/applications/${applicationId}/status`,
+
+                    {
+
+                        method:
+                            "PATCH",
+
+                        headers: {
+
+                            "Content-Type":
+                                "application/json",
+
+                            Authorization:
+                                `Bearer ${organisationToken}`
+
+                        },
+
+                        body:
+                            JSON.stringify({
+
+                                status:
+                                    newStatus
+
+                            })
+
+                    }
+
+                );
+
+
+            let data = {};
+
+
+            try {
+
+                data =
+                    await response.json();
+
+            } catch (error) {
+
+                console.error(
+                    "Unable to read status response."
+                );
+
+            }
+
+
+            if (
+                response.status === 401 ||
+                response.status === 403
+            ) {
+
+                clearOrganisationLogin();
+
+
+                window.location.replace(
+                    "login.html"
+                );
+
+
+                return;
+
+            }
+
+
+            if (!response.ok) {
+
+                showToast(
+
+                    data.message ||
+                    "Unable to update application."
+
+                );
+
+
+                return;
+
+            }
+
+
+            showToast(
+
+                newStatus === "accepted"
+
+                    ? "Volunteer application accepted!"
+
+                    : "Volunteer application rejected."
+
+            );
+
+
+            await loadOrganisationVolunteerApplications();
+
+
+        } catch (error) {
+
+            console.error(
+
+                "Update Volunteer Application Error:",
+
+                error
+
+            );
+
+
+            showToast(
+                "Unable to connect to the KindLink server."
+            );
+
+
+        } finally {
+
+            button.disabled =
+                false;
+
+
+            button.innerHTML =
+                originalText;
+
+        }
+
+    }
+
+);
+
+
+
+// ==========================================
+// FORMAT APPLICATION STATUS
+// ==========================================
+
+function formatVolunteerApplicationStatus(
+    status
+) {
+
+    const statuses = {
+
+        pending:
+            "Pending",
+
+        accepted:
+            "Accepted",
+
+        rejected:
+            "Rejected"
+
+    };
+
+
+    return (
+        statuses[status] ||
+        "Pending"
+    );
+
+}
 
 // ==========================================
 // APPLICATION TABS
@@ -2284,7 +3859,551 @@ function showToast(message) {
 
 }
 
+// ==========================================
+// VOLUNTEER APPLICATIONS
+// ==========================================
 
+async function loadUserVolunteerApplications() {
+
+    const container =
+        document.getElementById(
+            "userVolunteerApplications"
+        );
+
+
+    if (!container) {
+
+        return;
+
+    }
+
+
+    try {
+
+        const response =
+            await fetch(
+
+                "http://localhost:5000/api/volunteers/applications/mine",
+
+                {
+
+                    method:
+                        "GET",
+
+                    headers: {
+
+                        Authorization:
+                            `Bearer ${token}`
+
+                    }
+
+                }
+
+            );
+
+
+        let data = {};
+
+
+        try {
+
+            data =
+                await response.json();
+
+        } catch (error) {
+
+            console.error(
+                "Unable to read volunteer application response."
+            );
+
+        }
+
+
+        // ======================================
+        // INVALID LOGIN
+        // ======================================
+
+        if (
+            response.status === 401 ||
+            response.status === 403
+        ) {
+
+            clearLoginData();
+
+
+            window.location.replace(
+                "login.html"
+            );
+
+
+            return;
+
+        }
+
+
+        if (!response.ok) {
+
+            throw new Error(
+
+                data.message ||
+                "Unable to load volunteer applications."
+
+            );
+
+        }
+
+
+        const applications =
+            Array.isArray(
+                data.applications
+            )
+                ? data.applications
+                : [];
+
+
+        renderUserVolunteerApplications(
+            applications
+        );
+
+
+    } catch (error) {
+
+        console.error(
+
+            "Volunteer Applications Error:",
+
+            error
+
+        );
+
+
+        container.innerHTML = `
+
+            <article class="application-card">
+
+                <div class="application-top">
+
+                    <span class="category">
+                        Error
+                    </span>
+
+                    <span class="status rejected">
+                        Failed
+                    </span>
+
+                </div>
+
+                <h3>
+                    Unable to load applications
+                </h3>
+
+                <p class="organisation">
+                    Make sure the KindLink backend is running.
+                </p>
+
+            </article>
+
+        `;
+
+    }
+
+}
+
+
+
+// ==========================================
+// RENDER USER VOLUNTEER APPLICATIONS
+// ==========================================
+
+function renderUserVolunteerApplications(
+    applications
+) {
+
+    const container =
+        document.getElementById(
+            "userVolunteerApplications"
+        );
+
+
+    if (!container) {
+
+        return;
+
+    }
+
+
+    // ======================================
+    // EMPTY
+    // ======================================
+
+    if (
+        !applications ||
+        applications.length === 0
+    ) {
+
+        container.innerHTML = `
+
+            <article class="application-card">
+
+                <div class="application-top">
+
+                    <span class="category">
+                        Volunteer
+                    </span>
+
+                </div>
+
+                <h3>
+                    No volunteer applications yet
+                </h3>
+
+                <p class="organisation">
+                    Find an opportunity and start making an impact.
+                </p>
+
+                <a
+                    href="volunteer.html"
+                    class="outline-btn"
+                >
+                    Find Opportunities
+                </a>
+
+            </article>
+
+        `;
+
+
+        return;
+
+    }
+
+
+    // ======================================
+    // APPLICATION CARDS
+    // ======================================
+
+    container.innerHTML =
+        applications
+            .map(
+                function (application) {
+
+                    const opportunity =
+                        application.opportunity ||
+                        {};
+
+
+                    const organisation =
+                        application.organisation ||
+                        {};
+
+
+                    const status =
+                        application.status ||
+                        "pending";
+
+
+                    const category =
+                        formatVolunteerCategory(
+                            opportunity.category
+                        );
+
+
+                    let location =
+                        "Location not specified";
+
+
+                    const city =
+                        opportunity.location?.city ||
+                        "";
+
+
+                    const state =
+                        opportunity.location?.state ||
+                        "";
+
+
+                    const mode =
+                        opportunity.location?.mode ||
+                        "onsite";
+
+
+                    if (
+                        mode === "online"
+                    ) {
+
+                        location =
+                            "Online";
+
+                    } else if (
+                        city &&
+                        state
+                    ) {
+
+                        location =
+                            `${city}, ${state}`;
+
+                    } else if (city) {
+
+                        location =
+                            city;
+
+                    } else if (state) {
+
+                        location =
+                            state;
+
+                    }
+
+
+                    const date =
+                        application.createdAt
+                            ? new Date(
+                                application.createdAt
+                            ).toLocaleDateString(
+                                "en-IN",
+                                {
+
+                                    day:
+                                        "2-digit",
+
+                                    month:
+                                        "short",
+
+                                    year:
+                                        "numeric"
+
+                                }
+                            )
+                            : "";
+
+
+                    return `
+
+                        <article class="application-card">
+
+                            <div class="application-top">
+
+                                <span class="category">
+
+                                    ${escapeDashboardHTML(
+                                        category
+                                    )}
+
+                                </span>
+
+
+                                <span
+                                    class="status ${escapeDashboardHTML(
+                                        status
+                                    )}"
+                                >
+
+                                    ${escapeDashboardHTML(
+                                        formatVolunteerApplicationStatus(
+                                            status
+                                        )
+                                    )}
+
+                                </span>
+
+                            </div>
+
+
+                            <h3>
+
+                                ${escapeDashboardHTML(
+                                    opportunity.title ||
+                                    "Volunteer Opportunity"
+                                )}
+
+                            </h3>
+
+
+                            <p class="organisation">
+
+                                ${escapeDashboardHTML(
+                                    organisation.organisationName ||
+                                    "KindLink Organisation"
+                                )}
+
+                            </p>
+
+
+                            <div class="application-info">
+
+                                <p>
+
+                                    <i class="fa-solid fa-location-dot"></i>
+
+                                    ${escapeDashboardHTML(
+                                        location
+                                    )}
+
+                                </p>
+
+
+                                <p>
+
+                                    <i class="fa-solid fa-calendar"></i>
+
+                                    Applied:
+                                    ${escapeDashboardHTML(
+                                        date
+                                    )}
+
+                                </p>
+
+
+                                <p>
+
+                                    <i class="fa-solid fa-clock"></i>
+
+                                    ${escapeDashboardHTML(
+                                        opportunity.schedule ||
+                                        "Flexible"
+                                    )}
+
+                                </p>
+
+                            </div>
+
+                        </article>
+
+                    `;
+
+                }
+            )
+            .join("");
+
+}
+
+
+
+// ==========================================
+// FORMAT VOLUNTEER CATEGORY
+// ==========================================
+
+function formatVolunteerCategory(
+    category
+) {
+
+    const categories = {
+
+        education:
+            "Education",
+
+        animals:
+            "Animal Welfare",
+
+        environment:
+            "Environment",
+
+        community:
+            "Community",
+
+        emergency:
+            "Emergency",
+
+        other:
+            "Other"
+
+    };
+
+
+    return (
+        categories[category] ||
+        "Volunteer"
+    );
+
+}
+
+
+
+// ==========================================
+// FORMAT APPLICATION STATUS
+// ==========================================
+
+function formatVolunteerApplicationStatus(
+    status
+) {
+
+    const statuses = {
+
+        pending:
+            "Pending",
+
+        accepted:
+            "Accepted",
+
+        rejected:
+            "Rejected"
+
+    };
+
+
+    return (
+        statuses[status] ||
+        "Pending"
+    );
+
+}
+
+
+
+// ==========================================
+// ESCAPE DASHBOARD HTML
+// ==========================================
+
+function escapeDashboardHTML(
+    value
+) {
+
+    if (
+        value === undefined ||
+        value === null
+    ) {
+
+        return "";
+
+    }
+
+
+    return String(value)
+
+        .replaceAll(
+            "&",
+            "&amp;"
+        )
+
+        .replaceAll(
+            "<",
+            "&lt;"
+        )
+
+        .replaceAll(
+            ">",
+            "&gt;"
+        )
+
+        .replaceAll(
+            '"',
+            "&quot;"
+        )
+
+        .replaceAll(
+            "'",
+            "&#039;"
+        );
+
+}
+
+
+
+// ==========================================
+// LOAD VOLUNTEER DATA
+// ==========================================
+
+loadUserVolunteerApplications();
 
 // ==========================================
 // LOGOUT
@@ -2418,6 +4537,10 @@ async function initialiseDashboard() {
     await verifyOrganisation();
 
     await loadOrganisationCampaigns();
+
+    await loadOrganisationVolunteerOpportunities();
+
+    await loadOrganisationVolunteerApplications();
 
 }
 

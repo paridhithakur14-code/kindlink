@@ -547,3 +547,33 @@
         padding: 28px 20px;
     }
 }
+/* =========================================
+   DYNAMIC VOLUNTEER DATA
+========================================= */
+
+.volunteer-loading {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 60px 20px;
+    color: #68716b;
+}
+
+.volunteer-loading > div {
+    font-size: 42px;
+    margin-bottom: 12px;
+}
+
+.volunteer-loading h3 {
+    color: #163b2a;
+    margin-bottom: 8px;
+}
+
+.opportunity-org {
+    min-height: auto !important;
+    margin-top: 10px;
+    color: #526359 !important;
+}
+
+.opportunity-org strong {
+    font-size: 12px;
+}
