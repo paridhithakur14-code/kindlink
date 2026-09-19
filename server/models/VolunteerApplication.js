@@ -1,247 +1,116 @@
 // ==========================================
-// KINDLINK VOLUNTEER APPLICATION MODEL
+// VOLUNTEER APPLICATION MODEL
 // ==========================================
 
-const mongoose =
-    require("mongoose");
+const mongoose = require("mongoose");
 
 
 const volunteerApplicationSchema =
     new mongoose.Schema(
         {
 
-            // ==================================
-            // OPPORTUNITY
-            // ==================================
-
-            opportunity: {
-
-                type:
-                    mongoose.Schema.Types.ObjectId,
-
-                ref:
-                    "VolunteerOpportunity",
-
-                required:
-                    true
-
-            },
-
-
-            // ==================================
-            // USER
-            // ==================================
-
+            // Logged-in KindLink user
             user: {
-
-                type:
-                    mongoose.Schema.Types.ObjectId,
-
-                ref:
-                    "User",
-
-                required:
-                    true
-
+                type: mongoose.Schema.Types.ObjectId,
+                ref: "User",
+                required: true
             },
 
 
-            // ==================================
-            // ORGANISATION
-            // ==================================
+            // Volunteer opportunity
+            opportunity: {
+                type: mongoose.Schema.Types.ObjectId,
+                ref: "VolunteerOpportunity",
+                required: true
+            },
 
+
+            // Organisation that created opportunity
             organisation: {
-
-                type:
-                    mongoose.Schema.Types.ObjectId,
-
-                ref:
-                    "Organisation",
-
-                required:
-                    true
-
+                type: mongoose.Schema.Types.ObjectId,
+                ref: "Organisation",
+                required: true
             },
 
 
-            // ==================================
-            // APPLICANT DETAILS
-            // ==================================
-
-            name: {
-
-                type:
-                    String,
-
-                required:
-                    true,
-
-                trim:
-                    true
-
+            fullName: {
+                type: String,
+                required: true,
+                trim: true
             },
 
 
             age: {
-
-                type:
-                    Number,
-
-                required:
-                    true,
-
-                min:
-                    16,
-
-                max:
-                    80
-
+                type: Number,
+                required: true,
+                min: 16,
+                max: 80
             },
 
 
             email: {
-
-                type:
-                    String,
-
-                required:
-                    true,
-
-                lowercase:
-                    true,
-
-                trim:
-                    true
-
+                type: String,
+                required: true,
+                trim: true,
+                lowercase: true
             },
 
 
             phone: {
-
-                type:
-                    String,
-
-                required:
-                    true,
-
-                trim:
-                    true
-
+                type: String,
+                required: true,
+                trim: true
             },
 
 
             skills: {
-
-                type:
-                    String,
-
-                trim:
-                    true,
-
-                default:
-                    ""
-
+                type: String,
+                default: "",
+                trim: true
             },
 
 
             message: {
-
-                type:
-                    String,
-
-                trim:
-                    true,
-
-                default:
-                    ""
-
+                type: String,
+                default: "",
+                trim: true
             },
 
-
-            // ==================================
-            // APPLICATION STATUS
-            // ==================================
 
             status: {
-
-                type:
-                    String,
-
+                type: String,
                 enum: [
-
                     "pending",
                     "accepted",
-                    "rejected"
-
+                    "rejected",
+                    "completed"
                 ],
-
-                default:
-                    "pending"
-
-            },
-
-
-            reviewedAt: {
-
-                type:
-                    Date,
-
-                default:
-                    null
-
+                default: "pending"
             }
 
         },
-
         {
-
-            timestamps:
-                true
-
+            timestamps: true
         }
-
     );
 
 
-// ==========================================
-// PREVENT DUPLICATE APPLICATION
-// ==========================================
+// Prevent same user applying twice
+// for the same opportunity
 
 volunteerApplicationSchema.index(
-
     {
-
-        opportunity:
-            1,
-
-        user:
-            1
-
+        user: 1,
+        opportunity: 1
     },
-
     {
-
-        unique:
-            true
-
+        unique: true
     }
-
 );
 
 
-// ==========================================
-// MODEL
-// ==========================================
-
-const VolunteerApplication =
-    mongoose.model(
-
-        "VolunteerApplication",
-
-        volunteerApplicationSchema
-
-    );
-
-
 module.exports =
-    VolunteerApplication;
+    mongoose.model(
+        "VolunteerApplication",
+        volunteerApplicationSchema
+    );
